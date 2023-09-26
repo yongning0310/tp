@@ -121,6 +121,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    public void removeInternship(Internship key) {
+        this.internships.remove(key);
+    }
+
     //// util methods
 
     @Override
@@ -157,7 +161,5 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return persons.hashCode();
     }
-
-
 
 }

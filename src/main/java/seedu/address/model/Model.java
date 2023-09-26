@@ -75,6 +75,12 @@ public interface Model {
      */
     void deletePerson(Person target);
 
+    /**
+     * Deletes the given internship.
+     * The internship must exist in the address book.
+     */
+    void deleteInternship(Internship target);
+
     // DELETE THIS WHEN addPerson is fully functional
     /**
      * Adds the given person.
@@ -91,8 +97,19 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
+    /**
+     * Replaces the given internship {@code target} with {@code editedInternship}.
+     * {@code target} must exist in the address book.
+     * The person identity of {@code editedInternship} must not be the same as another existing internship in the
+     * address book.
+     */
+    void setInternship(Internship target, Internship editedInternship);
+
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
+
+    /** Returns an unmodifiable view of the filtered internship list */
+    ObservableList<Internship> getFilteredInternshipList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
@@ -101,4 +118,9 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Person> predicate);
 
 
+    /**
+     * Updates the filter of the filtered internship list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredInternshipList(Predicate<Internship> predicate);
 }

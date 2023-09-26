@@ -113,6 +113,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteInternship(Internship target) {
+        addressBook.removeInternship(target);
+    }
+
+    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -131,6 +136,11 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void setInternship(Internship target, Internship editedInternship) {
+
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -143,12 +153,18 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Internship> getFilteredInternshipList() {
+        return null;
+    }
+
+    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
 
-    private void updateFilteredInternshipList(Predicate<Internship> predicate) {
+    @Override
+    public void updateFilteredInternshipList(Predicate<Internship> predicate) {
         requireNonNull(predicate);
         this.filteredInternships.setPredicate(predicate);
     }

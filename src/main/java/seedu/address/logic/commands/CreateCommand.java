@@ -8,12 +8,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.internship.Internship;
-
-
 
 
 /**
@@ -70,5 +69,27 @@ public class CreateCommand extends Command {
         model.createInternship(this.toAdd);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.toAdd)));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof CreateCommand)) {
+            return false;
+        }
+
+        CreateCommand otherCreateCommand = (CreateCommand) other;
+        return toAdd.equals(otherCreateCommand.toAdd);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("toAdd", toAdd)
+                .toString();
     }
 }
