@@ -28,7 +28,7 @@ public class CreateCommand extends Command {
             + PREFIX_ROLE + "Coffee maker "
             + PREFIX_APPLICATION_STATUS + "Yet to apply "
             + PREFIX_START_DATE + "20/01/2023 "
-            + PREFIX_DURATION + "3"
+            + PREFIX_DURATION + "3 "
             + PREFIX_REQUIREMENT + "C++ "
             + PREFIX_REQUIREMENT + "Coffee ";
 
