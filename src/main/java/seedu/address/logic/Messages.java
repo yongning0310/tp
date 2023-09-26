@@ -50,8 +50,7 @@ public class Messages {
         internship.getRequirements().forEach(builder::append);
         return builder.toString();
     }
-    
-    // DELETE AFTER FULL TRANSITION
+
     /**
      * Formats the {@code person} for display to the user.
      */
