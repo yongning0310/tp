@@ -9,7 +9,11 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.internship.*;
+import seedu.address.model.internship.ApplicationStatus;
+import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Duration;
+import seedu.address.model.internship.Role;
+import seedu.address.model.internship.StartDate;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -90,7 +94,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code role} is invalid.
      */
-    public static Role parseRole(String role) throws ParseException{
+    public static Role parseRole(String role) throws ParseException {
         requireNonNull(role);
         String trimmedRole = role.trim();
         if (!Role.isValidRole(trimmedRole)) {
@@ -169,7 +173,7 @@ public class ParserUtil {
      */
     public static Duration parseDuration(String duration) throws ParseException {
         requireNonNull(duration);
-        String trimmedDuration= duration.trim();
+        String trimmedDuration = duration.trim();
         if (!Duration.isValidDuration(trimmedDuration)) {
             throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
         }

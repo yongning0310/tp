@@ -1,16 +1,5 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.CreateCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.internship.*;
-import seedu.address.model.person.*;
-import seedu.address.model.requirement.Requirement;
-import seedu.address.model.tag.Tag;
-
-import java.util.Set;
-import java.util.stream.Stream;
-
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
@@ -18,6 +7,20 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+
+import java.util.Set;
+import java.util.stream.Stream;
+
+import seedu.address.logic.commands.CreateCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.internship.ApplicationStatus;
+import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Duration;
+import seedu.address.model.internship.Internship;
+import seedu.address.model.internship.Role;
+import seedu.address.model.internship.StartDate;
+import seedu.address.model.requirement.Requirement;
+
 
 /**
  * Parses input arguments and creates a new CreateCommand object
@@ -53,7 +56,9 @@ public class CreateCommandParser implements Parser<CreateCommand> {
         StartDate startDate = ParserUtil.parseStartDate(argMultimap.getValue(PREFIX_START_DATE).get());
         Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
         Set<Requirement> requirementList = ParserUtil.parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
-        Internship internship = new Internship(companyName, role, applicationStatus, startDate, duration, requirementList);
+        Internship internship = new Internship(
+                companyName, role, applicationStatus, startDate, duration, requirementList
+        );
 
         return new CreateCommand(internship);
     }

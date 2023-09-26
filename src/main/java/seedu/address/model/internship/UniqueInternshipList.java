@@ -10,8 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.internship.exceptions.DuplicateInternshipException;
 import seedu.address.model.internship.exceptions.InternshipNotFoundException;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -91,7 +89,7 @@ public class UniqueInternshipList implements Iterable<Internship> {
      * Replaces the contents of this list with {@code internships}.
      * {@code internship} must not contain duplicate internships.
      */
-    public void setInternship(List<Internship> internships) {
+    public void setInternships(List<Internship> internships) {
         requireAllNonNull(internships);
         if (!internshipsAreUnique(internships)) {
             throw new DuplicateInternshipException();

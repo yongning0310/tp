@@ -1,10 +1,12 @@
 package seedu.address.model.internship;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 import java.util.Arrays;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
+
 
 /**
  * Represents an Internship's application status in Flagship.
@@ -12,8 +14,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class ApplicationStatus {
     public static final String MESSAGE_CONSTRAINTS =
-            "Application Status cannot be blank and should only contain one of the following: " +
-                    "Yet to apply, Applied, In progress, Accepted, Rejected";
+            "Application Status cannot be blank and should only contain one of the following: "
+                    + "Yet to apply, Applied, In progress, Accepted, Rejected";
 
     private static final List<String> VALID_STATUSES = Arrays.asList(
             "Yet to apply", "Applied", "In progress", "Accepted", "Rejected"

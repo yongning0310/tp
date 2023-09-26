@@ -1,12 +1,20 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.internship.Internship;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+
+
 
 /**
  * Creates an internship entry in Flagship
@@ -38,7 +46,8 @@ public class CreateCommand extends Command {
 
     public static final String MESSAGE_INVALID_VALUE = "The value entered for this field {TO BE COMPLETED} is invalid";
 
-    public static final String MESSAGE_MISSING_VALUE = "This field {TO BE COMPLETED} is compulsory, please do not leave it empty";
+    public static final String MESSAGE_MISSING_VALUE = "This field {TO BE COMPLETED} is compulsory, "
+            + "please do not leave it empty";
 
     private final Internship toAdd;
 
