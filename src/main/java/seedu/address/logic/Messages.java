@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.internship.Internship;
 import seedu.address.model.person.Person;
 
 /**
@@ -32,6 +33,26 @@ public class Messages {
     }
 
     /**
+     * Formats the {@code internship} for display to the user.
+     */
+    public static String format(Internship internship) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(internship.getCompanyName())
+                .append("; Role: ")
+                .append(internship.getRole())
+                .append("; ApplicationStatus: ")
+                .append(internship.getApplicationStatus())
+                .append("; Start Date: ")
+                .append(internship.getStartDate())
+                .append("; Duration: ")
+                .append(internship.getDuration())
+                .append("; Requirements: ");
+        internship.getRequirements().forEach(builder::append);
+        return builder.toString();
+    }
+    
+    // DELETE AFTER FULL TRANSITION
+    /**
      * Formats the {@code person} for display to the user.
      */
     public static String format(Person person) {
@@ -47,5 +68,4 @@ public class Messages {
         person.getTags().forEach(builder::append);
         return builder.toString();
     }
-
 }

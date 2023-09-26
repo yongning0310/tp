@@ -5,14 +5,20 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.internship.Internship;
 import seedu.address.model.person.Person;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
+
+    // DELETE AFTER FULL TRANSITION
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Internship> PREDICATE_SHOW_ALL_INTERNSHIPS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -52,10 +58,16 @@ public interface Model {
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
 
+    // DELETE THIS WHEN hasInternship is fully functional
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
     boolean hasPerson(Person person);
+
+    /**
+     * Returns true if an internship with the same identity as {@code internship} exists in Flagship.
+     */
+    boolean hasInternship(Internship internship);
 
     /**
      * Deletes the given person.
@@ -63,11 +75,14 @@ public interface Model {
      */
     void deletePerson(Person target);
 
+    // DELETE THIS WHEN addPerson is fully functional
     /**
      * Adds the given person.
      * {@code person} must not already exist in the address book.
      */
     void addPerson(Person person);
+
+    void createInternship(Internship internship);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
@@ -84,4 +99,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+
 }
