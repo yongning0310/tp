@@ -6,6 +6,8 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.internship.Internship;
+import seedu.address.model.internship.UniqueInternshipList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -15,6 +17,7 @@ import seedu.address.model.person.UniquePersonList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
+    // DELETE AFTER FULL TRANSITION
     private final UniquePersonList persons;
 
     /*
@@ -26,6 +29,12 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+    }
+
+    private final UniqueInternshipList internships;
+
+    {
+        internships = new UniqueInternshipList();
     }
 
     public AddressBook() {}
@@ -59,6 +68,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// person-level operations
 
+    // DELETE WHEN FULlY TRANSITIONED
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
@@ -68,11 +78,28 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a internship with the same identity as {@code internship} exists in the address book.
+     */
+    public boolean hasInternship(Internship internship) {
+        requireNonNull(internship);
+        return this.internships.contains(internship);
+    }
+
+    // DELETE AFTER FULL TRANSITION
+    /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
     public void addPerson(Person p) {
         persons.add(p);
+    }
+
+    /**
+     * Creates an internship in Flagship
+     * The internship must not already exist in Flagship.
+     */
+    public void createInternship(Internship i) {
+        this.internships.create(i);
     }
 
     /**
@@ -94,6 +121,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    public void removeInternship(Internship key) {
+        this.internships.remove(key);
+    }
+
     //// util methods
 
     @Override
@@ -108,6 +139,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.asUnmodifiableObservableList();
     }
 
+    public ObservableList<Internship> getInternshipList() {
+        return this.internships.asUnmodifiableObservableList();
+    }
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -127,4 +161,5 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return persons.hashCode();
     }
+
 }

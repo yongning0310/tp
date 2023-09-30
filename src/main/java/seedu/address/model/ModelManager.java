@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.internship.Internship;
 import seedu.address.model.person.Person;
 
 /**
@@ -21,7 +22,11 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
+
+    // DELETE WHEN FULLY TRANSITIONED
     private final FilteredList<Person> filteredPersons;
+
+    private final FilteredList<Internship> filteredInternships;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -33,7 +38,10 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        // DELETE WHEN FULLY TRANSITIONED
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+
+        this.filteredInternships = new FilteredList<>(this.addressBook.getInternshipList());
     }
 
     public ModelManager() {
@@ -94,8 +102,19 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasInternship(Internship internship) {
+        requireNonNull(internship);
+        return this.addressBook.hasInternship(internship);
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+    }
+
+    @Override
+    public void deleteInternship(Internship target) {
+        addressBook.removeInternship(target);
     }
 
     @Override
@@ -105,10 +124,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void createInternship(Internship internship) {
+        addressBook.createInternship(internship);
+        updateFilteredInternshipList(PREDICATE_SHOW_ALL_INTERNSHIPS);
+    }
+
+    @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
+    }
+
+    @Override
+    public void setInternship(Internship target, Internship editedInternship) {
+
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -123,9 +153,20 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Internship> getFilteredInternshipList() {
+        return null;
+    }
+
+    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredInternshipList(Predicate<Internship> predicate) {
+        requireNonNull(predicate);
+        this.filteredInternships.setPredicate(predicate);
     }
 
     @Override
