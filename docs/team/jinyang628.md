@@ -9,7 +9,7 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 ## Summary of contributions
 
-* **Code contributed**: 
+* **Code contributed**:
     * Refactored the AB3 models and interfaces so that they can be repurposed for Flagship
         * E.g. Adding new parameters, renaming interfaces, etc.
     * Programmed the Create Command so that users can key in internship details
