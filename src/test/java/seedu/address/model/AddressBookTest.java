@@ -22,7 +22,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.exceptions.DuplicateInternshipException;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.InternshipBuilder;
 import seedu.address.testutil.PersonBuilder;
 
