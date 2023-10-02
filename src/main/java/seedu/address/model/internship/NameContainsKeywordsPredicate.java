@@ -1,11 +1,10 @@
 package seedu.address.model.internship;
 
-import seedu.address.commons.util.StringUtil;
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.internship.Internship;
-
 import java.util.List;
 import java.util.function.Predicate;
+
+import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.ToStringBuilder;
 
 /**
  * Tests that a {@code Internship}'s {@code Name} matches any of the keywords given.
@@ -20,7 +19,8 @@ public class NameContainsKeywordsPredicate implements Predicate<Internship> {
     @Override
     public boolean test(Internship internship) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(internship.getCompanyName().companyName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(internship
+                        .getCompanyName().companyName, keyword));
     }
 
     @Override
@@ -30,7 +30,7 @@ public class NameContainsKeywordsPredicate implements Predicate<Internship> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof seedu.address.model.internship.NameContainsKeywordsPredicate)) {
+        if (!(other instanceof NameContainsKeywordsPredicate)) {
             return false;
         }
 
