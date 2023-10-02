@@ -18,23 +18,24 @@ Flagship is a desktop application used to help aspiring students track internshi
     * What it does: Allows the user to input an internship index and delete the internship.
     * Justification: This feature improves the product because it allows the user to delete internships that are no longer relevant
     * Highlights: NIL
-    * Credits: *(mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature)*
+  * (Pull requests [\#23](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/23), )
 
 * **New Feature**: (generic) to be added soon
 
 * **Documentation**:
     * User Guide:
-        * to be added soon: [\#1]()
+      * Managed the _**delete**_ command part of the User Guide 
+      * Pull requests [\#39](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/39)
     * Developer Guide:
         * to be added soon
 
 * **Project management**:
-    * to be added
+    * Created issues and milestones for everyone, and assigned it to them
     * (eg. Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub)
 
 * **Community**:
     * *(what is important here is to demonstrate contribution outside of the group, by, for example, reviewing PRs, or being active in discussion. All points in this section are merely suggested points.)*
-    * PRs reviewed (with non-trivial review comments): to be added soon
+    * PRs reviewed: [\#22](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/22), [\#21](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/21), [\#13](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/13) 
     * Contributed to forum discussions (examples: to be added soon)
     * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
 
