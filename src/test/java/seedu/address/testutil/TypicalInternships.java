@@ -1,11 +1,11 @@
 package seedu.address.testutil;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.internship.Internship;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import seedu.address.model.AddressBook;
+import seedu.address.model.internship.Internship;
 
 /**
  * A utility class containing a list of {@code Internship} objects to be used in tests.

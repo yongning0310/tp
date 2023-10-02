@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showInternshipAtIndex;
-import static seedu.address.testutil.TypicalIndexes.*;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INTERNSHIP;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_INTERNSHIP;
 import static seedu.address.testutil.TypicalInternships.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;

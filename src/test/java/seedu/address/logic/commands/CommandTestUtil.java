@@ -137,7 +137,8 @@ public class CommandTestUtil {
         Internship internship = model.getFilteredInternshipList().get(targetIndex.getZeroBased());
         final String[] splitCompanyName = internship.getCompanyName().companyName.split("\\s+");;
 
-        model.updateFilteredInternshipList(new seedu.address.model.internship.NameContainsKeywordsPredicate(Arrays.asList(splitCompanyName[0])));
+        model.updateFilteredInternshipList(new seedu.address.model.internship.NameContainsKeywordsPredicate(
+                Arrays.asList(splitCompanyName[0])));
 
         assertEquals(1, model.getFilteredInternshipList().size());
     }
