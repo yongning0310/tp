@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+
 import seedu.address.model.internship.ApplicationStatus;
 import seedu.address.model.internship.CompanyName;
 import seedu.address.model.internship.Duration;
@@ -19,6 +20,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.requirement.Requirement;
+
 import seedu.address.model.tag.Tag;
 
 /**
@@ -192,18 +194,6 @@ public class ParserUtil {
         return requirementSet;
     }
 
-    // DELETE AFTER FULL TRANSITION
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
-     */
-    public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
-        requireNonNull(tags);
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(parseTag(tagName));
-        }
-        return tagSet;
-    }
 
     /**
      * Parses a {@code String requirement} into a {@code Requirement}.
@@ -235,4 +225,5 @@ public class ParserUtil {
         }
         return new Tag(trimmedTag);
     }
+
 }

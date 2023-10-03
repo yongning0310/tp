@@ -16,6 +16,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+
 import seedu.address.model.internship.*;
 import seedu.address.model.requirement.Requirement;
 
@@ -88,6 +89,7 @@ public class EditCommand extends Command {
         Set<Requirement> updatedRequirements = editInternshipDescriptor.getRequirements().orElse(internshipToEdit.getRequirements());
 
         return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus, updatedStartDate, updatedDuration, updatedRequirements);
+
     }
 
     @Override
@@ -122,6 +124,7 @@ public class EditCommand extends Command {
         private Set<Requirement> requirements;
 
         public EditInternshipDescriptor() {}
+
 
         public EditInternshipDescriptor(EditInternshipDescriptor toCopy) {
             setCompanyName(toCopy.companyName);
@@ -166,6 +169,7 @@ public class EditCommand extends Command {
 
         public void setStartDate(StartDate startDate) {
             this.startDate = startDate;
+
         }
 
         public Optional<Duration> getDuration() {
