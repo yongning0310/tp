@@ -28,11 +28,11 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all internships.
 
    * `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee` : Creates an internship named `Jane Street` to Flagship.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the 3rd internship shown in the current list.
 
    * `clear` : Deletes all contacts.
 
@@ -44,7 +44,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ## Features
 
-<box type="info" seamless>
+<box type="info" seamless></box>
 
 **Notes about the command format:**<br>
 
@@ -81,7 +81,7 @@ Creates an internship in Flagship.
 
 Format: ` c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​`
 
-<box type="tip" seamless>
+<box type="tip" seamless></box>
 
 **Tip:** An internship can have any number of requirements (including 0)
 </box>
@@ -90,28 +90,35 @@ Examples:
 * `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee`
 * `create c/Citadel ro/Coffee pourer a/Applied s/24/04/2022 d/1`
 
-### Listing all persons : `list`
+### Listing all internships : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all internships in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
 
-Edits an existing person in the address book.
+### Reading one internship : `read`
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Shows one internship entry in the address book as specified by the index.
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+Format: `read 1`
+
+### Editing an internship : `edit`
+
+Edits an existing internship in Flagship.
+
+Format: `edit INDEX [c/COMPANY_NAME] [ro/ROLE] [a/APPLICATION_STATUS] [s/START_DATE] [d/DURATION] [re/REQUIREMENT]…​`
+
+* Edits the internship at the specified `INDEX`. The index refers to the index number shown in the displayed internship list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+* When editing requirements, the existing requirements of the internship will be removed i.e adding of requirements is not cumulative.
+* You can remove all the internship’s requirements by typing `t/` without
+  specifying any requirements after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 c/GitHub ro/Chef` Edits the company name and role of the 1st internship to be `GitHub` and `Chef` respectively.
+*  `edit 2 ro/Tester re/` Edits the role of the 2nd internship to be `Tester` and clears all existing requirements.
 
 ### Locating persons by name: `find`
 
@@ -133,17 +140,17 @@ Examples:
 
 ### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified internship from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the internship at the specified `INDEX`.
+* The index refers to the index number shown in the displayed internship list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd internship in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st internship in the results of the `find` command.
 
 ### Clearing all entries : `clear`
 
@@ -165,7 +172,7 @@ AddressBook data are saved in the hard disk automatically after any command that
 
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/internship.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="warning" seamless></box>
 
 **Caution:**
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
@@ -194,11 +201,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Create**    | `c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee`
+**Create** | `c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [c/COMPANY_NAME] [ro/ROLE] [a/APPLICATION_STATUS] [s/START_DATE] [d/DURATION] [re/REQUIREMENT]…​`<br> e.g.,`edit 2 ro/Tester re/`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
-**Help**   | `help`
 
