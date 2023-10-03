@@ -28,7 +28,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all internships.
 
    * `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee` : Creates an internship named `Jane Street` to Flagship.
 
@@ -44,7 +44,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ## Features
 
-<box type="info" seamless>
+<box type="info" seamless></box>
 
 **Notes about the command format:**<br>
 
@@ -81,7 +81,7 @@ Creates an internship in Flagship.
 
 Format: ` c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​`
 
-<box type="tip" seamless>
+<box type="tip" seamless></box>
 
 **Tip:** An internship can have any number of requirements (including 0)
 </box>
@@ -90,11 +90,17 @@ Examples:
 * `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee`
 * `create c/Citadel ro/Coffee pourer a/Applied s/24/04/2022 d/1`
 
-### Listing all persons : `list`
+### Listing all internships : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all internships in the address book.
 
 Format: `list`
+
+### Reading one internship : `read`
+
+Shows one internship entry in the address book as specified by the index.
+
+Format: `read 1`
 
 ### Editing a person : `edit`
 
@@ -165,7 +171,7 @@ AddressBook data are saved in the hard disk automatically after any command that
 
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="warning" seamless></box>
 
 **Caution:**
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
@@ -192,12 +198,12 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Create**    | `c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+| Action     | Format, Examples                                                                                                                                                                              |
+|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Create** | `c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee` |
+| **Clear**  | `clear`                                                                                                                                                                                       |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                           |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                   |
+| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                    |
+| **List**   | `list`                                                                                                                                                                                        |
+| **Help**   | `help`                                                                                                                                                                                        |
