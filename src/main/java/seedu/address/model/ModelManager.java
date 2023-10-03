@@ -20,32 +20,27 @@ import seedu.address.model.person.Person;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final InternshipBook internshipBook;
     private final UserPrefs userPrefs;
-
-    // DELETE WHEN FULLY TRANSITIONED
-    private final FilteredList<Person> filteredPersons;
 
     private final FilteredList<Internship> filteredInternships;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
+    public ModelManager(ReadOnlyInternshipBook internshipBook, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(internshipBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + internshipBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.internshipBook = new InternshipBook(internshipBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        // DELETE WHEN FULLY TRANSITIONED
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
 
-        this.filteredInternships = new FilteredList<>(this.addressBook.getInternshipList());
+        this.filteredInternships = new FilteredList<>(this.internshipBook.getInternshipList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new InternshipBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -73,73 +68,54 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getInternshipBookFilePath() {
+        return userPrefs.getInternshipFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setInternshipBookFilePath(Path internshipBookFilePath) {
+        requireNonNull(internshipBookFilePath);
+        userPrefs.setInternshipFilePath(internshipBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setInternshipBook(ReadOnlyInternshipBook internshipBook) {
+        this.internshipBook.resetData(internshipBook);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyInternshipBook getInternshipBook() {
+        return internshipBook;
     }
 
-    @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return addressBook.hasPerson(person);
-    }
 
     @Override
     public boolean hasInternship(Internship internship) {
         requireNonNull(internship);
-        return this.addressBook.hasInternship(internship);
-    }
-
-    @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+        return this.internshipBook.hasInternship(internship);
     }
 
     @Override
     public void deleteInternship(Internship target) {
-        addressBook.removeInternship(target);
+        internshipBook.removeInternship(target);
     }
 
-    @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
 
     @Override
     public void createInternship(Internship internship) {
-        addressBook.createInternship(internship);
+        internshipBook.createInternship(internship);
         updateFilteredInternshipList(PREDICATE_SHOW_ALL_INTERNSHIPS);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-
-        addressBook.setPerson(target, editedPerson);
-    }
-
-    @Override
     public void setInternship(Internship target, Internship editedInternship) {
+        requireAllNonNull(target, editedInternship);
 
+        internshipBook.setInternship(target, editedInternship);
     }
+
 
     //=========== Filtered Person List Accessors =============================================================
 
@@ -148,19 +124,9 @@ public class ModelManager implements Model {
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
-    }
-
-    @Override
     public ObservableList<Internship> getFilteredInternshipList() {
         return filteredInternships;
-    }
 
-    @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
-        requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
     }
 
     @Override
@@ -181,9 +147,9 @@ public class ModelManager implements Model {
         }
 
         ModelManager otherModelManager = (ModelManager) other;
-        return addressBook.equals(otherModelManager.addressBook)
+        return internshipBook.equals(otherModelManager.internshipBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+                && filteredInternships.equals(otherModelManager.filteredInternships);
     }
 
 }

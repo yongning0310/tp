@@ -4,7 +4,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditInternshipDescriptor;
+import seedu.address.model.internship.Internship;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -15,28 +16,28 @@ import seedu.address.model.tag.Tag;
 /**
  * A utility class to help with building EditPersonDescriptor objects.
  */
-public class EditPersonDescriptorBuilder {
+public class EditInternshipDescriptorBuilder {
 
-    private EditPersonDescriptor descriptor;
+    private EditInternshipDescriptor descriptor;
 
-    public EditPersonDescriptorBuilder() {
-        descriptor = new EditPersonDescriptor();
+    public EditInternshipDescriptorBuilder() {
+        descriptor = new EditInternshipDescriptor();
     }
 
-    public EditPersonDescriptorBuilder(EditPersonDescriptor descriptor) {
-        this.descriptor = new EditPersonDescriptor(descriptor);
+    public EditInternshipDescriptorBuilder(EditInternshipDescriptor descriptor) {
+        this.descriptor = new EditInternshipDescriptor(descriptor);
     }
 
     /**
      * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
      */
-    public EditPersonDescriptorBuilder(Person person) {
-        descriptor = new EditPersonDescriptor();
-        descriptor.setName(person.getName());
-        descriptor.setPhone(person.getPhone());
-        descriptor.setEmail(person.getEmail());
-        descriptor.setAddress(person.getAddress());
-        descriptor.setTags(person.getTags());
+    public EditInternshipDescriptorBuilder(Internship internship) {
+        descriptor = new EditInternshipDescriptor();
+//        descriptor.setName(person.getName());
+//        descriptor.setPhone(person.getPhone());
+//        descriptor.setEmail(person.getEmail());
+//        descriptor.setAddress(person.getAddress());
+//        descriptor.setTags(person.getTags());
     }
 
     /**

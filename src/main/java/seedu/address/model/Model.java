@@ -43,37 +43,26 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getInternshipBookFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setInternshipBookFilePath(Path internshipBookFilePath);
 
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setInternshipBook(ReadOnlyInternshipBook internshipBook);
 
     /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyInternshipBook getInternshipBook();
 
     // DELETE THIS WHEN hasInternship is fully functional
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
-    boolean hasPerson(Person person);
-
-    /**
-     * Returns true if an internship with the same identity as {@code internship} exists in Flagship.
-     */
     boolean hasInternship(Internship internship);
-
-    /**
-     * Deletes the given person.
-     * The person must exist in the address book.
-     */
-    void deletePerson(Person target);
 
     /**
      * Deletes the given internship.
@@ -81,21 +70,8 @@ public interface Model {
      */
     void deleteInternship(Internship target);
 
-    // DELETE THIS WHEN addPerson is fully functional
-    /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
-     */
-    void addPerson(Person person);
 
     void createInternship(Internship internship);
-
-    /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
-     */
-    void setPerson(Person target, Person editedPerson);
 
     /**
      * Replaces the given internship {@code target} with {@code editedInternship}.
@@ -105,17 +81,8 @@ public interface Model {
      */
     void setInternship(Internship target, Internship editedInternship);
 
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
-
     /** Returns an unmodifiable view of the filtered internship list */
     ObservableList<Internship> getFilteredInternshipList();
-
-    /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredPersonList(Predicate<Person> predicate);
 
 
     /**
