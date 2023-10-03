@@ -56,7 +56,7 @@ You can reach us at the email `e0958417@u.nus.edu`
 <img src="images/shashahchk.png" width="200px">
 
 [[github](http://github.com/shashahchk)]
-[[portfolio](team/shashamin.md)]
+[[portfolio](team/shashahchk.md)]
 
 * Role: Developer
 * Responsibilities: UI
