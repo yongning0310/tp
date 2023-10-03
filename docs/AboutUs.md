@@ -35,8 +35,9 @@ You can reach us at the email `e0958417@u.nus.edu`
 
 <img src="images/yongning0310.png" width="200px">
 
-[[github](http://github.com/yongning0310)]
-[[portfolio](team/yongning.md)]
+[[github](http://github.com/yongning0310)] 
+[[portfolio](team/yongning0310.md)]
+
 
 * Role: Developer
 * Responsibilities: Data
