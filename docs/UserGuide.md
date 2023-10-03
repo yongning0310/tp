@@ -96,22 +96,22 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing an internship : `edit`
 
-Edits an existing person in the address book.
+Edits an existing internship in Flagship.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [c/COMPANY_NAME] [ro/ROLE] [a/APPLICATION_STATUS] [s/START_DATE] [d/DURATION] [re/REQUIREMENT]…​`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the internship at the specified `INDEX`. The index refers to the index number shown in the displayed internship list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+* When editing requirements, the existing requirements of the internship will be removed i.e adding of requirements is not cumulative.
+* You can remove all the internship’s requirements by typing `t/` without
+  specifying any requirements after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 c/GitHub ro/Chef` Edits the company name and role of the 1st internship to be `GitHub` and `Chef` respectively.
+*  `edit 2 ro/Tester re/` Edits the role of the 2nd internship to be `Tester` and clears all existing requirements.
 
 ### Locating persons by name: `find`
 
@@ -197,7 +197,7 @@ Action     | Format, Examples
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [c/COMPANY_NAME] [ro/ROLE] [a/APPLICATION_STATUS] [s/START_DATE] [d/DURATION] [re/REQUIREMENT]…​`<br> e.g.,`edit 2 ro/Tester re/`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
