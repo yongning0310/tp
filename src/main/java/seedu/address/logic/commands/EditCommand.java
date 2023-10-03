@@ -2,15 +2,12 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
-
-
-
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -24,8 +21,12 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-
-import seedu.address.model.internship.*;
+import seedu.address.model.internship.ApplicationStatus;
+import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Duration;
+import seedu.address.model.internship.Internship;
+import seedu.address.model.internship.Role;
+import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
 
 /**
@@ -56,11 +57,20 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_INTERNSHIP_SUCCESS = "Edited Internship: %s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_INTERNSHIP = "This internship application already exists in the tracker.";
+    public static final String MESSAGE_DUPLICATE_INTERNSHIP =
+            "This internship application already exists in the tracker.";
 
     private final Index index;
     private final EditInternshipDescriptor editInternshipDescriptor;
 
+    /**
+     * Constructs an {@code EditCommand} to edit the details of an existing internship.
+     *
+     * @param index The index of the internship in the filtered internship list to edit.
+     *              Must not be {@code null}.
+     * @param editInternshipDescriptor Details to edit the internship with.
+     *                                 Cannot be {@code null} and must not contain duplicate tags.
+     */
     public EditCommand(Index index, EditInternshipDescriptor editInternshipDescriptor) {
         requireNonNull(index);
         requireNonNull(editInternshipDescriptor);
@@ -88,15 +98,20 @@ public class EditCommand extends Command {
         return new CommandResult(String.format(MESSAGE_EDIT_INTERNSHIP_SUCCESS, Messages.format(editedInternship)));
     }
 
-    private Internship createEditedInternship(Internship internshipToEdit, EditInternshipDescriptor editInternshipDescriptor) {
-        CompanyName updatedCompanyName = editInternshipDescriptor.getCompanyName().orElse(internshipToEdit.getCompanyName());
+    private Internship createEditedInternship(Internship internshipToEdit,
+                                              EditInternshipDescriptor editInternshipDescriptor) {
+        CompanyName updatedCompanyName = editInternshipDescriptor.getCompanyName()
+                .orElse(internshipToEdit.getCompanyName());
         Role updatedRole = editInternshipDescriptor.getRole().orElse(internshipToEdit.getRole());
-        ApplicationStatus updatedApplicationStatus = editInternshipDescriptor.getApplicationStatus().orElse(internshipToEdit.getApplicationStatus());
+        ApplicationStatus updatedApplicationStatus = editInternshipDescriptor
+                .getApplicationStatus().orElse(internshipToEdit.getApplicationStatus());
         StartDate updatedStartDate = editInternshipDescriptor.getStartDate().orElse(internshipToEdit.getStartDate());
         Duration updatedDuration = editInternshipDescriptor.getDuration().orElse(internshipToEdit.getDuration());
-        Set<Requirement> updatedRequirements = editInternshipDescriptor.getRequirements().orElse(internshipToEdit.getRequirements());
+        Set<Requirement> updatedRequirements = editInternshipDescriptor.getRequirements()
+                .orElse(internshipToEdit.getRequirements());
 
-        return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus, updatedStartDate, updatedDuration, updatedRequirements);
+        return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus,
+                updatedStartDate, updatedDuration, updatedRequirements);
 
     }
 
@@ -123,6 +138,10 @@ public class EditCommand extends Command {
                 .toString();
     }
 
+    /**
+     * Represents a descriptor with details to edit an internship with.
+     * Each non-null field value will replace the corresponding field value of the internship.
+     */
     public static class EditInternshipDescriptor {
         private CompanyName companyName;
         private Role role;
@@ -134,6 +153,10 @@ public class EditCommand extends Command {
         public EditInternshipDescriptor() {}
 
 
+        /**
+         * Represents a descriptor with details to edit an internship with.
+         * Each non-null field value will replace the corresponding field value of the internship.
+         */
         public EditInternshipDescriptor(EditInternshipDescriptor toCopy) {
             setCompanyName(toCopy.companyName);
             setRole(toCopy.role);
@@ -207,12 +230,16 @@ public class EditCommand extends Command {
             }
 
             EditInternshipDescriptor otherEditInternshipDescriptor = (EditInternshipDescriptor) other;
-            return Optional.ofNullable(companyName).equals(Optional.ofNullable(otherEditInternshipDescriptor.companyName))
+            return Optional.ofNullable(companyName)
+                    .equals(Optional.ofNullable(otherEditInternshipDescriptor.companyName))
                     && Optional.ofNullable(role).equals(Optional.ofNullable(otherEditInternshipDescriptor.role))
-                    && Optional.ofNullable(applicationStatus).equals(Optional.ofNullable(otherEditInternshipDescriptor.applicationStatus))
-                    && Optional.ofNullable(startDate).equals(Optional.ofNullable(otherEditInternshipDescriptor.startDate))
+                    && Optional.ofNullable(applicationStatus)
+                    .equals(Optional.ofNullable(otherEditInternshipDescriptor.applicationStatus))
+                    && Optional.ofNullable(startDate)
+                    .equals(Optional.ofNullable(otherEditInternshipDescriptor.startDate))
                     && Optional.ofNullable(duration).equals(Optional.ofNullable(otherEditInternshipDescriptor.duration))
-                    && Optional.ofNullable(requirements).equals(Optional.ofNullable(otherEditInternshipDescriptor.requirements));
+                    && Optional.ofNullable(requirements)
+                    .equals(Optional.ofNullable(otherEditInternshipDescriptor.requirements));
         }
 
         @Override

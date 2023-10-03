@@ -69,6 +69,14 @@ public class StorageManager implements Storage {
         saveInternshipBook(internshipBook, internshipBookStorage.getInternshipBookFilePath());
     }
 
+    /**
+     * Saves the given {@link ReadOnlyInternshipBook} to the specified {@link Path}.
+     *
+     * @param internshipBook The internship book to save. Must not be {@code null}.
+     * @param filePath The path of the data file where the internship book should be saved.
+     *                 Must not be {@code null}.
+     * @throws IOException If there is an issue writing to the specified file path.
+     */
     public void saveInternshipBook(ReadOnlyInternshipBook internshipBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         internshipBookStorage.saveInternshipBook(internshipBook, filePath);

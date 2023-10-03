@@ -17,18 +17,17 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.InternshipBook;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInternshipBook;
-
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.InternshipBookStorage;
+import seedu.address.storage.JsonInternshipBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
-import seedu.address.storage.UserPrefsStorage;
-import seedu.address.storage.JsonInternshipBookStorage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
@@ -83,7 +82,6 @@ public class MainApp extends Application {
                 logger.info("Creating a new data file " + storage.getInternshipBookFilePath()
                         + " populated with a sample AddressBook.");
             }
-//            initialData = internshipBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
             initialData = internshipBookOptional.orElseGet(SampleDataUtil::getSampleInternshipBook);
 
         } catch (DataLoadingException e) {

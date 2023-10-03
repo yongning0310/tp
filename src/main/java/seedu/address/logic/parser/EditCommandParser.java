@@ -3,12 +3,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
@@ -16,16 +10,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditInternshipDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -55,27 +43,30 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
-
         EditInternshipDescriptor editInternshipDescriptor = new EditInternshipDescriptor();
 
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
-            editInternshipDescriptor.setCompanyName(ParserUtil.parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get()));
+            editInternshipDescriptor.setCompanyName(ParserUtil
+                    .parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
             editInternshipDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
         }
         if (argMultimap.getValue(PREFIX_APPLICATION_STATUS).isPresent()) {
-            editInternshipDescriptor.setApplicationStatus(ParserUtil.parseApplicationStatus(argMultimap.getValue(PREFIX_APPLICATION_STATUS).get()));
+            editInternshipDescriptor.setApplicationStatus(ParserUtil
+                    .parseApplicationStatus(argMultimap.getValue(PREFIX_APPLICATION_STATUS).get()));
         }
         if (argMultimap.getValue(PREFIX_START_DATE).isPresent()) {
-            editInternshipDescriptor.setStartDate(ParserUtil.parseStartDate(argMultimap.getValue(PREFIX_START_DATE).get()));
+            editInternshipDescriptor.setStartDate(ParserUtil
+                    .parseStartDate(argMultimap.getValue(PREFIX_START_DATE).get()));
         }
         if (argMultimap.getValue(PREFIX_DURATION).isPresent()) {
-            editInternshipDescriptor.setDuration(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get()));
+            editInternshipDescriptor.setDuration(ParserUtil
+                    .parseDuration(argMultimap.getValue(PREFIX_DURATION).get()));
         }
 
-//        parseRequirementsForEdit(argMultimap.getAllValues(PREFIX_REQUIREMENT)).ifPresent(editInternshipDescriptor::setRequirements);
+        //parseRequirementsForEdit(argMultimap.
+        // getAllValues(PREFIX_REQUIREMENT)).ifPresent(editInternshipDescriptor::setRequirements);
         if (!editInternshipDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
