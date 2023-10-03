@@ -6,7 +6,7 @@
 
 # AB-3 User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+FlagShip is a **desktop app for managing internships, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, FlagShip can get your internship management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -17,11 +17,11 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `internshipBook.jar` from [here](https://github.com/se-edu/internshipBook/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internshipBook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
@@ -96,6 +96,21 @@ Shows a list of all internships in the address book.
 
 Format: `list`
 
+### Editing an internship : `modify`
+
+Edits an existing internship in the internship list.
+
+Format: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION re/REQUIREMENT...`
+
+* Edits the internship at the specified `INDEX`. The index refers to the index number shown in the displayed internship list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+* You can remove all the internship’s requiremnts by typing `t/` without
+    specifying any tags after it.
+
+Examples:
+*  `edit 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee` 
 
 ### Reading one internship : `read`
 
@@ -119,6 +134,7 @@ Format: `edit INDEX [c/COMPANY_NAME] [ro/ROLE] [a/APPLICATION_STATUS] [s/START_D
 Examples:
 *  `edit 1 c/GitHub ro/Chef` Edits the company name and role of the 1st internship to be `GitHub` and `Chef` respectively.
 *  `edit 2 ro/Tester re/` Edits the role of the 2nd internship to be `Tester` and clears all existing requirements.
+
 
 ### Locating persons by name: `find`
 
