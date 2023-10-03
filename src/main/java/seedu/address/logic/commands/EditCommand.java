@@ -1,12 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.logic.parser.CliSyntax.*;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -21,12 +16,8 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.internship.*;
+import seedu.address.model.requirement.Requirement;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -35,73 +26,70 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the internship identified "
+            + "by the index number used in the displayed internship list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_COMPANY_NAME + "COMPANY_NAME] "
+            + "[" + PREFIX_ROLE + "ROLE] "
+            + "[" + PREFIX_APPLICATION_STATUS + "APPLICATION_STATUS] "
+            + "[" + PREFIX_START_DATE + "START_DATE] "
+            + "[" + PREFIX_DURATION + "DURATION] "
+            + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_COMPANY_NAME + "Google "
+            + PREFIX_ROLE + "Software Engineer Intern "
+            + PREFIX_APPLICATION_STATUS + "Yet to apply "
+            + PREFIX_START_DATE + "20/01/2023 "
+            + PREFIX_DURATION + "3 "
+            + PREFIX_REQUIREMENT + "C++ "
+            + PREFIX_REQUIREMENT + "Python";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_INTERNSHIP_SUCCESS = "Edited Internship: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_INTERNSHIP = "This internship application already exists in the tracker.";
 
     private final Index index;
-    private final EditPersonDescriptor editPersonDescriptor;
+    private final EditInternshipDescriptor editInternshipDescriptor;
 
-    /**
-     * @param index of the person in the filtered person list to edit
-     * @param editPersonDescriptor details to edit the person with
-     */
-    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
+    public EditCommand(Index index, EditInternshipDescriptor editInternshipDescriptor) {
         requireNonNull(index);
-        requireNonNull(editPersonDescriptor);
-
+        requireNonNull(editInternshipDescriptor);
         this.index = index;
-        this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
+        this.editInternshipDescriptor = new EditInternshipDescriptor(editInternshipDescriptor);
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Internship> lastShownList = model.getFilteredInternshipList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_INTERNSHIP_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        System.out.println("HERE");
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        Internship internshipToEdit = lastShownList.get(index.getZeroBased());
+        Internship editedInternship = createEditedInternship(internshipToEdit, editInternshipDescriptor);
+
+        if (!internshipToEdit.isSameInternship(editedInternship) && model.hasInternship(editedInternship)) {
+            throw new CommandException(MESSAGE_DUPLICATE_INTERNSHIP);
         }
 
-        model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        model.setInternship(internshipToEdit, editedInternship);
+        return new CommandResult(String.format(MESSAGE_EDIT_INTERNSHIP_SUCCESS, editedInternship));
     }
 
-    /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
-     */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
-        assert personToEdit != null;
+    private Internship createEditedInternship(Internship internshipToEdit, EditInternshipDescriptor editInternshipDescriptor) {
+        CompanyName updatedCompanyName = editInternshipDescriptor.getCompanyName().orElse(internshipToEdit.getCompanyName());
+        Role updatedRole = editInternshipDescriptor.getRole().orElse(internshipToEdit.getRole());
+        ApplicationStatus updatedApplicationStatus = editInternshipDescriptor.getApplicationStatus().orElse(internshipToEdit.getApplicationStatus());
+        StartDate updatedStartDate = editInternshipDescriptor.getStartDate().orElse(internshipToEdit.getStartDate());
+        Duration updatedDuration = editInternshipDescriptor.getDuration().orElse(internshipToEdit.getDuration());
+        Set<Requirement> updatedRequirements = editInternshipDescriptor.getRequirements().orElse(internshipToEdit.getRequirements());
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus, updatedStartDate, updatedDuration, updatedRequirements);
     }
 
     @Override
@@ -110,103 +98,92 @@ public class EditCommand extends Command {
             return true;
         }
 
-        // instanceof handles nulls
         if (!(other instanceof EditCommand)) {
             return false;
         }
 
-        EditCommand otherEditCommand = (EditCommand) other;
-        return index.equals(otherEditCommand.index)
-                && editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
+        EditCommand otherEditInternshipCommand = (EditCommand) other;
+        return index.equals(otherEditInternshipCommand.index)
+                && editInternshipDescriptor.equals(otherEditInternshipCommand.editInternshipDescriptor);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("index", index)
-                .add("editPersonDescriptor", editPersonDescriptor)
+                .add("editInternshipDescriptor", editInternshipDescriptor)
                 .toString();
     }
 
-    /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
-     */
-    public static class EditPersonDescriptor {
-        private Name name;
-        private Phone phone;
-        private Email email;
-        private Address address;
-        private Set<Tag> tags;
+    public static class EditInternshipDescriptor {
+        private CompanyName companyName;
+        private Role role;
+        private ApplicationStatus applicationStatus;
+        private StartDate startDate;
+        private Duration duration;
+        private Set<Requirement> requirements;
 
-        public EditPersonDescriptor() {}
+        public EditInternshipDescriptor() {}
 
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setAddress(toCopy.address);
-            setTags(toCopy.tags);
+        public EditInternshipDescriptor(EditInternshipDescriptor toCopy) {
+            setCompanyName(toCopy.companyName);
+            setRole(toCopy.role);
+            setApplicationStatus(toCopy.applicationStatus);
+            setStartDate(toCopy.startDate);
+            setDuration(toCopy.duration);
+            setRequirements(toCopy.requirements);
         }
 
-        /**
-         * Returns true if at least one field is edited.
-         */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(companyName, role, applicationStatus, startDate, duration, requirements);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public Optional<CompanyName> getCompanyName() {
+            return Optional.ofNullable(companyName);
+        }
+        //
+        public void setCompanyName(CompanyName companyName) {
+            this.companyName = companyName;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Role> getRole() {
+            return Optional.ofNullable(role);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setRole(Role role) {
+            this.role = role;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
+        public Optional<ApplicationStatus> getApplicationStatus() {
+            return Optional.ofNullable(applicationStatus);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setApplicationStatus(ApplicationStatus applicationStatus) {
+            this.applicationStatus = applicationStatus;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<StartDate> getStartDate() {
+            return Optional.ofNullable(startDate);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setStartDate(StartDate startDate) {
+            this.startDate = startDate;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public Optional<Duration> getDuration() {
+            return Optional.ofNullable(duration);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setDuration(Duration duration) {
+            this.duration = duration;
         }
 
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public Optional<Set<Requirement>> getRequirements() {
+            return (requirements != null) ? Optional.of(Collections.unmodifiableSet(requirements)) : Optional.empty();
+        }
+
+        public void setRequirements(Set<Requirement> requirements) {
+            this.requirements = (requirements != null) ? new HashSet<>(requirements) : null;
         }
 
         @Override
@@ -215,27 +192,28 @@ public class EditCommand extends Command {
                 return true;
             }
 
-            // instanceof handles nulls
-            if (!(other instanceof EditPersonDescriptor)) {
+            if (!(other instanceof EditInternshipDescriptor)) {
                 return false;
             }
 
-            EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
-            return Objects.equals(name, otherEditPersonDescriptor.name)
-                    && Objects.equals(phone, otherEditPersonDescriptor.phone)
-                    && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(address, otherEditPersonDescriptor.address)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+            EditInternshipDescriptor otherEditInternshipDescriptor = (EditInternshipDescriptor) other;
+            return Optional.ofNullable(companyName).equals(Optional.ofNullable(otherEditInternshipDescriptor.companyName))
+                    && Optional.ofNullable(role).equals(Optional.ofNullable(otherEditInternshipDescriptor.role))
+                    && Optional.ofNullable(applicationStatus).equals(Optional.ofNullable(otherEditInternshipDescriptor.applicationStatus))
+                    && Optional.ofNullable(startDate).equals(Optional.ofNullable(otherEditInternshipDescriptor.startDate))
+                    && Optional.ofNullable(duration).equals(Optional.ofNullable(otherEditInternshipDescriptor.duration))
+                    && Optional.ofNullable(requirements).equals(Optional.ofNullable(otherEditInternshipDescriptor.requirements));
         }
 
         @Override
         public String toString() {
             return new ToStringBuilder(this)
-                    .add("name", name)
-                    .add("phone", phone)
-                    .add("email", email)
-                    .add("address", address)
-                    .add("tags", tags)
+                    .add("companyName", companyName)
+                    .add("role", role)
+                    .add("applicationStatus", applicationStatus)
+                    .add("startDate", startDate)
+                    .add("duration", duration)
+                    .add("requirements", requirements)
                     .toString();
         }
     }
