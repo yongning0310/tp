@@ -75,7 +75,6 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getInternshipBookFilePath());
-
         Optional<ReadOnlyInternshipBook> internshipBookOptional;
         ReadOnlyInternshipBook initialData;
         try {
