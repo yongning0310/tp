@@ -32,7 +32,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee` : Creates an internship named `Jane Street` to Flagship.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the 3rd internship shown in the current list.
 
    * `clear` : Deletes all contacts.
 
@@ -133,17 +133,17 @@ Examples:
 
 ### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified internship from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the internship at the specified `INDEX`.
+* The index refers to the index number shown in the displayed internship list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd internship in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st internship in the results of the `find` command.
 
 ### Clearing all entries : `clear`
 
