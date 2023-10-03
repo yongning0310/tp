@@ -10,10 +10,6 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.internship.Internship;
-<<<<<<< HEAD
-=======
-import seedu.address.model.person.Person;
->>>>>>> f0002730 (refactored storage and parsers)
 
 /**
  * Deletes an internship identified using it's displayed index from the address book.
