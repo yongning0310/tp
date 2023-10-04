@@ -34,7 +34,7 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 * **Community**:
     * *(what is important here is to demonstrate contribution outside of the group, by, for example, reviewing PRs, or being active in discussion. All points in this section are merely suggested points.)*
-    * PRs reviewed: [\#18](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/18), [\#36](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/36), [\#38](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/38), 
+    * PRs reviewed: [\#18](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/18), [\#36](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/36), [\#38](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/38),
     * Contributed to forum discussions (examples: to be added soon)
     * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
 
