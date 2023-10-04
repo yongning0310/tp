@@ -47,7 +47,7 @@ You can reach us at the email `e0958417@u.nus.edu`
 <img src="images/s-kybound.png" width="200px">
 
 [[github](http://github.com/s-kybound)]
-[[portfolio](team/kyriel.md)]
+[[portfolio](team/s-kybound.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
