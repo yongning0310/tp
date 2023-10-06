@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# FlagShip Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -284,11 +284,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                       | I want to …​                                                       | So that I can…​                               |
 |----------|-----------------------------------------------|--------------------------------------------------------------------|-----------------------------------------------|
-| `* * *`  | new user                                      | create new entry                                                   | store the connections and internship listings |
-| `* * *`  | user keeping track of my internship positions | modify the details of the internship positions                     | be aware of the status                        |
-| `* * *`  | user keeping track of many connections        | to be able to modify the details of these connections              | ensure the information remains up-to-date     |
+| `* * *`  | new user                                      | create new internship entry                                        | store the connections and internship listings |
+| `* * *`  | user keeping track of my internship positions | modify the details of the internship entries                       | be aware of the status                        |
+| `* * *`  | user                                          | delete my files                                                    | declutter my workspace                        |
 | `* * *`  | user                                          | view everything                                                    | keep track of the details                     |
-| `* *`    | user                                          | delete my files                                                    | declutter my workspace                        |
+| `* *`    | user keeping track of many internships        | be notified when I enter a duplicate internship entry              | keep my list free of duplicate information    |
 | `*`      | returning user                                | continue with my last accessed data file or choose a different one | manage multiple datasets concurrently.        |
 
 *{More to be added}*
@@ -297,18 +297,43 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete an internship**
+
+**UC1: Create an internship entry**
 
 **MSS**
 
-1.  User requests to list internships
+1.  User requests to create an internship entry with the necessary details
+2.  AddressBook adds the internship entry to the list
+
+**Extensions**
+* 1a. Command is of invalid format
+    * 1a1. AddressBook shows an error message.
+
+    Use case ends.
+
+**UC2: Delete an internship**
+
+**MSS**
+
+1.  User requests to see list of internships
 2.  AddressBook shows a list of internships
 3.  User requests to delete a specific internship in the list
 4.  AddressBook deletes the internship
 
     Use case ends.
 
-**Use case: Edit an internship**
+**Extensions**
+* 1a. Command is of invalid format
+    * 1a1. AddressBook shows an error message.
+  
+    Use case ends.
+
+* 3a. Command is of invalid format
+    * 3a1. AddressBook shows an error message.
+    
+    Use case ends.
+
+**UC3: Edit an internship**
 
 **MSS**
 
@@ -320,7 +345,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6.  AddressBook saves the updated internship entry to the hard disk
 
     Use case ends.
-
 
 **Extensions**
 
@@ -338,16 +362,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 internships without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+#### Technical
+
+* Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+
+#### Performance
+
+* Should be able to hold up to 1000 internships without a noticeable sluggishness in performance for typical usage.
+* Should respond to user commands within 2 seconds under normal conditions.
+
+#### Usability
+
+* A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+* A new user should be able to grasp the basic features within 10 minutes.
+
+#### Security and Data Integrity
+
+* Should encrypt user data both during transfer and when stored.
+* Should authenticate user based on username.
 
 *{More to be added}*
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Internship entry**: An entry in Flagship with information regarding the internship, including company name, role, application status, start date, duration, and role requirements
+* **Application status**: The current status of the internship entry (Yet to apply, Applied, In Progress, Accepted, Rejected)
 
 --------------------------------------------------------------------------------------------------------------------
 
