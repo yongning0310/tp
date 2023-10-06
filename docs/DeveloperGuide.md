@@ -282,14 +282,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                       | I want to …​                                                       | So that I can…​                               |
-|----------|-----------------------------------------------|--------------------------------------------------------------------|-----------------------------------------------|
-| `* * *`  | new user                                      | create new internship entry                                        | store the connections and internship listings |
-| `* * *`  | user keeping track of my internship positions | modify the details of the internship entries                       | be aware of the status                        |
-| `* * *`  | user                                          | delete my files                                                    | declutter my workspace                        |
-| `* * *`  | user                                          | view everything                                                    | keep track of the details                     |
-| `* *`    | user keeping track of many internships        | be notified when I enter a duplicate internship entry              | keep my list free of duplicate information    |
-| `*`      | returning user                                | continue with my last accessed data file or choose a different one | manage multiple datasets concurrently.        |
+| Priority | As a …​                                | I want to …​                                                       | So that I can…​                                         |
+|----------|----------------------------------------|--------------------------------------------------------------------|---------------------------------------------------------|
+| `* * *`  | new user                               | create new internship entries                                      | store internship entries in Flagship                    |
+| `* * *`  | user keeping track of my internships   | modify the details of my internship entries                        | be aware of the status                                  |
+| `* * *`  | user                                   | delete my internship entries                                       | declutter my workspace                                  |
+| `* * *`  | user                                   | view all internship entries                                        | keep track of the details of current internship entries |
+| `* *`    | user keeping track of many internships | be notified when I enter a duplicate internship entry              | keep my list free of duplicate information              |
+| `*`      | returning user                         | continue with my last accessed data file or choose a different one | manage multiple datasets concurrently                   |
 
 *{More to be added}*
 
