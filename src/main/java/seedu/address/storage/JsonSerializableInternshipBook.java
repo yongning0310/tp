@@ -14,7 +14,7 @@ import seedu.address.model.ReadOnlyInternshipBook;
 import seedu.address.model.internship.Internship;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable InternshipBook that is serializable to JSON format.
  */
 @JsonRootName(value = "internshipbook")
 class JsonSerializableInternshipBook {
@@ -24,7 +24,7 @@ class JsonSerializableInternshipBook {
     private final List<JsonAdaptedInternship> internships = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableInternshipBook} with the given persons.
      */
     @JsonCreator
     public JsonSerializableInternshipBook(@JsonProperty("internships") List<JsonAdaptedInternship> internships) {
@@ -32,9 +32,9 @@ class JsonSerializableInternshipBook {
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyInternshipBook} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableInternshipBook}.
      */
     public JsonSerializableInternshipBook(ReadOnlyInternshipBook source) {
         internships.addAll(source.getInternshipList().stream().map(JsonAdaptedInternship::new)
@@ -42,7 +42,7 @@ class JsonSerializableInternshipBook {
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this internship book into the model's {@code InternshipBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */

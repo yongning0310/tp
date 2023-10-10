@@ -121,7 +121,7 @@ public class ModifyCommand extends InternshipCommand {
             return true;
         }
 
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof ModifyCommand)) {
             return false;
         }
 

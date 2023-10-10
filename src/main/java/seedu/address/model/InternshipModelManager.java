@@ -14,7 +14,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.internship.Internship;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the internship book data.
  */
 public class InternshipModelManager implements InternshipModel {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
