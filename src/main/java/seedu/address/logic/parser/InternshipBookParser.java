@@ -8,7 +8,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.CreateCommand;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.InternshipCommand;
+import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -45,19 +49,19 @@ public class InternshipBookParser {
 
         switch (commandWord) {
 
-            case CreateCommand.COMMAND_WORD:
-                return new CreateCommandParser().parse(arguments);
+        case CreateCommand.COMMAND_WORD:
+            return new CreateCommandParser().parse(arguments);
 
-            case ModifyCommand.COMMAND_WORD:
-                return new ModifyCommandParser().parse(arguments);
+        case ModifyCommand.COMMAND_WORD:
+            return new ModifyCommandParser().parse(arguments);
 
-            case DeleteCommand.COMMAND_WORD:
-                return new DeleteCommandParser().parse(arguments);
+        case DeleteCommand.COMMAND_WORD:
+            return new DeleteCommandParser().parse(arguments);
 
 
-            default:
-                logger.finer("This user input caused a ParseException: " + userInput);
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

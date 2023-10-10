@@ -15,12 +15,20 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.InternshipLogic;
 import seedu.address.logic.InternshipLogicManager;
-import seedu.address.model.*;
+import seedu.address.model.InternshipBook;
+import seedu.address.model.InternshipModel;
+import seedu.address.model.InternshipModelManager;
+import seedu.address.model.InternshipUserPrefs;
+import seedu.address.model.ReadOnlyInternshipBook;
+import seedu.address.model.ReadOnlyInternshipUserPrefs;
 import seedu.address.model.util.InternshipSampleDataUtil;
-import seedu.address.storage.*;
+import seedu.address.storage.InternshipBookStorage;
+import seedu.address.storage.InternshipStorage;
+import seedu.address.storage.InternshipStorageManager;
+import seedu.address.storage.InternshipUserPrefsStorage;
+import seedu.address.storage.JsonInternshipBookStorage;
+import seedu.address.storage.JsonInternshipUserPrefsStorage;
 import seedu.address.ui.InternshipUiManager;
-import seedu.address.ui.Ui;
-import seedu.address.ui.UiManager;
 
 /**
  * Runs the application.

@@ -8,8 +8,6 @@ import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.InternshipUserPrefs;
 import seedu.address.model.ReadOnlyInternshipUserPrefs;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
 
 /**
  * A class to access UserPrefs stored in the hard disk as a json file

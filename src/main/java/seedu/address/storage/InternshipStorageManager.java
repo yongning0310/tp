@@ -7,12 +7,14 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
-import seedu.address.model.*;
+import seedu.address.model.InternshipUserPrefs;
+import seedu.address.model.ReadOnlyInternshipBook;
+import seedu.address.model.ReadOnlyInternshipUserPrefs;
 
 /**
  * Manages storage of AddressBook data in local storage.
  */
-public class InternshipStorageManager implements  InternshipStorage {
+public class InternshipStorageManager implements InternshipStorage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private InternshipBookStorage internshipBookStorage;
@@ -21,7 +23,8 @@ public class InternshipStorageManager implements  InternshipStorage {
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
-    public InternshipStorageManager(InternshipBookStorage internshipBookStorage, InternshipUserPrefsStorage userPrefsStorage) {
+    public InternshipStorageManager(InternshipBookStorage internshipBookStorage,
+                                    InternshipUserPrefsStorage userPrefsStorage) {
         this.internshipBookStorage = internshipBookStorage;
         this.userPrefsStorage = userPrefsStorage;
     }

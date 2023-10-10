@@ -10,17 +10,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.internship.*;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.internship.ApplicationStatus;
+import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Duration;
+import seedu.address.model.internship.Internship;
+import seedu.address.model.internship.Role;
+import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
-import seedu.address.model.tag.Tag;
 
 /**
- * Jackson-friendly version of {@link Person}.
+ * Jackson-friendly version of {@link Internship}.
  */
 class JsonAdaptedInternship {
 
@@ -38,7 +37,8 @@ class JsonAdaptedInternship {
      */
     @JsonCreator
     public JsonAdaptedInternship(@JsonProperty("companyName") String companyName, @JsonProperty("role") String role,
-                                 @JsonProperty("applicationStatus") String applicationStatus, @JsonProperty("startDate") String startDate,
+                                 @JsonProperty("applicationStatus") String applicationStatus,
+                                 @JsonProperty("startDate") String startDate,
                                  @JsonProperty("duration") String duration,
                                  @JsonProperty("requirements") List<JsonAdaptedRequirement> requirements) {
         this.companyName = companyName;
@@ -77,7 +77,8 @@ class JsonAdaptedInternship {
         }
 
         if (companyName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, CompanyName.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    CompanyName.class.getSimpleName()));
         }
         if (!CompanyName.isValidCompanyName(companyName)) {
             throw new IllegalValueException(CompanyName.MESSAGE_CONSTRAINTS);
@@ -94,7 +95,8 @@ class JsonAdaptedInternship {
 
 
         if (applicationStatus == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ApplicationStatus.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApplicationStatus.class.getSimpleName()));
         }
         if (!ApplicationStatus.isValidApplicationStatus(applicationStatus)) {
             throw new IllegalValueException(ApplicationStatus.MESSAGE_CONSTRAINTS);
@@ -102,15 +104,17 @@ class JsonAdaptedInternship {
         final ApplicationStatus modelApplicationStatus = new ApplicationStatus(applicationStatus);
 
         if (startDate == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, StartDate.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    StartDate.class.getSimpleName()));
         }
         if (!StartDate.isValidStartDate(startDate)) {
             throw new IllegalValueException(StartDate.MESSAGE_CONSTRAINTS);
         }
-        final StartDate modelStartDate= new StartDate(startDate);
+        final StartDate modelStartDate = new StartDate(startDate);
 
         if (duration == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Duration.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Duration.class.getSimpleName()));
         }
         if (!Duration.isValidDuration(duration)) {
             throw new IllegalValueException(Duration.MESSAGE_CONSTRAINTS);
@@ -118,7 +122,8 @@ class JsonAdaptedInternship {
         final Duration modelDuration = new Duration(duration);
 
         final Set<Requirement> modelRequirements = new HashSet<>(internshipRequirements);
-        return new Internship(modelCompanyName, modelRole, modelApplicationStatus, modelStartDate, modelDuration, modelRequirements);
+        return new Internship(modelCompanyName, modelRole, modelApplicationStatus,
+                modelStartDate, modelDuration, modelRequirements);
     }
 
 }

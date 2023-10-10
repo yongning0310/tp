@@ -26,7 +26,7 @@ public interface InternshipLogic {
     /**
      * Returns the AddressBook.
      *
-     * @see seedu.address.model.Model#getInternshipBook()
+     * @see seedu.address.model.Model
      */
     ReadOnlyInternshipBook getInternshipBook();
 
