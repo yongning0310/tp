@@ -67,9 +67,9 @@ public class InternshipMainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s internship book and {@code InternshipUserPrefs}. <br>
+     * The data from the sample internship book will be used instead if {@code storage}'s internship book is not found,
+     * or an empty internship book will be used instead if errors occur when reading {@code storage}'s internship book.
      */
     private InternshipModel initModelManager(InternshipStorage storage, ReadOnlyInternshipUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getInternshipBookFilePath());
@@ -79,7 +79,7 @@ public class InternshipMainApp extends Application {
             internshipBookOptional = storage.readInternshipBook();
             if (!internshipBookOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getInternshipBookFilePath()
-                        + " populated with a sample AddressBook.");
+                        + " populated with a sample InternshipBook.");
             }
             initialData = internshipBookOptional.orElseGet(InternshipSampleDataUtil::getSampleInternshipBook);
 
