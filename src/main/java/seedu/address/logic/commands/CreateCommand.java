@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.InternshipModel;
 import seedu.address.model.Model;
 import seedu.address.model.internship.Internship;
 
@@ -18,7 +19,7 @@ import seedu.address.model.internship.Internship;
 /**
  * Creates an internship entry in Flagship
  */
-public class CreateCommand extends Command {
+public class CreateCommand extends InternshipCommand {
 
     public static final String COMMAND_WORD = "create";
 
@@ -59,7 +60,7 @@ public class CreateCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(InternshipModel model) throws CommandException {
         requireNonNull(model);
 
         if (model.hasInternship(this.toAdd)) {

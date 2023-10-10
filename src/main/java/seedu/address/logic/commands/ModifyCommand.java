@@ -20,6 +20,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.InternshipModel;
 import seedu.address.model.Model;
 import seedu.address.model.internship.ApplicationStatus;
 import seedu.address.model.internship.CompanyName;
@@ -32,7 +33,7 @@ import seedu.address.model.requirement.Requirement;
 /**
  * Edits the details of an existing person in the address book.
  */
-public class ModifyCommand extends Command {
+public class ModifyCommand extends InternshipCommand {
 
     public static final String COMMAND_WORD = "modify";
 
@@ -79,7 +80,7 @@ public class ModifyCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(InternshipModel model) throws CommandException {
         requireNonNull(model);
         List<Internship> lastShownList = model.getFilteredInternshipList();
 

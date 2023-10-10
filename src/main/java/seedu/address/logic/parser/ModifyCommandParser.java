@@ -18,7 +18,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new EditCommand object
  */
-public class ModifyCommandParser implements Parser<ModifyCommand> {
+public class ModifyCommandParser implements InternshipParser<ModifyCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
@@ -65,8 +65,11 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
                     .parseDuration(argMultimap.getValue(PREFIX_DURATION).get()));
         }
 
-        //parseRequirementsForEdit(argMultimap.
-        // getAllValues(PREFIX_REQUIREMENT)).ifPresent(editInternshipDescriptor::setRequirements);
+        if (argMultimap.getValue(PREFIX_REQUIREMENT).isPresent()) {
+            editInternshipDescriptor.setRequirements(ParserUtil.parseRequirements(
+                    argMultimap.getAllValues(PREFIX_REQUIREMENT)));
+        }
+
         if (!editInternshipDescriptor.isAnyFieldEdited()) {
             throw new ParseException(ModifyCommand.MESSAGE_NOT_EDITED);
         }
