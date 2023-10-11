@@ -18,7 +18,10 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.*;
+import seedu.address.model.InternshipBook;
+import seedu.address.model.InternshipModel;
+import seedu.address.model.ReadOnlyInternshipBook;
+import seedu.address.model.ReadOnlyInternshipUserPrefs;
 import seedu.address.model.internship.Internship;
 import seedu.address.testutil.InternshipBuilder;
 
