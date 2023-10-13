@@ -72,6 +72,7 @@ class JsonAdaptedInternship {
      */
     public Internship toModelType() throws IllegalValueException {
         final List<Requirement> internshipRequirements = new ArrayList<>();
+
         for (JsonAdaptedRequirement requirement : requirements) {
             internshipRequirements.add(requirement.toModelType());
         }
@@ -122,6 +123,7 @@ class JsonAdaptedInternship {
         final Duration modelDuration = new Duration(duration);
 
         final Set<Requirement> modelRequirements = new HashSet<>(internshipRequirements);
+
         return new Internship(modelCompanyName, modelRole, modelApplicationStatus,
                 modelStartDate, modelDuration, modelRequirements);
     }

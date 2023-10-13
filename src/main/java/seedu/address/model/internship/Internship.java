@@ -129,7 +129,6 @@ public class Internship {
                 && this.startDate.equals(otherInternship.startDate)
                 && this.duration.equals(otherInternship.duration)
                 && this.requirements.equals(otherInternship.requirements);
-
     }
 
     @Override

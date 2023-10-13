@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.InternshipBook;
 import seedu.address.model.internship.Internship;
 
 /**
@@ -30,20 +30,26 @@ public class TypicalInternships {
             .withRequirements(new String[]{"4 years of experience"})
             .withStartDate("07/05/2023").build();
 
+    public static final Internship GOVTECH = new InternshipBuilder().withCompanyName("Govtech")
+            .withRole("UI Designer")
+            .withDuration("1")
+            .withRequirements(new String[]{"40 years of experience"})
+            .withStartDate("01/05/2021").build();
+
     private TypicalInternships() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical internships.
+     * Returns an {@code InternshipBook} with all the typical internships.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static InternshipBook getTypicalInternshipBook() {
+        InternshipBook ib = new InternshipBook();
         for (Internship internship : getTypicalInternships()) {
-            ab.createInternship(internship);
+            ib.createInternship(internship);
         }
-        return ab;
+        return ib;
     }
 
     public static List<Internship> getTypicalInternships() {
-        return new ArrayList<>(Arrays.asList(JANESTREET, OPTIVER, CITADEL));
+        return new ArrayList<>(Arrays.asList(OPTIVER, CITADEL));
     }
 }

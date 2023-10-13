@@ -1,0 +1,18 @@
+{
+  "_comment": "InternshipBook save file which contains the same Internship values as in TypicalInternships#getTypicalInternshipBook()",
+  "internships" : [ {
+    "companyName" : "Optiver",
+    "role" : "Software Engineer",
+    "applicationStatus" : "Yet to apply",
+    "startDate" : "07/05/2023",
+    "duration" : "3",
+    "requirements" : [ "3 years of experience" ]
+  }, {
+    "companyName" : "Citadel",
+    "role" : "Software Engineer",
+    "applicationStatus" : "Yet to apply",
+    "startDate" : "07/05/2023",
+    "duration" : "3",
+    "requirements" : [ "4 years of experience" ]
+  } ]
+}
