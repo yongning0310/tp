@@ -32,7 +32,6 @@ public class CommandTestUtil {
     public static final String VALID_APPLICATIONSTATUS_JANESTREET = "Yet to apply";
     public static final String VALID_DURATION_JANESTREET = "2";
     public static final String VALID_STARTDATE_JANESTREET = "05/05/2025";
-    
     public static final String VALID_COMPANY_NAME_OPTIVER = "Optiver";
     public static final String VALID_ROLE_OPTIVER = "UI Designer";
     public static final String VALID_REQUIREMENT_OPTIVER = "Figma";

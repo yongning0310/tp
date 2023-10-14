@@ -1,13 +1,21 @@
 package seedu.address.model.internship;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.InternshipBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_OPTIVER;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalInternships.JANESTREET;
 import static seedu.address.testutil.TypicalInternships.OPTIVER;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.InternshipBuilder;
 
 class InternshipTest {
 
@@ -38,7 +46,8 @@ class InternshipTest {
         assertFalse(JANESTREET.isSameInternship(editedJaneStreet));
 
         // companyName differs in case, all other attributes same -> returns false
-        Internship editedBob = new InternshipBuilder(OPTIVER).withCompanyName(VALID_COMPANY_NAME_OPTIVER.toLowerCase()).build();
+        Internship editedBob = new InternshipBuilder(OPTIVER)
+                .withCompanyName(VALID_COMPANY_NAME_OPTIVER.toLowerCase()).build();
         assertFalse(OPTIVER.isSameInternship(editedBob));
 
         // companyName has trailing spaces, all other attributes same -> returns false
@@ -66,7 +75,8 @@ class InternshipTest {
         assertFalse(JANESTREET.equals(OPTIVER));
 
         // different companyName -> returns false
-        Internship editedJaneStreet = new InternshipBuilder(JANESTREET).withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
+        Internship editedJaneStreet = new InternshipBuilder(JANESTREET)
+                .withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
         assertFalse(JANESTREET.equals(editedJaneStreet));
 
         // different role -> returns false
@@ -74,7 +84,8 @@ class InternshipTest {
         assertFalse(JANESTREET.equals(editedJaneStreet));
 
         // different application status -> returns false
-        editedJaneStreet = new InternshipBuilder(JANESTREET).withApplicationStatus(VALID_APPLICATIONSTATUS_OPTIVER).build();
+        editedJaneStreet = new InternshipBuilder(JANESTREET)
+                .withApplicationStatus(VALID_APPLICATIONSTATUS_OPTIVER).build();
         assertFalse(JANESTREET.equals(editedJaneStreet));
 
         // different startDate -> returns false

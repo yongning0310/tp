@@ -1,8 +1,10 @@
 package seedu.address.model.internship;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 class StartDateTest {
     @Test
@@ -54,5 +56,4 @@ class StartDateTest {
         // different values -> returns false
         assertFalse(startDate.equals(new StartDate("30/12/2025")));
     }
-
 }
