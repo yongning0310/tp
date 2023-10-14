@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Requirement {
 
     public static final String MESSAGE_CONSTRAINTS = "Requirements cannot be empty";
-    public static final String VALIDATION_REGEX = "\\S+";
+    public static final String VALIDATION_REGEX = ".+\\S.+";
 
     public final String requirementName;
 

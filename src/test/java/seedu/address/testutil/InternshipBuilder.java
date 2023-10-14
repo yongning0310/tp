@@ -10,6 +10,7 @@ import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.Role;
 import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
+import seedu.address.model.util.InternshipSampleDataUtil;
 
 /**
  * A utility class to help with building Internship objects.
@@ -65,7 +66,7 @@ public class InternshipBuilder {
      * building.
      */
     public InternshipBuilder withRequirements(String ... requirements) {
-        //  this.requirements = SampleDataUtil.getRequirementSet(requirements);
+        this.requirements = InternshipSampleDataUtil.getRequirementSet(requirements);
         return this;
     }
 

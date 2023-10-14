@@ -8,15 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //import static seedu.address.logic.commands.CommandTestUtil.showInternshipAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INTERNSHIP;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_INTERNSHIP;
-import static seedu.address.testutil.TypicalInternships.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalInternships.getTypicalInternshipBook;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 //import seedu.address.logic.Messages;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.InternshipModel;
+import seedu.address.model.InternshipModelManager;
+import seedu.address.model.InternshipUserPrefs;
 //import seedu.address.model.internship.Internship;
 
 /**
@@ -25,7 +25,9 @@ import seedu.address.model.UserPrefs;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private InternshipModel internshipModel = new InternshipModelManager(
+            getTypicalInternshipBook(), new InternshipUserPrefs()
+        );
 
     //    @Test
     //    public void execute_validIndexUnfilteredList_success() {
@@ -114,7 +116,7 @@ public class DeleteCommandTest {
     /**
      * Updates {@code model}'s filtered list to show no one.
      */
-    private void showNoInternship(Model model) {
+    private void showNoInternship(InternshipModel model) {
         model.updateFilteredInternshipList(p -> false);
 
         assertTrue(model.getFilteredInternshipList().isEmpty());
