@@ -32,14 +32,8 @@ class DurationTest {
 
         // valid durations
         assertTrue(Duration.isValidDuration("1"));
-        assertTrue(Duration.isValidDuration("2"));
-        assertTrue(Duration.isValidDuration("3"));
-        assertTrue(Duration.isValidDuration("4"));
-        assertTrue(Duration.isValidDuration("5"));
-        assertTrue(Duration.isValidDuration("6"));
-        assertTrue(Duration.isValidDuration("7"));
-        assertTrue(Duration.isValidDuration("8"));
-        assertTrue(Duration.isValidDuration("9"));
+        assertTrue(Duration.isValidDuration("100"));
+        assertTrue(Duration.isValidDuration("999999999"));
     }
 
     @Test

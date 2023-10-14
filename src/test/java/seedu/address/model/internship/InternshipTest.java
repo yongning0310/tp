@@ -46,21 +46,21 @@ class InternshipTest {
         assertFalse(JANESTREET.isSameInternship(editedJaneStreet));
 
         // companyName differs in case, all other attributes same -> returns false
-        Internship editedBob = new InternshipBuilder(OPTIVER)
+        Internship editedOptiver = new InternshipBuilder(OPTIVER)
                 .withCompanyName(VALID_COMPANY_NAME_OPTIVER.toLowerCase()).build();
-        assertFalse(OPTIVER.isSameInternship(editedBob));
+        assertFalse(OPTIVER.isSameInternship(editedOptiver));
 
         // companyName has trailing spaces, all other attributes same -> returns false
         String companyNameWithTrailingSpaces = VALID_COMPANY_NAME_OPTIVER + " ";
-        editedBob = new InternshipBuilder(OPTIVER).withCompanyName(companyNameWithTrailingSpaces).build();
-        assertFalse(OPTIVER.isSameInternship(editedBob));
+        editedOptiver = new InternshipBuilder(OPTIVER).withCompanyName(companyNameWithTrailingSpaces).build();
+        assertFalse(OPTIVER.isSameInternship(editedOptiver));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Internship aliceCopy = new InternshipBuilder(JANESTREET).build();
-        assertTrue(JANESTREET.equals(aliceCopy));
+        Internship janeStreetCopy = new InternshipBuilder(JANESTREET).build();
+        assertTrue(JANESTREET.equals(janeStreetCopy));
 
         // same object -> returns true
         assertTrue(JANESTREET.equals(JANESTREET));
