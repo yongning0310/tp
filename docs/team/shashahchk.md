@@ -16,6 +16,8 @@ Flagship is a desktop application used to help aspiring students track internshi
 
     * Programmed the Read Command so that users can view a specific internship entry in the list as specified by an index.
 
+    * Wrote extensive test cases to test model component (Internship)
+    * 
     * [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22&tabOpen=true&tabType=authorship&tabAuthor=shashahchk&tabRepo=AY2324S1-CS2103T-W17-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
 * **Enhancements to existing features**:
@@ -46,8 +48,11 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 * **Community**:
     * *(what is important here is to demonstrate contribution outside of the group, by, for example, reviewing PRs, or being active in discussion. All points in this section are merely suggested points.)*
-    * PRs reviewed : [\#24](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/24)
+    * PRs reviewed : 
+      * [\#24](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/24)
+      * [\#63](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/63)
     * Contributed to task allocation discussions (examples: to be added soon)
+    * Suggested the addition of new features (examples: to be added soon)
     * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
 
 * **Tools**:
