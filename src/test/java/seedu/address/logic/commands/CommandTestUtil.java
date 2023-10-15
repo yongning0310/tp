@@ -26,6 +26,19 @@ import seedu.address.testutil.EditPersonDescriptorBuilder;
  * Contains helper methods for testing commands.
  */
 public class CommandTestUtil {
+    public static final String VALID_COMPANY_NAME_JANESTREET = "Jane Street";
+    public static final String VALID_ROLE_JANESTREET = "SWE";
+    public static final String VALID_REQUIREMENT_JANESTREET = "C++";
+    public static final String VALID_APPLICATIONSTATUS_JANESTREET = "Yet to apply";
+    public static final String VALID_DURATION_JANESTREET = "2";
+    public static final String VALID_STARTDATE_JANESTREET = "05/05/2025";
+    public static final String VALID_COMPANY_NAME_OPTIVER = "Optiver";
+    public static final String VALID_ROLE_OPTIVER = "UI Designer";
+    public static final String VALID_REQUIREMENT_OPTIVER = "Figma";
+    public static final String VALID_APPLICATIONSTATUS_OPTIVER = "In progress";
+    public static final String VALID_DURATION_OPTIVER = "5";
+    public static final String VALID_STARTDATE_OPTIVER = "06/06/2026";
+
 
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
