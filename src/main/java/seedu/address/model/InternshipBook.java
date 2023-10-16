@@ -10,8 +10,8 @@ import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.UniqueInternshipList;
 
 /**
- * Wraps all data at the address-book level
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Wraps all data at the internship-book level
+ * Duplicates are not allowed (by .isSameInternship comparison)
  */
 public class InternshipBook implements ReadOnlyInternshipBook {
 
@@ -25,25 +25,23 @@ public class InternshipBook implements ReadOnlyInternshipBook {
     public InternshipBook() {}
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an InternshipBook using the Internships in the {@code toBeCopied}
      */
     public InternshipBook(ReadOnlyInternshipBook toBeCopied) {
         this();
         resetData(toBeCopied);
     }
 
-    //// list overwrite operations
-
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of the internship list with {@code internships}.
+     * {@code internships} must not contain duplicate internships.
      */
     public void setInternships(List<Internship> internships) {
         this.internships.setInternships(internships);
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code InternshipBook} with {@code newData}.
      */
     public void resetData(ReadOnlyInternshipBook newData) {
         requireNonNull(newData);
@@ -51,11 +49,9 @@ public class InternshipBook implements ReadOnlyInternshipBook {
         setInternships(newData.getInternshipList());
     }
 
-    //// person-level operations
-
 
     /**
-     * Returns true if a internship with the same identity as {@code internship} exists in the address book.
+     * Returns true if an internship with the same identity as {@code internship} exists in the internship book.
      */
     public boolean hasInternship(Internship internship) {
         requireNonNull(internship);
@@ -72,15 +68,13 @@ public class InternshipBook implements ReadOnlyInternshipBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code InternshipBook}.
      * {@code key} must exist in the address book.
      */
 
     public void removeInternship(Internship key) {
         this.internships.remove(key);
     }
-
-    //// util methods
 
     @Override
     public String toString() {
