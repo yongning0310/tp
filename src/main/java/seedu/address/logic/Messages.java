@@ -43,8 +43,6 @@ public class Messages {
                 .append(internship.getRole())
                 .append("; ApplicationStatus: ")
                 .append(internship.getApplicationStatus())
-                .append("; Deadline: ")
-                .append(internship.getDeadline())
                 .append("; Start Date: ")
                 .append(internship.getStartDate())
                 .append("; Duration: ")
