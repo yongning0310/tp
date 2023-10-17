@@ -1,5 +1,8 @@
 package seedu.address.model.internship;
 
+import seedu.address.model.requirement.Requirement;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -71,5 +74,18 @@ public class DeadlineTest {
 
         // different values -> returns false
         assertFalse(deadline.equals(new Deadline("30/12/2025", "01/01/2027")));
+    }
+
+    @Test
+    public void toString_validDeadlineName_correctFormat() {
+        Deadline deadline = new Deadline("10/10/2024", "11/11/2024");
+        assertEquals("10/10/2024", deadline.toString());
+    }
+
+    @Test
+    public void hashCode_sameDeadlineName_sameHashCode() {
+        Deadline deadline1 = new Deadline("10/10/2024", "11/11/2024");
+        Deadline deadline2 = new Deadline("10/10/2024", "11/11/2024");
+        assertEquals(deadline1.hashCode(), deadline2.hashCode());
     }
 }

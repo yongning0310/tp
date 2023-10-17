@@ -116,4 +116,13 @@ class InternshipTest {
                 + ", Duration=" + JANESTREET.getDuration() + ", Requirements=" + JANESTREET.getRequirements() + "}";
         assertEquals(expected, JANESTREET.toString());
     }
+
+    @Test
+    public void hashCode_sameInternship_sameHashCode() {
+        Internship editedJaneStreet1 = new InternshipBuilder(JANESTREET).withCompanyName(VALID_COMPANY_NAME_OPTIVER)
+                .build();
+        Internship editedJaneStreet2 = new InternshipBuilder(JANESTREET).withCompanyName(VALID_COMPANY_NAME_OPTIVER)
+                .build();
+        assertEquals(editedJaneStreet1.hashCode(), editedJaneStreet2.hashCode());
+    }
 }
