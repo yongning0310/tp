@@ -38,16 +38,16 @@ public class CreateCommandParser implements InternshipParser<CreateCommand> {
     public CreateCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
-                        PREFIX_START_DATE, PREFIX_DURATION, PREFIX_REQUIREMENT);
+                        PREFIX_DEADLINE, PREFIX_START_DATE, PREFIX_DURATION, PREFIX_REQUIREMENT);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
-                PREFIX_START_DATE, PREFIX_DURATION)
+                PREFIX_DEADLINE, PREFIX_START_DATE, PREFIX_DURATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
-                PREFIX_START_DATE, PREFIX_DURATION);
+                PREFIX_DEADLINE, PREFIX_START_DATE, PREFIX_DURATION);
 
         CompanyName companyName = ParserUtil.parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get());
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
