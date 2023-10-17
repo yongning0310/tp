@@ -34,13 +34,12 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 * **Project management**:
   * Set deadlines during meetings and push everyone to finish their work on time
-  * Managed milestone `v1.3` and assigned the issues on GitHub)
+  * (eg. Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub)
 
 * **Community**:
   * PRs reviewed: 
     [\#23](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/23), 
-    [\#57](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/57),
-    [\#69](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/69),
+    [\#57](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/57)
   * Contributed to forum discussions (examples: to be added soon)
   * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
 
