@@ -81,7 +81,7 @@ public class JsonInternshipUserPrefsStorageTest {
         internshipUserPrefs.setGuiSettings(
                 new GuiSettings(1000, 500, 300, 100)
         );
-        internshipUserPrefs.setInternshipFilePath(Paths.get("internship.json"));
+        internshipUserPrefs.setInternshipFilePath(Paths.get("internshipBook.json"));
         return internshipUserPrefs;
     }
 

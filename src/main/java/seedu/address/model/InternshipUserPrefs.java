@@ -14,7 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 public class InternshipUserPrefs implements ReadOnlyInternshipUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path internshipFilePath = Paths.get("data" , "internship.json");
+    private Path internshipFilePath = Paths.get("data" , "internshipBook.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.

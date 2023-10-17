@@ -17,7 +17,7 @@ import seedu.address.model.internship.Internship;
  * Represents the in-memory model of the internship book data.
  */
 public class InternshipModelManager implements InternshipModel {
-    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
+    private static final Logger logger = LogsCenter.getLogger(InternshipModelManager.class);
 
     private final InternshipBook internshipBook;
     private final InternshipUserPrefs userPrefs;
@@ -30,7 +30,7 @@ public class InternshipModelManager implements InternshipModel {
     public InternshipModelManager(ReadOnlyInternshipBook internshipBook, ReadOnlyInternshipUserPrefs userPrefs) {
         requireAllNonNull(internshipBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + internshipBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with internship book: " + internshipBook + " and user prefs " + userPrefs);
 
         this.internshipBook = new InternshipBook(internshipBook);
         this.userPrefs = new InternshipUserPrefs(userPrefs);
@@ -114,10 +114,10 @@ public class InternshipModelManager implements InternshipModel {
     }
 
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Internship List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Internship} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override

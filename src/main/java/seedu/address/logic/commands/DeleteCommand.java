@@ -12,7 +12,7 @@ import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.Internship;
 
 /**
- * Deletes an internship identified using it's displayed index from the address book.
+ * Deletes an internship identified using it's displayed index from the internship book.
  */
 public class DeleteCommand extends InternshipCommand {
 

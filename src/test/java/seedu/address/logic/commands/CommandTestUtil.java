@@ -16,6 +16,8 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.InternshipBook;
+import seedu.address.model.InternshipModel;
 import seedu.address.model.Model;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -125,6 +127,54 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
+     * - the {@code actualModel} matches {@code expectedModel}
+     */
+    public static void assertInternshipCommandSuccess(InternshipCommand command, InternshipModel actualModel,
+                                                      CommandResult expectedCommandResult,
+                                                      InternshipModel expectedModel) {
+        try {
+            CommandResult result = command.execute(actualModel);
+            assertEquals(expectedCommandResult, result);
+            assertEquals(expectedModel, actualModel);
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
+    }
+
+    /**
+     * Convenience wrapper to {@link #assertInternshipCommandSuccess(InternshipCommand, InternshipModel,
+     * CommandResult, InternshipModel)}
+     * that takes a string {@code expectedMessage}.
+     */
+    public static void assertInternshipCommandSuccess(InternshipCommand command, InternshipModel actualModel,
+                                                      String expectedMessage,
+                                                      InternshipModel expectedModel) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage);
+        assertInternshipCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
+    }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the CommandException message matches {@code expectedMessage} <br>
+     * - the internship book, filtered internship list and selected internship in {@code actualModel} remain unchanged
+     */
+    public static void assertInternshipCommandFailure(InternshipCommand command, InternshipModel actualModel,
+                                                      String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+        InternshipBook expectedAddressBook = new InternshipBook(actualModel.getInternshipBook());
+        List<Internship> expectedFilteredList = new ArrayList<>(actualModel.getFilteredInternshipList());
+
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertEquals(expectedAddressBook, actualModel.getInternshipBook());
+        assertEquals(expectedFilteredList, actualModel.getFilteredInternshipList());
+    }
+
     // Remove when done
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
@@ -144,7 +194,7 @@ public class CommandTestUtil {
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
-    public static void showInternshipAtIndex(Model model, Index targetIndex) {
+    public static void showInternshipAtIndex(InternshipModel model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredInternshipList().size());
 
         Internship internship = model.getFilteredInternshipList().get(targetIndex.getZeroBased());

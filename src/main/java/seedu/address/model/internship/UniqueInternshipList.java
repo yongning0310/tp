@@ -12,11 +12,14 @@ import seedu.address.model.internship.exceptions.DuplicateInternshipException;
 import seedu.address.model.internship.exceptions.InternshipNotFoundException;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- * A person is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
- * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * A list of internships that enforces uniqueness between its elements and does not allow nulls.
+ * An internship is considered unique by comparing using {@code Internship#isSameInternship(Internship)}.
+ * As such, adding and updating of
+ * internships uses Internship#isSameInternship(Internship) for equality so as to ensure that the internship
+ * being added or updated is
+ * unique in terms of identity in the UniqueInternshipList. However, the removal of an internship uses
+ * Internship#equals(Object) so
+ * as to ensure that the internship with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
