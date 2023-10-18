@@ -24,7 +24,7 @@ public interface InternshipLogic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the InternshipBook.
      *
      * @see seedu.address.model.Model
      */
@@ -35,7 +35,7 @@ public interface InternshipLogic {
     ObservableList<Internship> getFilteredInternshipList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' internship book file path.
      */
     Path getInternshipBookFilePath();
 

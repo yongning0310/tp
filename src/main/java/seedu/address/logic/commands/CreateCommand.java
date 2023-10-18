@@ -58,6 +58,13 @@ public class CreateCommand extends InternshipCommand {
         this.toAdd = internship;
     }
 
+    /**
+     * Executes the create command, adding the internship to the model.
+     *
+     * @param model The {@code InternshipModel} in which the internship should be created.
+     * @return A {@code CommandResult} with a success message.
+     * @throws CommandException If an identical internship entry already exists.
+     */
     @Override
     public CommandResult execute(InternshipModel model) throws CommandException {
         requireNonNull(model);

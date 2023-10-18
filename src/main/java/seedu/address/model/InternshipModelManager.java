@@ -25,7 +25,7 @@ public class InternshipModelManager implements InternshipModel {
     private final FilteredList<Internship> filteredInternships;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given internshipBook and userPrefs.
      */
     public InternshipModelManager(ReadOnlyInternshipBook internshipBook, ReadOnlyInternshipUserPrefs userPrefs) {
         requireAllNonNull(internshipBook, userPrefs);
@@ -118,7 +118,7 @@ public class InternshipModelManager implements InternshipModel {
 
     /**
      * Returns an unmodifiable view of the list of {@code Internship} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedInternshipBook}
      */
     @Override
     public ObservableList<Internship> getFilteredInternshipList() {

@@ -18,6 +18,8 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * The main LogicManager of the app.
  */

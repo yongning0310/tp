@@ -7,6 +7,8 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Represents a storage for {@link seedu.address.model.AddressBook}.
  */

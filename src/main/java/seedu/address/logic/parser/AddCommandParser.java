@@ -19,6 +19,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Parses input arguments and creates a new AddCommand object
  */

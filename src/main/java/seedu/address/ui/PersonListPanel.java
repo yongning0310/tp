@@ -10,6 +10,8 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Panel containing the list of persons.
  */

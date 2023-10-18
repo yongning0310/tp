@@ -12,7 +12,7 @@ import seedu.address.model.ReadOnlyInternshipBook;
 import seedu.address.model.ReadOnlyInternshipUserPrefs;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of InternshipBook data in local storage.
  */
 public class InternshipStorageManager implements InternshipStorage {
 
@@ -21,7 +21,7 @@ public class InternshipStorageManager implements InternshipStorage {
     private InternshipUserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code InternshipBookStorage} and {@code UserPrefStorage}.
      */
     public InternshipStorageManager(InternshipBookStorage internshipBookStorage,
                                     InternshipUserPrefsStorage userPrefsStorage) {
@@ -45,9 +45,6 @@ public class InternshipStorageManager implements InternshipStorage {
     public void saveUserPrefs(ReadOnlyInternshipUserPrefs userPrefs) throws IOException {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
-
-
-    // ================ AddressBook methods ==============================
 
     @Override
     public Path getInternshipBookFilePath() {

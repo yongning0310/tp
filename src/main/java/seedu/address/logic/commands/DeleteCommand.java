@@ -31,6 +31,13 @@ public class DeleteCommand extends InternshipCommand {
         this.targetIndex = targetIndex;
     }
 
+    /**
+     * Executes the delete command, removing the internship from the model.
+     *
+     * @param model The {@code InternshipModel} in which the internship should be removed.
+     * @return A {@code CommandResult} with a success message.
+     * @throws CommandException If an identical internship entry does not exist.
+     */
     @Override
     public CommandResult execute(InternshipModel model) throws CommandException {
         requireNonNull(model);

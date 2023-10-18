@@ -29,8 +29,9 @@ import seedu.address.model.internship.Role;
 import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
 
+
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing internship in the internship book.
  */
 public class ModifyCommand extends InternshipCommand {
 
@@ -64,7 +65,7 @@ public class ModifyCommand extends InternshipCommand {
     private final EditInternshipDescriptor editInternshipDescriptor;
 
     /**
-     * Constructs an {@code EditCommand} to edit the details of an existing internship.
+     * Constructs an {@code ModifyCommand} to edit the details of an existing internship.
      *
      * @param index The index of the internship in the filtered internship list to edit.
      *              Must not be {@code null}.

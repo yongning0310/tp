@@ -11,6 +11,8 @@ import seedu.address.model.internship.UniqueInternshipList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
