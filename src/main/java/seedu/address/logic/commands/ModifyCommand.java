@@ -23,6 +23,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.ApplicationStatus;
 import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Deadline;
 import seedu.address.model.internship.Duration;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.Role;
@@ -106,12 +107,14 @@ public class ModifyCommand extends InternshipCommand {
         Role updatedRole = editInternshipDescriptor.getRole().orElse(internshipToEdit.getRole());
         ApplicationStatus updatedApplicationStatus = editInternshipDescriptor
                 .getApplicationStatus().orElse(internshipToEdit.getApplicationStatus());
+        Deadline updatedDeadline = editInternshipDescriptor
+                .getDeadline().orElse(internshipToEdit.getDeadline());
         StartDate updatedStartDate = editInternshipDescriptor.getStartDate().orElse(internshipToEdit.getStartDate());
         Duration updatedDuration = editInternshipDescriptor.getDuration().orElse(internshipToEdit.getDuration());
         Set<Requirement> updatedRequirements = editInternshipDescriptor.getRequirements()
                 .orElse(internshipToEdit.getRequirements());
 
-        return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus,
+        return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus, updatedDeadline,
                 updatedStartDate, updatedDuration, updatedRequirements);
 
     }
@@ -147,6 +150,7 @@ public class ModifyCommand extends InternshipCommand {
         private CompanyName companyName;
         private Role role;
         private ApplicationStatus applicationStatus;
+        private Deadline deadline;
         private StartDate startDate;
         private Duration duration;
         private Set<Requirement> requirements;
@@ -162,6 +166,7 @@ public class ModifyCommand extends InternshipCommand {
             setCompanyName(toCopy.companyName);
             setRole(toCopy.role);
             setApplicationStatus(toCopy.applicationStatus);
+            setDeadline(toCopy.deadline);
             setStartDate(toCopy.startDate);
             setDuration(toCopy.duration);
             setRequirements(toCopy.requirements);
@@ -193,6 +198,14 @@ public class ModifyCommand extends InternshipCommand {
 
         public void setApplicationStatus(ApplicationStatus applicationStatus) {
             this.applicationStatus = applicationStatus;
+        }
+
+        public Optional<Deadline> getDeadline() {
+            return Optional.ofNullable(deadline);
+        }
+
+        public void setDeadline(Deadline deadline) {
+            this.deadline = deadline;
         }
 
         public Optional<StartDate> getStartDate() {
