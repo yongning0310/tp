@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# FlagShip User Guide
 
 FlagShip is a **desktop app for managing internships, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, FlagShip can get your internship management tasks done faster than traditional GUI apps.
 
@@ -19,7 +19,7 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
 
 1. Download the latest `internshipBook.jar` from [here](https://github.com/se-edu/internshipBook/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your InternshipBook.
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internshipBook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
@@ -28,15 +28,19 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all internships.
-
-   * `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee` : Creates an internship named `Jane Street` to Flagship.
+   * `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee` : Creates an internship named `Jane Street` to Flagship.
 
    * `delete 3` : Deletes the 3rd internship shown in the current list.
 
-   * `clear` : Deletes all contacts.
+   * `modify 2 c/Jane Street ro/Coffee maker` : Modify the 2nd internship shown in current list with new company 
+   and new role.
 
-   * `exit` : Exits the app.
+   * `sort c/ASC ro/DESC` : Arrange the internships by company name in ascending order, then by 
+   role in descending order.
+
+   * `filter c/Ja ro/SWE` : Display only internships from companies with the name containing "Ja" and 
+   roles that include "SWE".
+
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -44,154 +48,152 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
 
 ## Features
 
-<box type="info" seamless></box>
+<box type="info" seamless>
 
-**Notes about the command format:**<br>
+## Command Format Notes:
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `create c/COMPANY_NAME`, `COMPANY_NAME` is a parameter which can be used as `create c/Jane Street`.
+- **Parameters in `UPPER_CASE`**: These indicate the values to be supplied by the user.
+    - Example: For the command `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS`, you might input:
+      ```
+      create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee
+      ```
 
-* Items in square brackets are optional.<br>
-  e.g `c/COMPANY_NAME [re/REQUIREMENT]` can be used as `c/Jane Street re/C++` or as `c/Jane Street`.
+- **Compulsory Parameters**: Some parameters must be provided.
+    - `c/` → `COMPANY_NAME`: Cannot be left blank.
+    - `ro/` → `ROLE`: Cannot be left blank.
+    - `de/` → `DEADLINE`: Required, formatted as dd/mm/yyyy.
+    - `s/` → `START_DATE`: Required, formatted as dd/mm/yyyy.
+    - `du/` → `DURATION`: Required, a positive integer representing the number of months.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[re/REQUIREMENT]…​` can be used as ` ` (i.e. 0 times), `re/C++`, `re/C++ re/Coffee` etc.
+- **Optional Parameters**:
+    - `re/` → Requirements are not mandatory. You can specify multiple requirements.
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `c/COMPANY_NAME ro/ROLE`, `ro/ROLE c/COMPANY_NAME` is also acceptable.
+- **Parameter Order**: Parameters can be entered in any order.
+    - For instance, both `c/COMPANY_NAME ro/ROLE` and `ro/ROLE c/COMPANY_NAME` are valid.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+[//]: # (- **Commands Without Parameters**: Some commands do not require parameters. Additional parameters for these commands will be ignored.)
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+[//]: # (    - Example: Using `help 123` will simply be interpreted as `help`.)
+
+> Tip: If you're referencing a PDF version of this guide, be cautious when copying multi-line commands. Ensure no spaces or line-breaks are omitted when pasting into the application.
+
 </box>
 
-### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+[//]: # (### Viewing help : `help`)
 
-![help message](images/helpMessage.png)
+[//]: # ()
+[//]: # (Shows a message explaning how to access the help page.)
 
-Format: `help`
+[//]: # ()
+[//]: # (![help message]&#40;images/helpMessage.png&#41;)
+
+[//]: # ()
+[//]: # (Format: `help`)
+
+### Creating an Internship: `create`
+
+Add an internship entry to Flagship.
+
+Format: `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
 
 
-### Creating an internship: `create`
-
-Creates an internship in Flagship.
-
-Format: ` c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​`
-
-<box type="tip" seamless></box>
-
-**Tip:** An internship can have any number of requirements (including 0)
+**Tip:** Internships can have multiple requirements, or even none at all.
 </box>
 
 Examples:
-* `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee`
-* `create c/Citadel ro/Coffee pourer a/Applied s/24/04/2022 d/1`
+* `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/15/12/2022 du/3 re/C++ re/Coffee`
+* `create c/Citadel ro/Coffee pourer a/Applied s/24/04/2022 de/29/11/2022 du/1`
 
-### Listing all internships : `list`
+### Editing an Internship: `modify`
 
-Shows a list of all internships in the address book.
+Update details of an existing internship entry.
 
-Format: `list`
+Format: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
 
-### Editing an internship : `modify`
-
-Edits an existing internship in the internship list.
-
-Format: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION re/REQUIREMENT...`
-
-* Edits the internship at the specified `INDEX`. The index refers to the index number shown in the displayed internship list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the internship’s requiremnts by typing `t/` without
-    specifying any tags after it.
+* Modify the internship at the specified `INDEX`. This index correlates with the position in the displayed internship list. It **must be a positive integer**, e.g., 1, 2, 3, …​.
+* New inputs will overwrite existing values.
+* Categories that are not included will keep the previous values.
+* Editing requirements will replace current requirements; adding requirements doesn't accumulate.
+* Use the command without `re/` to remove all of an internship's requirements.
 
 Examples:
-*  `edit 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee` 
+* `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/29/11/2022 du/3 re/C++ re/Coffee`
 
-### Reading one internship : `read`
+### Filter Internships by Name and Keyword: `filter`
 
-Shows one internship entry in the address book as specified by the index.
+Display internships matching specific category keywords.
 
-Format: `read 1`
+Format: `filter [category]/[keyword] ...`
 
-### Editing an internship : `edit`
-
-Edits an existing internship in Flagship.
-
-Format: `edit INDEX [c/COMPANY_NAME] [ro/ROLE] [a/APPLICATION_STATUS] [s/START_DATE] [d/DURATION] [re/REQUIREMENT]…​`
-
-* Edits the internship at the specified `INDEX`. The index refers to the index number shown in the displayed internship list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing requirements, the existing requirements of the internship will be removed i.e adding of requirements is not cumulative.
-* You can remove all the internship’s requirements by typing `t/` without
-  specifying any requirements after it.
+* The search isn't case-sensitive. For instance, `hans` matches `Hans`.
+* Only the name is considered.
+* The sequence of category and keyword doesn't matter.
+* Results will include internships matching all keywords (i.e., `AND` search). For instance, `c/JA ro/SWE` matches `c/JANE STREET and ro/SWE` but not `c/JANE STREET ro/Admin` or `c/Google ro/SWE`.
+* If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
 
 Examples:
-*  `edit 1 c/GitHub ro/Chef` Edits the company name and role of the 1st internship to be `GitHub` and `Chef` respectively.
-*  `edit 2 ro/Tester re/` Edits the role of the 2nd internship to be `Tester` and clears all existing requirements.
+* `filter c/JA ro/SWE` displays internships with company names containing "JA" and roles containing "SWE".
+* `filter` returns the list to its unfiltered state.
 
+### Sort Internships by Category and Order: `sort`
 
-### Locating persons by name: `find`
+Organize the displayed list based on specific categories and order.
 
-Finds persons whose names contain any of the given keywords.
+Format: `sort [category]/[ASC/DESC] ...`
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Sequence of categories is significant. For example, `c/ASC ro/DESC` first sorts entries by company name in ascending order; entries with matching company names are then sorted by role in descending order.
+* `ASC` indicates ascending order, and `DESC` denotes descending order.
+* A subsequent `sort` command will replace the prior one. Otherwise, the initial sort remains effective.
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `sort c/ASC ro/DESC` sorts entries by company name (ascending) and then by role (descending) for matches.
+* `sort` resets the list to default, which is in order of creation (ascending).
 
-### Deleting a person : `delete`
+### Deleting an Internship: `delete`
 
-Deletes the specified internship from the address book.
+Remove a specified internship from the internship directory.
 
 Format: `delete INDEX`
 
-* Deletes the internship at the specified `INDEX`.
-* The index refers to the index number shown in the displayed internship list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Erase the internship at the designated `INDEX`.
+* The index corresponds to the position in the displayed internship list.
+* The index **must be a positive integer** like 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd internship in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st internship in the results of the `find` command.
+* `delete 2` removes the 2nd internship from the directory.
+* Running `sort c/ASC ro/DESC` followed by `delete 1` erases the top internship post-sort.
 
-### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+[//]: # (### Clearing all entries : `clear`)
 
-Format: `clear`
+[//]: # ()
+[//]: # (Clears all entries from the address book.)
 
-### Exiting the program : `exit`
+[//]: # ()
+[//]: # (Format: `clear`)
 
-Exits the program.
+[//]: # ()
+[//]: # (### Exiting the program : `exit`)
 
-Format: `exit`
+[//]: # ()
+[//]: # (Exits the program.)
+
+[//]: # ()
+[//]: # (Format: `exit`)
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+InternshipBOok data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+InternshipBook data are saved automatically as a JSON file `[JAR file location]/data/internship.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless></box>
 
 **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, InternshipBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
 ### Archiving data files `[coming in v2.0]`
@@ -203,7 +205,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InternshipBook home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -217,12 +219,14 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Create** | `c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d/DURATION [re/REQUIREMENT]...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 d/3 re/C++ re/Coffee`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [c/COMPANY_NAME] [ro/ROLE] [a/APPLICATION_STATUS] [s/START_DATE] [d/DURATION] [re/REQUIREMENT]…​`<br> e.g.,`edit 2 ro/Tester re/`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+**Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/15/12/2022 du/3 re/C++ re/Coffee`
+**Modify**  | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
+**Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`
+**Sort**   | `sort [category]/[ASC/DESC] ...` <br> e.g.,  `sort c/ASC ro/DESC` 
+**Delete**   | `delete INDEX`<br> e.g., `delete 2`
+
+[//]: # (**List**   | `list`)
+
+[//]: # (**Help**   | `help`)
 
 
