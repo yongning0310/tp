@@ -8,6 +8,8 @@ import java.util.Objects;
 
 import seedu.address.commons.core.GuiSettings;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Represents User's preferences.
  */

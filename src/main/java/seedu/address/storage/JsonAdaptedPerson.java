@@ -17,6 +17,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Jackson-friendly version of {@link Person}.
  */

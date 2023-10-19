@@ -31,6 +31,8 @@ import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Runs the application.
  */

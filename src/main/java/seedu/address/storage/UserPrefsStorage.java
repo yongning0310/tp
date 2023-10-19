@@ -8,6 +8,8 @@ import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Represents a storage for {@link seedu.address.model.UserPrefs}.
  */

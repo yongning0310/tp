@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import seedu.address.model.Model;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Format full help instructions for every command for display.
  */

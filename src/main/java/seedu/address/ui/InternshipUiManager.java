@@ -20,13 +20,14 @@ public class InternshipUiManager implements Ui {
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
+    // change to internship related png
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
 
     private InternshipLogic logic;
     private InternshipMainWindow mainWindow;
 
     /**
-     * Creates a {@code UiManager} with the given {@code Logic}.
+     * Creates a {@code UiManager} with the given {@code InternshipLogic}.
      */
     public InternshipUiManager(InternshipLogic logic) {
         this.logic = logic;

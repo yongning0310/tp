@@ -69,7 +69,7 @@ public class InternshipBook implements ReadOnlyInternshipBook {
 
     /**
      * Removes {@code key} from this {@code InternshipBook}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the internship book.
      */
 
     public void removeInternship(Internship key) {

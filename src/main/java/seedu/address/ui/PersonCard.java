@@ -9,6 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * An UI component that displays information of a {@code Person}.
  */

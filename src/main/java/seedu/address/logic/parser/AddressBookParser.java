@@ -18,6 +18,8 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * Parses user input.
  */

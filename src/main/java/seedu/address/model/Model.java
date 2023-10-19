@@ -8,6 +8,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.person.Person;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * The API of the Model component.
  */

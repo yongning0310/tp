@@ -9,6 +9,8 @@ import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
+// THIS FILE WILL BE REMOVED EVENTUALLY
+
 /**
  * A class to access UserPrefs stored in the hard disk as a json file
  */
