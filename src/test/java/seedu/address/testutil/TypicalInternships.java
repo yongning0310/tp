@@ -1,5 +1,20 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_OPTIVER;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,19 +27,21 @@ import seedu.address.model.internship.Internship;
  */
 public class TypicalInternships {
 
-    public static final Internship JANESTREET = new InternshipBuilder().withCompanyName("Jane Street")
-            .withRole("Software Engineer")
-            .withDuration("3")
-            .withDeadline("05/05/2023", "07/05/2023")
-            .withRequirements(new String[]{"2 years of experience"})
-            .withStartDate("07/05/2023").build();
+    public static final Internship JANESTREET = new InternshipBuilder().withCompanyName(VALID_COMPANY_NAME_JANESTREET)
+            .withRole(VALID_ROLE_JANESTREET)
+            .withApplicationStatus(VALID_APPLICATIONSTATUS_JANESTREET)
+            .withDuration(VALID_DURATION_JANESTREET)
+            .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET)
+            .withRequirements(new String[]{VALID_REQUIREMENT_JANESTREET})
+            .withStartDate(VALID_STARTDATE_JANESTREET).build();
 
-    public static final Internship OPTIVER = new InternshipBuilder().withCompanyName("Optiver")
-            .withRole("Software Engineer")
-            .withDuration("3")
-            .withDeadline("05/04/2022", "07/05/2023")
-            .withRequirements(new String[]{"3 years of experience"})
-            .withStartDate("07/05/2023").build();
+    public static final Internship OPTIVER = new InternshipBuilder().withCompanyName(VALID_COMPANY_NAME_OPTIVER)
+            .withRole(VALID_ROLE_OPTIVER)
+            .withApplicationStatus(VALID_APPLICATIONSTATUS_OPTIVER)
+            .withDuration(VALID_DURATION_OPTIVER)
+            .withDeadline(VALID_DEADLINE_OPTIVER, VALID_STARTDATE_OPTIVER)
+            .withRequirements(new String[]{VALID_REQUIREMENT_OPTIVER})
+            .withStartDate(VALID_STARTDATE_OPTIVER).build();
 
     public static final Internship CITADEL = new InternshipBuilder().withCompanyName("Citadel")
             .withRole("Software Engineer")

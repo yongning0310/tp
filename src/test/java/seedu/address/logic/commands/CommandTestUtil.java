@@ -29,6 +29,7 @@ import seedu.address.model.Model;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.testutil.EditInternshipDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -78,10 +79,10 @@ public class CommandTestUtil {
     public static final String COMPANY_NAME_DESC_OPTIVER = " " + PREFIX_COMPANY_NAME + VALID_COMPANY_NAME_OPTIVER;
     public static final String ROLE_DESC_JANESTREET = " " + PREFIX_ROLE + VALID_ROLE_JANESTREET;
     public static final String ROLE_DESC_OPTIVER = " " + PREFIX_ROLE + VALID_ROLE_OPTIVER;
-    //    public static final String APPLICATION_STATUS_DESC_JANESTREET =
-    //            " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_JANESTREET;
-    //    public static final String APPLICATION_STATUS_DESC_OPTIVER =
-    //            " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_OPTIVER;
+    public static final String APPLICATION_STATUS_DESC_JANESTREET =
+            " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_JANESTREET;
+    public static final String APPLICATION_STATUS_DESC_OPTIVER =
+            " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_OPTIVER;
     public static final String DEADLINE_DESC_JANESTREET = " " + PREFIX_DEADLINE + VALID_DEADLINE_JANESTREET;
     public static final String DEADLINE_DESC_OPTIVER = " " + PREFIX_DEADLINE + VALID_DEADLINE_OPTIVER;
     public static final String START_DATE_DESC_JANESTREET = " " + PREFIX_START_DATE + VALID_STARTDATE_JANESTREET;
@@ -115,6 +116,9 @@ public class CommandTestUtil {
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
+    public static final ModifyCommand.EditInternshipDescriptor DESC_JANESTREET;
+    public static final ModifyCommand.EditInternshipDescriptor DESC_OPTIVER;
+
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
@@ -122,6 +126,15 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        DESC_OPTIVER = new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_OPTIVER)
+                .withRole(VALID_ROLE_OPTIVER).withApplicationStatus(VALID_APPLICATIONSTATUS_OPTIVER)
+                .withDeadline(VALID_DEADLINE_OPTIVER, VALID_STARTDATE_OPTIVER).withStartDate(VALID_STARTDATE_OPTIVER)
+                .withDuration(VALID_DURATION_OPTIVER).withRequirements(VALID_REQUIREMENT_OPTIVER).build();
+        DESC_JANESTREET = new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_JANESTREET)
+                .withRole(VALID_ROLE_JANESTREET).withApplicationStatus(VALID_APPLICATIONSTATUS_JANESTREET)
+                .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET)
+                .withStartDate(VALID_STARTDATE_JANESTREET)
+                .withDuration(VALID_DURATION_JANESTREET).withRequirements(VALID_REQUIREMENT_JANESTREET).build();
     }
 
     /**
