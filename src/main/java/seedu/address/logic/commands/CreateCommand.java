@@ -70,7 +70,6 @@ public class CreateCommand extends InternshipCommand {
         }
 
         model.createInternship(this.toAdd);
-        System.out.println(this.toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.toAdd)));
     }
 
