@@ -1,13 +1,26 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_OPTIVER;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.InternshipBook;
 import seedu.address.model.internship.Internship;
-
-import static seedu.address.logic.commands.CommandTestUtil.*;
 
 /**
  * A utility class containing a list of {@code Internship} objects to be used in tests.

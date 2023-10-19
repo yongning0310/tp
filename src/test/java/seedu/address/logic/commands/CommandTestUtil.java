@@ -79,10 +79,10 @@ public class CommandTestUtil {
     public static final String COMPANY_NAME_DESC_OPTIVER = " " + PREFIX_COMPANY_NAME + VALID_COMPANY_NAME_OPTIVER;
     public static final String ROLE_DESC_JANESTREET = " " + PREFIX_ROLE + VALID_ROLE_JANESTREET;
     public static final String ROLE_DESC_OPTIVER = " " + PREFIX_ROLE + VALID_ROLE_OPTIVER;
-        public static final String APPLICATION_STATUS_DESC_JANESTREET =
-                " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_JANESTREET;
-        public static final String APPLICATION_STATUS_DESC_OPTIVER =
-                " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_OPTIVER;
+    public static final String APPLICATION_STATUS_DESC_JANESTREET =
+            " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_JANESTREET;
+    public static final String APPLICATION_STATUS_DESC_OPTIVER =
+            " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATIONSTATUS_OPTIVER;
     public static final String DEADLINE_DESC_JANESTREET = " " + PREFIX_DEADLINE + VALID_DEADLINE_JANESTREET;
     public static final String DEADLINE_DESC_OPTIVER = " " + PREFIX_DEADLINE + VALID_DEADLINE_OPTIVER;
     public static final String START_DATE_DESC_JANESTREET = " " + PREFIX_START_DATE + VALID_STARTDATE_JANESTREET;
@@ -132,7 +132,8 @@ public class CommandTestUtil {
                 .withDuration(VALID_DURATION_OPTIVER).withRequirements(VALID_REQUIREMENT_OPTIVER).build();
         DESC_JANESTREET = new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_JANESTREET)
                 .withRole(VALID_ROLE_JANESTREET).withApplicationStatus(VALID_APPLICATIONSTATUS_JANESTREET)
-                .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET).withStartDate(VALID_STARTDATE_JANESTREET)
+                .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET)
+                .withStartDate(VALID_STARTDATE_JANESTREET)
                 .withDuration(VALID_DURATION_JANESTREET).withRequirements(VALID_REQUIREMENT_JANESTREET).build();
     }
 

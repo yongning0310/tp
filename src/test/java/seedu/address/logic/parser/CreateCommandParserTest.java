@@ -1,19 +1,5 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.CreateCommand;
-import seedu.address.model.internship.ApplicationStatus;
-import seedu.address.model.internship.CompanyName;
-import seedu.address.model.internship.StartDate;
-import seedu.address.model.internship.Duration;
-import seedu.address.model.internship.Deadline;
-import seedu.address.model.internship.Internship;
-import seedu.address.model.internship.Role;
-import seedu.address.model.requirement.Requirement;
-import seedu.address.testutil.InternshipBuilder;
-
-import org.junit.jupiter.api.Test;
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.APPLICATION_STATUS_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.APPLICATION_STATUS_DESC_OPTIVER;
@@ -24,11 +10,9 @@ import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_OPTIVER
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_APPLICATION_STATUS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMPANY_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DEADLINE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_REQUIREMENT_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_START_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
@@ -46,17 +30,32 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_JAN
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_JANESTREET;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseFailure;
 import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseSuccess;
 import static seedu.address.testutil.TypicalInternships.JANESTREET;
 import static seedu.address.testutil.TypicalInternships.OPTIVER;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.CreateCommand;
+import seedu.address.model.internship.ApplicationStatus;
+//import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Deadline;
+import seedu.address.model.internship.Duration;
+import seedu.address.model.internship.Internship;
+//import seedu.address.model.internship.Role;
+import seedu.address.model.internship.StartDate;
+import seedu.address.model.requirement.Requirement;
+import seedu.address.testutil.InternshipBuilder;
+
+
 
 public class CreateCommandParserTest {
     private CreateCommandParser parser = new CreateCommandParser();
@@ -73,8 +72,8 @@ public class CreateCommandParserTest {
 
 
         // multiple tags - all accepted
-        Internship expectedInternshipMultipleRequiremments = new InternshipBuilder(OPTIVER).withRequirements(VALID_REQUIREMENT_JANESTREET,
-        VALID_REQUIREMENT_OPTIVER)
+        Internship expectedInternshipMultipleRequiremments = new InternshipBuilder(OPTIVER)
+                .withRequirements(VALID_REQUIREMENT_JANESTREET, VALID_REQUIREMENT_OPTIVER)
                 .build();
         assertInternshipParseSuccess(parser,
                 COMPANY_NAME_DESC_OPTIVER + ROLE_DESC_OPTIVER
@@ -124,12 +123,12 @@ public class CreateCommandParserTest {
         // invalid value followed by valid value
 
         // invalid company name
-//        assertInternshipParseFailure(parser, INVALID_COMPANY_NAME_DESC + validExpectedInternshipString,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
-//
-//        // invalid role
-//        assertInternshipParseFailure(parser, INVALID_ROLE_DESC + validExpectedInternshipString,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
+        //        assertInternshipParseFailure(parser, INVALID_COMPANY_NAME_DESC + validExpectedInternshipString,
+        //                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
+        //
+        //        // invalid role
+        //        assertInternshipParseFailure(parser, INVALID_ROLE_DESC + validExpectedInternshipString,
+        //                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // invalid application status
         assertInternshipParseFailure(parser, INVALID_APPLICATION_STATUS_DESC + validExpectedInternshipString,
@@ -151,35 +150,37 @@ public class CreateCommandParserTest {
         assertInternshipParseFailure(parser, INVALID_REQUIREMENT_DESC + validExpectedInternshipString,
                 Requirement.MESSAGE_CONSTRAINTS);
 
-//        // valid value followed by invalid value
-//
-//        // invalid company name
-//        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_COMPANY_NAME_DESC,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
-//
-//        // invalid role
-//        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_ROLE_DESC,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
-//
-//        // invalid application status
-//        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_APPLICATION_STATUS_DESC,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_APPLICATION_STATUS));
-//
-//        // invalid deadline
-//        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_DEADLINE_DESC,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_DEADLINE));
-//
-//        // invalid start date
-//        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_START_DATE_DESC,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_START_DATE));
-//
-//        // invalid duration
-//        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_DURATION_DESC,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_DURATION));
-//
-//        // invalid requirement
-//        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_REQUIREMENT_DESC,
-//                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_REQUIREMENT));
+        /*
+        // valid value followed by invalid value
+
+        // invalid company name
+        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_COMPANY_NAME_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
+
+        // invalid role
+        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_ROLE_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
+
+        // invalid application status
+        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_APPLICATION_STATUS_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_APPLICATION_STATUS));
+
+        // invalid deadline
+        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_DEADLINE_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_DEADLINE));
+
+        // invalid start date
+        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_START_DATE_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_START_DATE));
+
+        // invalid duration
+        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_DURATION_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_DURATION));
+
+        // invalid requirement
+        assertInternshipParseFailure(parser, validExpectedInternshipString + INVALID_REQUIREMENT_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_REQUIREMENT));
+        */
     }
 
     @Test
@@ -197,7 +198,7 @@ public class CreateCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateCommand.MESSAGE_USAGE);
 
         // missing company name prefix
-        assertInternshipParseFailure(parser, VALID_COMPANY_NAME_JANESTREET  + ROLE_DESC_JANESTREET
+        assertInternshipParseFailure(parser, VALID_COMPANY_NAME_JANESTREET + ROLE_DESC_JANESTREET
                         + APPLICATION_STATUS_DESC_JANESTREET + DEADLINE_DESC_JANESTREET + START_DATE_DESC_JANESTREET
                         + DURATION_DESC_JANESTREET,
                 expectedMessage);
@@ -242,14 +243,14 @@ public class CreateCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         // invalid company name
-//        assertInternshipParseFailure(parser, INVALID_COMPANY_NAME_DESC + ROLE_DESC_OPTIVER
-//                + APPLICATION_STATUS_DESC_OPTIVER + DEADLINE_DESC_OPTIVER + START_DATE_DESC_OPTIVER
-//                + DURATION_DESC_OPTIVER + REQUIREMENT_DESC_OPTIVER, CompanyName.MESSAGE_CONSTRAINTS);
-//
-//        // invalid role
-//        assertInternshipParseFailure(parser, COMPANY_NAME_DESC_OPTIVER + INVALID_ROLE_DESC
-//                + APPLICATION_STATUS_DESC_OPTIVER + DEADLINE_DESC_OPTIVER + START_DATE_DESC_OPTIVER
-//                + DURATION_DESC_OPTIVER + REQUIREMENT_DESC_OPTIVER, Role.MESSAGE_CONSTRAINTS);
+        //        assertInternshipParseFailure(parser, INVALID_COMPANY_NAME_DESC + ROLE_DESC_OPTIVER
+        //                + APPLICATION_STATUS_DESC_OPTIVER + DEADLINE_DESC_OPTIVER + START_DATE_DESC_OPTIVER
+        //                + DURATION_DESC_OPTIVER + REQUIREMENT_DESC_OPTIVER, CompanyName.MESSAGE_CONSTRAINTS);
+        //
+        //        // invalid role
+        //        assertInternshipParseFailure(parser, COMPANY_NAME_DESC_OPTIVER + INVALID_ROLE_DESC
+        //                + APPLICATION_STATUS_DESC_OPTIVER + DEADLINE_DESC_OPTIVER + START_DATE_DESC_OPTIVER
+        //                + DURATION_DESC_OPTIVER + REQUIREMENT_DESC_OPTIVER, Role.MESSAGE_CONSTRAINTS);
 
         // invalid application status
         assertInternshipParseFailure(parser, COMPANY_NAME_DESC_OPTIVER + ROLE_DESC_OPTIVER
@@ -276,10 +277,10 @@ public class CreateCommandParserTest {
                 + APPLICATION_STATUS_DESC_OPTIVER + DEADLINE_DESC_OPTIVER + START_DATE_DESC_OPTIVER
                 + DURATION_DESC_OPTIVER + INVALID_REQUIREMENT_DESC, Requirement.MESSAGE_CONSTRAINTS);
 
-//        // two invalid values, only first invalid value reported
-//        assertInternshipParseFailure(parser, INVALID_COMPANY_NAME_DESC + INVALID_ROLE_DESC
-//                        + APPLICATION_STATUS_DESC_OPTIVER + DEADLINE_DESC_OPTIVER + START_DATE_DESC_OPTIVER
-//                        + DURATION_DESC_OPTIVER + REQUIREMENT_DESC_OPTIVER, CompanyName.MESSAGE_CONSTRAINTS);
+        //        // two invalid values, only first invalid value reported
+        //        assertInternshipParseFailure(parser, INVALID_COMPANY_NAME_DESC + INVALID_ROLE_DESC
+        //                        + APPLICATION_STATUS_DESC_OPTIVER + DEADLINE_DESC_OPTIVER + START_DATE_DESC_OPTIVER
+        //                        + DURATION_DESC_OPTIVER + REQUIREMENT_DESC_OPTIVER, CompanyName.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertInternshipParseFailure(parser, PREAMBLE_NON_EMPTY + COMPANY_NAME_DESC_OPTIVER + ROLE_DESC_OPTIVER

@@ -1,33 +1,45 @@
 package seedu.address.logic;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import seedu.address.logic.commands.CreateCommand;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.InternshipModel;
-import seedu.address.model.InternshipModelManager;
-import seedu.address.model.ReadOnlyInternshipBook;
-import seedu.address.model.InternshipUserPrefs;
-import seedu.address.model.internship.Internship;
-import seedu.address.storage.JsonInternshipBookStorage;
-import seedu.address.storage.JsonInternshipUserPrefsStorage;
-import seedu.address.storage.InternshipStorageManager;
-import seedu.address.testutil.InternshipBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_INTERNSHIP_DISPLAYED_INDEX;
+import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.CommandTestUtil.APPLICATION_STATUS_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.COMPANY_NAME_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.START_DATE_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_JANESTREET;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalInternships.JANESTREET;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_INTERNSHIP_DISPLAYED_INDEX;
-import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.*;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalInternships.JANESTREET;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CreateCommand;
+//import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.InternshipModel;
+import seedu.address.model.InternshipModelManager;
+import seedu.address.model.InternshipUserPrefs;
+import seedu.address.model.ReadOnlyInternshipBook;
+import seedu.address.model.internship.Internship;
+import seedu.address.storage.InternshipStorageManager;
+import seedu.address.storage.JsonInternshipBookStorage;
+import seedu.address.storage.JsonInternshipUserPrefsStorage;
+import seedu.address.testutil.InternshipBuilder;
 
 public class InternshipLogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy IO exception");
@@ -43,7 +55,8 @@ public class InternshipLogicManagerTest {
     public void setUp() {
         JsonInternshipBookStorage internshipBookStorage =
                 new JsonInternshipBookStorage(temporaryFolder.resolve("internshipBook.json"));
-        JsonInternshipUserPrefsStorage userPrefsStorage = new JsonInternshipUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
+        JsonInternshipUserPrefsStorage userPrefsStorage = new JsonInternshipUserPrefsStorage(
+                temporaryFolder.resolve("userPrefs.json"));
         InternshipStorageManager storage = new InternshipStorageManager(internshipBookStorage, userPrefsStorage);
         logic = new InternshipLogicManager(model, storage);
     }
@@ -63,12 +76,17 @@ public class InternshipLogicManagerTest {
     @Test
     public void execute_validCommand_success() throws Exception {
         String createCommand = CreateCommand.COMMAND_WORD + COMPANY_NAME_DESC_JANESTREET + ROLE_DESC_JANESTREET
-                + APPLICATION_STATUS_DESC_JANESTREET + DEADLINE_DESC_JANESTREET + START_DATE_DESC_JANESTREET + DURATION_DESC_JANESTREET;
+                + APPLICATION_STATUS_DESC_JANESTREET + DEADLINE_DESC_JANESTREET + START_DATE_DESC_JANESTREET
+                + DURATION_DESC_JANESTREET;
         Internship createdInternship = new InternshipBuilder().withCompanyName(VALID_COMPANY_NAME_JANESTREET)
                         .withRole(VALID_ROLE_JANESTREET).withApplicationStatus(VALID_APPLICATIONSTATUS_JANESTREET)
-                        .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET).withStartDate(VALID_STARTDATE_JANESTREET)
+                        .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET)
+                        .withStartDate(VALID_STARTDATE_JANESTREET)
                         .withDuration(VALID_DURATION_JANESTREET).build();
-        assertCommandSuccess(createCommand, String.format(CreateCommand.MESSAGE_SUCCESS, Messages.format(createdInternship)), model);
+        assertCommandSuccess(createCommand, String.format(
+                CreateCommand.MESSAGE_SUCCESS,
+                Messages.format(createdInternship)),
+                model);
     }
 
     @Test
@@ -124,7 +142,9 @@ public class InternshipLogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        InternshipModel expectedModel = new InternshipModelManager(model.getInternshipBook(), new InternshipUserPrefs());
+        InternshipModel expectedModel = new InternshipModelManager(
+                model.getInternshipBook(),
+                new InternshipUserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -167,7 +187,8 @@ public class InternshipLogicManagerTest {
 
         // Triggers the saveAddressBook method by executing a create command
         String createCommand = CreateCommand.COMMAND_WORD + COMPANY_NAME_DESC_JANESTREET + ROLE_DESC_JANESTREET
-                + APPLICATION_STATUS_DESC_JANESTREET + DEADLINE_DESC_JANESTREET + START_DATE_DESC_JANESTREET + DURATION_DESC_JANESTREET;
+                + APPLICATION_STATUS_DESC_JANESTREET + DEADLINE_DESC_JANESTREET
+                + START_DATE_DESC_JANESTREET + DURATION_DESC_JANESTREET;
         Internship expectedInternship = new InternshipBuilder(JANESTREET).withRequirements().build();
         InternshipModelManager expectedModel = new InternshipModelManager();
         expectedModel.createInternship(expectedInternship);

@@ -1,17 +1,5 @@
 package seedu.address.logic.commands;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
-import seedu.address.model.InternshipBook;
-import seedu.address.model.InternshipModel;
-import seedu.address.model.InternshipModelManager;
-import seedu.address.model.InternshipUserPrefs;
-import seedu.address.model.internship.Internship;
-import seedu.address.testutil.EditInternshipDescriptorBuilder;
-import seedu.address.testutil.InternshipBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -28,6 +16,19 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INTERNSHIP;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_INTERNSHIP;
 import static seedu.address.testutil.TypicalInternships.getTypicalInternshipBook;
 
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
+import seedu.address.model.InternshipBook;
+import seedu.address.model.InternshipModel;
+import seedu.address.model.InternshipModelManager;
+import seedu.address.model.InternshipUserPrefs;
+import seedu.address.model.internship.Internship;
+import seedu.address.testutil.EditInternshipDescriptorBuilder;
+import seedu.address.testutil.InternshipBuilder;
+
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ModifyCommand.
  */
@@ -41,9 +42,13 @@ public class ModifyCommandTest {
         EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder(editedInternship).build();
         ModifyCommand modifyCommand = new ModifyCommand(INDEX_FIRST_INTERNSHIP, descriptor);
 
-        String expectedMessage = String.format(ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS, Messages.format(editedInternship));
+        String expectedMessage = String.format(
+                ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS,
+                Messages.format(editedInternship));
 
-        InternshipModel expectedModel = new InternshipModelManager(new InternshipBook(model.getInternshipBook()), new InternshipUserPrefs());
+        InternshipModel expectedModel = new InternshipModelManager(
+                new InternshipBook(model.getInternshipBook()),
+                new InternshipUserPrefs());
         expectedModel.setInternship(model.getFilteredInternshipList().get(0), editedInternship);
 
         assertInternshipCommandSuccess(modifyCommand, model, expectedMessage, expectedModel);
@@ -54,16 +59,23 @@ public class ModifyCommandTest {
         Internship lastInternship = model.getFilteredInternshipList().get(indexLastInternship.getZeroBased());
 
         InternshipBuilder internshipInList = new InternshipBuilder(lastInternship);
-        Internship editedInternship = internshipInList.withCompanyName(VALID_COMPANY_NAME_JANESTREET).withRole(VALID_ROLE_JANESTREET)
+        Internship editedInternship = internshipInList.withCompanyName(VALID_COMPANY_NAME_JANESTREET)
+                .withRole(VALID_ROLE_JANESTREET)
                 .withRequirements(VALID_REQUIREMENT_JANESTREET).build();
 
-        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_JANESTREET)
-                .withRole(VALID_ROLE_JANESTREET).withRequirements(VALID_REQUIREMENT_JANESTREET).build();
+        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder()
+                .withCompanyName(VALID_COMPANY_NAME_JANESTREET)
+                .withRole(VALID_ROLE_JANESTREET)
+                .withRequirements(VALID_REQUIREMENT_JANESTREET).build();
         ModifyCommand modifyCommand = new ModifyCommand(indexLastInternship, descriptor);
 
-        String expectedMessage = String.format(ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS, Messages.format(editedInternship));
+        String expectedMessage = String.format(
+                ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS,
+                Messages.format(editedInternship));
 
-        InternshipModel expectedModel = new InternshipModelManager(new InternshipBook(model.getInternshipBook()), new InternshipUserPrefs());
+        InternshipModel expectedModel = new InternshipModelManager(
+                new InternshipBook(model.getInternshipBook()),
+                new InternshipUserPrefs());
         expectedModel.setInternship(lastInternship, editedInternship);
 
         assertInternshipCommandSuccess(modifyCommand, model, expectedMessage, expectedModel);
@@ -74,29 +86,39 @@ public class ModifyCommandTest {
         ModifyCommand modifyCommand = new ModifyCommand(INDEX_FIRST_INTERNSHIP, new EditInternshipDescriptor());
         Internship editedInternship = model.getFilteredInternshipList().get(INDEX_FIRST_INTERNSHIP.getZeroBased());
 
-        String expectedMessage = String.format(ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS, Messages.format(editedInternship));
+        String expectedMessage = String.format(
+                ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS,
+                Messages.format(editedInternship));
 
-        InternshipModel expectedModel = new InternshipModelManager(new InternshipBook(model.getInternshipBook()), new InternshipUserPrefs());
+        InternshipModel expectedModel = new InternshipModelManager(
+                new InternshipBook(model.getInternshipBook()),
+                new InternshipUserPrefs());
 
         assertInternshipCommandSuccess(modifyCommand, model, expectedMessage, expectedModel);
     }
 
-//    @Test
-//    public void execute_filteredList_success() {
-//        showInternshipAtIndex(model, INDEX_FIRST_INTERNSHIP);
-//
-//        Internship internshipInFilteredList = model.getFilteredInternshipList().get(INDEX_FIRST_INTERNSHIP.getZeroBased());
-//        Internship editedInternship = new InternshipBuilder(internshipInFilteredList).withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
-//        ModifyCommand modifyCommand = new ModifyCommand(INDEX_FIRST_INTERNSHIP,
-//                new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_OPTIVER).build());
-//
-//        String expectedMessage = String.format(ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS, Messages.format(editedInternship));
-//
-//        InternshipModel expectedModel = new InternshipModelManager(new InternshipBook(model.getInternshipBook()), new InternshipUserPrefs());
-//        expectedModel.setInternship(model.getFilteredInternshipList().get(0), editedInternship);
-//
-//        assertInternshipCommandSuccess(modifyCommand, model, expectedMessage, expectedModel);
-//    }
+    //    @Test
+    //    public void execute_filteredList_success() {
+    //        showInternshipAtIndex(model, INDEX_FIRST_INTERNSHIP);
+    //
+    //        Internship internshipInFilteredList = model.getFilteredInternshipList()
+    //                .get(INDEX_FIRST_INTERNSHIP.getZeroBased());
+    //        Internship editedInternship = new InternshipBuilder(internshipInFilteredList)
+    //                .withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
+    //        ModifyCommand modifyCommand = new ModifyCommand(INDEX_FIRST_INTERNSHIP,
+    //                new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_OPTIVER).build());
+    //
+    //        String expectedMessage = String.format(
+    //                ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS,
+    //                Messages.format(editedInternship));
+    //
+    //        InternshipModel expectedModel = new InternshipModelManager(
+    //                new InternshipBook(model.getInternshipBook()),
+    //                new InternshipUserPrefs());
+    //        expectedModel.setInternship(model.getFilteredInternshipList().get(0), editedInternship);
+    //
+    //        assertInternshipCommandSuccess(modifyCommand, model, expectedMessage, expectedModel);
+    //    }
 
     @Test
     public void execute_duplicateInternshipUnfilteredList_failure() {
@@ -112,7 +134,8 @@ public class ModifyCommandTest {
         showInternshipAtIndex(model, INDEX_FIRST_INTERNSHIP);
 
         // edit internship in filtered list into a duplicate in address book
-        Internship internshipInList = model.getInternshipBook().getInternshipList().get(INDEX_SECOND_INTERNSHIP.getZeroBased());
+        Internship internshipInList = model.getInternshipBook().getInternshipList()
+                .get(INDEX_SECOND_INTERNSHIP.getZeroBased());
         ModifyCommand modifyCommand = new ModifyCommand(INDEX_FIRST_INTERNSHIP,
                 new EditInternshipDescriptorBuilder(internshipInList).build());
 
@@ -122,7 +145,8 @@ public class ModifyCommandTest {
     @Test
     public void execute_invalidInternshipIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternshipList().size() + 1);
-        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
+        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder()
+                .withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
         ModifyCommand modifyCommand = new ModifyCommand(outOfBoundIndex, descriptor);
 
         assertInternshipCommandFailure(modifyCommand, model, Messages.MESSAGE_INVALID_INTERNSHIP_DISPLAYED_INDEX);

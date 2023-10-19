@@ -1,12 +1,5 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.commands.CreateCommand;
-import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
-import seedu.address.model.internship.Internship;
-import seedu.address.model.requirement.Requirement;
-
-import java.util.Set;
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
@@ -14,6 +7,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+
+import java.util.Set;
+
+import seedu.address.logic.commands.CreateCommand;
+import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
+import seedu.address.model.internship.Internship;
+import seedu.address.model.requirement.Requirement;
 
 /**
  * A utility class for Internship.
@@ -49,12 +49,19 @@ public class InternshipUtil {
      */
     public static String getEditInternshipDescriptorDetails(EditInternshipDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getCompanyName().ifPresent(companyName -> sb.append(PREFIX_COMPANY_NAME).append(companyName.companyName).append(" "));
+        descriptor.getCompanyName()
+                .ifPresent(companyName -> sb.append(PREFIX_COMPANY_NAME).append(companyName.companyName).append(" "));
         descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.toString()).append(" "));
-        descriptor.getApplicationStatus().ifPresent(applicationStatus -> sb.append(PREFIX_APPLICATION_STATUS).append(applicationStatus.applicationStatus).append(" "));
-        descriptor.getDeadline().ifPresent(deadline -> sb.append(PREFIX_DEADLINE).append(deadline.toString()).append(" "));
-        descriptor.getStartDate().ifPresent(startDate -> sb.append(PREFIX_START_DATE).append(startDate.toString()).append(" "));
-        descriptor.getDuration().ifPresent(duration -> sb.append(PREFIX_DURATION).append(duration.duration).append(" "));
+        descriptor.getApplicationStatus()
+                .ifPresent(applicationStatus -> sb
+                        .append(PREFIX_APPLICATION_STATUS)
+                        .append(applicationStatus.applicationStatus).append(" "));
+        descriptor.getDeadline()
+                .ifPresent(deadline -> sb.append(PREFIX_DEADLINE).append(deadline.toString()).append(" "));
+        descriptor.getStartDate()
+                .ifPresent(startDate -> sb.append(PREFIX_START_DATE).append(startDate.toString()).append(" "));
+        descriptor.getDuration()
+                .ifPresent(duration -> sb.append(PREFIX_DURATION).append(duration.duration).append(" "));
         if (descriptor.getRequirements().isPresent()) {
             Set<Requirement> requirements = descriptor.getRequirements().get();
             if (requirements.isEmpty()) {

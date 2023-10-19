@@ -1,22 +1,23 @@
 package seedu.address.logic.parser;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.logic.commands.CreateCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ModifyCommand;
-import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.internship.Internship;
-import seedu.address.testutil.EditInternshipDescriptorBuilder;
-import seedu.address.testutil.InternshipBuilder;
-import seedu.address.testutil.InternshipUtil;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INTERNSHIP;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.commands.CreateCommand;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.HelpCommand;
+//import seedu.address.logic.commands.ModifyCommand;
+//import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.internship.Internship;
+//import seedu.address.testutil.EditInternshipDescriptorBuilder;
+import seedu.address.testutil.InternshipBuilder;
+import seedu.address.testutil.InternshipUtil;
 
 public class InternshipBookParserTest {
 
@@ -37,14 +38,15 @@ public class InternshipBookParserTest {
         assertEquals(new DeleteCommand(INDEX_FIRST_INTERNSHIP), command);
     }
 
-//    @Test
-//    public void parseCommand_modify() throws Exception {
-//        Internship internship = new InternshipBuilder().build();
-//        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder(internship).build();
-//        ModifyCommand command = (ModifyCommand) parser.parseCommand(ModifyCommand.COMMAND_WORD + " "
-//                + INDEX_FIRST_INTERNSHIP.getOneBased() + " " + InternshipUtil.getEditInternshipDescriptorDetails(descriptor));
-//        assertEquals(new ModifyCommand(INDEX_FIRST_INTERNSHIP, descriptor), command);
-//    }
+    //    @Test
+    //    public void parseCommand_modify() throws Exception {
+    //        Internship internship = new InternshipBuilder().build();
+    //        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder(internship).build();
+    //        ModifyCommand command = (ModifyCommand) parser.parseCommand(ModifyCommand.COMMAND_WORD + " "
+    //                + INDEX_FIRST_INTERNSHIP.getOneBased() + " "
+    //                + InternshipUtil.getEditInternshipDescriptorDetails(descriptor));
+    //        assertEquals(new ModifyCommand(INDEX_FIRST_INTERNSHIP, descriptor), command);
+    //    }
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {

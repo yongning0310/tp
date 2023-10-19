@@ -1,5 +1,9 @@
 package seedu.address.testutil;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
 import seedu.address.model.internship.ApplicationStatus;
 import seedu.address.model.internship.CompanyName;
@@ -9,10 +13,6 @@ import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.Role;
 import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
-
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -91,8 +91,8 @@ public class EditInternshipDescriptorBuilder {
     }
 
     /**
-     * Parses the {@code requirements} into a {@code Set<Requirement>} and set it to the {@code EditInternshipDescriptor}
-     * that we are building.
+     * Parses the {@code requirements} into a {@code Set<Requirement>} and set it to
+     * the {@code EditInternshipDescriptor} that we are building.
      */
     public EditInternshipDescriptorBuilder withRequirements(String... requirements) {
         Set<Requirement> requirementSet = Stream.of(requirements).map(Requirement::new).collect(Collectors.toSet());
