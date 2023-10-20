@@ -127,7 +127,6 @@ Display internships matching specific category keywords.
 Format: `filter [category]/[keyword] ...`
 
 * The search isn't case-sensitive. For instance, `hans` matches `Hans`.
-* Only the name is considered.
 * The sequence of category and keyword doesn't matter.
 * Results will include internships matching all keywords (i.e., `AND` search). For instance, `c/JA ro/SWE` matches `c/JANE STREET and ro/SWE` but not `c/JANE STREET ro/Admin` or `c/Google ro/SWE`.
 * If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
@@ -140,14 +139,13 @@ Examples:
 
 Organize the displayed list based on specific categories and order.
 
-Format: `sort [category]/[ASC/DESC] ...`
+Format: `sort [category]/[ASC/DESC]`
 
-* Sequence of categories is significant. For example, `c/ASC ro/DESC` first sorts entries by company name in ascending order; entries with matching company names are then sorted by role in descending order.
 * `ASC` indicates ascending order, and `DESC` denotes descending order.
 * A subsequent `sort` command will replace the prior one. Otherwise, the initial sort remains effective.
 
 Examples:
-* `sort c/ASC ro/DESC` sorts entries by company name (ascending) and then by role (descending) for matches.
+* `sort c/ASC` sorts entries by company name (ascending).
 * `sort` resets the list to default, which is in order of creation (ascending).
 
 ### Deleting an Internship: `delete`
@@ -222,7 +220,7 @@ Action     | Format, Examples
 **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/15/12/2022 du/3 re/C++ re/Coffee`
 **Modify**  | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
 **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`
-**Sort**   | `sort [category]/[ASC/DESC] ...` <br> e.g.,  `sort c/ASC ro/DESC` 
+**Sort**   | `sort [category]/[ASC/DESC]` <br> e.g.,  `sort de/ASC` 
 **Delete**   | `delete INDEX`<br> e.g., `delete 2`
 
 [//]: # (**List**   | `list`)
