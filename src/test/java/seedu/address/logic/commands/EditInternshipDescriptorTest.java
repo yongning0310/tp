@@ -3,66 +3,86 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.*;
 
 import org.junit.jupiter.api.Test;
+import seedu.address.testutil.EditInternshipDescriptorBuilder;
 
 public class EditInternshipDescriptorTest {
 
     @Test
     public void equals() {
         // same values -> returns true
-        EditPersonDescriptor descriptorWithSameValues = new EditPersonDescriptor(DESC_AMY);
-        assertTrue(DESC_AMY.equals(descriptorWithSameValues));
+        ModifyCommand.EditInternshipDescriptor descriptorWithSameValues =
+                new ModifyCommand.EditInternshipDescriptor(DESC_JANESTREET);
+        assertTrue(DESC_JANESTREET.equals(descriptorWithSameValues));
 
         // same object -> returns true
-        assertTrue(DESC_AMY.equals(DESC_AMY));
+        assertTrue(DESC_JANESTREET.equals(DESC_JANESTREET));
 
         // null -> returns false
-        assertFalse(DESC_AMY.equals(null));
+        assertFalse(DESC_JANESTREET.equals(null));
 
         // different types -> returns false
-        assertFalse(DESC_AMY.equals(5));
+        assertFalse(DESC_JANESTREET.equals(5));
 
         // different values -> returns false
-        assertFalse(DESC_AMY.equals(DESC_BOB));
+        assertFalse(DESC_JANESTREET.equals(DESC_OPTIVER));
 
-        // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different company name -> returns false
+        ModifyCommand.EditInternshipDescriptor editedJanestreet =
+                new EditInternshipDescriptorBuilder(DESC_JANESTREET)
+                        .withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
+        assertFalse(DESC_JANESTREET.equals(editedJanestreet));
 
-        // different phone -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different role -> returns false
+        editedJanestreet =
+                new EditInternshipDescriptorBuilder(DESC_JANESTREET)
+                        .withRole(VALID_ROLE_OPTIVER).build();
+        assertFalse(DESC_JANESTREET.equals(editedJanestreet));
 
-        // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different application status -> returns false
+        editedJanestreet =
+                new EditInternshipDescriptorBuilder(DESC_JANESTREET)
+                        .withApplicationStatus(VALID_APPLICATIONSTATUS_OPTIVER).build();
+        assertFalse(DESC_JANESTREET.equals(editedJanestreet));
 
-        // different address -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different deadline -> returns false
+        editedJanestreet =
+                new EditInternshipDescriptorBuilder(DESC_JANESTREET)
+                        .withDeadline(VALID_DEADLINE_OPTIVER, VALID_STARTDATE_OPTIVER).build();
+        assertFalse(DESC_JANESTREET.equals(editedJanestreet));
 
-        // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different start date -> returns false
+        editedJanestreet =
+                new EditInternshipDescriptorBuilder(DESC_JANESTREET)
+                        .withStartDate(VALID_STARTDATE_OPTIVER).build();
+        assertFalse(DESC_JANESTREET.equals(editedJanestreet));
+
+        // different duration -> returns false
+        editedJanestreet =
+                new EditInternshipDescriptorBuilder(DESC_JANESTREET)
+                        .withDuration(VALID_DURATION_OPTIVER).build();
+        assertFalse(DESC_JANESTREET.equals(editedJanestreet));
+
+        // different requirements -> returns false
+        editedJanestreet =
+                new EditInternshipDescriptorBuilder(DESC_JANESTREET)
+                        .withRequirements(VALID_REQUIREMENT_OPTIVER).build();
+        assertFalse(DESC_JANESTREET.equals(editedJanestreet));
     }
 
     @Test
     public void toStringMethod() {
-        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-        String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
-                + editPersonDescriptor.getName().orElse(null) + ", phone="
-                + editPersonDescriptor.getPhone().orElse(null) + ", email="
-                + editPersonDescriptor.getEmail().orElse(null) + ", address="
-                + editPersonDescriptor.getAddress().orElse(null) + ", tags="
-                + editPersonDescriptor.getTags().orElse(null) + "}";
-        assertEquals(expected, editPersonDescriptor.toString());
+        ModifyCommand.EditInternshipDescriptor editInternshipDescriptor = new ModifyCommand.EditInternshipDescriptor();
+        String expected = ModifyCommand.EditInternshipDescriptor.class.getCanonicalName() + "{companyName="
+                + editInternshipDescriptor.getCompanyName().orElse(null) + ", role="
+                + editInternshipDescriptor.getRole().orElse(null) + ", applicationStatus="
+                + editInternshipDescriptor.getApplicationStatus().orElse(null) + ", deadline="
+                + editInternshipDescriptor.getDeadline().orElse(null) + ", startDate="
+                + editInternshipDescriptor.getStartDate().orElse(null) + ", duration="
+                + editInternshipDescriptor.getDuration().orElse(null) + ", requirements="
+                + editInternshipDescriptor.getRequirements().orElse(null) + "}";
+        assertEquals(expected, editInternshipDescriptor.toString());
     }
 }

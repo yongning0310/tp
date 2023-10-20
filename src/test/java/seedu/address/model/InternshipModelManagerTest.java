@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INTERNSHIPS;
+import static seedu.address.model.InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalInternships.CITADEL;
 import static seedu.address.testutil.TypicalInternships.JANESTREET;

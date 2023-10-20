@@ -185,7 +185,8 @@ public class ModifyCommandTest {
         assertFalse(standardCommand.equals(null));
 
         // different types -> returns false
-        assertFalse(standardCommand.equals(new ClearCommand()));
+        assertFalse(standardCommand.equals(
+                new CreateCommand(model.getFilteredInternshipList().get(INDEX_FIRST_INTERNSHIP.getZeroBased()))));
 
         // different index -> returns false
         assertFalse(standardCommand.equals(new ModifyCommand(INDEX_SECOND_INTERNSHIP, DESC_OPTIVER)));
