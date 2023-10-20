@@ -3,9 +3,18 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_OPTIVER;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.testutil.EditInternshipDescriptorBuilder;
 
 public class EditInternshipDescriptorTest {
