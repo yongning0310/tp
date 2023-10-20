@@ -14,7 +14,6 @@ import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.Role;
 import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code InternshipBook} with sample data.
@@ -52,17 +51,6 @@ public class InternshipSampleDataUtil {
             sampleIb.addInternship(sampleInternship);
         }
         return sampleIb;
-    }
-
-
-
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                .map(Tag::new)
-                .collect(Collectors.toSet());
     }
 
     /**

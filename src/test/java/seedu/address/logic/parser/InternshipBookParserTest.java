@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.CreateCommand;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.HelpCommand;
 //import seedu.address.logic.commands.ModifyCommand;
 //import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -50,8 +49,11 @@ public class InternshipBookParserTest {
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+        assertThrows(
+                ParseException.class,
+                String.format(
+                        MESSAGE_INVALID_COMMAND_FORMAT,
+                        /*HelpCommand.MESSAGE_USAGE*/""), () -> parser.parseCommand(""));
     }
 
     @Test

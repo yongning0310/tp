@@ -27,7 +27,7 @@ public class InternshipLogicManager implements InternshipLogic {
     public static final String FILE_OPS_PERMISSION_ERROR_FORMAT =
             "Could not save data to file %s due to insufficient permissions to write to the file or the folder.";
 
-    private final Logger logger = LogsCenter.getLogger(LogicManager.class);
+    private final Logger logger = LogsCenter.getLogger(InternshipLogicManager.class);
 
     private final InternshipModel model;
     private final InternshipStorage storage;
