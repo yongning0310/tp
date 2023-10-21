@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
@@ -10,10 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.ModifyCommand;
-import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
-import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.SortCommand.Order;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -33,7 +28,7 @@ public class SortCommandParser implements InternshipParser<SortCommand> {
 
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
-                        PREFIX_START_DATE, PREFIX_DURATION, PREFIX_REQUIREMENT);
+                        PREFIX_START_DATE, PREFIX_DURATION, PREFIX_REQUIREMENT, PREFIX_DEADLINE);
 
 
         // Ensure only one prefix is used, we check for 2 because of the empty string preamble.

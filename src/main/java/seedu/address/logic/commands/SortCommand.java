@@ -1,22 +1,25 @@
 package seedu.address.logic.commands;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import seedu.address.logic.Messages;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+
+import java.util.Comparator;
+
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.InternshipComparators;
 
-import java.util.Comparator;
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
-
+/**
+ * Sorts the list of internships by a specified category.
+ */
 public class SortCommand extends InternshipCommand {
     public static final String COMMAND_WORD = "sort";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the list of internships by the specified "
@@ -30,32 +33,42 @@ public class SortCommand extends InternshipCommand {
             + PREFIX_START_DATE + " - Start Date\n"
             + PREFIX_DURATION + " - Duration\n"
             + "Format: " + COMMAND_WORD + " CATEGORY_PREFIX ORDER\n"
-            + "Example 1: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + "ASC\n"
-            + "Example 2: " + COMMAND_WORD + " " + PREFIX_ROLE + "DESC";
-
+            + "Example 1: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + " ASC\n"
+            + "Example 2: " + COMMAND_WORD + " " + PREFIX_ROLE + " DESC";
+    public static final String MESSAGE_INVALID_COLUMN = "The value entered for the category is invalid";
+    public static final String MESSAGE_INVALID_ORDER = "The value entered for the order is invalid";
     public final Prefix category;
+    /**
+     * Enumerates the possible sorting orders.
+     * <p>
+     * ASC - Ascending order (from smallest to largest).
+     * DESC - Descending order (from largest to smallest).
+     * </p>
+     */
     public enum Order {
         ASC,
         DESC
     }
 
     public final Order sortedOrder;
-    public final String MESSAGE_SUCCESS;
+    public final String messageSuccess;
 
-    public static final String MESSAGE_INVALID_COLUMN = "The value entered for the category is invalid";
-    public static final String MESSAGE_INVALID_ORDER = "The value entered for the order is invalid";
-
-
-    public SortCommand(Prefix category, Order order){
+    /**
+     * Creates a SortCommand to sort the internships.
+     *
+     * @param category The category to sort by.
+     * @param order The order to sort in.
+     */
+    public SortCommand(Prefix category, Order order) {
         requireNonNull(category);
         requireNonNull(order);
         this.category = category;
         this.sortedOrder = order;
-        this.MESSAGE_SUCCESS = "Here are the internships sorted by: " + category + " and ordered by: " + sortedOrder;
+        this.messageSuccess = "Here are the internships sorted by " + category + " and ordered by " + sortedOrder;
     }
 
     /**
-     * Executes the sort command, sorting the internship by category
+     * Executes the sort command, sorting the internship by category.
      *
      * @param model The {@code InternshipModel} in which the internships will be sorted.
      * @return A {@code CommandResult} with a success message.
@@ -67,10 +80,15 @@ public class SortCommand extends InternshipCommand {
 
         Comparator<Internship> comparator = createComparator();
         model.sortInternships(comparator);
-        return new CommandResult(String.format(MESSAGE_SUCCESS));
+        return new CommandResult(String.format(messageSuccess));
     }
 
-
+    /**
+     * Creates the comparator based on category and order.
+     *
+     * @return The comparator for sorting.
+     * @throws CommandException If the category is invalid.
+     */
     private Comparator<Internship> createComparator() throws CommandException {
         Comparator<Internship> comparator;
         if (category == PREFIX_COMPANY_NAME) {
@@ -93,7 +111,28 @@ public class SortCommand extends InternshipCommand {
             comparator = comparator.reversed();
         }
         return comparator;
+    }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof SortCommand)) {
+            return false;
+        }
+
+        SortCommand otherSortCommand = (SortCommand) other;
+        return sortedOrder.equals(otherSortCommand.sortedOrder) && category.equals(otherSortCommand.category);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("category", category)
+                .add("sortedOrder", sortedOrder)
+                .toString();
     }
 }
-
