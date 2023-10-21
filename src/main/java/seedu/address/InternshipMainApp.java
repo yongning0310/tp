@@ -37,7 +37,7 @@ public class InternshipMainApp extends Application {
 
     public static final Version VERSION = new Version(0, 2, 2, true);
 
-    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
+    private static final Logger logger = LogsCenter.getLogger(InternshipMainApp.class);
 
     protected InternshipUiManager ui;
     protected InternshipLogic logic;
@@ -171,7 +171,7 @@ public class InternshipMainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting InternshipBook " + MainApp.VERSION);
+        logger.info("Starting InternshipBook " + InternshipMainApp.VERSION);
         ui.start(primaryStage);
     }
 

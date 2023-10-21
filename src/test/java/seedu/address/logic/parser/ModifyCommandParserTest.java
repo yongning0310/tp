@@ -20,8 +20,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_JANES
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertInternshipParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertInternshipParseSuccess;
+import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseFailure;
+import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INTERNSHIP;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_INTERNSHIP;
 

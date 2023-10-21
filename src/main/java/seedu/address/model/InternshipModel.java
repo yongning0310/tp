@@ -7,16 +7,11 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.internship.Internship;
-import seedu.address.model.person.Person;
 
 /**
  * The API of the Model component.
  */
 public interface InternshipModel {
-
-    // DELETE AFTER FULL TRANSITION
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Internship> PREDICATE_SHOW_ALL_INTERNSHIPS = unused -> true;

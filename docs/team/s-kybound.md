@@ -9,9 +9,11 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 ## Summary of contributions
 
-* **Code contributed**:
+* **Code contributed**: 
     * Wrote extensive test cases for the Modify Command
-    * Wrote extensive test cases for the Logic and Parsing components of Flagship[RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22&tabOpen=true&tabType=authorship&tabAuthor=s-kybound&tabRepo=AY2324S1-CS2103T-W17-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
+    * Wrote extensive test cases for the Logic and Parsing components of Flagship
+    * Updated the project to remove all AB3-specific code
+    * [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22&tabOpen=true&tabType=authorship&tabAuthor=s-kybound&tabRepo=AY2324S1-CS2103T-W17-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
 * **Enhancements to existing features**:
     * to be added soon (Pull requests [\#1](), [\#2]())
@@ -36,7 +38,7 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 * **Community**:
     * *(what is important here is to demonstrate contribution outside of the group, by, for example, reviewing PRs, or being active in discussion. All points in this section are merely suggested points.)*
-    * PRs reviewed: [\#18](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/18), [\#36](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/36), [\#38](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/38),
+    * PRs reviewed: [\#18](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/18), [\#36](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/36), [\#59](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/59), [\#38](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/38), [\#80](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/80), [\#82](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/82),
     * Contributed to forum discussions (examples: to be added soon)
     * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
 
