@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
  * Represents an Internship's application deadline in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidDeadline(String, String)}
  */
-public class Deadline {
+public class Deadline implements Comparable<Deadline> {
     public static final String MESSAGE_CONSTRAINTS =
             "Deadline should only contain numbers and slashes. It must follow the form DD/MM/YYYY. It must be earlier"
                     + "than the Internship's StartDate.";
@@ -69,5 +69,10 @@ public class Deadline {
     @Override
     public int hashCode() {
         return this.deadline.hashCode();
+    }
+
+    @Override
+    public int compareTo(Deadline other) {
+        return this.deadline.compareTo(other.deadline);
     }
 }

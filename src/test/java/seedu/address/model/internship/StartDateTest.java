@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -55,5 +56,37 @@ class StartDateTest {
 
         // different values -> returns false
         assertFalse(startDate.equals(new StartDate("30/12/2025")));
+    }
+
+    @Test
+    public void compareTo_sameDate_returnsZero() {
+        StartDate startDate1 = new StartDate("01/01/2022");
+        StartDate startDate2 = new StartDate("01/01/2022");
+
+        assertEquals(0, startDate1.compareTo(startDate2));
+    }
+
+    @Test
+    public void compareTo_startDate1EarlierThanStartDate2_returnsNegative() {
+        StartDate startDate1 = new StartDate("01/01/2022");
+        StartDate startDate2 = new StartDate("02/01/2022");
+
+        assertEquals(true, startDate1.compareTo(startDate2) < 0);
+    }
+
+    @Test
+    public void compareTo_startDate1LaterThanStartDate2_returnsPositive() {
+        StartDate startDate1 = new StartDate("03/01/2022");
+        StartDate startDate2 = new StartDate("02/01/2022");
+
+        assertEquals(true, startDate1.compareTo(startDate2) > 0);
+    }
+
+    @Test
+    public void compareTo_datesOneDayApart_correctOrder() {
+        StartDate startDate1 = new StartDate("31/12/2021");
+        StartDate startDate2 = new StartDate("01/01/2022");
+
+        assertEquals(true, startDate1.compareTo(startDate2) < 0);
     }
 }

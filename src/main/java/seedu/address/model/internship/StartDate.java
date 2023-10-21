@@ -13,7 +13,7 @@ import java.time.format.DateTimeParseException;
  * Represents an Internship's start date in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidStartDate(String)}
  */
-public class StartDate {
+public class StartDate implements Comparable<StartDate> {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Start Date should only contain numbers and slashes. It must follow the form DD/MM/YYYY";
@@ -66,5 +66,10 @@ public class StartDate {
     @Override
     public int hashCode() {
         return this.startDate.hashCode();
+    }
+
+    @Override
+    public int compareTo(StartDate other) {
+        return this.startDate.compareTo(other.startDate);
     }
 }

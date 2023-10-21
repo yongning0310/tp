@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -56,5 +57,37 @@ class CompanyNameTest {
 
         // different values -> returns false
         assertFalse(companyName.equals(new CompanyName("Other Valid CompanyName")));
+    }
+
+    @Test
+    public void compareTo_sameCompanyName_returnsZero() {
+        CompanyName companyName1 = new CompanyName("Apple");
+        CompanyName companyName2 = new CompanyName("Apple");
+
+        assertEquals(0, companyName1.compareTo(companyName2));
+    }
+
+    @Test
+    public void compareTo_companyName1EarlierThanCompanyName2_returnsNegative() {
+        CompanyName companyName1 = new CompanyName("Apple");
+        CompanyName companyName2 = new CompanyName("Microsoft");
+
+        assertEquals(true, companyName1.compareTo(companyName2) < 0);
+    }
+
+    @Test
+    public void compareTo_companyName1LaterThanCompanyName2_returnsPositive() {
+        CompanyName companyName1 = new CompanyName("Microsoft");
+        CompanyName companyName2 = new CompanyName("Apple");
+
+        assertEquals(true, companyName1.compareTo(companyName2) > 0);
+    }
+
+    @Test
+    public void compareTo_companyNamesDifferByOneCharacter_correctOrder() {
+        CompanyName companyName1 = new CompanyName("Apples");
+        CompanyName companyName2 = new CompanyName("Apple");
+
+        assertEquals(true, companyName1.compareTo(companyName2) > 0);
     }
 }

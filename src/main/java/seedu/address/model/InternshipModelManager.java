@@ -4,9 +4,11 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -111,6 +113,11 @@ public class InternshipModelManager implements InternshipModel {
         requireAllNonNull(target, editedInternship);
 
         internshipBook.setInternship(target, editedInternship);
+    }
+
+    @Override
+    public void sortInternships(Comparator<Internship> comparator) {
+        internshipBook.sortInternships(comparator);
     }
 
 

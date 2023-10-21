@@ -12,7 +12,7 @@ import java.util.List;
  * Represents an Internship's application status in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidApplicationStatus(String)}
  */
-public class ApplicationStatus {
+public class ApplicationStatus implements Comparable<ApplicationStatus> {
     public static final String MESSAGE_CONSTRAINTS =
             "Application Status cannot be blank and should only contain one of the following: "
                     + "Yet to apply, Applied, In progress, Accepted, Rejected";
@@ -61,5 +61,10 @@ public class ApplicationStatus {
     @Override
     public int hashCode() {
         return this.applicationStatus.hashCode();
+    }
+
+    @Override
+    public int compareTo(ApplicationStatus other) {
+        return this.applicationStatus.compareTo(other.applicationStatus);
     }
 }

@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -57,4 +58,44 @@ class RoleTest {
         // different values -> returns false
         assertFalse(role.equals(new Role("Other Valid Role")));
     }
+    @Test
+    public void compareTo_sameRole_returnsZero() {
+        Role roleA = new Role("Developer");
+        Role roleB = new Role("Developer");
+
+        assertEquals(0, roleA.compareTo(roleB));
+    }
+
+    @Test
+    public void compareTo_roleALessThanRoleB_returnsNegative() {
+        Role roleA = new Role("Analyst");
+        Role roleB = new Role("Developer");
+
+        assertEquals(true, roleA.compareTo(roleB) < 0);
+    }
+
+    @Test
+    public void compareTo_roleAGreaterThanRoleB_returnsPositive() {
+        Role roleA = new Role("Manager");
+        Role roleB = new Role("Developer");
+
+        assertEquals(true, roleA.compareTo(roleB) > 0);
+    }
+
+    @Test
+    public void compareTo_rolesWithSpaces_correctOrder() {
+        Role roleA = new Role("Assistant Manager");
+        Role roleB = new Role("Developer");
+
+        assertEquals(true, roleA.compareTo(roleB) < 0);
+    }
+
+    @Test
+    public void compareTo_rolesWithDifferentCapitalization_correctOrder() {
+        Role roleA = new Role("developer");
+        Role roleB = new Role("Developer");
+
+        assertEquals(0, roleA.compareTo(roleB));
+    }
+
 }

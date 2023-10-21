@@ -1,10 +1,6 @@
 package seedu.address.logic.parser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
 
 import seedu.address.logic.Messages;
@@ -74,5 +70,25 @@ public class ArgumentMultimap {
         if (duplicatedPrefixes.length > 0) {
             throw new ParseException(Messages.getErrorMessageForDuplicatePrefixes(duplicatedPrefixes));
         }
+    }
+
+    /**
+     * Returns the number of arguments.
+     */
+    public int getLength() {
+        return argMultimap.size();
+    }
+
+    /**
+     * Returns the single prefix used in the argument. Assumes that only one prefix is used.
+     * If more than one prefix is used, an exception is thrown.
+     */
+    public Prefix getSinglePrefix() throws ParseException {
+        if (argMultimap.size() != 2) {
+            throw new ParseException("Expected a single prefix but found multiple.");
+        }
+        Iterator<Prefix> iterator = argMultimap.keySet().iterator();
+        Prefix first = iterator.next();
+        return first.getPrefix() == "" ? iterator.next() : first;
     }
 }

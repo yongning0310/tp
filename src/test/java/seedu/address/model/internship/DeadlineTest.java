@@ -86,4 +86,36 @@ public class DeadlineTest {
         Deadline deadline2 = new Deadline("10/10/2024", "11/11/2024");
         assertEquals(deadline1.hashCode(), deadline2.hashCode());
     }
+
+    @Test
+    public void compareTo_sameDate_returnsZero() {
+        Deadline deadline1 = new Deadline("01/01/2022", "02/01/2022");
+        Deadline deadline2 = new Deadline("01/01/2022", "02/01/2022");
+
+        assertEquals(0, deadline1.compareTo(deadline2));
+    }
+
+    @Test
+    public void compareTo_deadline1EarlierThanDeadline2_returnsNegative() {
+        Deadline deadline1 = new Deadline("01/01/2022", "03/01/2022");
+        Deadline deadline2 = new Deadline("02/01/2022", "03/01/2022");
+
+        assertEquals(true, deadline1.compareTo(deadline2) < 0);
+    }
+
+    @Test
+    public void compareTo_deadline1LaterThanDeadline2_returnsPositive() {
+        Deadline deadline1 = new Deadline("03/01/2022", "04/01/2022");
+        Deadline deadline2 = new Deadline("02/01/2022", "03/01/2022");
+
+        assertEquals(true, deadline1.compareTo(deadline2) > 0);
+    }
+
+    @Test
+    public void compareTo_datesOneDayApart_correctOrder() {
+        Deadline deadline1 = new Deadline("31/12/2021", "02/01/2022");
+        Deadline deadline2 = new Deadline("01/01/2022", "02/01/2022");
+
+        assertEquals(true, deadline1.compareTo(deadline2) < 0);
+    }
 }
