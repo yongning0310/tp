@@ -26,6 +26,10 @@ public class SortCommandParser implements InternshipParser<SortCommand> {
     public SortCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
+        if (args.trim().equals(SortCommand.DEFAULT_KEYWORD)) {
+            return new SortCommand();
+        }
+
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
                         PREFIX_START_DATE, PREFIX_DURATION, PREFIX_REQUIREMENT, PREFIX_DEADLINE);

@@ -92,7 +92,17 @@ public class SortCommandTest {
         expectedModel.sortInternships(InternshipComparators.BY_APPLICATION_STATUS);
         assertInternshipCommandSuccess(sortCommand, model, expectedMessage, expectedModel);
     }
-
+    @Test
+    public void execute_defaultConstructor_sortByDefaultValues() {
+        // This tests the default sorting behavior
+        SortCommand sortCommand = new SortCommand();
+        String expectedMessage = String.format(sortCommand.messageSuccess);
+        InternshipModel expectedModel = new InternshipModelManager(
+                new InternshipBook(model.getInternshipBook()),
+                new InternshipUserPrefs());
+        expectedModel.sortInternships(InternshipComparators.BY_COMPANY_NAME); // assuming default is company name ASC
+        assertInternshipCommandSuccess(sortCommand, model, expectedMessage, expectedModel);
+    }
     @Test
     public void testEquals() {
         SortCommand sortCommand1 = new SortCommand(PREFIX_COMPANY_NAME, SortCommand.Order.ASC);

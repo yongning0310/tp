@@ -18,8 +18,15 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 public class SortCommandParserTest {
 
+    private static final String DEFAULT_KEYWORD = SortCommand.DEFAULT_KEYWORD;
     private SortCommandParser parser = new SortCommandParser();
 
+    @Test
+    public void parse_defaultKeyword_returnsDefaultSortCommand() {
+        assertInternshipParseSuccess(parser,
+                " " + DEFAULT_KEYWORD,
+                new SortCommand());
+    }
     @Test
     public void parse_companyNameAsc_returnsSortCommand() {
         assertInternshipParseSuccess(parser,

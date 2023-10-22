@@ -37,6 +37,8 @@ public class SortCommand extends InternshipCommand {
             + "Example 2: " + COMMAND_WORD + " " + PREFIX_ROLE + " DESC";
     public static final String MESSAGE_INVALID_COLUMN = "The value entered for the category is invalid";
     public static final String MESSAGE_INVALID_ORDER = "The value entered for the order is invalid";
+    public static final String DEFAULT_KEYWORD = "default";
+
     public final Prefix category;
     /**
      * Enumerates the possible sorting orders.
@@ -52,6 +54,12 @@ public class SortCommand extends InternshipCommand {
 
     public final Order sortedOrder;
     public final String messageSuccess;
+    /**
+     * Creates a SortCommand to sort the internships by default of Company Name and Ascending Order.
+     */
+    public SortCommand() {
+        this(PREFIX_COMPANY_NAME, Order.ASC);
+    }
 
     /**
      * Creates a SortCommand to sort the internships.
@@ -80,6 +88,7 @@ public class SortCommand extends InternshipCommand {
 
         Comparator<Internship> comparator = createComparator();
         model.sortInternships(comparator);
+        model.updateSortComparator(comparator);
         return new CommandResult(String.format(messageSuccess));
     }
 

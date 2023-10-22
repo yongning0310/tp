@@ -167,6 +167,11 @@ public class CreateCommandTest {
         public void sortInternships(Comparator<Internship> comparator) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void updateSortComparator(Comparator<Internship> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
