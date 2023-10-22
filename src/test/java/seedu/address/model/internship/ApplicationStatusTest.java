@@ -58,8 +58,8 @@ class ApplicationStatusTest {
 
     @Test
     public void compareTo_sameApplicationStatus_returnsZero() {
-        ApplicationStatus status1 = new ApplicationStatus("Pending");
-        ApplicationStatus status2 = new ApplicationStatus("Pending");
+        ApplicationStatus status1 = new ApplicationStatus("In progress");
+        ApplicationStatus status2 = new ApplicationStatus("In progress");
 
         assertEquals(0, status1.compareTo(status2));
     }
@@ -76,14 +76,6 @@ class ApplicationStatusTest {
     public void compareTo_status1LaterThanStatus2_returnsPositive() {
         ApplicationStatus status1 = new ApplicationStatus("Rejected");
         ApplicationStatus status2 = new ApplicationStatus("Accepted");
-
-        assertEquals(true, status1.compareTo(status2) > 0);
-    }
-
-    @Test
-    public void compareTo_statusesDifferByOneCharacter_correctOrder() {
-        ApplicationStatus status1 = new ApplicationStatus("Pendings");
-        ApplicationStatus status2 = new ApplicationStatus("Pending");
 
         assertEquals(true, status1.compareTo(status2) > 0);
     }

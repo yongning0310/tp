@@ -36,7 +36,7 @@ public class InternshipModelManager implements InternshipModel {
 
         this.internshipBook = new InternshipBook(internshipBook);
         this.userPrefs = new InternshipUserPrefs(userPrefs);
-
+        sortInternships(currentComparator);
         this.filteredInternships = new FilteredList<>(this.internshipBook.getInternshipList());
     }
 

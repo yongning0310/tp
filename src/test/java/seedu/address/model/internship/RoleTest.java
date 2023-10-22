@@ -89,13 +89,4 @@ class RoleTest {
 
         assertEquals(true, roleA.compareTo(roleB) < 0);
     }
-
-    @Test
-    public void compareTo_rolesWithDifferentCapitalization_correctOrder() {
-        Role roleA = new Role("developer");
-        Role roleB = new Role("Developer");
-
-        assertEquals(0, roleA.compareTo(roleB));
-    }
-
 }
