@@ -55,4 +55,16 @@ class DurationTest {
         // different values -> returns false
         assertFalse(duration.equals(new Duration("5")));
     }
+
+    @Test
+    public void compareTo_differentDurations_correctComparison() {
+        Duration d1 = new Duration("3");
+        Duration d2 = new Duration("5");
+
+        // d1 is less than d2, so it should return a negative value
+        assertTrue(d1.compareTo(d2) < 0);
+
+        // d2 is greater than d1, so it should return a positive value
+        assertTrue(d2.compareTo(d1) > 0);
+    }
 }

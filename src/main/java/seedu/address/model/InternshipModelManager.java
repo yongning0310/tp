@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,13 +13,14 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.internship.Internship;
+import seedu.address.model.internship.InternshipComparators;
 
 /**
  * Represents the in-memory model of the internship book data.
  */
 public class InternshipModelManager implements InternshipModel {
     private static final Logger logger = LogsCenter.getLogger(InternshipModelManager.class);
-
+    private Comparator<Internship> currentComparator = InternshipComparators.BY_COMPANY_NAME; // default comparator
     private final InternshipBook internshipBook;
     private final InternshipUserPrefs userPrefs;
 
@@ -34,7 +36,7 @@ public class InternshipModelManager implements InternshipModel {
 
         this.internshipBook = new InternshipBook(internshipBook);
         this.userPrefs = new InternshipUserPrefs(userPrefs);
-
+        sortInternships(currentComparator);
         this.filteredInternships = new FilteredList<>(this.internshipBook.getInternshipList());
     }
 
@@ -80,6 +82,7 @@ public class InternshipModelManager implements InternshipModel {
     @Override
     public void setInternshipBook(ReadOnlyInternshipBook internshipBook) {
         this.internshipBook.resetData(internshipBook);
+        sortInternships(currentComparator);
     }
 
     @Override
@@ -104,6 +107,7 @@ public class InternshipModelManager implements InternshipModel {
     public void createInternship(Internship internship) {
         internshipBook.createInternship(internship);
         updateFilteredInternshipList(PREDICATE_SHOW_ALL_INTERNSHIPS);
+        sortInternships(currentComparator);
     }
 
     @Override
@@ -111,6 +115,17 @@ public class InternshipModelManager implements InternshipModel {
         requireAllNonNull(target, editedInternship);
 
         internshipBook.setInternship(target, editedInternship);
+        sortInternships(currentComparator);
+    }
+
+    @Override
+    public void sortInternships(Comparator<Internship> comparator) {
+        internshipBook.sortInternships(comparator);
+    }
+
+    @Override
+    public void updateSortComparator(Comparator<Internship> comparator) {
+        currentComparator = comparator;
     }
 
 

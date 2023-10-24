@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -96,6 +97,17 @@ public class InternshipBook implements ReadOnlyInternshipBook {
 
     public ObservableList<Internship> getInternshipList() {
         return this.internships.asUnmodifiableObservableList();
+    }
+
+    /**
+     * Sorts the list of internships based on the provided comparator.
+     *
+     * @param comparator The comparator to determine the order of internships.
+     * @throws NullPointerException if the provided comparator is null.
+     */
+    public void sortInternships(Comparator<Internship> comparator) {
+        requireNonNull(comparator);
+        internships.sortInternships(comparator);
     }
     @Override
     public boolean equals(Object other) {

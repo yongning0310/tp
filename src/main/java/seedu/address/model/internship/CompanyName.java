@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents an Internship's company name in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidCompanyName(String)}
  */
-public class CompanyName {
+public class CompanyName implements Comparable<CompanyName> {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Company names should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -63,4 +63,8 @@ public class CompanyName {
         return this.companyName.hashCode();
     }
 
+    @Override
+    public int compareTo(CompanyName other) {
+        return this.companyName.compareTo(other.companyName);
+    }
 }

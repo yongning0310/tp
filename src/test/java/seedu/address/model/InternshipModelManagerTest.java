@@ -7,6 +7,7 @@ import static seedu.address.model.InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalInternships.CITADEL;
 import static seedu.address.testutil.TypicalInternships.JANESTREET;
+import static seedu.address.testutil.TypicalInternships.OPTIVER;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,7 +15,10 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.internship.Internship;
+import seedu.address.model.internship.InternshipComparators;
 import seedu.address.model.internship.NameContainsKeywordsPredicate;
 import seedu.address.testutil.InternshipBookBuilder;
 
@@ -131,5 +135,25 @@ public class InternshipModelManagerTest {
         InternshipUserPrefs differentUserPrefs = new InternshipUserPrefs();
         differentUserPrefs.setInternshipFilePath(Paths.get("differentFilePath"));
         assertFalse(internshipModelManager.equals(new InternshipModelManager(internshipBook, differentUserPrefs)));
+    }
+
+    @Test
+    public void createInternship_internshipsAreSortedByComparator() {
+        internshipModelManager.createInternship(JANESTREET);
+        internshipModelManager.createInternship(CITADEL);
+        ObservableList<Internship> internships = internshipModelManager.getFilteredInternshipList();
+        // Assuming the default comparator is by company name
+        assertEquals(internships.get(0), CITADEL);
+        assertEquals(internships.get(1), JANESTREET);
+    }
+
+    @Test
+    public void updateSortComparator_internshipsAreSortedByNewComparator() {
+        internshipModelManager.updateSortComparator(InternshipComparators.BY_DURATION.reversed());
+        internshipModelManager.createInternship(JANESTREET);
+        internshipModelManager.createInternship(OPTIVER);
+        ObservableList<Internship> internships = internshipModelManager.getFilteredInternshipList();
+        assertEquals(internships.get(0), OPTIVER);
+        assertEquals(internships.get(1), JANESTREET);
     }
 }

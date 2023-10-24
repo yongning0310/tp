@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -75,6 +76,15 @@ public interface InternshipModel {
      * internship book.
      */
     void setInternship(Internship target, Internship editedInternship);
+
+    /**
+     * Sorts the internship book using the {@code comparator}.
+     */
+    void sortInternships(Comparator<Internship> comparator);
+    /**
+     * Updates the current sort comparator of internship book using the {@code comparator}.
+     */
+    void updateSortComparator(Comparator<Internship> comparator);
 
     /** Returns an unmodifiable view of the filtered internship list */
     ObservableList<Internship> getFilteredInternshipList();

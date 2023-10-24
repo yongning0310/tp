@@ -20,6 +20,12 @@ Flagship is a desktop application used to help aspiring students track internshi
     * Highlights: NIL
   * (Pull requests [\#23](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/23), )
 
+* **New Feature**: Added the ability to sort internships
+  * What it does: Allows the user to input a category and sort order, and this will sort the internship list.
+  * Justification: This feature improves the product because it allows the user to sort and see more relevant internships.
+  * Highlights: NIL
+  * (Pull requests [\#88](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/88), )
+
 * **New Feature**: (generic) to be added soon
 
 * **Documentation**:

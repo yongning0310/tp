@@ -3,6 +3,7 @@ package seedu.address.model.internship;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -106,6 +107,13 @@ public class UniqueInternshipList implements Iterable<Internship> {
      */
     public ObservableList<Internship> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
+    }
+
+    /**
+     * Sorts the list using the comparator.
+     */
+    public void sortInternships(Comparator<Internship> comparator) {
+        FXCollections.sort(internalList, comparator);
     }
 
     @Override
