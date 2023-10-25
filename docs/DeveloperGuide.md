@@ -300,6 +300,67 @@ Step 3. The internship entry is stored in `InternshipStorage`.
     * Pros: Label duplicates in the strictest possible sense 
     * Cons: Most accidental duplicate entries need not resemble one another completely across all attributes.
 
+### Sort feature
+
+### Sort Implementation
+
+The sort mechanism is facilitated by InternshipBook. InternshipBook provides us with the field of currentComparator, which stores the current sorting order of the lists. Additionally, it provides the main sort operation:
+
+- `UniqueInternshipList#sortInternships(comparator)` — Sorts the current internship list using the comparator.
+- `InternshipModelManager#updateSortComparator(comparator)` — Updates currentComparator to save the most recent sorted order.
+
+<box type="info" seamless>
+
+**Note:** The currentComparator takes on a default value of BY_COMPANY_NAME. The command `sort default` is equivalent to `sort co/ASC`.
+
+</box>
+
+The `UniqueInternshipList#sortInternships(comparator)` is called from the `InternshipModelManager#sortInternships(comparator)` method.
+
+Given below is an example usage scenario and how the sort mechanism behaves at each step.
+
+Step 1. The user launches the application and already has a bunch of internships listed. The currentComparator is in its default value.
+
+<puml src="diagrams/SortCommandState0.puml" alt="SortCommandState0" />
+
+Step 2. The user inputs `sort ro/ASC` (in the format of [CATEGORY]/[ASC/DESC]) and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `sort` command.
+
+<puml src="diagrams/SortCommandParse.puml" alt="SortCommandParse" />
+
+<box type="info" seamless>
+
+**Note:** If the command does not follow the valid format of a `sort` command, a ParseException will be thrown if the
+command does not correspond to any possible command formats, and we will not proceed to step 3. If it corresponds to the
+format of another valid command (that is not `sort`), subsequent execution in step 3 will follow the logic flow of
+the other corresponding command.
+
+</box>
+
+Step 3. The `sort` command is executed. The currentComparator field in InternshipBook is updated and `UniqueInternshipList#sortInternships(comparator)` is called.
+
+<puml src="diagrams/SortCommandState1.puml" alt="SortCommandState1" />
+
+<box type="info" seamless>
+
+**Note:** Once the currentComparator field is updated, any other operations on InternshipBook that edits the internship list will also call the `UniqueInternshipList#sortInternships(comparator)` command and sort the internship list after the update.
+
+</box>
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+
+#### Design considerations:
+
+**Aspect: How we retain the sort order:**
+
+* **Alternative 1 (current choice):** Keep track of the sorting and sort after every change made to internship book.
+    * Pros: Ensures the internship list remains sorted after modifications.
+    * Cons: Increases time complexity of operations.
+
+* **Alternative 2:** Ignore the current sorted order after a change is made
+    * Pros: Will reduce the complexity of operations as operations do not need to sort after making changes to the internship list.
+    * Cons: Will cause the updated list to be no longer sorted.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -366,20 +427,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to see list of internships
-2.  AddressBook shows a list of internships
+2.  InternshipBook shows a list of internships
 3.  User requests to delete a specific internship in the list
-4.  AddressBook deletes the internship
+4.  InternshipBook deletes the internship
 
     Use case ends.
 
 **Extensions**
 * 1a. Command is of invalid format
-    * 1a1. AddressBook shows an error message.
+    * 1a1. InternshipBook shows an error message.
   
     Use case ends.
 
 * 3a. Command is of invalid format
-    * 3a1. AddressBook shows an error message.
+    * 3a1. InternshipBook shows an error message.
     
     Use case ends.
 
@@ -388,11 +449,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to read internship entry
-2.  AddressBook shows the internship entry
+2.  InternshipBook shows the internship entry
 3.  User requests to edit a certain field of the internship entry
-4.  AddressBook shows the internship entry with the changes made
+4.  InternshipBook shows the internship entry with the changes made
 5.  User requests to exit editing mode
-6.  AddressBook saves the updated internship entry to the hard disk
+6.  InternshipBook saves the updated internship entry to the hard disk
 
     Use case ends.
 
@@ -404,7 +465,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. InternshipBook shows an error message.
 
       Use case resumes at step 2.
 

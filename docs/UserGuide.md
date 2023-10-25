@@ -35,7 +35,7 @@ Flagship is a **desktop app for managing internships, optimized for use via a Co
    * `modify 2 c/Jane Street ro/Coffee maker` : Modify the 2nd internship shown in current list with new company 
    and new role.
 
-   * `sort c/ASC ro/DESC` : Arrange the internships by company name in ascending order, then by 
+   * `sort c/ASC` : Arrange the internships by company name in ascending order, then by 
    role in descending order.
 
    * `filter c/Ja ro/SWE` : Display only internships from companies with the name containing "Ja" and 
@@ -143,6 +143,8 @@ Format: `sort [category]/[ASC/DESC]`
 
 * `ASC` indicates ascending order, and `DESC` denotes descending order.
 * A subsequent `sort` command will replace the prior one. Otherwise, the initial sort remains effective.
+* The default sort state is by company name in ascending order.
+* `sort default` returns the list to its default sort state.
 
 Examples:
 * `sort c/ASC` sorts entries by company name (ascending).
