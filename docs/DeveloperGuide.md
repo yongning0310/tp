@@ -323,6 +323,12 @@ Step 1. The user launches the application and already has a bunch of internships
 
 <puml src="diagrams/SortCommandState0.puml" alt="SortCommandState0" />
 
+<box type="info" seamless>
+
+**Note:** This diagram shows the high level diagram with the intermediate layers hidden. It is meant to show the order of the internships within the list.
+
+</box>
+
 Step 2. The user inputs `sort ro/ASC` (in the format of [CATEGORY]/[ASC/DESC]) and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `sort` command.
 
 <puml src="diagrams/SortCommandParse.puml" alt="SortCommandParse" />
@@ -343,6 +349,7 @@ Step 3. The `sort` command is executed. The currentComparator field in Internshi
 <box type="info" seamless>
 
 **Note:** Once the currentComparator field is updated, any other operations on InternshipBook that edits the internship list will also call the `UniqueInternshipList#sortInternships(comparator)` command and sort the internship list after the update.
+This diagram shows the high level diagram with the intermediate layers hidden. It is meant to show the order of the internships within the list.
 
 </box>
 
