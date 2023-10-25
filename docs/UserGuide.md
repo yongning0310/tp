@@ -60,6 +60,7 @@ Flagship is a **desktop app for managing internships, optimized for use via a Co
 - **Compulsory Parameters**: Some parameters must be provided.
     - `c/` → `COMPANY_NAME`: Cannot be left blank.
     - `ro/` → `ROLE`: Cannot be left blank.
+    - `a/` → `APPLICATION STATUS`: Cannot be left blank. 
     - `de/` → `DEADLINE`: Required, formatted as dd/mm/yyyy.
     - `s/` → `START_DATE`: Required, formatted as dd/mm/yyyy.
     - `du/` → `DURATION`: Required, a positive integer representing the number of months.
@@ -113,6 +114,7 @@ Format: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d
 
 * Modify the internship at the specified `INDEX`. This index correlates with the position in the displayed internship list. It **must be a positive integer**, e.g., 1, 2, 3, …​.
 * New inputs will overwrite existing values.
+* Not all categories need to be specified.
 * Categories that are not included will keep the previous values.
 * Editing requirements will replace current requirements; adding requirements doesn't accumulate.
 * Use the command without `re/` to remove all of an internship's requirements.
