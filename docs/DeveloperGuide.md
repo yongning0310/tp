@@ -262,7 +262,7 @@ Given below is an example usage scenario and how the create command behaves at e
 Step 1. The user inputs `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee` 
 and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `create` command.
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
+<puml src="diagrams/CreateCommandParse.puml" alt="CreateCommandParse" />
 
 <box type="info" seamless>
 
@@ -276,7 +276,7 @@ the other corresponding command.
 Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipStorage`, the internship 
 entry is created successfully.
 
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
+<puml src="diagrams/CreateCommandExecute.puml" alt="CreateCommandExecute" />
 
 <box type="info" seamless>
 
@@ -286,7 +286,7 @@ entry is created successfully.
 
 Step 3. The internship entry is stored in `InternshipStorage`.
 
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
+<puml src="diagrams/CreateCommandStore.puml" alt="CreateCommandStore" />
 
 #### Design considerations:
 
