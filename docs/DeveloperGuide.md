@@ -1,10 +1,10 @@
 ---
-  layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+layout: default.md
+title: "Developer Guide"
+pageNav: 3
 ---
 
-# FlagShip Developer Guide
+# Flagship Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -42,9 +42,9 @@ Given below is a quick overview of main components and how they interact with ea
 The bulk of the app's work is done by the following four components:
 
 * [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`InternshipLogic`**](#logic-component): The command executor.
+* [**`InternshipModel`**](#model-component): Holds the data of the App in memory.
+* [**`InternshipStorage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
@@ -101,9 +101,9 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. When `Logic` is called upon to execute a command, it is passed to an `InternshipBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete an internship).
+1. The command can communicate with the `InternshipModel` when it is executed (e.g. to delete an internship).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
@@ -111,8 +111,8 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* When called upon to parse a user command, the `InternshipBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `CreateCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `CreateCommand`) which the `InternshipBookParser` returns back as a `Command` object.
+* All `XYZCommandParser` classes (e.g., `CreateCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
@@ -120,16 +120,16 @@ How the parsing works:
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
 
-The `Model` component,
+The `InternshipModel` component,
 
 * stores the address book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
 * stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+* does not depend on any of the other three components (as the `InternshipModel` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Internship` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Internship` needing their own `Tag` objects.<br>
+**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` list in the `InternshipBook`, which `Internship` references. This allows `InternshipBook` to only require one `Requirement` object per unique requirement, instead of each `Internship` needing their own `Requirement` objects.<br>
 
 <puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
 
@@ -142,10 +142,10 @@ The `Model` component,
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
-The `Storage` component,
+The `InternshipStorage` component,
 * can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* inherits from both `InternshipBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* depends on some classes in the `InternshipModel` component (because the `InternshipStorage` component's job is to save/retrieve objects that belong to the `InternshipModel`)
 
 ### Common classes
 
@@ -179,7 +179,7 @@ Step 2. The user executes `delete 5` command to delete the 5th internship in the
 
 <puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
 
-Step 3. The user executes `create c/[COMPANY] ro/[ROLE] a/[APPLICATION_STATUS] s/[STARTDATE] d/[DURATION] r/[REQUIREMENT] …​` to add a new internship. The `create` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `create c/[COMPANY_NAME] ro/[ROLE] a/[APPLICATION_STATUS] de/[DEADLINE] s/[START_DATE] d/[DURATION] r/[REQUIREMENT]…​` to add a new internship. The `create` command also calls `InternshipModel#commitInternshipBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
 <puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
 
@@ -246,9 +246,59 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+### Create command
+
+#### Implementation
+
+The create command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `create` command with a valid format.
+Upon successful verification, the `create` command is executed. The internship entry's `COMPANY_NAME` and `ROLE` is checked for potential duplicates in the existing database managed by `InternshipStorage`. 
+If none is found, the internship entry is successfully created and stored in `InternshipStorage`.
+
+The create command is exposed in the `InternshipModel` interface as `InternshipModel#createInternship`.
+
+Given below is an example usage scenario and how the create command behaves at each step.
+
+Step 1. The user inputs `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee` 
+and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `create` command.
+
+<puml src="diagrams/CreateCommandParse.puml" alt="CreateCommandParse" />
+
+<box type="info" seamless>
+
+**Note:** If the command does not follow the valid format of a `create` command, a ParseException will be thrown if the 
+command does not correspond to any possible command formats, and we will not proceed to step 2. If it corresponds to the 
+format of another valid command (that is not `create`), subsequent execution in step 2 will follow the logic flow of 
+the other corresponding command.
+
+</box>
+
+Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipStorage`, the internship 
+entry is created successfully.
+
+<puml src="diagrams/CreateCommandExecute.puml" alt="CreateCommandExecute" />
+
+<box type="info" seamless>
+
+**Note:** If there exists a duplicate entry, a CommandException will be thrown, and we will not proceed to step 3.
+
+</box>
+
+Step 3. The internship entry is stored in `InternshipStorage`.
+
+<puml src="diagrams/CreateCommandStore.puml" alt="CreateCommandStore" />
+
+#### Design considerations:
+
+**Aspect: What constitutes a duplicate internship entry:**
+
+* **Alternative 1 (current choice):** Case-sensitive, identical `COMPANY_NAME` and `ROLE` is individually sufficient
+    * Pros: Easy to manage and debug
+    * Cons: Does not label duplicates in the strict equality sense 
+
+* **Alternative 2:** Case-sensitive, identical attributes across all fields are necessary for an entry to be classified a duplicate
+    * Pros: Label duplicates in the strictest possible sense 
+    * Cons: Most accidental duplicate entries need not resemble one another completely across all attributes.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -295,7 +345,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `InternshipBook` and the **Actor** is the `user`, unless specified otherwise)
 
 
 **UC1: Create an internship entry**
@@ -303,11 +353,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to create an internship entry with the necessary details
-2.  AddressBook adds the internship entry to the list
+2.  InternshipBook adds the internship entry to the list
 
 **Extensions**
 * 1a. Command is of invalid format
-    * 1a1. AddressBook shows an error message.
+    * 1a1. InternshipBook shows an error message.
 
     Use case ends.
 

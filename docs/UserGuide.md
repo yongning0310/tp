@@ -1,12 +1,12 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: default.md
+title: "User Guide"
+pageNav: 3
 ---
 
-# FlagShip User Guide
+# Flagship User Guide
 
-FlagShip is a **desktop app for managing internships, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, FlagShip can get your internship management tasks done faster than traditional GUI apps.
+Flagship is a **desktop app for managing internships, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Flagship can get your internship management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -17,15 +17,15 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `internshipBook.jar` from [here](https://github.com/se-edu/internshipBook/releases).
+1. Download the latest `flagship.jar` from [here](https://github.com/AY2324S1-CS2103T-W17-1/tp/releases/tag/v1.2).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your InternshipBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internshipBook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar flagship.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Type the command in the command box and press Enter to execute it.<br>
    Some example commands you can try:
 
    * `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee` : Creates an internship named `Jane Street` to Flagship.
@@ -41,7 +41,6 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
    * `filter c/Ja ro/SWE` : Display only internships from companies with the name containing "Ja" and 
    roles that include "SWE".
 
-
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -53,7 +52,7 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
 ## Command Format Notes:
 
 - **Parameters in `UPPER_CASE`**: These indicate the values to be supplied by the user.
-    - Example: For the command `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS`, you might input:
+    - Example: For the command `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENT`, you might input:
       ```
       create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee
       ```
@@ -73,6 +72,7 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
 
 [//]: # (- **Commands Without Parameters**: Some commands do not require parameters. Additional parameters for these commands will be ignored.)
 
+[//]: # ()
 [//]: # (    - Example: Using `help 123` will simply be interpreted as `help`.)
 
 > Tip: If you're referencing a PDF version of this guide, be cautious when copying multi-line commands. Ensure no spaces or line-breaks are omitted when pasting into the application.
@@ -95,15 +95,15 @@ FlagShip is a **desktop app for managing internships, optimized for use via a  L
 
 Add an internship entry to Flagship.
 
-Format: `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
+Format: `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...`
 
 
 **Tip:** Internships can have multiple requirements, or even none at all.
 </box>
 
 Examples:
-* `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/15/12/2022 du/3 re/C++ re/Coffee`
-* `create c/Citadel ro/Coffee pourer a/Applied s/24/04/2022 de/29/11/2022 du/1`
+* `create c/Jane Street ro/Coffee maker a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`
+* `create c/Citadel ro/Coffee pourer a/Applied de/29/11/2022 s/24/04/2022 du/1`
 
 ### Editing an Internship: `modify`
 
@@ -194,9 +194,10 @@ InternshipBook data are saved automatically as a JSON file `[JAR file location]/
 If your changes to the data file makes its format invalid, InternshipBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+[//]: # (### Archiving data files `[coming in v2.0]`)
 
-_Details coming soon ..._
+[//]: # ()
+[//]: # (_Details coming soon ..._)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -215,13 +216,13 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/15/12/2022 du/3 re/C++ re/Coffee`
-**Modify**  | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
-**Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`
-**Sort**   | `sort [category]/[ASC/DESC]` <br> e.g.,  `sort de/ASC` 
-**Delete**   | `delete INDEX`<br> e.g., `delete 2`
+| Action     | Format, Examples                                                                                                                                                                                                                                 |
+|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`                  |
+| **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` |
+| **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                              |
+| **Sort**   | `sort [category]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                           |
+| **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                              |
 
 [//]: # (**List**   | `list`)
 
