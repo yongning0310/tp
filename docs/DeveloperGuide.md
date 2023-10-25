@@ -311,7 +311,7 @@ The sort mechanism is facilitated by InternshipBook. InternshipBook provides us 
 
 <box type="info" seamless>
 
-**Note:** The currentComparator takes on a default value of BY_COMPANY_NAME
+**Note:** The currentComparator takes on a default value of BY_COMPANY_NAME. The command `sort default` is equivalent to `sort co/ASC`.
 
 </box>
 
