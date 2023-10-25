@@ -54,9 +54,8 @@ public interface InternshipModel {
     /** Returns the internshipBook */
     ReadOnlyInternshipBook getInternshipBook();
 
-    // DELETE THIS WHEN hasInternship is fully functional
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the internship book.
+     * Returns true if an internship with the same identity as {@code internship} exists in the internship book.
      */
     boolean hasInternship(Internship internship);
 
