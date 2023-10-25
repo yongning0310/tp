@@ -323,7 +323,7 @@ Step 1. The user launches the application and already has a bunch of internships
 
 <puml src="diagrams/SortCommandState0.puml" alt="SortCommandState0" />
 
-Step 2. The user inputs `sort ro/ASC` and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `sort` command.
+Step 2. The user inputs `sort ro/ASC` (in the format of [CATEGORY]/[ASC/DESC]) and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `sort` command.
 
 <puml src="diagrams/SortCommandParse.puml" alt="SortCommandParse" />
 
