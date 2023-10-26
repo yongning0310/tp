@@ -18,7 +18,7 @@ public class Role {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    private final String role;
+    protected final String role;
 
     /**
      * Constructs a {@code Role}.

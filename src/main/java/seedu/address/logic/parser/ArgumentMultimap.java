@@ -1,14 +1,10 @@
 package seedu.address.logic.parser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-
 import seedu.address.logic.Messages;
 import seedu.address.logic.parser.exceptions.ParseException;
+
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * Stores mapping of prefixes to their respective arguments.
@@ -74,5 +70,15 @@ public class ArgumentMultimap {
         if (duplicatedPrefixes.length > 0) {
             throw new ParseException(Messages.getErrorMessageForDuplicatePrefixes(duplicatedPrefixes));
         }
+    }
+
+    /**
+     * Returns true if only one prefix is present.
+     */
+    public boolean isOnlyOnePrefixPresent() {
+        long count = argMultimap.keySet().stream()
+                .filter(prefix -> !prefix.getPrefix().isEmpty())
+                .count();
+        return count == 1;
     }
 }
