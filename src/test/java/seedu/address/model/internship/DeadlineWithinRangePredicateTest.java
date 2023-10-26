@@ -18,6 +18,61 @@ import seedu.address.testutil.InternshipBuilder;
  * @see DeadlineWithinRangePredicate
  */
 public class DeadlineWithinRangePredicateTest {
+    @Test
+    public void equals_sameObject_returnsTrue() {
+        Deadline firstDeadline = new Deadline("10/01/2023", "11/01/2023");
+        Deadline secondDeadline = new Deadline("20/01/2023", "21/01/2023");
+        DeadlineWithinRangePredicate predicate = new DeadlineWithinRangePredicate(Arrays.asList(firstDeadline,
+                secondDeadline));
+        assertTrue(predicate.equals(predicate));
+    }
+
+    @Test
+    public void equals_sameValues_returnsTrue() {
+        Deadline firstDeadline = new Deadline("10/01/2023", "11/01/2023");
+        Deadline secondDeadline = new Deadline("20/01/2023", "21/01/2023");
+
+        DeadlineWithinRangePredicate firstPredicate = new DeadlineWithinRangePredicate(Arrays.asList(firstDeadline,
+                secondDeadline));
+        DeadlineWithinRangePredicate secondPredicate = new DeadlineWithinRangePredicate(Arrays.asList(firstDeadline,
+                secondDeadline));
+
+        assertTrue(firstPredicate.equals(secondPredicate));
+    }
+
+    @Test
+    public void equals_differentTypes_returnsFalse() {
+        Deadline firstDeadline = new Deadline("10/01/2023", "11/01/2023");
+        Deadline secondDeadline = new Deadline("20/01/2023", "21/01/2023");
+        DeadlineWithinRangePredicate predicate = new DeadlineWithinRangePredicate(Arrays.asList(firstDeadline,
+                secondDeadline));
+
+        assertFalse(predicate.equals(1));
+    }
+
+    @Test
+    public void equals_null_returnsFalse() {
+        Deadline firstDeadline = new Deadline("10/01/2023", "11/01/2023");
+        Deadline secondDeadline = new Deadline("20/01/2023", "21/01/2023");
+        DeadlineWithinRangePredicate predicate = new DeadlineWithinRangePredicate(Arrays.asList(firstDeadline,
+                secondDeadline));
+
+        assertFalse(predicate.equals(null));
+    }
+
+    @Test
+    public void equals_differentValues_returnsFalse() {
+        Deadline firstDeadline = new Deadline("10/01/2023", "11/01/2023");
+        Deadline secondDeadline = new Deadline("20/01/2023", "21/01/2023");
+        Deadline thirdDeadline = new Deadline("25/01/2023", "26/01/2023");
+
+        DeadlineWithinRangePredicate firstPredicate = new DeadlineWithinRangePredicate(Arrays.asList(firstDeadline,
+                secondDeadline));
+        DeadlineWithinRangePredicate secondPredicate = new DeadlineWithinRangePredicate(Arrays.asList(firstDeadline,
+                thirdDeadline));
+
+        assertFalse(firstPredicate.equals(secondPredicate));
+    }
 
     @Test
     public void test_deadlineIsWithinRange_returnsTrue() {

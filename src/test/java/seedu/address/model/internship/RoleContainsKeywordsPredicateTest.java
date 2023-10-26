@@ -20,6 +20,46 @@ import seedu.address.testutil.InternshipBuilder;
  * @see RoleContainsKeywordsPredicate
  */
 public class RoleContainsKeywordsPredicateTest {
+    @Test
+    public void equals_sameObject_returnsTrue() {
+        RoleContainsKeywordsPredicate predicate = new RoleContainsKeywordsPredicate(Collections
+                .singletonList("Software"));
+        assertTrue(predicate.equals(predicate));
+    }
+
+    @Test
+    public void equals_sameValues_returnsTrue() {
+        RoleContainsKeywordsPredicate firstPredicate = new RoleContainsKeywordsPredicate(Collections
+                .singletonList("Software"));
+        RoleContainsKeywordsPredicate secondPredicate = new RoleContainsKeywordsPredicate(Collections
+                .singletonList("Software"));
+
+        assertTrue(firstPredicate.equals(secondPredicate));
+    }
+
+    @Test
+    public void equals_differentTypes_returnsFalse() {
+        RoleContainsKeywordsPredicate predicate = new RoleContainsKeywordsPredicate(Collections
+                .singletonList("Software"));
+        assertFalse(predicate.equals(1));
+    }
+
+    @Test
+    public void equals_null_returnsFalse() {
+        RoleContainsKeywordsPredicate predicate = new RoleContainsKeywordsPredicate(Collections
+                .singletonList("Software"));
+        assertFalse(predicate.equals(null));
+    }
+
+    @Test
+    public void equals_differentValues_returnsFalse() {
+        RoleContainsKeywordsPredicate firstPredicate = new RoleContainsKeywordsPredicate(
+                Arrays.asList("Software", "Engineer"));
+        RoleContainsKeywordsPredicate secondPredicate = new RoleContainsKeywordsPredicate(
+                Arrays.asList("Data", "Scientist"));
+
+        assertFalse(firstPredicate.equals(secondPredicate));
+    }
 
     @Test
     public void test_roleContainsKeywords_returnsTrue() {

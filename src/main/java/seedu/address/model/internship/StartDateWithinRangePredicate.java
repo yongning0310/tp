@@ -41,6 +41,7 @@ public class StartDateWithinRangePredicate implements Predicate<Internship> {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("startDateRange", startDateRange).toString();
+        return new ToStringBuilder(this).add("startDateRange", startDateRange)
+                .toString();
     }
 }

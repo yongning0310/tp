@@ -1,6 +1,8 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -18,6 +20,43 @@ import seedu.address.testutil.InternshipBuilder;
  * @see StartDateWithinRangePredicate
  */
 public class StartDateWithinRangePredicateTest {
+    @Test
+    public void equals_sameObject_returnsTrue() {
+        StartDateWithinRangePredicate predicateOne =
+                new StartDateWithinRangePredicate(Arrays.asList(new StartDate("01/01/2021"),
+                        new StartDate("01/01/2022")));
+        assertEquals(predicateOne, predicateOne);
+    }
+
+    @Test
+    public void equals_differentType_returnsFalse() {
+        StartDateWithinRangePredicate predicate =
+                new StartDateWithinRangePredicate(Arrays.asList(new StartDate("01/01/2021"),
+                        new StartDate("01/01/2022")));
+        assertNotEquals(predicate, new Object());
+    }
+
+    @Test
+    public void equals_differentPredicateWithSameDates_returnsTrue() {
+        StartDateWithinRangePredicate predicateOne =
+                new StartDateWithinRangePredicate(Arrays.asList(new StartDate("01/01/2021"),
+                        new StartDate("01/01/2022")));
+        StartDateWithinRangePredicate predicateTwo =
+                new StartDateWithinRangePredicate(Arrays.asList(new StartDate("01/01/2021"),
+                        new StartDate("01/01/2022")));
+        assertEquals(predicateOne, predicateTwo);
+    }
+
+    @Test
+    public void equals_differentPredicateWithDifferentDates_returnsFalse() {
+        StartDateWithinRangePredicate predicateOne =
+                new StartDateWithinRangePredicate(Arrays.asList(new StartDate("01/01/2021"),
+                        new StartDate("01/01/2022")));
+        StartDateWithinRangePredicate predicateTwo =
+                new StartDateWithinRangePredicate(Arrays.asList(new StartDate("01/01/2020"),
+                        new StartDate("01/01/2021")));
+        assertNotEquals(predicateOne, predicateTwo);
+    }
 
     @Test
     public void test_startDateWithinRange_returnsTrue() {
