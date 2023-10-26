@@ -5,9 +5,14 @@ import static seedu.address.logic.commands.CommandTestUtil.APPLICATION_STATUS_DE
 import static seedu.address.logic.commands.CommandTestUtil.COMPANY_NAME_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.COMPANY_NAME_DESC_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_APPLICATION_STATUS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMPANY_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_REQUIREMENT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_START_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.REQUIREMENT_DESC_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.REQUIREMENT_DESC_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.START_DATE_DESC_JANESTREET;
@@ -31,13 +36,12 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
-//import seedu.address.model.internship.ApplicationStatus;
-//import seedu.address.model.internship.CompanyName;
-//import seedu.address.model.internship.Deadline;
-//import seedu.address.model.internship.Duration;
-//import seedu.address.model.internship.Role;
-//import seedu.address.model.internship.StartDate;
-//import seedu.address.model.requirement.Requirement;
+import seedu.address.model.internship.ApplicationStatus;
+import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Duration;
+import seedu.address.model.internship.Role;
+import seedu.address.model.internship.StartDate;
+import seedu.address.model.requirement.Requirement;
 import seedu.address.testutil.EditInternshipDescriptorBuilder;
 
 public class ModifyCommandParserTest {
@@ -76,7 +80,7 @@ public class ModifyCommandParserTest {
         assertInternshipParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
     }
 
-    /*
+
     @Test
     public void parse_invalidValue_failure() {
         assertInternshipParseFailure(
@@ -91,10 +95,14 @@ public class ModifyCommandParserTest {
                 parser,
                 "1" + INVALID_APPLICATION_STATUS_DESC,
                 ApplicationStatus.MESSAGE_CONSTRAINTS); // invalid application status
+
+        /*
         assertInternshipParseFailure(
                 parser,
                 "1" + INVALID_DEADLINE_DESC,
                 Deadline.MESSAGE_CONSTRAINTS); // invalid deadline
+         */
+
         assertInternshipParseFailure(
                 parser,
                 "1" + INVALID_START_DATE_DESC,
@@ -109,13 +117,16 @@ public class ModifyCommandParserTest {
                 Requirement.MESSAGE_CONSTRAINTS); // invalid requirement
 
         // invalid company name followed by valid role
+        /*
         assertInternshipParseFailure(
                 parser,
                 "1" + INVALID_COMPANY_NAME_DESC + ROLE_DESC_JANESTREET,
-                Role.MESSAGE_CONSTRAINTS);
+      Role.MESSAGE_CONSTRAINTS);
+         */
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
+
         assertInternshipParseFailure(parser, "1" + REQUIREMENT_DESC_JANESTREET
                 + REQUIREMENT_DESC_OPTIVER + REQUIREMENT_EMPTY, Requirement.MESSAGE_CONSTRAINTS);
         assertInternshipParseFailure(parser, "1" + REQUIREMENT_DESC_JANESTREET
@@ -127,6 +138,7 @@ public class ModifyCommandParserTest {
         assertInternshipParseFailure(parser, "1" + INVALID_COMPANY_NAME_DESC + INVALID_ROLE_DESC,
                 CompanyName.MESSAGE_CONSTRAINTS);
     }
+    /*
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_INTERNSHIP;
@@ -145,8 +157,9 @@ public class ModifyCommandParserTest {
         ModifyCommand expectedCommand = new ModifyCommand(targetIndex, descriptor);
 
         assertInternshipParseSuccess(parser, userInput, expectedCommand);
-    }
-    */
+      }
+     */
+
 
     @Test
     public void parse_someFieldsSpecified_success() {

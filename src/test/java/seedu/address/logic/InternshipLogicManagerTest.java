@@ -171,7 +171,7 @@ public class InternshipLogicManagerTest {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
         // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
-        JsonInternshipBookStorage addressBookStorage = new JsonInternshipBookStorage(prefPath) {
+        JsonInternshipBookStorage internshipBookStorage = new JsonInternshipBookStorage(prefPath) {
             @Override
             public void saveInternshipBook(ReadOnlyInternshipBook addressBook, Path filePath)
                     throws IOException {
@@ -181,7 +181,7 @@ public class InternshipLogicManagerTest {
 
         JsonInternshipUserPrefsStorage userPrefsStorage =
                 new JsonInternshipUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        InternshipStorageManager storage = new InternshipStorageManager(addressBookStorage, userPrefsStorage);
+        InternshipStorageManager storage = new InternshipStorageManager(internshipBookStorage, userPrefsStorage);
 
         logic = new InternshipLogicManager(model, storage);
 
