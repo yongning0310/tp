@@ -23,7 +23,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class InternshipMainWindow extends UiPart<Stage> {
 
-    private static final String FXML = "MainWindow.fxml";
+    private static final String FXML = "InternshipMainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -51,7 +51,7 @@ public class InternshipMainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Creates a {@code MainWindow} with the given {@code Stage} and {@code InternshipLogic}.
      */
     public InternshipMainWindow(Stage primaryStage, InternshipLogic logic) {
         super(FXML, primaryStage);
@@ -170,7 +170,7 @@ public class InternshipMainWindow extends UiPart<Stage> {
     /**
      * Executes the command and returns the result.
      *
-     * @see seedu.address.logic.Logic#execute(String)
+     * @see seedu.address.logic.InternshipLogic#execute(String)
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {

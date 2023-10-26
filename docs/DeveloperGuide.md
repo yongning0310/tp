@@ -1,10 +1,10 @@
 ---
-  layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+layout: default.md
+title: "Developer Guide"
+pageNav: 3
 ---
 
-# FlagShip Developer Guide
+# Flagship Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -42,9 +42,9 @@ Given below is a quick overview of main components and how they interact with ea
 The bulk of the app's work is done by the following four components:
 
 * [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`InternshipLogic`**](#logic-component): The command executor.
+* [**`InternshipModel`**](#model-component): Holds the data of the App in memory.
+* [**`InternshipStorage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
@@ -84,7 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`InternshipLogic.java`](https://github.com/AY2324S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/logic/InternshipLogic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -101,9 +101,9 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. When `Logic` is called upon to execute a command, it is passed to an `InternshipBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete an internship).
+1. The command can communicate with the `InternshipModel` when it is executed (e.g. to delete an internship).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
@@ -111,8 +111,8 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* When called upon to parse a user command, the `InternshipBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `CreateCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `CreateCommand`) which the `InternshipBookParser` returns back as a `Command` object.
+* All `XYZCommandParser` classes (e.g., `CreateCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
@@ -120,16 +120,16 @@ How the parsing works:
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
 
-The `Model` component,
+The `InternshipModel` component,
 
 * stores the address book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
 * stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+* does not depend on any of the other three components (as the `InternshipModel` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Internship` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Internship` needing their own `Tag` objects.<br>
+**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` list in the `InternshipBook`, which `Internship` references. This allows `InternshipBook` to only require one `Requirement` object per unique requirement, instead of each `Internship` needing their own `Requirement` objects.<br>
 
 <puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
 
@@ -142,10 +142,10 @@ The `Model` component,
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
-The `Storage` component,
+The `InternshipStorage` component,
 * can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* inherits from both `InternshipBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* depends on some classes in the `InternshipModel` component (because the `InternshipStorage` component's job is to save/retrieve objects that belong to the `InternshipModel`)
 
 ### Common classes
 
@@ -179,7 +179,7 @@ Step 2. The user executes `delete 5` command to delete the 5th internship in the
 
 <puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
 
-Step 3. The user executes `create c/[COMPANY] ro/[ROLE] a/[APPLICATION_STATUS] s/[STARTDATE] d/[DURATION] r/[REQUIREMENT] …​` to add a new internship. The `create` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `create c/[COMPANY_NAME] ro/[ROLE] a/[APPLICATION_STATUS] de/[DEADLINE] s/[START_DATE] d/[DURATION] r/[REQUIREMENT]…​` to add a new internship. The `create` command also calls `InternshipModel#commitInternshipBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
 <puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
 
@@ -246,9 +246,181 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+### Create command
+
+#### Implementation
+
+The create command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `create` command with a valid format.
+Upon successful verification, the `create` command is executed. The internship entry's `COMPANY_NAME` and `ROLE` is checked for potential duplicates in the existing database managed by `InternshipStorage`. 
+If none is found, the internship entry is successfully created and stored in `InternshipStorage`.
+
+The create command is exposed in the `InternshipModel` interface as `InternshipModel#createInternship`.
+
+Given below is an example usage scenario and how the create command behaves at each step.
+
+Step 1. The user inputs `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee` 
+and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `create` command.
+
+<puml src="diagrams/CreateCommandParse.puml" alt="CreateCommandParse" />
+
+<box type="info" seamless>
+
+**Note:** If the command does not follow the valid format of a `create` command, a ParseException will be thrown if the 
+command does not correspond to any possible command formats, and we will not proceed to step 2. If it corresponds to the 
+format of another valid command (that is not `create`), subsequent execution in step 2 will follow the logic flow of 
+the other corresponding command.
+
+</box>
+
+Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipStorage`, the internship 
+entry is created successfully.
+
+<puml src="diagrams/CreateCommandExecute.puml" alt="CreateCommandExecute" />
+
+<box type="info" seamless>
+
+**Note:** If there exists a duplicate entry, a CommandException will be thrown, and we will not proceed to step 3.
+
+</box>
+
+Step 3. The internship entry is stored in `InternshipStorage`.
+
+<puml src="diagrams/CreateCommandStore.puml" alt="CreateCommandStore" />
+
+#### Design considerations:
+
+**Aspect: What constitutes a duplicate internship entry:**
+
+* **Alternative 1 (current choice):** Case-sensitive, identical `COMPANY_NAME` and `ROLE` is individually sufficient
+    * Pros: Easy to manage and debug
+    * Cons: Does not label duplicates in the strict equality sense 
+
+* **Alternative 2:** Case-sensitive, identical attributes across all fields are necessary for an entry to be classified a duplicate
+    * Pros: Label duplicates in the strictest possible sense 
+    * Cons: Most accidental duplicate entries need not resemble one another completely across all attributes.
+
+### Sort feature
+
+### Sort Implementation
+
+The sort mechanism is facilitated by InternshipBook. InternshipBook provides us with the field of currentComparator, which stores the current sorting order of the lists. Additionally, it provides the main sort operation:
+
+- `UniqueInternshipList#sortInternships(comparator)` — Sorts the current internship list using the comparator.
+- `InternshipModelManager#updateSortComparator(comparator)` — Updates currentComparator to save the most recent sorted order.
+
+<box type="info" seamless>
+
+**Note:** The currentComparator takes on a default value of BY_COMPANY_NAME. The command `sort default` is equivalent to `sort co/ASC`.
+
+</box>
+
+The `UniqueInternshipList#sortInternships(comparator)` is called from the `InternshipModelManager#sortInternships(comparator)` method.
+
+Given below is an example usage scenario and how the sort mechanism behaves at each step.
+
+Step 1. The user launches the application and already has a bunch of internships listed. The currentComparator is in its default value.
+
+<puml src="diagrams/SortCommandState0.puml" alt="SortCommandState0" />
+
+<box type="info" seamless>
+
+**Note:** This diagram shows the high level diagram with the intermediate layers hidden. It is meant to show the order of the internships within the list.
+
+</box>
+
+Step 2. The user inputs `sort ro/ASC` (in the format of [CATEGORY]/[ASC/DESC]) and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `sort` command.
+
+<puml src="diagrams/SortCommandParse.puml" alt="SortCommandParse" />
+
+<box type="info" seamless>
+
+**Note:** If the command does not follow the valid format of a `sort` command, a ParseException will be thrown if the
+command does not correspond to any possible command formats, and we will not proceed to step 3. If it corresponds to the
+format of another valid command (that is not `sort`), subsequent execution in step 3 will follow the logic flow of
+the other corresponding command.
+
+</box>
+
+Step 3. The `sort` command is executed. The currentComparator field in InternshipBook is updated and `UniqueInternshipList#sortInternships(comparator)` is called.
+
+<puml src="diagrams/SortCommandState1.puml" alt="SortCommandState1" />
+
+<box type="info" seamless>
+
+**Note:** Once the currentComparator field is updated, any other operations on InternshipBook that edits the internship list will also call the `UniqueInternshipList#sortInternships(comparator)` command and sort the internship list after the update.
+This diagram shows the high level diagram with the intermediate layers hidden. It is meant to show the order of the internships within the list.
+
+</box>
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+
+#### Design considerations:
+
+**Aspect: How we retain the sort order:**
+
+* **Alternative 1 (current choice):** Keep track of the sorting and sort after every change made to internship book.
+    * Pros: Ensures the internship list remains sorted after modifications.
+    * Cons: Increases time complexity of operations.
+
+* **Alternative 2:** Ignore the current sorted order after a change is made
+    * Pros: Will reduce the complexity of operations as operations do not need to sort after making changes to the internship list.
+    * Cons: Will cause the updated list to be no longer sorted.
+
+
+### Modify feature
+
+### Modify Implementation
+
+The `modify` command is facilitated through the `InternshipLogicManager`. Upon user input, it first goes through parsing by the `InternshipBookParser#parseCommand()`. This is to ensure that the input is indeed a `modify` command and that it adheres to a valid format.
+
+Once it is verified as a legitimate command, the `modify` function is initiated. An essential part of this process is checking the new internship entry's `COMPANY_NAME` and `ROLE` against potential duplicates in the current `InternshipStorage` database. Notably, while doing this check, the original internship entry's `COMPANY_NAME` and `ROLE` are ignored. If no duplicate is identified, the internship entry is edited and then stored within `InternshipStorage`.
+
+Developers can access the modify command through the `InternshipModel` interface via the `InternshipModel#modifyInternship` function.
+
+Below is an example that demonstrates the modify command's behavior step-by-step:
+
+Step 1: A user provides the command `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`. This command is parsed by `InternshipBookParser` to validate if it is structured correctly for a `modify` command.
+
+<puml src="diagrams/ModifyCommandParse.puml" alt="ModifyCommandParse" />
+
+<box type="info" seamless>
+
+**Note:** In cases where the command doesn't adhere to the valid `modify` command format, a `ParseException` gets triggered. If the command doesn't fit any recognized command patterns, we don't transition to step 2. However, if it does match another valid command format (other than `modify`), the logic for that other command is then executed in step 2.
+
+</box>
+
+Step 2: Post validation, the `modify` command is executed. If no duplicate entry exists in `InternshipStorage`, the editing of the internship entry goes through successfully.
+
+<puml src="diagrams/ModifyCommandExecute.puml" alt="ModifyCommandExecute" />
+
+<box type="info" seamless>
+
+**Note:** When a duplicate entry is detected, a `CommandException` is raised, preventing progression to step 3.
+
+</box>
+
+Step 3: After successful editing, the internship entry is saved into `InternshipStorage`.
+
+<puml src="diagrams/ModifyCommandStore.puml" alt="ModifyCommandStore" />
+
+The following sequence diagram shows how the modify operation works:
+
+<puml src="diagrams/ModifySequenceDiagram.puml" alt="ModifySequenceDiagram" />
+
+#### Design considerations:
+
+**Aspect: How should we handle fields that aren't provided in the command?**
+
+* **Alternative 1 (current choice):** Only modify the fields specified in the command, while retaining the original values of other fields.
+    * Pros: Enables us to fetch the original internship data and modify only the intended fields without rebuilding the entire internship entry.
+    * Cons: Retrieving the original internship entry might introduce extra complexity to the codebase.
+
+* **Alternative 2:** Replace the entire internship entry with the index and details given in the command.
+    * Pros: Simplifies the process as it can reuse code from both delete and create commands.
+    * Cons: The command must encompass all required fields, even if the modification pertains only to a single field or a minor typo.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -295,7 +467,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `InternshipBook` and the **Actor** is the `user`, unless specified otherwise)
 
 
 **UC1: Create an internship entry**
@@ -303,11 +475,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to create an internship entry with the necessary details
-2.  AddressBook adds the internship entry to the list
+2.  InternshipBook adds the internship entry to the list
 
 **Extensions**
 * 1a. Command is of invalid format
-    * 1a1. AddressBook shows an error message.
+    * 1a1. InternshipBook shows an error message.
 
     Use case ends.
 
@@ -316,20 +488,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to see list of internships
-2.  AddressBook shows a list of internships
+2.  InternshipBook shows a list of internships
 3.  User requests to delete a specific internship in the list
-4.  AddressBook deletes the internship
+4.  InternshipBook deletes the internship
 
     Use case ends.
 
 **Extensions**
 * 1a. Command is of invalid format
-    * 1a1. AddressBook shows an error message.
+    * 1a1. InternshipBook shows an error message.
   
     Use case ends.
 
 * 3a. Command is of invalid format
-    * 3a1. AddressBook shows an error message.
+    * 3a1. InternshipBook shows an error message.
     
     Use case ends.
 
@@ -338,11 +510,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to read internship entry
-2.  AddressBook shows the internship entry
+2.  InternshipBook shows the internship entry
 3.  User requests to edit a certain field of the internship entry
-4.  AddressBook shows the internship entry with the changes made
+4.  InternshipBook shows the internship entry with the changes made
 5.  User requests to exit editing mode
-6.  AddressBook saves the updated internship entry to the hard disk
+6.  InternshipBook saves the updated internship entry to the hard disk
 
     Use case ends.
 
@@ -354,7 +526,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. InternshipBook shows an error message.
 
       Use case resumes at step 2.
 

@@ -11,7 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.internship.Internship;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of internships.
  */
 public class InternshipListPanel extends UiPart<Region> {
     private static final String FXML = "InternshipListPanel.fxml";
@@ -21,7 +21,7 @@ public class InternshipListPanel extends UiPart<Region> {
     private ListView<Internship> internshipListView;
 
     /**
-     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     * Creates a {@code InternshipListPanel} with the given {@code ObservableList}.
      */
     public InternshipListPanel(ObservableList<Internship> internshipList) {
         super(FXML);
@@ -30,7 +30,7 @@ public class InternshipListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Internship} using a {@code InternshipCard}.
      */
     class InternshipListViewCell extends ListCell<Internship> {
         @Override

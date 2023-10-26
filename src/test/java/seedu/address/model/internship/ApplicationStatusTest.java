@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -53,5 +54,29 @@ class ApplicationStatusTest {
         assertFalse(applicationStatus.equals(new ApplicationStatus("Applied")));
         assertFalse(applicationStatus.equals(new ApplicationStatus("Accepted")));
         assertFalse(applicationStatus.equals(new ApplicationStatus("Rejected")));
+    }
+
+    @Test
+    public void compareTo_sameApplicationStatus_returnsZero() {
+        ApplicationStatus status1 = new ApplicationStatus("In progress");
+        ApplicationStatus status2 = new ApplicationStatus("In progress");
+
+        assertEquals(0, status1.compareTo(status2));
+    }
+
+    @Test
+    public void compareTo_status1EarlierThanStatus2_returnsNegative() {
+        ApplicationStatus status1 = new ApplicationStatus("Accepted");
+        ApplicationStatus status2 = new ApplicationStatus("Rejected");
+
+        assertEquals(true, status1.compareTo(status2) < 0);
+    }
+
+    @Test
+    public void compareTo_status1LaterThanStatus2_returnsPositive() {
+        ApplicationStatus status1 = new ApplicationStatus("Rejected");
+        ApplicationStatus status2 = new ApplicationStatus("Accepted");
+
+        assertEquals(true, status1.compareTo(status2) > 0);
     }
 }

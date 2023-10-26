@@ -1,11 +1,11 @@
 package seedu.address.model.internship;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 
 
@@ -13,7 +13,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents an Internship's start date in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidStartDate(String)}
  */
-public class StartDate {
+public class StartDate implements Comparable<StartDate> {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Start Date should only contain numbers and slashes. It must follow the form DD/MM/YYYY";
@@ -68,6 +68,7 @@ public class StartDate {
         return this.startDate.hashCode();
     }
 
+    @Override
     public int compareTo(StartDate other) {
         return this.startDate.compareTo(other.startDate);
     }

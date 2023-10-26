@@ -168,6 +168,16 @@ public class UniqueInternshipListTest {
         assertThrows(DuplicateInternshipException.class, () -> uniqueInternshipList
                 .setInternships(listWithDuplicateInternships));
     }
+    @Test
+    public void sortInternships_byCompanyName_sortsCorrectly() {
+        uniqueInternshipList.create(JANESTREET);
+        uniqueInternshipList.create(CITADEL);
+        uniqueInternshipList.sortInternships(InternshipComparators.BY_COMPANY_NAME);
+        UniqueInternshipList expectedUniqueInternshipList = new UniqueInternshipList();
+        expectedUniqueInternshipList.create(CITADEL);
+        expectedUniqueInternshipList.create(JANESTREET);
+        assertEquals(expectedUniqueInternshipList, uniqueInternshipList);
+    }
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {

@@ -37,7 +37,7 @@ public class InternshipMainApp extends Application {
 
     public static final Version VERSION = new Version(0, 2, 2, true);
 
-    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
+    private static final Logger logger = LogsCenter.getLogger(InternshipMainApp.class);
 
     protected InternshipUiManager ui;
     protected InternshipLogic logic;
@@ -67,10 +67,11 @@ public class InternshipMainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s internship book
+     * Returns a {@code InternshipModelManager} with the data from {@code InternshipStorage}'s internship book
      * and {@code InternshipUserPrefs}. <br> The data from the sample internship book will
-     * be used instead if {@code storage}'s internship book is not found,
-     * or an empty internship book will be used instead if errors occur when reading {@code storage}'s internship book.
+     * be used instead if {@code InternshipStorage}'s internship book is not found,
+     * or an empty internship book will be used instead if errors occur
+     * when reading {@code InternshipStorage}'s internship book.
      */
     private InternshipModel initModelManager(InternshipStorage storage, ReadOnlyInternshipUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getInternshipBookFilePath());
@@ -170,7 +171,7 @@ public class InternshipMainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting InternshipBook " + MainApp.VERSION);
+        logger.info("Starting InternshipBook " + InternshipMainApp.VERSION);
         ui.start(primaryStage);
     }
 

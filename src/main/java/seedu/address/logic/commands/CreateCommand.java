@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
@@ -27,6 +28,7 @@ public class CreateCommand extends InternshipCommand {
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_ROLE + "ROLE "
             + PREFIX_APPLICATION_STATUS + "APPLICATION_STATUS "
+            + PREFIX_DEADLINE + "DEADLINE "
             + PREFIX_START_DATE + "START_DATE "
             + PREFIX_DURATION + "DURATION "
             + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
@@ -34,6 +36,7 @@ public class CreateCommand extends InternshipCommand {
             + PREFIX_COMPANY_NAME + "Jane Street "
             + PREFIX_ROLE + "Coffee maker "
             + PREFIX_APPLICATION_STATUS + "Yet to apply "
+            + PREFIX_DEADLINE + "25/12/2022 "
             + PREFIX_START_DATE + "20/01/2023 "
             + PREFIX_DURATION + "3 "
             + PREFIX_REQUIREMENT + "C++ "
@@ -58,6 +61,13 @@ public class CreateCommand extends InternshipCommand {
         this.toAdd = internship;
     }
 
+    /**
+     * Executes the create command, adding the internship to the model.
+     *
+     * @param model The {@code InternshipModel} in which the internship should be created.
+     * @return A {@code CommandResult} with a success message.
+     * @throws CommandException If an identical internship entry already exists.
+     */
     @Override
     public CommandResult execute(InternshipModel model) throws CommandException {
         requireNonNull(model);
@@ -67,7 +77,6 @@ public class CreateCommand extends InternshipCommand {
         }
 
         model.createInternship(this.toAdd);
-
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.toAdd)));
     }
 

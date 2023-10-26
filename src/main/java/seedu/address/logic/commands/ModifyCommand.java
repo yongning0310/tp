@@ -23,14 +23,16 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.ApplicationStatus;
 import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Deadline;
 import seedu.address.model.internship.Duration;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.Role;
 import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
 
+
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing internship in the internship book.
  */
 public class ModifyCommand extends InternshipCommand {
 
@@ -64,7 +66,7 @@ public class ModifyCommand extends InternshipCommand {
     private final EditInternshipDescriptor editInternshipDescriptor;
 
     /**
-     * Constructs an {@code EditCommand} to edit the details of an existing internship.
+     * Constructs an {@code ModifyCommand} to edit the details of an existing internship.
      *
      * @param index The index of the internship in the filtered internship list to edit.
      *              Must not be {@code null}.
@@ -105,12 +107,14 @@ public class ModifyCommand extends InternshipCommand {
         Role updatedRole = editInternshipDescriptor.getRole().orElse(internshipToEdit.getRole());
         ApplicationStatus updatedApplicationStatus = editInternshipDescriptor
                 .getApplicationStatus().orElse(internshipToEdit.getApplicationStatus());
+        Deadline updatedDeadline = editInternshipDescriptor
+                .getDeadline().orElse(internshipToEdit.getDeadline());
         StartDate updatedStartDate = editInternshipDescriptor.getStartDate().orElse(internshipToEdit.getStartDate());
         Duration updatedDuration = editInternshipDescriptor.getDuration().orElse(internshipToEdit.getDuration());
         Set<Requirement> updatedRequirements = editInternshipDescriptor.getRequirements()
                 .orElse(internshipToEdit.getRequirements());
 
-        return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus,
+        return new Internship(updatedCompanyName, updatedRole, updatedApplicationStatus, updatedDeadline,
                 updatedStartDate, updatedDuration, updatedRequirements);
 
     }
@@ -146,6 +150,7 @@ public class ModifyCommand extends InternshipCommand {
         private CompanyName companyName;
         private Role role;
         private ApplicationStatus applicationStatus;
+        private Deadline deadline;
         private StartDate startDate;
         private Duration duration;
         private Set<Requirement> requirements;
@@ -161,6 +166,7 @@ public class ModifyCommand extends InternshipCommand {
             setCompanyName(toCopy.companyName);
             setRole(toCopy.role);
             setApplicationStatus(toCopy.applicationStatus);
+            setDeadline(toCopy.deadline);
             setStartDate(toCopy.startDate);
             setDuration(toCopy.duration);
             setRequirements(toCopy.requirements);
@@ -192,6 +198,14 @@ public class ModifyCommand extends InternshipCommand {
 
         public void setApplicationStatus(ApplicationStatus applicationStatus) {
             this.applicationStatus = applicationStatus;
+        }
+
+        public Optional<Deadline> getDeadline() {
+            return Optional.ofNullable(deadline);
+        }
+
+        public void setDeadline(Deadline deadline) {
+            this.deadline = deadline;
         }
 
         public Optional<StartDate> getStartDate() {
@@ -235,6 +249,7 @@ public class ModifyCommand extends InternshipCommand {
                     && Optional.ofNullable(role).equals(Optional.ofNullable(otherEditInternshipDescriptor.role))
                     && Optional.ofNullable(applicationStatus)
                     .equals(Optional.ofNullable(otherEditInternshipDescriptor.applicationStatus))
+                    && Optional.ofNullable(deadline).equals(Optional.ofNullable(otherEditInternshipDescriptor.deadline))
                     && Optional.ofNullable(startDate)
                     .equals(Optional.ofNullable(otherEditInternshipDescriptor.startDate))
                     && Optional.ofNullable(duration).equals(Optional.ofNullable(otherEditInternshipDescriptor.duration))
@@ -248,6 +263,7 @@ public class ModifyCommand extends InternshipCommand {
                     .add("companyName", companyName)
                     .add("role", role)
                     .add("applicationStatus", applicationStatus)
+                    .add("deadline", deadline)
                     .add("startDate", startDate)
                     .add("duration", duration)
                     .add("requirements", requirements)
