@@ -369,6 +369,60 @@ The following sequence diagram shows how the sort operation works:
     * Pros: Will reduce the complexity of operations as operations do not need to sort after making changes to the internship list.
     * Cons: Will cause the updated list to be no longer sorted.
 
+
+### Modify feature
+
+### Modify Implementation
+
+The `modify` command is facilitated through the `InternshipLogicManager`. Upon user input, it first goes through parsing by the `InternshipBookParser#parseCommand()`. This is to ensure that the input is indeed a `modify` command and that it adheres to a valid format.
+
+Once it is verified as a legitimate command, the `modify` function is initiated. An essential part of this process is checking the new internship entry's `COMPANY_NAME` and `ROLE` against potential duplicates in the current `InternshipStorage` database. Notably, while doing this check, the original internship entry's `COMPANY_NAME` and `ROLE` are ignored. If no duplicate is identified, the internship entry is edited and then stored within `InternshipStorage`.
+
+Developers can access the modify command through the `InternshipModel` interface via the `InternshipModel#modifyInternship` function.
+
+Below is an example that demonstrates the modify command's behavior step-by-step:
+
+Step 1: A user provides the command `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`. This command is parsed by `InternshipBookParser` to validate if it is structured correctly for a `modify` command.
+
+<puml src="diagrams/ModifyCommandParse.puml" alt="ModifyCommandParse" />
+
+<box type="info" seamless>
+
+**Note:** In cases where the command doesn't adhere to the valid `modify` command format, a `ParseException` gets triggered. If the command doesn't fit any recognized command patterns, we don't transition to step 2. However, if it does match another valid command format (other than `modify`), the logic for that other command is then executed in step 2.
+
+</box>
+
+Step 2: Post validation, the `modify` command is executed. If no duplicate entry exists in `InternshipStorage`, the editing of the internship entry goes through successfully.
+
+<puml src="diagrams/ModifyCommandExecute.puml" alt="ModifyCommandExecute" />
+
+<box type="info" seamless>
+
+**Note:** When a duplicate entry is detected, a `CommandException` is raised, preventing progression to step 3.
+
+</box>
+
+Step 3: After successful editing, the internship entry is saved into `InternshipStorage`.
+
+<puml src="diagrams/ModifyCommandStore.puml" alt="ModifyCommandStore" />
+
+The following sequence diagram shows how the modify operation works:
+
+<puml src="diagrams/ModifySequenceDiagram.puml" alt="ModifySequenceDiagram" />
+
+#### Design considerations:
+
+**Aspect: How should we handle fields that aren't provided in the command?**
+
+* **Alternative 1 (current choice):** Only modify the fields specified in the command, while retaining the original values of other fields.
+    * Pros: Enables us to fetch the original internship data and modify only the intended fields without rebuilding the entire internship entry.
+    * Cons: Retrieving the original internship entry might introduce extra complexity to the codebase.
+
+* **Alternative 2:** Replace the entire internship entry with the index and details given in the command.
+    * Pros: Simplifies the process as it can reuse code from both delete and create commands.
+    * Cons: The command must encompass all required fields, even if the modification pertains only to a single field or a minor typo.
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
