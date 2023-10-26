@@ -10,6 +10,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FilterCommand;
+import seedu.address.model.InternshipModel;
+import seedu.address.model.internship.ApplicationStatusContainsKeywordsPredicate;
 import seedu.address.model.internship.CompanyNameContainsKeywordsPredicate;
 import seedu.address.model.internship.Duration;
 import seedu.address.model.internship.DurationWithinRangePredicate;
@@ -44,8 +46,17 @@ public class FilterCommandParserTest {
     }
 
     @Test
-    public void parse_twoPredicates_throwsParseException() {
+    public void parse_defaultArgs_returnsShowAllPredicate() {
+        FilterCommand expectedFilterCommand = new FilterCommand(InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS);
+        assertInternshipParseSuccess(parser, " default", expectedFilterCommand);
+    }
+
+    @Test
+    public void parse_multiplePredicates_throwsParseException() {
         assertInternshipParseFailure(parser, " c/Google ro/swe",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_ONE_PARAMETER));
+        // Multiple different prefixes
+        assertInternshipParseFailure(parser, " c/Google s/20/03/2023-20/06/2023",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_ONE_PARAMETER));
     }
 
@@ -69,6 +80,21 @@ public class FilterCommandParserTest {
     }
 
     @Test
+    public void parse_invalidDurationRangeFormat_throwsParseException() {
+        // Testing without a dash
+        assertInternshipParseFailure(parser, " du/56",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DURATION_RANGE_FORMAT));
+
+        // Testing with multiple dashes
+        assertInternshipParseFailure(parser, " du/4-5-6",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DURATION_RANGE_FORMAT));
+
+        // Testing with non-numeric characters
+        assertInternshipParseFailure(parser, " du/4a-5",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DURATION_RANGE_FORMAT));
+    }
+
+    @Test
     public void parse_validCompanyNameArgs_returnsFilterCommand() {
         List<String> keywords = Arrays.asList("Optiver");
 
@@ -76,6 +102,15 @@ public class FilterCommandParserTest {
                 new FilterCommand(new CompanyNameContainsKeywordsPredicate(keywords));
         assertInternshipParseSuccess(parser, " c/Optiver", expectedFilterCommand);
     }
+
+    @Test
+    public void parse_validApplicationStatusArgs_returnsFilterCommand() {
+        List<String> keywords = Arrays.asList("Applied");
+        FilterCommand expectedFilterCommand = new FilterCommand(
+                new ApplicationStatusContainsKeywordsPredicate(keywords));
+        assertInternshipParseSuccess(parser, " a/Applied", expectedFilterCommand);
+    }
+
 
     @Test
     public void parse_validRoleArgs_returnsFilterCommand() {
@@ -115,5 +150,28 @@ public class FilterCommandParserTest {
                 new FilterCommand(new RequirementContainsKeywordsPredicate(multipleKeywords));
         assertInternshipParseSuccess(parser, " re/Java re/Python",
                 expectedFilterCommandMultipleKeywords);
+    }
+
+    @Test
+    public void parse_emptyRequirementArgs_throwsParseException() {
+        assertInternshipParseFailure(parser, " re/",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
+    }
+
+    @Test
+    public void parse_emptyDeadlineArg_throwsParseException() {
+        assertInternshipParseFailure(parser, " de/",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
+    }
+
+    @Test
+    public void parse_invalidDeadlineRangeFormat_throwsParseException() {
+        // Testing without a dash
+        assertInternshipParseFailure(parser, " de/20/03/2023",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DEADLINE_RANGE_FORMAT));
+
+        // Testing with multiple dashes
+        assertInternshipParseFailure(parser, " de/20/03/2023-20/06/2023-20/09/2023",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DEADLINE_RANGE_FORMAT));
     }
 }
