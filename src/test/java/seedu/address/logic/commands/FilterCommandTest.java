@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INTERNSHIPS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertInternshipCommandSuccess;
 import static seedu.address.testutil.TypicalInternships.CITADEL;
-import static seedu.address.testutil.TypicalInternships.GOVTECH;
-import static seedu.address.testutil.TypicalInternships.JANESTREET;
 import static seedu.address.testutil.TypicalInternships.OPTIVER;
 import static seedu.address.testutil.TypicalInternships.getTypicalInternshipBook;
 
