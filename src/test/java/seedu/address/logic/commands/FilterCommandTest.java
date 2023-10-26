@@ -62,7 +62,7 @@ public class FilterCommandTest {
     }
 
     @Test
-    public void execute_oneRange_noInternshipFound() {
+    public void execute_oneDurationRange_noInternshipFound() {
         String expectedMessage = String.format(MESSAGE_INTERNSHIPS_LISTED_OVERVIEW, 0);
         DurationWithinRangePredicate predicate = preparePredicate("10-12");
         FilterCommand command = new FilterCommand(predicate);
@@ -74,20 +74,20 @@ public class FilterCommandTest {
     @Test
     public void execute_oneRange_oneInternshipFound() {
         String expectedMessage = String.format(MESSAGE_INTERNSHIPS_LISTED_OVERVIEW, 1);
-        DurationWithinRangePredicate predicate = preparePredicate("1-2");
+        DurationWithinRangePredicate predicate = preparePredicate("2-3");
         FilterCommand command = new FilterCommand(predicate);
         expectedInternshipModel.updateFilteredInternshipList(predicate);
         assertInternshipCommandSuccess(command, internshipModel, expectedMessage, expectedInternshipModel);
-        assertEquals(Arrays.asList(GOVTECH), internshipModel.getFilteredInternshipList());
+        assertEquals(Arrays.asList(CITADEL), internshipModel.getFilteredInternshipList());
     }
     @Test
     public void execute_oneRange_multipleInternshipsFound() {
-        String expectedMessage = String.format(MESSAGE_INTERNSHIPS_LISTED_OVERVIEW, 3);
+        String expectedMessage = String.format(MESSAGE_INTERNSHIPS_LISTED_OVERVIEW, 2);
         DurationWithinRangePredicate predicate = preparePredicate("3-6");
         FilterCommand command = new FilterCommand(predicate);
         expectedInternshipModel.updateFilteredInternshipList(predicate);
         assertInternshipCommandSuccess(command, internshipModel, expectedMessage, expectedInternshipModel);
-        assertEquals(Arrays.asList(JANESTREET, OPTIVER, CITADEL), internshipModel.getFilteredInternshipList());
+        assertEquals(Arrays.asList(CITADEL, OPTIVER), internshipModel.getFilteredInternshipList());
     }
 
     @Test
