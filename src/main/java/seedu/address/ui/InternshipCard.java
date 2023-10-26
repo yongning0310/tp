@@ -42,6 +42,8 @@ public class InternshipCard extends UiPart<Region> {
     @FXML
     private Label duration;
     @FXML
+    private Label deadline;
+    @FXML
     private FlowPane requirements;
 
     /**
@@ -53,11 +55,12 @@ public class InternshipCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         companyName.setText(internship.getCompanyName().toString());
         role.setText(internship.getRole().toString());
-        applicationStatus.setText(internship.getDuration().toString());
-        startDate.setText(internship.getStartDate().toString());
-        duration.setText(internship.getDuration().toString());
+        applicationStatus.setText("Status :" + internship.getApplicationStatus().toString());
+        startDate.setText("Start Date: " + internship.getStartDate().toString());
+        duration.setText("Duration: " + internship.getDuration().toString() + " month(s)");
         internship.getRequirements().stream()
                 .sorted(Comparator.comparing(req -> req.toString()))
                 .forEach(req -> requirements.getChildren().add(new Label(req.toString())));
+        deadline.setText("Deadline: " + internship.getDeadline().toString());
     }
 }

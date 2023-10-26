@@ -29,6 +29,7 @@
             <FlowPane fx:id="requirements" />
             <Label fx:id="role" styleClass="cell_small_label" text="\$phone" />
             <Label fx:id="applicationStatus" styleClass="cell_small_label" text="\$phone" />
+            <Label fx:id="deadline" styleClass="cell_small_label" text="\$phone" />
             <Label fx:id="startDate" styleClass="cell_small_label" text="\$phone" />
             <Label fx:id="duration" styleClass="cell_small_label" text="\$address" />
         </VBox>
