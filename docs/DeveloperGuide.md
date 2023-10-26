@@ -236,13 +236,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the internship being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the internship being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -252,28 +252,28 @@ _{more aspects and alternatives to be added}_
 #### Implementation
 
 The create command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `create` command with a valid format.
-Upon successful verification, the `create` command is executed. The internship entry's `COMPANY_NAME` and `ROLE` is checked for potential duplicates in the existing database managed by `InternshipStorage`. 
+Upon successful verification, the `create` command is executed. The internship entry's `COMPANY_NAME` and `ROLE` is checked for potential duplicates in the existing database managed by `InternshipStorage`.
 If none is found, the internship entry is successfully created and stored in `InternshipStorage`.
 
 The create command is exposed in the `InternshipModel` interface as `InternshipModel#createInternship`.
 
 Given below is an example usage scenario and how the create command behaves at each step.
 
-Step 1. The user inputs `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee` 
+Step 1. The user inputs `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`
 and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `create` command.
 
 <puml src="diagrams/CreateCommandParse.puml" alt="CreateCommandParse" />
 
 <box type="info" seamless>
 
-**Note:** If the command does not follow the valid format of a `create` command, a ParseException will be thrown if the 
-command does not correspond to any possible command formats, and we will not proceed to step 2. If it corresponds to the 
-format of another valid command (that is not `create`), subsequent execution in step 2 will follow the logic flow of 
+**Note:** If the command does not follow the valid format of a `create` command, a ParseException will be thrown if the
+command does not correspond to any possible command formats, and we will not proceed to step 2. If it corresponds to the
+format of another valid command (that is not `create`), subsequent execution in step 2 will follow the logic flow of
 the other corresponding command.
 
 </box>
 
-Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipStorage`, the internship 
+Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipStorage`, the internship
 entry is created successfully.
 
 <puml src="diagrams/CreateCommandExecute.puml" alt="CreateCommandExecute" />
@@ -294,10 +294,10 @@ Step 3. The internship entry is stored in `InternshipStorage`.
 
 * **Alternative 1 (current choice):** Case-sensitive, identical `COMPANY_NAME` and `ROLE` is individually sufficient
     * Pros: Easy to manage and debug
-    * Cons: Does not label duplicates in the strict equality sense 
+    * Cons: Does not label duplicates in the strict equality sense
 
 * **Alternative 2:** Case-sensitive, identical attributes across all fields are necessary for an entry to be classified a duplicate
-    * Pros: Label duplicates in the strictest possible sense 
+    * Pros: Label duplicates in the strictest possible sense
     * Cons: Most accidental duplicate entries need not resemble one another completely across all attributes.
 
 ### Delete command
@@ -418,6 +418,60 @@ The following sequence diagram shows how the sort operation works:
     * Pros: Will reduce the complexity of operations as operations do not need to sort after making changes to the internship list.
     * Cons: Will cause the updated list to be no longer sorted.
 
+### Filter feature
+
+### Filter Implementation
+
+The `filter` command is facilitated by  `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a filter command with a valid format. Once the format is validated, the predicate required to filter the internships based on user criteria is generated.
+
+This predicate is then used to update the filtered internship list in the `InternshipModel`. The filtered list will only contain internships that satisfy the conditions specified by the user.
+
+The filter command is exposed in the InternshipModel interface as `InternshipModel#updateFilteredInternshipList`.
+
+Given below is an example usage scenario and how the filter command behaves at each step.
+
+Step 1. The user launches the application and already has a bunch of internships listed.
+
+<puml src="diagrams/FilterCommandState0.puml" alt="FilterCommandState0" />
+
+<box type="info" seamless>
+
+**Note:** This diagram shows the high level diagram with the intermediate layers hidden. It is meant to show the order of the internships within the list.
+
+</box>
+
+Step 2.The user inputs `filter c/[COMPANY_NAME]` (in the format of [CATEGORY]/[KEYWORDS] for categories such as company name, role, application status, requirements) or `filter du/[DURATION_A]-[DURATION_B]` (in the format of [CATEGORY]/[KEYWORD]-[] for categories such as start date, duration, and deadline) and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `sort` command.
+
+<puml src="diagrams/FilterCommandParse.puml" alt="FilterCommandParse" />
+
+<box type="info" seamless>
+
+**Note:** If the command does not follow the valid format of a `filter` command, a ParseException will be thrown if the
+command does not correspond to any possible command formats, and we will not proceed to step 3. If it corresponds to the
+format of another valid command (that is not `filter`), subsequent execution in step 3 will follow the logic flow of
+the other corresponding command.
+
+</box>
+
+Step 3. The `filter` command is executed. The predicate generated based on user criteria is used to filter internships in the `InternshipModel`.
+
+<puml src="diagrams/FilterCommandExecute.puml" alt="FilterCommandExecute" />
+<box type="info" seamless>
+
+**Note:** The filtered list in the `InternshipModel` is updated to only include internships that satisfy the conditions specified by the predicate.
+
+</box>
+
+#### Design considerations:
+**Aspect: How the filter conditions are specified:**
+
+* **Alternative 1 (current choice):** Use a predicate-based approach to allow flexible filtering criteria.
+    * Pros: Allows a dynamic and flexible way to filter internships based on various criteria.
+    * Cons: Might be more complex than a simpler, fixed-criteria approach.
+
+* **Alternative 2:** Use a fixed set of filter criteria.
+    * Pros: Simpler to implement.
+    * Cons: Less flexible and might not cover all use cases or user needs.
 
 ### Modify feature
 
@@ -493,7 +547,7 @@ The following sequence diagram shows how the modify operation works:
 * is a college student or recent graduate actively looking for internship opportunities.
 * values the importance of being organized and keeping track of their internship applications' progress.
 * wants a centralized platform to manage their internship applications and related information.
-* can type fast 
+* can type fast
 * is reasonably comfortable using CLI apps
 
 **Value proposition**: organize and manage internship applications efficiently through a command-line interface, ensuring that no opportunities are missed and applications are tracked systematically.
@@ -530,7 +584,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. Command is of invalid format
     * 1a1. InternshipBook shows an error message.
 
-    Use case ends.
+  Use case ends.
 
 **UC2: Delete an internship**
 
@@ -546,13 +600,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 * 1a. Command is of invalid format
     * 1a1. InternshipBook shows an error message.
-  
-    Use case ends.
+
+  Use case ends.
 
 * 3a. Command is of invalid format
     * 3a1. InternshipBook shows an error message.
-    
-    Use case ends.
+
+  Use case ends.
 
 **UC3: Edit an internship**
 
@@ -626,15 +680,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -643,16 +697,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting an internship while all internships are being shown
 
-   1. Prerequisites: List all internships using the `list` command. Multiple internships in the list.
+    1. Prerequisites: List all internships using the `list` command. Multiple internships in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First internship is deleted from the list. Details of the deleted internship shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: `delete 1`<br>
+       Expected: First internship is deleted from the list. Details of the deleted internship shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No internship is deleted. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `delete 0`<br>
+       Expected: No internship is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -660,6 +714,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
