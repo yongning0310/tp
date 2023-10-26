@@ -1,11 +1,14 @@
 package seedu.address.model.internship;
 
-import seedu.address.commons.util.StringUtil;
-import seedu.address.commons.util.ToStringBuilder;
-
 import java.util.List;
 import java.util.function.Predicate;
 
+import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.ToStringBuilder;
+
+/**
+ * Tests that a {@code Internship}'s {@code ApplicationStatus} matches any of the keywords given.
+ */
 public class ApplicationStatusContainsKeywordsPredicate implements Predicate<Internship> {
     private final List<String> keywords;
 
@@ -40,5 +43,4 @@ public class ApplicationStatusContainsKeywordsPredicate implements Predicate<Int
     public String toString() {
         return new ToStringBuilder(this).add("keywords", keywords).toString();
     }
-
 }

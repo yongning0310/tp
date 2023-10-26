@@ -3,28 +3,32 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+import static seedu.address.logic.parser.ParserUtil.parseStartDate;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
 
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.ApplicationStatusContainsKeywordsPredicate;
 import seedu.address.model.internship.CompanyNameContainsKeywordsPredicate;
+import seedu.address.model.internship.Deadline;
+import seedu.address.model.internship.DeadlineWithinRangePredicate;
 import seedu.address.model.internship.Duration;
 import seedu.address.model.internship.DurationWithinRangePredicate;
 import seedu.address.model.internship.Internship;
-import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.RequirementContainsKeywordsPredicate;
 import seedu.address.model.internship.RoleContainsKeywordsPredicate;
 import seedu.address.model.internship.StartDate;
 import seedu.address.model.internship.StartDateWithinRangePredicate;
-
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.function.Predicate;
-import java.util.List;
 
 /**
  * Parses input arguments and creates a new FilterCommand object
@@ -36,10 +40,15 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public static final String MESSAGE_ONE_PARAMETER = "filter command should accept only one parameter at a time.";
-    public static final String MESSAGE_STARTDATE_RANGE_FORMAT = "date range should be in the format DD/MM/YYYY-DD/MM/YYYY";
+    public static final String MESSAGE_STARTDATE_RANGE_FORMAT = "date range should be in the format "
+            + "DD/MM/YYYY-DD/MM/YYYY";
     public static final String MESSAGE_DURATION_RANGE_FORMAT = "duration range should be in the format X-Y";
+    public static final String MESSAGE_DEADLINE_RANGE_FORMAT = "deadline range should be in the format X-Y";
     public static final String MESSAGE_NON_EMPTY = "filter command's parameter cannot be empty.";
 
+    /**
+     * Parses the arguments and returns FilterCommand object.
+     */
     public FilterCommand parse(String args) throws ParseException {
         if (args.trim().length() == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
@@ -51,7 +60,7 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
 
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
-                        PREFIX_DURATION, PREFIX_START_DATE, PREFIX_REQUIREMENT);
+                        PREFIX_DURATION, PREFIX_START_DATE, PREFIX_REQUIREMENT, PREFIX_DEADLINE);
 
         if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
@@ -76,6 +85,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
             predicate = parseDuration(argMultimap);
         } else if (argMultimap.getAllValues(PREFIX_REQUIREMENT).size() > 0) {
             predicate = parseRequirement(argMultimap);
+        } else if (argMultimap.getValue(PREFIX_DEADLINE).isPresent()) {
+            predicate = parseDeadlineRange(argMultimap);
         } else {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     FilterCommandParser.MESSAGE_NON_EMPTY));
@@ -123,14 +134,40 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         StartDate startDateUpper;
 
         try {
-            startDateLower = ParserUtil.parseStartDate(dateRange[0].trim());
-            startDateUpper = ParserUtil.parseStartDate(dateRange[1].trim());
+            startDateLower = parseStartDate(dateRange[0].trim());
+            startDateUpper = parseStartDate(dateRange[1].trim());
         } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_STARTDATE_RANGE_FORMAT));
         }
 
         return new StartDateWithinRangePredicate(Arrays.asList(new StartDate[] {startDateLower, startDateUpper}));
+    }
+
+    private Predicate<Internship> parseDeadlineRange(ArgumentMultimap argMultimap) throws ParseException {
+        String deadlines = argMultimap.getValue(PREFIX_DEADLINE).get();
+        if (deadlines.trim().length() == 0) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
+        }
+
+        String[] deadlineRange = deadlines.split("-");
+        if (deadlineRange.length != 2) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    MESSAGE_DEADLINE_RANGE_FORMAT));
+        }
+
+        Deadline deadlineLower;
+        Deadline deadlineUpper;
+
+        try {
+            deadlineLower = ParserUtil.parseDeadline(deadlineRange[0].trim(), deadlineRange[0].trim());
+            deadlineUpper = ParserUtil.parseDeadline(deadlineRange[1].trim(), deadlineRange[0].trim());
+        } catch (ParseException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    MESSAGE_DEADLINE_RANGE_FORMAT));
+        }
+
+        return new DeadlineWithinRangePredicate(Arrays.asList(new Deadline[] { deadlineLower, deadlineUpper }));
     }
 
     private Predicate<Internship> parseDuration(ArgumentMultimap argMultimap) throws ParseException {

@@ -6,6 +6,9 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
+/**
+ * Tests that a {@code Internship}'s {@code Requirement} matches any of the keywords given.
+ */
 public class RoleContainsKeywordsPredicate implements Predicate<Internship> {
     private final List<String> keywords;
 

@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertInternshipParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertInternshipParseSuccess;
+import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseFailure;
+import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseSuccess;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,11 +33,13 @@ public class FilterCommandParserTest {
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
         assertInternshipParseFailure(parser, " ro/",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
-        assertInternshipParseFailure(parser, " d/",
+        assertInternshipParseFailure(parser, " du/",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
         assertInternshipParseFailure(parser, " s/",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
         assertInternshipParseFailure(parser, " re/",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
+        assertInternshipParseFailure(parser, " de/",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_NON_EMPTY));
     }
 
@@ -49,9 +51,16 @@ public class FilterCommandParserTest {
 
     @Test
     public void parse_invalidDurationArg_throwsParseException() {
-        assertInternshipParseFailure(parser, " d/4to5",
+        assertInternshipParseFailure(parser, " du/4to5",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DURATION_RANGE_FORMAT));
     }
+
+    @Test
+    public void parse_invalidDeadlineArg_throwsParseException() {
+        assertInternshipParseFailure(parser, " de/20/23/2023",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DEADLINE_RANGE_FORMAT));
+    }
+
 
     @Test
     public void parse_invalidStartDateArg_throwsParseException() {
@@ -81,7 +90,7 @@ public class FilterCommandParserTest {
 
         FilterCommand expectedFilterCommand =
                 new FilterCommand(new DurationWithinRangePredicate(durationList));
-        assertInternshipParseSuccess(parser, " d/6-12", expectedFilterCommand);
+        assertInternshipParseSuccess(parser, " du/6-12", expectedFilterCommand);
     }
 
     @Test

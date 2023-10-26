@@ -1,10 +1,13 @@
 package seedu.address.model.internship;
 
-import seedu.address.commons.util.ToStringBuilder;
-
 import java.util.List;
 import java.util.function.Predicate;
 
+import seedu.address.commons.util.ToStringBuilder;
+
+/**
+ * Tests that a {@code Internship}'s {@code StartDate} lies within the range given.
+ */
 public class StartDateWithinRangePredicate implements Predicate<Internship> {
     private final List<StartDate> startDateRange;
     public StartDateWithinRangePredicate(List<StartDate> startDateRange) {

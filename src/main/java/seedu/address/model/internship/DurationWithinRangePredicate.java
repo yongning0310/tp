@@ -5,6 +5,9 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
 
+/**
+ * Tests that a {@code Internship}'s {@code Duration} lies within the range given.
+ */
 public class DurationWithinRangePredicate implements Predicate<Internship> {
     private final List<Duration> durationRange;
     public DurationWithinRangePredicate(List<Duration> durationRange) {

@@ -18,7 +18,7 @@ public class FilterCommand extends InternshipCommand {
     public static final String MESSAGE_USAGE = "filter: Filters the internship list. "
             + "Parameters: PREFIX/KEYWORDS or PREFIX/X-Y for duration and start date\n"
             + "Example: filter ro/developer\n"
-            + "Example: filter d/2-3\n"
+            + "Example: filter du/2-3\n"
             + "To reset filters: filter default";
 
     private final Predicate<Internship> predicate;
