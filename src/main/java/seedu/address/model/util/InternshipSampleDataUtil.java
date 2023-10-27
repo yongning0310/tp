@@ -61,5 +61,4 @@ public class InternshipSampleDataUtil {
                 .map(Requirement::new)
                 .collect(Collectors.toSet());
     }
-
 }

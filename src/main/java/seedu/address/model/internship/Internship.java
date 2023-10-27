@@ -110,6 +110,13 @@ public class Internship {
     }
 
     /**
+     * Returns string representation of the internship's role
+     */
+    public String getRoleString() {
+        return this.role.toString();
+    }
+
+    /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */
@@ -139,5 +146,4 @@ public class Internship {
         return Objects.hash(this.companyName, this.role, this.applicationStatus, this.deadline,
                 this.startDate, this.duration, this.requirements);
     }
-
 }
