@@ -20,7 +20,7 @@ public class RoleContainsKeywordsPredicate implements Predicate<Internship> {
     public boolean test(Internship internship) {
         return keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(internship
-                        .getRole().role, keyword));
+                        .getRoleString(), keyword));
     }
 
     @Override

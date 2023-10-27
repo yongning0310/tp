@@ -18,7 +18,7 @@ public class Role implements Comparable<Role> {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    protected final String role;
+    private final String role;
 
     /**
      * Constructs a {@code Role}.

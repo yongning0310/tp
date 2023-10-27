@@ -1,6 +1,12 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import java.util.function.Predicate;
 
@@ -14,12 +20,22 @@ import seedu.address.model.internship.Internship;
  */
 public class FilterCommand extends InternshipCommand {
     public static final String COMMAND_WORD = "filter";
+    public static final String DEFAULT_KEYWORD = "default";
 
-    public static final String MESSAGE_USAGE = "filter: Filters the internship list. "
-            + "Parameters: PREFIX/KEYWORDS or PREFIX/X-Y for duration and start date\n"
-            + "Example: filter ro/developer\n"
-            + "Example: filter du/2-3\n"
-            + "To reset filters: filter default";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the internship list."
+            + "Parameters 1: PREFIX/KEYWORDS\n"
+            + "Available categories are:\n"
+            + PREFIX_COMPANY_NAME + " - Company Name\n"
+            + PREFIX_ROLE + " - Role\n"
+            + PREFIX_APPLICATION_STATUS + " - Application Status\n"
+            + "Parameters 2: PREFIX/X-Y\n"
+            + "Available categories are:\n"
+            + PREFIX_DEADLINE + " - Deadline\n"
+            + PREFIX_START_DATE + " - Start Date\n"
+            + PREFIX_DURATION + " - Duration\n"
+            + "Example 1: " + COMMAND_WORD + " " + PREFIX_ROLE + "Google\n"
+            + "Example 2: " + COMMAND_WORD + " " + PREFIX_DURATION + "2-3\n"
+            + "To reset filters: " + COMMAND_WORD + DEFAULT_KEYWORD;
 
     private final Predicate<Internship> predicate;
 
