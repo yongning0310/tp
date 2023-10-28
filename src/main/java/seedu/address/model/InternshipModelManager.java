@@ -21,6 +21,8 @@ import seedu.address.model.internship.InternshipComparators;
 public class InternshipModelManager implements InternshipModel {
     private static final Logger logger = LogsCenter.getLogger(InternshipModelManager.class);
     private Comparator<Internship> currentComparator = InternshipComparators.BY_COMPANY_NAME; // default comparator
+    private Predicate<Internship> currentPredicate =
+            InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS; // default predicate
     private final InternshipBook internshipBook;
     private final InternshipUserPrefs userPrefs;
 
@@ -128,6 +130,20 @@ public class InternshipModelManager implements InternshipModel {
         currentComparator = comparator;
     }
 
+    @Override
+    public void updateFilterPredicate(Predicate<Internship> predicate) {
+        currentPredicate = predicate;
+    }
+
+    @Override
+    public boolean hasActiveComparator() {
+        return currentComparator != InternshipComparators.BY_COMPANY_NAME;
+    }
+
+    @Override
+    public boolean hasActiveFilter() {
+        return currentPredicate != InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS;
+    }
 
     //=========== Filtered Internship List Accessors =============================================================
 

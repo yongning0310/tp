@@ -47,6 +47,7 @@ public class FilterCommand extends InternshipCommand {
     public CommandResult execute(InternshipModel model) {
         requireNonNull(model);
         model.updateFilteredInternshipList(predicate);
+        model.updateFilterPredicate(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_INTERNSHIPS_LISTED_OVERVIEW, model.getFilteredInternshipList().size()));
     }

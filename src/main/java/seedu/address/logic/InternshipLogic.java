@@ -48,4 +48,14 @@ public interface InternshipLogic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Check whether a comparator is currently active.
+     */
+    boolean hasActiveComparator();
+
+    /**
+     * Check whether a filter is currently active.
+     */
+    boolean hasActiveFilter();
 }

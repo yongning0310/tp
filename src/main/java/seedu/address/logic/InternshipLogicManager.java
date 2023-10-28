@@ -86,4 +86,14 @@ public class InternshipLogicManager implements InternshipLogic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    @Override
+    public boolean hasActiveComparator() {
+        return model.hasActiveComparator();
+    }
+
+    @Override
+    public boolean hasActiveFilter() {
+        return model.hasActiveFilter();
+    }
 }

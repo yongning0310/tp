@@ -85,6 +85,21 @@ public interface InternshipModel {
      */
     void updateSortComparator(Comparator<Internship> comparator);
 
+    /**
+     * Updates the current filter comparator of internship book using the {@code predicate}.
+     */
+    void updateFilterPredicate(Predicate<Internship> predicate);
+
+    /**
+     * Checks whether there is a currently active comparator
+     */
+    boolean hasActiveComparator();
+
+    /**
+     * Checks whether there is a currently active filter
+     */
+    boolean hasActiveFilter();
+
     /** Returns an unmodifiable view of the filtered internship list */
     ObservableList<Internship> getFilteredInternshipList();
 

@@ -136,6 +136,10 @@
      -fx-background-color: derive(#1d1d1d, 20%);
 }
 
+.hbox {
+     -fx-background-color: derive(#1d1d1d, 20%);
+}
+
 .pane-with-border {
      -fx-background-color: derive(#1d1d1d, 20%);
      -fx-border-color: derive(#1d1d1d, 10%);
@@ -154,6 +158,17 @@
 }
 
 .result-display .label {
+    -fx-text-fill: black !important;
+}
+
+.predicate-display {
+    -fx-background-color: transparent;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13pt;
+    -fx-text-fill: white;
+}
+
+.predicate-display .label {
     -fx-text-fill: black !important;
 }
 
@@ -333,6 +348,11 @@
 }
 
 #resultDisplay .content {
+    -fx-background-color: transparent, #383838, transparent, #383838;
+    -fx-background-radius: 0;
+}
+
+#predicateComparatorDisplay .content {
     -fx-background-color: transparent, #383838, transparent, #383838;
     -fx-background-radius: 0;
 }
