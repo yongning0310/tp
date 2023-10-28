@@ -124,6 +124,13 @@ public class Internship {
     }
 
     /**
+     * Returns string representation of the internship entry's application status.
+     */
+    public String getApplicationStatusString() {
+        return this.applicationStatus.getApplicationStatus();
+    }
+
+    /**
      * Returns string representation of the internship entry's duration.
      */
     public String getDurationString() {
