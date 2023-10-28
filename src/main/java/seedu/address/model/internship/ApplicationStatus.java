@@ -21,7 +21,7 @@ public class ApplicationStatus implements Comparable<ApplicationStatus> {
             "Yet to apply", "Applied", "In progress", "Accepted", "Rejected"
     );
 
-    public final String applicationStatus;
+    private final String applicationStatus;
 
     /**
      * Constructs a {@code ApplicationStatus}.
@@ -40,6 +40,10 @@ public class ApplicationStatus implements Comparable<ApplicationStatus> {
 
     @Override
     public String toString() {
+        return this.applicationStatus;
+    }
+
+    public String getApplicationStatus() {
         return this.applicationStatus;
     }
 
