@@ -32,7 +32,7 @@ public class SortCommand extends InternshipCommand {
             + PREFIX_DEADLINE + " - Deadline\n"
             + PREFIX_START_DATE + " - Start Date\n"
             + PREFIX_DURATION + " - Duration\n"
-            + "Format: " + COMMAND_WORD + " CATEGORY_PREFIX ORDER\n"
+            + "Format: " + COMMAND_WORD + " [CATEGORY]/[ORDER]\n"
             + "Example 1: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + " ASC\n"
             + "Example 2: " + COMMAND_WORD + " " + PREFIX_ROLE + " DESC";
     public static final String MESSAGE_INVALID_COLUMN = "The value entered for the category is invalid";
