@@ -88,6 +88,8 @@ public class SortCommand extends InternshipCommand {
 
         Comparator<Internship> comparator = createComparator();
         model.sortInternships(comparator);
+        model.setComparatorPrefix(category.getPrefix());
+        model.setComparatorOrder(sortedOrder);
         model.updateSortComparator(comparator);
         return new CommandResult(String.format(messageSuccess));
     }

@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.InternshipComparators;
 
@@ -20,7 +21,13 @@ import seedu.address.model.internship.InternshipComparators;
  */
 public class InternshipModelManager implements InternshipModel {
     private static final Logger logger = LogsCenter.getLogger(InternshipModelManager.class);
+
+    /*
+    TODO - refactor all comparator and filter logic into 2 classes.
+     */
     private Comparator<Internship> currentComparator = InternshipComparators.BY_COMPANY_NAME; // default comparator
+    private String currentComparatorPrefix = "c/"; // default comparator prefix
+    private SortCommand.Order currentComparatorOrder = SortCommand.Order.ASC; // default comparator order
     private Predicate<Internship> currentPredicate =
             InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS; // default predicate
     private final InternshipBook internshipBook;
@@ -136,8 +143,23 @@ public class InternshipModelManager implements InternshipModel {
     }
 
     @Override
-    public boolean hasActiveComparator() {
-        return currentComparator != InternshipComparators.BY_COMPANY_NAME;
+    public void setComparatorPrefix(String prefix) {
+        currentComparatorPrefix = prefix;
+    }
+
+    @Override
+    public String getComparatorPrefix() {
+        return currentComparatorPrefix;
+    }
+
+    @Override
+    public void setComparatorOrder(SortCommand.Order order) {
+        currentComparatorOrder = order;
+    }
+
+    @Override
+    public SortCommand.Order getComparatorOrder() {
+        return currentComparatorOrder;
     }
 
     @Override

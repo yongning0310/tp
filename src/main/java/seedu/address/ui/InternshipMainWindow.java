@@ -184,7 +184,7 @@ public class InternshipMainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
-            predicateComparatorDisplay.setComparator(logic.hasActiveComparator());
+            predicateComparatorDisplay.setComparator(logic.getComparatorPrefix(), logic.getComparatorOrder());
             predicateComparatorDisplay.setFilter(logic.hasActiveFilter());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 

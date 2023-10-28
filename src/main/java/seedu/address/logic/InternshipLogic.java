@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyInternshipBook;
@@ -50,9 +51,14 @@ public interface InternshipLogic {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Check whether a comparator is currently active.
+     * Get the prefix used to compare internships.
      */
-    boolean hasActiveComparator();
+    String getComparatorPrefix();
+
+    /**
+     * Get the order of comparison.
+     */
+    SortCommand.Order getComparatorOrder();
 
     /**
      * Check whether a filter is currently active.
