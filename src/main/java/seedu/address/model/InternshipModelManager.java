@@ -28,8 +28,8 @@ public class InternshipModelManager implements InternshipModel {
     private Comparator<Internship> currentComparator = InternshipComparators.BY_COMPANY_NAME; // default comparator
     private String currentComparatorPrefix = "c/"; // default comparator prefix
     private SortCommand.Order currentComparatorOrder = SortCommand.Order.ASC; // default comparator order
-    private Predicate<Internship> currentPredicate =
-            InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS; // default predicate
+    private String currentFilterParameter = "default"; // default filter parameter
+    private String currentFilterValue = "default"; // default filter value
     private final InternshipBook internshipBook;
     private final InternshipUserPrefs userPrefs;
 
@@ -138,11 +138,6 @@ public class InternshipModelManager implements InternshipModel {
     }
 
     @Override
-    public void updateFilterPredicate(Predicate<Internship> predicate) {
-        currentPredicate = predicate;
-    }
-
-    @Override
     public void setComparatorPrefix(String prefix) {
         currentComparatorPrefix = prefix;
     }
@@ -163,8 +158,23 @@ public class InternshipModelManager implements InternshipModel {
     }
 
     @Override
-    public boolean hasActiveFilter() {
-        return currentPredicate != InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS;
+    public void setFilterParameter(String filterParameter) {
+        currentFilterParameter = filterParameter;
+    }
+
+    @Override
+    public String getFilterParameter() {
+        return currentFilterParameter;
+    }
+
+    @Override
+    public void setFilterValue(String filterValue) {
+        currentFilterValue = filterValue;
+    }
+
+    @Override
+    public String getFilterValue() {
+        return currentFilterValue;
     }
 
     //=========== Filtered Internship List Accessors =============================================================

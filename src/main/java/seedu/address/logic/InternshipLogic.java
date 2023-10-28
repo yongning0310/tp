@@ -60,8 +60,7 @@ public interface InternshipLogic {
      */
     SortCommand.Order getComparatorOrder();
 
-    /**
-     * Check whether a filter is currently active.
-     */
-    boolean hasActiveFilter();
+    String getFilterParameter();
+
+    String getFilterValue();
 }

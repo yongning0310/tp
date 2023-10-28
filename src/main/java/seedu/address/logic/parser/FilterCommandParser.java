@@ -46,6 +46,12 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
     public static final String MESSAGE_DEADLINE_RANGE_FORMAT = "deadline range should be in the format X-Y";
     public static final String MESSAGE_NON_EMPTY = "filter command's parameter cannot be empty.";
 
+    /*
+    TODO - refactor all logic for comparators and filters into 2 classes.
+     */
+    private String filterParameter;
+    private String filterValue;
+
     /**
      * Parses the arguments and returns FilterCommand object.
      */
@@ -55,7 +61,7 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         }
 
         if (args.equalsIgnoreCase(" default")) {
-            return new FilterCommand(InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS);
+            return new FilterCommand("default", "default", InternshipModel.PREDICATE_SHOW_ALL_INTERNSHIPS);
         }
 
         ArgumentMultimap argMultimap =
@@ -91,7 +97,7 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     FilterCommandParser.MESSAGE_NON_EMPTY));
         }
-        return new FilterCommand(predicate);
+        return new FilterCommand(filterParameter, filterValue, predicate);
     }
 
     private Predicate<Internship> parseCompanyName(ArgumentMultimap argMultimap) throws ParseException {
@@ -99,6 +105,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         if (companyName.trim().length() == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+        filterParameter = PREFIX_COMPANY_NAME.getPrefix();
+        filterValue = companyName;
         return new CompanyNameContainsKeywordsPredicate(Arrays.asList(companyName));
     }
 
@@ -107,6 +115,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         if (role.trim().length() == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+        filterParameter = PREFIX_ROLE.getPrefix();
+        filterValue = role;
         return new RoleContainsKeywordsPredicate(Arrays.asList(role));
     }
 
@@ -115,6 +125,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         if (applicationStatus.trim().length() == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+        filterParameter = PREFIX_APPLICATION_STATUS.getPrefix();
+        filterValue = applicationStatus;
         return new ApplicationStatusContainsKeywordsPredicate(Arrays.asList(applicationStatus));
     }
 
@@ -141,6 +153,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
                     MESSAGE_STARTDATE_RANGE_FORMAT));
         }
 
+        filterParameter = PREFIX_START_DATE.getPrefix();
+        filterValue = String.format("%s to %s", startDateLower, startDateUpper);
         return new StartDateWithinRangePredicate(Arrays.asList(new StartDate[] {startDateLower, startDateUpper}));
     }
 
@@ -167,6 +181,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
                     MESSAGE_DEADLINE_RANGE_FORMAT));
         }
 
+        filterParameter = PREFIX_DEADLINE.getPrefix();
+        filterValue = String.format("%s to %s", deadlineLower, deadlineUpper);
         return new DeadlineWithinRangePredicate(Arrays.asList(new Deadline[] { deadlineLower, deadlineUpper }));
     }
 
@@ -191,7 +207,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_DURATION_RANGE_FORMAT));
         }
-
+        filterParameter = PREFIX_DURATION.getPrefix();
+        filterValue = String.format("%s to %s months", durationArr[0], durationArr[1]);
         return new DurationWithinRangePredicate(durationList);
     }
 
@@ -201,6 +218,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
                 str -> str.trim().isEmpty())) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+        filterParameter = PREFIX_REQUIREMENT.getPrefix();
+        filterValue = requirements.toString();
         return new RequirementContainsKeywordsPredicate(requirements);
     }
 }

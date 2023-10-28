@@ -99,7 +99,12 @@ public class InternshipLogicManager implements InternshipLogic {
     }
 
     @Override
-    public boolean hasActiveFilter() {
-        return model.hasActiveFilter();
+    public String getFilterParameter() {
+        return model.getFilterParameter();
+    }
+
+    @Override
+    public String getFilterValue() {
+        return model.getFilterValue();
     }
 }

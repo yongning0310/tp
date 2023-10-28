@@ -92,11 +92,6 @@ public interface InternshipModel {
     void updateSortComparator(Comparator<Internship> comparator);
 
     /**
-     * Updates the current filter comparator of internship book using the {@code predicate}.
-     */
-    void updateFilterPredicate(Predicate<Internship> predicate);
-
-    /**
      * Gets the current comparator order.
      */
     SortCommand.Order getComparatorOrder();
@@ -117,11 +112,6 @@ public interface InternshipModel {
     void setComparatorPrefix(String prefix);
 
     /**
-     * Checks whether there is a currently active filter
-     */
-    boolean hasActiveFilter();
-
-    /**
      * Returns an unmodifiable view of the filtered internship list
      */
     ObservableList<Internship> getFilteredInternshipList();
@@ -133,4 +123,12 @@ public interface InternshipModel {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredInternshipList(Predicate<Internship> predicate);
+
+    void setFilterParameter(String filterParameter);
+
+    void setFilterValue(String filterValue);
+
+    String getFilterParameter();
+
+    String getFilterValue();
 }

@@ -22,18 +22,23 @@ public class PredicateComparatorDisplay extends UiPart<Region> {
     @FXML
     private TextArea filterDisplay;
 
+    /**
+     * Initialises the Predicate Comparator Display with the relevant initial information.
+     */
     public PredicateComparatorDisplay() {
         super(FXML);
         // Initialise the displays for sort and filter information.
         comparatorDisplay.setText("Sorting by c/ in ASC order");
-        filterDisplay.setText("FILTER: There is no active filter.");
+        filterDisplay.setText("No filters are applied.");
     }
 
     public void setComparator(String prefix, SortCommand.Order order) {
         comparatorDisplay.setText(String.format("Sorting by %s in %s order", prefix, order));
     }
 
-    public void setFilter(boolean hasFilter) {
-        filterDisplay.setText("FILTER: " + (hasFilter ? "The list is filtered!" : "There is no active filter."));
+    public void setFilter(String prefix, String value) {
+        filterDisplay.setText(prefix.equals("default")
+                ? "No filters are applied."
+                : String.format("Filtering by %s with values %s", prefix, value));
     }
 }
