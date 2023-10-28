@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
@@ -37,7 +38,7 @@ public class SortCommandParser implements InternshipParser<SortCommand> {
 
         // Ensure only one prefix is used, we check for 2 because of the empty string preamble.
         if (argMultimap.getLength() != 2) {
-            throw new ParseException(String.format(SortCommand.MESSAGE_INVALID_COLUMN, SortCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
         Prefix categoryPrefix = argMultimap.getSinglePrefix();
         String sortOrderStr = argMultimap.getValue(categoryPrefix).get().toUpperCase();
@@ -48,7 +49,7 @@ public class SortCommandParser implements InternshipParser<SortCommand> {
         try {
             sortOrder = Order.valueOf(sortOrderStr);
         } catch (IllegalArgumentException e) {
-            throw new ParseException(String.format(SortCommand.MESSAGE_INVALID_ORDER, SortCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,

@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
@@ -38,7 +39,7 @@ public class SortCommandParserTest {
     public void parse_invalidCompanyName_throwsParseException() {
         assertInternshipParseFailure(parser,
                 " c/INVALID",
-                String.format(SortCommand.MESSAGE_INVALID_ORDER, SortCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -52,7 +53,7 @@ public class SortCommandParserTest {
     public void parse_invalidRole_throwsParseException() {
         assertInternshipParseFailure(parser,
                 " ro/INVALID",
-                String.format(SortCommand.MESSAGE_INVALID_ORDER, SortCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -66,7 +67,7 @@ public class SortCommandParserTest {
     public void parse_invalidApplicationStatus_throwsParseException() {
         assertInternshipParseFailure(parser,
                 " a/INVALID",
-                String.format(SortCommand.MESSAGE_INVALID_ORDER, SortCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -80,7 +81,7 @@ public class SortCommandParserTest {
     public void parse_invalidDeadline_throwsParseException() {
         assertInternshipParseFailure(parser,
                 " de/INVALID",
-                String.format(SortCommand.MESSAGE_INVALID_ORDER, SortCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -94,7 +95,7 @@ public class SortCommandParserTest {
     public void parse_invalidStartDate_throwsParseException() {
         assertInternshipParseFailure(parser,
                 " s/INVALID",
-                String.format(SortCommand.MESSAGE_INVALID_ORDER, SortCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -108,7 +109,7 @@ public class SortCommandParserTest {
     public void parse_invalidDuration_throwsParseException() {
         assertInternshipParseFailure(parser,
                 " du/INVALID",
-                String.format(SortCommand.MESSAGE_INVALID_ORDER, SortCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
     }
     @Test
     public void parse_invalidArgs_throwsParseException() {
