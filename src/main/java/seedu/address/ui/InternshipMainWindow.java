@@ -53,7 +53,7 @@ public class InternshipMainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     @FXML
-    private StackPane predicateComparatorDisplayPlaceholder;
+    private HBox predicateComparatorDisplayPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code InternshipLogic}.

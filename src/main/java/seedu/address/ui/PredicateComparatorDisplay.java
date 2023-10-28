@@ -23,8 +23,9 @@ public class PredicateComparatorDisplay extends UiPart<Region> {
 
     public PredicateComparatorDisplay() {
         super(FXML);
-        //comparatorDisplay = (TextArea) placeHolderBox.lookup("#comparatorDisplay");
-        //filterDisplay = (TextArea) placeHolderBox.lookup("#filterDisplay");
+        // Initialise the displays for sort and filter information.
+        comparatorDisplay.setText("SORT: The list is sorted in its default order.");
+        filterDisplay.setText("FILTER: There is no active filter.");
     }
 
     public void setComparator(boolean hasComparator) {

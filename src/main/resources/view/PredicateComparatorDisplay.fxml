@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <HBox fx:id="placeHolderBox" alignment="CENTER" styleClass="predicate-display" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-        <TextArea fx:id="comparatorDisplay" editable="false" styleClass="predicate-display" HBox.Hgrow="ALWAYS" />
-        <TextArea fx:id="filterDisplay" editable="false" styleClass="predicate-display" HBox.Hgrow="ALWAYS">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor></TextArea>
-    </HBox>
-</StackPane>
+<HBox fx:id="placeHolderBox" alignment="CENTER" style="-fx-spacing: 5;" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <TextArea fx:id="comparatorDisplay" editable="false" styleClass="predicate-display" HBox.Hgrow="ALWAYS" />
+    <TextArea fx:id="filterDisplay" editable="false" styleClass="predicate-display" HBox.Hgrow="ALWAYS" />
+</HBox>

@@ -136,10 +136,6 @@
      -fx-background-color: derive(#1d1d1d, 20%);
 }
 
-.hbox {
-     -fx-background-color: derive(#1d1d1d, 20%);
-}
-
 .pane-with-border {
      -fx-background-color: derive(#1d1d1d, 20%);
      -fx-border-color: derive(#1d1d1d, 10%);
@@ -163,6 +159,8 @@
 
 .predicate-display {
     -fx-background-color: transparent;
+    -fx-border-color: derive(#1d1d1d, 10%);
+    -fx-control-inner-background: derive(#1d1d1d, 20%);
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: white;
