@@ -58,6 +58,10 @@ public class Role implements Comparable<Role> {
         return this.role.equals(otherRole.role);
     }
 
+    public String getRole() {
+        return this.role;
+    }
+
     @Override
     public int hashCode() {
         return this.role.hashCode();
