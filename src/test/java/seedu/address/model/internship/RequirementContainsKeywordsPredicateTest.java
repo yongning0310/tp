@@ -1,6 +1,8 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -51,4 +53,28 @@ public class RequirementContainsKeywordsPredicateTest {
         Internship internship = new InternshipBuilder().withRequirements("Java", "Python").build();
         assertFalse(predicate.test(internship));
     }
+
+    @Test
+    public void test_requirementsPredicateEqualsItself_returnsTrue() {
+        RequirementContainsKeywordsPredicate predicate =
+                new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
+        assertEquals(predicate, predicate);
+    }
+
+    @Test
+    public void test_requirementsPredicateEqualsNull_returnsFalse() {
+        RequirementContainsKeywordsPredicate predicate =
+                new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
+        assertNotEquals(null, predicate);
+    }
+
+    @Test
+    public void test_requirementsPredicateString_returnsTrue() {
+        RequirementContainsKeywordsPredicate predicate =
+                new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
+        assertTrue(predicate.toString().equals(
+                "seedu.address.model.internship.RequirementContainsKeywordsPredicate{keywords=[JavaScript, C++]}")
+        );
+    }
+
 }
