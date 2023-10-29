@@ -115,8 +115,8 @@ public class ParserUtil {
         requireNonNull(deadline);
         String trimmedDeadline = deadline.trim();
 
-        return new Deadline(trimmedDeadline, "31/12/" +
-                trimmedDeadline.substring(trimmedDeadline.length() - 4));
+        return new Deadline(trimmedDeadline, "31/12/"
+                + trimmedDeadline.substring(trimmedDeadline.length() - 4));
     }
 
     /**
