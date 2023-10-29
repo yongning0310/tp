@@ -55,7 +55,7 @@ public class Role implements Comparable<Role> {
         }
 
         Role otherRole = (Role) other;
-        return this.role.equals(otherRole.role);
+        return this.role.equalsIgnoreCase(otherRole.role);
     }
 
     public String getRole() {

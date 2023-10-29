@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertInternshipCommandSuccess;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
@@ -103,11 +104,14 @@ public class SortCommandTest {
         expectedModel.sortInternships(InternshipComparators.BY_COMPANY_NAME); // assuming default is company name ASC
         assertInternshipCommandSuccess(sortCommand, model, expectedMessage, expectedModel);
     }
+
     @Test
     public void testEquals() {
         SortCommand sortCommand1 = new SortCommand(PREFIX_COMPANY_NAME, SortCommand.Order.ASC);
         SortCommand sortCommand2 = new SortCommand(PREFIX_COMPANY_NAME, SortCommand.Order.ASC);
         assertTrue(sortCommand1.equals(sortCommand2));
+        assertFalse(sortCommand1.equals(null));
+        assertTrue(sortCommand1.equals(sortCommand1));
     }
 
     @Test

@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -70,5 +71,13 @@ public class ApplicationStatusContainsKeywordsPredicateTest {
         // One matching keyword
         predicate = new ApplicationStatusContainsKeywordsPredicate(Arrays.asList("Accepted", "Rejected"));
         assertTrue(predicate.test(new InternshipBuilder().withApplicationStatus("Rejected").build()));
+    }
+
+    @Test
+    public void test_toString_returnsTrue() {
+        ApplicationStatusContainsKeywordsPredicate predicate = new ApplicationStatusContainsKeywordsPredicate(
+                Arrays.asList("Rejected"));
+        assertEquals(predicate.toString(),
+                "seedu.address.model.internship.ApplicationStatusContainsKeywordsPredicate{keywords=[Rejected]}");
     }
 }

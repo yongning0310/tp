@@ -34,7 +34,7 @@ public class InternshipUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_COMPANY_NAME + internship.getCompanyNameString() + " ");
         sb.append(PREFIX_ROLE + internship.getRole().toString() + " ");
-        sb.append(PREFIX_APPLICATION_STATUS + internship.getApplicationStatus().applicationStatus + " ");
+        sb.append(PREFIX_APPLICATION_STATUS + internship.getApplicationStatusString() + " ");
         sb.append(PREFIX_DEADLINE + internship.getDeadline().toString() + " ");
         sb.append(PREFIX_START_DATE + internship.getStartDate().toString() + " ");
         sb.append(PREFIX_DURATION + internship.getDurationString() + " ");
@@ -56,7 +56,7 @@ public class InternshipUtil {
         descriptor.getApplicationStatus()
                 .ifPresent(applicationStatus -> sb
                         .append(PREFIX_APPLICATION_STATUS)
-                        .append(applicationStatus.applicationStatus).append(" "));
+                        .append(applicationStatus.getApplicationStatus()).append(" "));
         descriptor.getDeadline()
                 .ifPresent(deadline -> sb.append(PREFIX_DEADLINE).append(deadline.toString()).append(" "));
         descriptor.getStartDate()
