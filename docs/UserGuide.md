@@ -140,22 +140,66 @@ create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re
 - Parameters can be entered in any order. 
     - For instance, both `c/COMPANY_NAME ro/ROLE` and `ro/ROLE c/COMPANY_NAME` are valid.
 
-## Commands
+## Parameter constraints 
+
+All of our parameters have certain constraints associated with them. Although they may seem cumbersome at first, these constraints
+allow Flagship to help you detect typos and make retrieving data far easier!
+
+| Parameter              | Prefix | Accepted Format                                                                                                                                   | Compulsory? | Example                               |
+|------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------|---------------------------------------|
+| **Company Name**       | `c/`   | **`COMPANY_NAME`** <br> `COMPANY_NAME` can contain these characters: `A-Z a-z 0-9 and space`. Cannot **exclusively** contain spaces.              | Yes         | `Optiver`, <br> `Jane Street`         |
+| **Role**               | `ro/`  | **`ROLE`** <br> `ROLE` can contain these characters: `A-Z a-z 0-9 and space` Cannot **exclusively** contain spaces.                               | Yes         | `Software Engineer`, <br> `Fullstack` |
+| **Application Status** | `a/`   | **`APPLICATION_STATUS`** <br> `APPLICATION_STATUS` must be one of the following `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`. | Yes         | N.A                                   |
+| **Deadline**           | `de/`  | **`DEADLINE`** <br> `DEADLINE` must be of the following form `DD/MM/YYYY` and must be **earlier** than the `START_DATE`.                          | Yes         | `20/02/2001`, <br> `01/01/2000`       |
+| **Start Date**         | `s/`   | **`START_DATE`** <br> `START_DATE` must be of the following form `DD/MM/YYYY` and must be **later** than the `DEADLINE`.                          | Yes         | `20/02/2001`, <br> `01/01/2000`       |
+| **Duration**           | `du/`  | **`DURATION`** <br> `DURATION` must be a positive integer.                                                                                        | Yes         | `1`, <br> `10`                        |
+| **Requirements**       | `re/`  | **`REQUIREMENTS`** <br> `REQUIREMENTS` has no restrictions but cannot be empty                                                                    | No          | `C++`, <br> `Haskell`                 |
+
+<div markdown="block" class="alert alert-info">
+ℹ️ We understand that our constraints might be rigid in some cases. For example, it is possible for company names to contain 
+special characters. However, we believe that these cases are rare and loosening the parameter constraints will increase the 
+probability of typos and reduce the effectiveness of our filter functionalities. 
+</div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Creating an Internship: `create`
 
-Add an internship entry to Flagship.
+Found an internship opportunity that you really want to apply for? Or have you submitted an internship application
+and wish to keep tabs of its progress in the future? Create an internship entry that can be stored in Flagship so that 
+you will never lose track of it! 
 
 Format: `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENTS]...`
 
+Example: `create c/Citadel ro/Backend Developer a/Yet to apply de/01/02/2022 s/24/04/2022 du/2 re/C++` 
 
-**Tip:** Internships can have multiple requirements, or even none at all.
-</box>
+Interpretation: Create an internship entry for **Citadel**. This is a **Backend Developer** role that you have
+**yet to apply** for. The **deadline** for the application is 1 February 2022, and the internship is expected to **start**
+on 24 April 2022. This is a **2-month** internship, and you are expected to be proficient in **C++**.
 
-Examples:
-* `create c/Jane Street ro/Coffee maker a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`
-* `create c/Citadel ro/Coffee pourer a/Applied de/29/11/2022 s/24/04/2022 du/1`
+<div markdown="block" class="alert alert-success">
+💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
+</div>
+
+<div markdown="span" class="alert alert-danger">
+⚠️ Flagship does not allow you to create duplicate internship entries with the same company name or role. This makes sure 
+that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
+</div>
+
+| Description                                                                                     | Example                                                                   |
+|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Company name/role differs in initial letter capitalisation**                                  | `Jane Street`, `jane Street` and `jane street` are considered the same    |
+| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
+| **Combination of initial letter capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane Street` are considered the same                |
+
+**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
+
+<div markdown="block" class="alert alert-info">
+ℹ️ We do not allow you to create internship entries of different application status, duration, etc. but with the same 
+company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen 
+our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries 
+as effectively.
+</div>
 
 ### Editing an Internship: `modify`
 

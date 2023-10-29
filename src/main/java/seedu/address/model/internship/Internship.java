@@ -83,7 +83,7 @@ public class Internship {
     }
 
     /**
-     * Returns true if both internships have the same company name and role.
+     * Returns true if both internships have the same company name and role (case-insensitive).
      * This defines a weaker notion of equality between two persons and will be primarily used throughout the program.
      */
     public boolean isSameInternship(Internship otherInternship) {

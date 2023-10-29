@@ -55,7 +55,7 @@ public class CompanyName implements Comparable<CompanyName> {
         }
 
         CompanyName otherCompanyName = (CompanyName) other;
-        return this.companyName.equals(otherCompanyName.companyName);
+        return this.companyName.equalsIgnoreCase(otherCompanyName.companyName);
     }
 
     public String getCompanyName() {
