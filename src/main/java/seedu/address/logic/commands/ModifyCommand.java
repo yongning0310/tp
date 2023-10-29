@@ -2,7 +2,13 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -93,9 +99,9 @@ public class ModifyCommand extends InternshipCommand {
         }
 
         if (editedInternship.getStartDate() == null && editedInternship.getDeadline() != null) {
-//            if (internshipToEdit.getStartDate().compareTo(editedInternship.getDeadline()) {
-//
-//            }
+            //            if (internshipToEdit.getStartDate().compareTo(editedInternship.getDeadline()) {
+            //
+            //            }
             // check if startdate > deadline
         }
 
