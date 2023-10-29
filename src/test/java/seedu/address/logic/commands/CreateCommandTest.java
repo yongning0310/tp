@@ -92,6 +92,45 @@ public class CreateCommandTest {
      * A default model stub that have all of the methods failing.
      */
     private class ModelStub implements InternshipModel {
+        @Override
+        public void setFilterParameter(String filterParameter) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setFilterValue(String filterValue) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setComparatorOrder(SortCommand.Order order) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getFilterValue() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getFilterParameter() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setComparatorPrefix(String prefix) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public SortCommand.Order getComparatorOrder() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getComparatorPrefix() {
+            throw new AssertionError("This method should not be called.");
+        }
 
         @Override
         public void setUserPrefs(ReadOnlyInternshipUserPrefs userPrefs) {

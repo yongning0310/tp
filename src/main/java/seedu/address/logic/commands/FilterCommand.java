@@ -38,15 +38,37 @@ public class FilterCommand extends InternshipCommand {
             + "To reset filters: " + COMMAND_WORD + " " + DEFAULT_KEYWORD;
 
     private final Predicate<Internship> predicate;
+    private final String filterParameter;
+    private final String filterValue;
 
+    /**
+     * To refactor. Constructs a Filter Command without the additional parameter and value information.
+     * @param predicate
+     */
     public FilterCommand(Predicate<Internship> predicate) {
         this.predicate = predicate;
+        this.filterParameter = "";
+        this.filterValue = "";
+    }
+
+    /**
+     * Constructs a Filter Command.
+     * @param filterParameter
+     * @param filterValue
+     * @param predicate
+     */
+    public FilterCommand(String filterParameter, String filterValue, Predicate<Internship> predicate) {
+        this.predicate = predicate;
+        this.filterParameter = filterParameter;
+        this.filterValue = filterValue;
     }
 
     @Override
     public CommandResult execute(InternshipModel model) {
         requireNonNull(model);
         model.updateFilteredInternshipList(predicate);
+        model.setFilterParameter(filterParameter);
+        model.setFilterValue(filterValue);
         return new CommandResult(
                 String.format(Messages.MESSAGE_INTERNSHIPS_LISTED_OVERVIEW, model.getFilteredInternshipList().size()));
     }

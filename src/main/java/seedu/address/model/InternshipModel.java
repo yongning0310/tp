@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.model.internship.Internship;
 
 /**
@@ -13,7 +14,9 @@ import seedu.address.model.internship.Internship;
  */
 public interface InternshipModel {
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Internship> PREDICATE_SHOW_ALL_INTERNSHIPS = unused -> true;
 
     /**
@@ -51,7 +54,9 @@ public interface InternshipModel {
      */
     void setInternshipBook(ReadOnlyInternshipBook internshipBook);
 
-    /** Returns the internshipBook */
+    /**
+     * Returns the internshipBook
+     */
     ReadOnlyInternshipBook getInternshipBook();
 
     /**
@@ -80,18 +85,50 @@ public interface InternshipModel {
      * Sorts the internship book using the {@code comparator}.
      */
     void sortInternships(Comparator<Internship> comparator);
+
     /**
      * Updates the current sort comparator of internship book using the {@code comparator}.
      */
     void updateSortComparator(Comparator<Internship> comparator);
 
-    /** Returns an unmodifiable view of the filtered internship list */
+    /**
+     * Gets the current comparator order.
+     */
+    SortCommand.Order getComparatorOrder();
+
+    /**
+     * Sets the comparator order.
+     */
+    void setComparatorOrder(SortCommand.Order order);
+
+    /**
+     * Gets the current comparator prefix.
+     */
+    String getComparatorPrefix();
+
+    /**
+     * Sets the comparator prefix.
+     */
+    void setComparatorPrefix(String prefix);
+
+    /**
+     * Returns an unmodifiable view of the filtered internship list
+     */
     ObservableList<Internship> getFilteredInternshipList();
 
 
     /**
      * Updates the filter of the filtered internship list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredInternshipList(Predicate<Internship> predicate);
+
+    void setFilterParameter(String filterParameter);
+
+    void setFilterValue(String filterValue);
+
+    String getFilterParameter();
+
+    String getFilterValue();
 }

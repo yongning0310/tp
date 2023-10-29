@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -33,6 +34,7 @@ public class InternshipMainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private InternshipListPanel internshipListPanel;
     private ResultDisplay resultDisplay;
+    private PredicateComparatorDisplay predicateComparatorDisplay;
     private HelpWindow helpWindow;
 
     @FXML
@@ -49,6 +51,9 @@ public class InternshipMainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private HBox predicateComparatorDisplayPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code InternshipLogic}.
@@ -116,6 +121,9 @@ public class InternshipMainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
+        predicateComparatorDisplay = new PredicateComparatorDisplay();
+        predicateComparatorDisplayPlaceholder.getChildren().add(predicateComparatorDisplay.getRoot());
+
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getInternshipBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
@@ -176,6 +184,8 @@ public class InternshipMainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
+            predicateComparatorDisplay.setComparator(logic.getComparatorPrefix(), logic.getComparatorOrder());
+            predicateComparatorDisplay.setFilter(logic.getFilterParameter(), logic.getFilterValue());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             if (commandResult.isShowHelp()) {

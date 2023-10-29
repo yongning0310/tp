@@ -10,6 +10,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.InternshipCommand;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.InternshipBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -85,5 +86,25 @@ public class InternshipLogicManager implements InternshipLogic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public SortCommand.Order getComparatorOrder() {
+        return model.getComparatorOrder();
+    }
+
+    @Override
+    public String getComparatorPrefix() {
+        return model.getComparatorPrefix();
+    }
+
+    @Override
+    public String getFilterParameter() {
+        return model.getFilterParameter();
+    }
+
+    @Override
+    public String getFilterValue() {
+        return model.getFilterValue();
     }
 }
