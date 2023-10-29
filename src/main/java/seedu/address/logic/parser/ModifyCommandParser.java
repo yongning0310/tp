@@ -31,12 +31,12 @@ public class ModifyCommandParser implements InternshipParser<ModifyCommand> {
 
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
-                        PREFIX_START_DATE, PREFIX_DURATION, PREFIX_REQUIREMENT);
+                        PREFIX_START_DATE, PREFIX_DURATION, PREFIX_REQUIREMENT, PREFIX_DEADLINE);
 
         Index index;
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
-                PREFIX_START_DATE, PREFIX_DURATION);
+                PREFIX_START_DATE, PREFIX_DURATION, PREFIX_DEADLINE);
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
@@ -57,12 +57,17 @@ public class ModifyCommandParser implements InternshipParser<ModifyCommand> {
             editInternshipDescriptor.setApplicationStatus(ParserUtil
                     .parseApplicationStatus(argMultimap.getValue(PREFIX_APPLICATION_STATUS).get()));
         }
-        if (argMultimap.getValue(PREFIX_DEADLINE).isPresent()) {
-            editInternshipDescriptor.setDeadline(ParserUtil
-                    .parseDeadline(
+        if (argMultimap.getValue(PREFIX_DEADLINE).isPresent() && argMultimap.getValue(PREFIX_START_DATE).isPresent()) {
+            editInternshipDescriptor.setDeadline(
+                    ParserUtil.parseDeadline(
                             argMultimap.getValue(PREFIX_DEADLINE).get(),
                             argMultimap.getValue(PREFIX_START_DATE).get()
-                    ));
+                    )
+            );
+        } else {
+            editInternshipDescriptor.setDeadline(
+                    ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get())
+            );
         }
         if (argMultimap.getValue(PREFIX_START_DATE).isPresent()) {
             editInternshipDescriptor.setStartDate(ParserUtil

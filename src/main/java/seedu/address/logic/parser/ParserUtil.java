@@ -104,6 +104,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String deadline} into an {@code Deadline}.
+     * This is only for modify command, since user might not include startDate in the command
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code deadline} is invalid.
+     */
+    public static Deadline parseDeadline(String deadline) throws ParseException {
+        requireNonNull(deadline);
+        String trimmedDeadline = deadline.trim();
+
+        return new Deadline(trimmedDeadline, "31/12/" +
+                trimmedDeadline.substring(trimmedDeadline.length() - 4));
+    }
+
+    /**
      * Parses a {@code String startDate} into a {@code StartDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
