@@ -55,7 +55,7 @@ public class InternshipCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         companyName.setText(internship.getCompanyName().toString());
         role.setText(internship.getRole().toString());
-        applicationStatus.setText("Status :" + internship.getApplicationStatus().toString());
+        applicationStatus.setText("Status: " + internship.getApplicationStatus().toString());
         startDate.setText("Start Date: " + internship.getStartDate().toString());
         duration.setText("Duration: " + internship.getDuration().toString() + " month(s)");
         internship.getRequirements().stream()
