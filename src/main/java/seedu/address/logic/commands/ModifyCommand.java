@@ -2,12 +2,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.*;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -54,6 +49,7 @@ public class ModifyCommand extends InternshipCommand {
             + PREFIX_APPLICATION_STATUS + "Yet to apply "
             + PREFIX_START_DATE + "20/01/2023 "
             + PREFIX_DURATION + "3 "
+            + PREFIX_DEADLINE + "25/12/2022 "
             + PREFIX_REQUIREMENT + "C++ "
             + PREFIX_REQUIREMENT + "Python";
 
@@ -94,6 +90,13 @@ public class ModifyCommand extends InternshipCommand {
 
         if (!internshipToEdit.isSameInternship(editedInternship) && model.hasInternship(editedInternship)) {
             throw new CommandException(MESSAGE_DUPLICATE_INTERNSHIP);
+        }
+
+        if (editedInternship.getStartDate() == null && editedInternship.getDeadline() != null) {
+//            if (internshipToEdit.getStartDate().compareTo(editedInternship.getDeadline()) {
+//
+//            }
+            // check if startdate > deadline
         }
 
         model.setInternship(internshipToEdit, editedInternship);
@@ -173,7 +176,8 @@ public class ModifyCommand extends InternshipCommand {
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(companyName, role, applicationStatus, startDate, duration, requirements);
+            return CollectionUtil.isAnyNonNull(companyName, role, applicationStatus, startDate,
+                    duration, requirements, deadline);
         }
 
         public Optional<CompanyName> getCompanyName() {
