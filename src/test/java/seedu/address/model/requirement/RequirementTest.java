@@ -53,6 +53,12 @@ public class RequirementTest {
     }
 
     @Test
+    public void equals_null_returnsFalse() {
+        Requirement requirement1 = new Requirement("Arts Requirement");
+        assertFalse(requirement1.equals(null));
+    }
+
+    @Test
     public void hashCode_sameRequirementName_sameHashCode() {
         Requirement requirement1 = new Requirement("History Requirement");
         Requirement requirement2 = new Requirement("History Requirement");

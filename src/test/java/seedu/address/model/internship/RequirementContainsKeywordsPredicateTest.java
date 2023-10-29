@@ -58,14 +58,14 @@ public class RequirementContainsKeywordsPredicateTest {
     public void test_requirementsPredicateEqualsItself_returnsTrue() {
         RequirementContainsKeywordsPredicate predicate =
                 new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
-        assertEquals(predicate, predicate);
+        assertTrue(predicate.equals(predicate));
     }
 
     @Test
     public void test_requirementsPredicateEqualsNull_returnsFalse() {
         RequirementContainsKeywordsPredicate predicate =
                 new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
-        assertNotEquals(null, predicate);
+        assertFalse(predicate.equals(null));
     }
 
     @Test
