@@ -24,6 +24,15 @@ public class UniqueInternshipListTest {
     private final UniqueInternshipList uniqueInternshipList = new UniqueInternshipList();
 
     @Test
+    public void equals() {
+        // self -> returns true
+        assertTrue(uniqueInternshipList.equals(uniqueInternshipList));
+
+        // null -> returns false
+        assertFalse(uniqueInternshipList.equals(null));
+    }
+
+    @Test
     public void contains_nullInternship_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueInternshipList.contains(null));
     }
