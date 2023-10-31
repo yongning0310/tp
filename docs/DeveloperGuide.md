@@ -136,15 +136,15 @@ The `InternshipModel` component,
 </box>
 
 
-### Storage component
+### InternshipStorage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`InternshipStorage.java`](https://github.com/AY2324S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/storage/InternshipStorage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `InternshipStorage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `InternshipBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save both Flagship data and user preference data in JSON format, and read them back into corresponding objects.
+* inherits from both `InternshipBookStorage` and `InternshipUserPrefsStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `InternshipModel` component (because the `InternshipStorage` component's job is to save/retrieve objects that belong to the `InternshipModel`)
 
 ### Common classes
@@ -252,14 +252,13 @@ _{more aspects and alternatives to be added}_
 #### Implementation
 
 The create command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `create` command with a valid format.
-Upon successful verification, the `create` command is executed. The internship entry's `COMPANY_NAME` and `ROLE` is checked for potential duplicates in the existing database managed by `InternshipStorage`.
-If none is found, the internship entry is successfully created and stored in `InternshipStorage`.
+Upon successful verification, the `create` command is executed. 
 
 The create command is exposed in the `InternshipModel` interface as `InternshipModel#createInternship`.
 
 Given below is an example usage scenario and how the create command behaves at each step.
 
-Step 1. The user inputs `create c/Jane Street ro/Coffee maker a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`
+Step 1. The user inputs `create c/Google ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3`
 and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `create` command.
 
 <puml src="diagrams/CreateCommandParse.puml" alt="CreateCommandParse" />
@@ -288,17 +287,26 @@ Step 3. The internship entry is stored in `InternshipStorage`.
 
 <puml src="diagrams/CreateCommandStore.puml" alt="CreateCommandStore" />
 
+The following sequence diagram shows how the create command operation works:
+
+<puml src="diagrams/CreateSequenceDiagram.puml" alt="CreateSequenceDiagram" />
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `CreateCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</box>
+
 #### Design considerations:
 
 **Aspect: What constitutes a duplicate internship entry:**
 
-* **Alternative 1 (current choice):** Case-sensitive, identical `COMPANY_NAME` and `ROLE` is individually sufficient
+* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` (insensitive to initial letter capitalisation of each distinct word) is individually sufficient
     * Pros: Easy to manage and debug
     * Cons: Does not label duplicates in the strict equality sense
 
 * **Alternative 2:** Case-sensitive, identical attributes across all fields are necessary for an entry to be classified a duplicate
     * Pros: Label duplicates in the strictest possible sense
-    * Cons: Most accidental duplicate entries need not resemble one another completely across all attributes.
+    * Cons: Most accidental duplicate entries mistakenly entered by the user need not resemble one another completely across all attributes.
 
 ### Delete command
 
