@@ -1,7 +1,9 @@
 package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.internship.Deadline.DATE_FORMATTER;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -20,8 +22,8 @@ public class Internship {
      * Identity fields
      *
      * To keep validation simple and Flagship easier to use, we will assume that two internships with identical roles
-     * and names (case-sensitive) are the same even if they may have different data fields such as different
-     * requirements.
+     * and company names are the same as verified in {@link #isSameInternship(Internship)} even if they may have
+     * different data fields such as different requirements.
      */
     private final CompanyName companyName;
     private final Role role;
@@ -40,6 +42,12 @@ public class Internship {
     public Internship(CompanyName companyName, Role role, ApplicationStatus applicationStatus, Deadline deadline,
                       StartDate startDate, Duration duration, Set<Requirement> requirements) {
         requireAllNonNull(companyName, role, requirements, applicationStatus, startDate, duration);
+
+        // Final check to make sure that deadline is before start date at the point of Internship's instantiation
+        LocalDate deadlineDate = LocalDate.parse(deadline.toString(), DATE_FORMATTER);
+        LocalDate startDateDate = LocalDate.parse(startDate.toString(), DATE_FORMATTER);
+        assert(deadlineDate.isBefore(startDateDate));
+
         this.companyName = companyName;
         this.role = role;
         this.applicationStatus = applicationStatus;
@@ -84,7 +92,8 @@ public class Internship {
 
     /**
      * Returns true if both internships have the same company name and role (case-insensitive).
-     * This defines a weaker notion of equality between two persons and will be primarily used throughout the program.
+     * This defines a weaker notion of equality between two internships and will be primarily used throughout the
+     * program.
      */
     public boolean isSameInternship(Internship otherInternship) {
         if (otherInternship == this) {
@@ -110,6 +119,13 @@ public class Internship {
     }
 
     /**
+     * It is a conscious design choice to implement getters for the various parameters here instead of simply
+     * calling the parameters' toString() method. The toString() method may contain additional styling elements in
+     * the future based on how we want to modify it for other use cases. These getters are purely called by the
+     * filter method and will always return the raw string representation of the parameters without any accessories.
+     * This separation ensures that there is no regression in our development when we add more styling to the toString()
+     * method in the future.
+     *
      * Returns string representation of the internship entry's role.
      */
     public String getRoleString() {
@@ -136,8 +152,6 @@ public class Internship {
     public String getDurationString() {
         return this.duration.getDuration();
     }
-
-
 
     /**
      * Returns true if both persons have the same identity and data fields.

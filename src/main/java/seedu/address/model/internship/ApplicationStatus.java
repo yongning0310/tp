@@ -6,8 +6,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.util.Arrays;
 import java.util.List;
 
-
-
 /**
  * Represents an Internship's application status in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidApplicationStatus(String)}
@@ -43,6 +41,13 @@ public class ApplicationStatus implements Comparable<ApplicationStatus> {
         return this.applicationStatus;
     }
 
+    /**
+     * Returns the raw string value of the Internship's application status. This method is used exclusively by the
+     * filter command. We have both a toString() method and a getApplicationStatus() method to guard against any
+     * potential changes to the toString() string output that will regress the functionalities of filter.
+     *
+     * @return The raw string value of the Internship's application status.
+     */
     public String getApplicationStatus() {
         return this.applicationStatus;
     }

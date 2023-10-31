@@ -53,26 +53,13 @@ public class RequirementContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_requirementsPredicateEqualsItself_returnsTrue() {
+    public void equals() {
         RequirementContainsKeywordsPredicate predicate =
                 new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
         assertTrue(predicate.equals(predicate));
-    }
-
-    @Test
-    public void test_requirementsPredicateEqualsNull_returnsFalse() {
-        RequirementContainsKeywordsPredicate predicate =
-                new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
         assertFalse(predicate.equals(null));
-    }
-
-    @Test
-    public void test_requirementsPredicateString_returnsTrue() {
-        RequirementContainsKeywordsPredicate predicate =
-                new RequirementContainsKeywordsPredicate(Arrays.asList("JavaScript", "C++"));
         assertTrue(predicate.toString().equals(
-                "seedu.address.model.internship.RequirementContainsKeywordsPredicate{keywords=[JavaScript, C++]}")
+                RequirementContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=[JavaScript, C++]}")
         );
     }
-
 }

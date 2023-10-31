@@ -21,10 +21,10 @@ class StartDateTest {
 
     @Test
     public void isValidStartDate() {
-        // null startDate number
+        // null startDate -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> StartDate.isValidStartDate(null));
 
-        // invalid startDate
+        // invalid startDate -> returns false
         assertFalse(StartDate.isValidStartDate("")); // empty string
         assertFalse(StartDate.isValidStartDate(" ")); // spaces only
         assertFalse(StartDate.isValidStartDate("91")); // not in valid format
@@ -33,8 +33,8 @@ class StartDateTest {
         assertFalse(StartDate.isValidStartDate("startDate")); // not in valid format
         assertFalse(StartDate.isValidStartDate("10/13/2023")); // not in valid format
 
-        // valid startDate numbers
-        assertTrue(StartDate.isValidStartDate("10/01/2022")); // exactly 3 numbers
+        // valid startDate -> returns true
+        assertTrue(StartDate.isValidStartDate("10/01/2022")); // valid DD/MM/YYYY format
         assertTrue(StartDate.isValidStartDate("31/12/2023"));
     }
 

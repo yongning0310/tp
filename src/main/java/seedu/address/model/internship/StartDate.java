@@ -7,8 +7,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-
-
 /**
  * Represents an Internship's start date in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidStartDate(String)}

@@ -19,9 +19,9 @@ import seedu.address.model.util.InternshipSampleDataUtil;
 public class InternshipBuilder {
     public static final String DEFAULT_COMPANY_NAME = "Jane Street";
     public static final String DEFAULT_ROLE = "Software Engineer";
-    public static final String DEFAULT_DEADLINE = "06/06/2022";
+    public static final String DEFAULT_DEADLINE = "06/06/2001";
     public static final String DEFAULT_APPLICATION_STATUS = "Yet to apply";
-    public static final String DEFAULT_START_DATE = "20/01/2023";
+    public static final String DEFAULT_START_DATE = "20/01/2099";
     public static final String DEFAULT_DURATION = "3";
 
     private CompanyName companyName;

@@ -58,6 +58,13 @@ public class Role implements Comparable<Role> {
         return this.role.equalsIgnoreCase(otherRole.role);
     }
 
+    /**
+     * Returns the raw string value of the Internship's role. This method is used exclusively by the filter command.
+     * We have both a toString() method and a getRole() method to guard against any potential changes to the
+     * toString() string output that will regress the functionalities of filter.
+     *
+     * @return The raw string value of the Internship's role.
+     */
     public String getRole() {
         return this.role;
     }

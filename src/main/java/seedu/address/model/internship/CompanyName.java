@@ -12,10 +12,6 @@ public class CompanyName implements Comparable<CompanyName> {
     public static final String MESSAGE_CONSTRAINTS =
             "Company names should only contain alphanumeric characters and spaces, and it should not be blank";
 
-    /*
-     * The first character of the company name must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     private final String companyName;
@@ -58,6 +54,13 @@ public class CompanyName implements Comparable<CompanyName> {
         return this.companyName.equalsIgnoreCase(otherCompanyName.companyName);
     }
 
+    /**
+     * Returns the raw string value of the Internship's company name. This method is used exclusively by the filter
+     * command. We have both a toString() method and a getCompanyName() method to guard against any potential changes to
+     * the toString() string output that will regress the functionalities of filter.
+     *
+     * @return The raw string value of the Internship's company name.
+     */
     public String getCompanyName() {
         return this.companyName;
     }

@@ -80,6 +80,7 @@ public class DeadlineTest {
         assertEquals("10/10/2024", deadline.toString());
     }
 
+    // If two objects are considered equal (as defined by the equals() method), they must return the same hash code.
     @Test
     public void hashCode_sameDeadlineName_sameHashCode() {
         Deadline deadline1 = new Deadline("10/10/2024", "11/11/2024");
