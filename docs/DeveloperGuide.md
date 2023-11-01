@@ -578,21 +578,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `InternshipBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Flagship` and the **Actor** is the `user`, unless specified otherwise)
 
 
 **UC1: Create an internship entry**
 
 **MSS**
 
-1.  User requests to create an internship entry with the necessary details
-2.  InternshipBook adds the internship entry to the list
+1.  User requests to create an internship entry with the necessary details.
+2.  InternshipBook adds the internship entry to the list.
+Use case ends.
 
 **Extensions**
 * 1a. Command is of invalid format
-    * 1a1. InternshipBook shows an error message.
+    * 1a1. Flagship shows an error message.
+    * Use case resumes from step 1.
+<br><br>
+* 1b. Internship entry has a duplicate already stored in `Flagship`.
+    * 1b1. Flagship shows an error message.
+    * Use case resumes from step 1.
 
-  Use case ends.
 
 **UC2: Delete an internship**
 

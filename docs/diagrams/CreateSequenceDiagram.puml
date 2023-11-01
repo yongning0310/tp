@@ -49,25 +49,21 @@ deactivate InternshipBookParser
 InternshipLogicManager -> CreateCommand : execute()
 activate CreateCommand
 
+CreateCommand -> InternshipModel : createInternship(toAdd)
+activate InternshipModel
 
-alt duplicate internship
-    CreateCommand -> InternshipLogicManager
-else
-    CreateCommand -> InternshipModel : createInternship(toAdd)
-    activate InternshipModel
+InternshipModel --> CreateCommand
+deactivate InternshipModel
 
-    InternshipModel --> CreateCommand
-    deactivate InternshipModel
+create CommandResult
+CreateCommand -> CommandResult
+activate CommandResult
 
-    create CommandResult
-    CreateCommand -> CommandResult
-    activate CommandResult
+CommandResult --> CreateCommand
+deactivate CommandResult
 
-    CommandResult --> CreateCommand
-    deactivate CommandResult
+CreateCommand --> InternshipLogicManager : commandResult
 
-    CreateCommand --> InternshipLogicManager : commandResult
-end
 deactivate CreateCommand
 
 [<--InternshipLogicManager
