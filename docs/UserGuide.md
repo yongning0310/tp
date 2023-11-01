@@ -169,11 +169,11 @@ Found an internship opportunity that you really want to apply for? Or have you s
 and wish to keep tabs of its progress in the future? Create an internship entry that can be stored in Flagship so that 
 you will never lose track of it! 
 
-Format: `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENTS]...`
+**Format**: `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENTS]...`
 
-Example: `create c/Citadel ro/Backend Developer a/Yet to apply de/01/02/2022 s/24/04/2022 du/2 re/C++` 
+**Example**: `create c/Citadel ro/Backend Developer a/Yet to apply de/01/02/2022 s/24/04/2022 du/2 re/C++` 
 
-Interpretation: Create an internship entry for **Citadel**. This is a **Backend Developer** role that you have
+**Interpretation**: Create an internship entry for **Citadel**. This is a **Backend Developer** role that you have
 **yet to apply** for. The **deadline** for the application is 1 February 2022, and the internship is expected to **start**
 on 24 April 2022. This is a **2-month** internship, and you are expected to be proficient in **C++**.
 
@@ -205,7 +205,7 @@ as effectively.
 
 Update details of an existing internship entry.
 
-Format: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
+**Format**: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
 
 * Modify the internship at the specified `INDEX`. This index correlates with the position in the displayed internship list. It **must be a positive integer**, e.g., 1, 2, 3, …​.
 * New inputs will overwrite existing values.
@@ -214,50 +214,57 @@ Format: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE d
 * Editing requirements will replace current requirements; adding requirements doesn't accumulate.
 * Use the command without `re/` to remove all of an internship's requirements.
 
-Examples:
+**Examples**:
 * `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/29/11/2022 du/3 re/C++ re/Coffee`
 
 ### Filter Internships by Name and Keyword: `filter`
 
 Display internships matching specific category keywords.
 
-Format: `filter [category]/[keyword] ...`
+**Format**: `filter [category]/[keyword] ...`
 
 * The search isn't case-sensitive. For instance, `hans` matches `Hans`.
 * The sequence of category and keyword doesn't matter.
 * Results will include internships matching all keywords (i.e., `AND` search). For instance, `c/JA ro/SWE` matches `c/JANE STREET and ro/SWE` but not `c/JANE STREET ro/Admin` or `c/Google ro/SWE`.
 * If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
 
-Examples:
+**Examples**:
 * `filter c/JA ro/SWE` displays internships with company names containing "JA" and roles containing "SWE".
 * `filter` returns the list to its unfiltered state.
 
 ### Sort Internships by Category and Order: `sort`
 
-Organize the displayed list based on specific categories and order.
+Have a growing list of internships and finding it challenging to prioritize? Or perhaps you're looking to identify opportunities with the nearest deadlines or those that align with a specific field of interest? Use the sort feature in Flagship to organize and arrange your internship list based on specific categories and order.
 
-Format: `sort [category]/[ASC/DESC]`
+**Format**: `sort [CATEGORY]/[ASC/DESC]`
 
 * `ASC` indicates ascending order, and `DESC` denotes descending order.
-* A subsequent `sort` command will replace the prior one. Otherwise, the initial sort remains effective.
-* The default sort state is by company name in ascending order.
-* `sort default` returns the list to its default sort state.
 
-Examples:
+**Examples**:
 * `sort c/ASC` sorts entries by company name (ascending).
-* `sort` resets the list to default, which is in order of creation (ascending).
+* `sort default` resets the list to default, which is in order of company name (ascending).
+
+<div markdown="block" class="alert alert-success">
+💡 Internship entries are by default sorted by company name in ascending order.
+</div>
+<div markdown="block" class="alert alert-info">
+ℹ️ We do not allow you to stack sorts. A subsequent `sort` command will replace the prior one. Otherwise, the initial sort remains effective.
+</div>
+
+**Expected Output**:
+![Sort](images/Sort.jpg)
 
 ### Deleting an Internship: `delete`
 
 Remove a specified internship from the internship directory.
 
-Format: `delete INDEX`
+**Format**: `delete INDEX`
 
 * Erase the internship at the designated `INDEX`.
 * The index corresponds to the position in the displayed internship list.
 * The index **must be a positive integer** like 1, 2, 3, …​
 
-Examples:
+**Examples**:
 * `delete 2` removes the 2nd internship from the directory.
 * Running `sort c/ASC ro/DESC` followed by `delete 1` erases the top internship post-sort.
 
@@ -320,7 +327,7 @@ If your changes to the data file makes its format invalid, InternshipBook will d
 | **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`                  |
 | **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` |
 | **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                              |
-| **Sort**   | `sort [category]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                           |
+| **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                           |
 | **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                              |
 
 [//]: # (**List**   | `list`)
