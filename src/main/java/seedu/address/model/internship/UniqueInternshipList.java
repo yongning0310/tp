@@ -32,6 +32,9 @@ public class UniqueInternshipList implements Iterable<Internship> {
 
     /**
      * Returns true if the list contains an equivalent internship as the given argument.
+     *
+     * @param toCheck The internship to check against.
+     * @return A boolean representing whether an equivalent internship exists.
      */
     public boolean contains(Internship toCheck) {
         requireNonNull(toCheck);
@@ -39,8 +42,10 @@ public class UniqueInternshipList implements Iterable<Internship> {
     }
 
     /**
-     * Adds a internship to the list.
+     * Adds an internship to the list.
      * The internship must not already exist in the list.
+     *
+     * @param toAdd The internship to be added.
      */
     public void create(Internship toAdd) {
         requireNonNull(toAdd);
@@ -74,6 +79,8 @@ public class UniqueInternshipList implements Iterable<Internship> {
     /**
      * Removes the equivalent internship from the list.
      * The internship must exist in the list.
+     *
+     * @param toRemove The internship to be removed.
      */
     public void remove(Internship toRemove) {
         requireNonNull(toRemove);
@@ -82,6 +89,11 @@ public class UniqueInternshipList implements Iterable<Internship> {
         }
     }
 
+    /**
+     * Replaces the existing internship list with the replacement list.
+     *
+     * @param replacement The internship list that will be replacing the existing one.
+     */
     public void setInternships(UniqueInternshipList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -106,9 +118,11 @@ public class UniqueInternshipList implements Iterable<Internship> {
     public ObservableList<Internship> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
-
+    
     /**
      * Sorts the list using the comparator.
+     *
+     * @param comparator The comparator that will be used to determine the order between 2 elements.
      */
     public void sortInternships(Comparator<Internship> comparator) {
         FXCollections.sort(internalList, comparator);

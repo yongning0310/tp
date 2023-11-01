@@ -26,7 +26,10 @@ public class Duration implements Comparable<Duration> {
     }
 
     /**
-     * Returns true if a given string is a valid duration.
+     * Verifies whether the given string constitutes a valid duration.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidDuration(String test) {
         return test.matches(VALIDATION_REGEX);

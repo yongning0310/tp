@@ -16,7 +16,7 @@ import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.Internship;
 
 /**
- * Creates an internship entry in Flagship
+ * Creates an internship entry in Flagship.
  */
 public class CreateCommand extends InternshipCommand {
 
@@ -48,7 +48,7 @@ public class CreateCommand extends InternshipCommand {
     private final Internship toAdd;
 
     /**
-     * Creates an CreateCommand to create the specified {@code Internship}
+     * Creates an CreateCommand to create the specified {@code Internship}.
      */
     public CreateCommand(Internship internship) {
         requireNonNull(internship);

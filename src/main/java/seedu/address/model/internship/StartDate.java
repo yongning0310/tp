@@ -31,7 +31,10 @@ public class StartDate implements Comparable<StartDate> {
     }
 
     /**
-     * Returns true if a given string is a valid StartDate.
+     * Verifies whether the given string constitutes a valid start date.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidStartDate(String test) {
         try {

@@ -39,8 +39,8 @@ public class Deadline implements Comparable<Deadline> {
      * Returns true if the given strings for deadline and start date are valid and the deadline is earlier than the
      * start date.
      *
-     * @param deadlineTest A valid deadline.
-     * @param startDateTest A valid start date.
+     * @param deadlineTest The deadline string to be tested.
+     * @param startDateTest The start date string to be tested.
      */
     public static boolean isValidDeadline(String deadlineTest, String startDateTest) {
         try {

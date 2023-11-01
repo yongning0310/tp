@@ -32,6 +32,12 @@ public class ApplicationStatus implements Comparable<ApplicationStatus> {
         this.applicationStatus = applicationStatus;
     }
 
+    /**
+     * Verifies whether the given string constitutes a valid application status enum.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
+     */
     public static boolean isValidApplicationStatus(String test) {
         return VALID_STATUSES.contains(test);
     }

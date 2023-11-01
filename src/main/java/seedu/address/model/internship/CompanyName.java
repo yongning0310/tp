@@ -28,7 +28,10 @@ public class CompanyName implements Comparable<CompanyName> {
     }
 
     /**
-     * Returns true if a given string is a valid company name.
+     * Verifies whether the given string constitutes a valid company name.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidCompanyName(String test) {
         return test.matches(VALIDATION_REGEX);

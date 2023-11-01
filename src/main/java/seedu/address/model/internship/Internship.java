@@ -37,7 +37,15 @@ public class Internship {
     private final Set<Requirement> requirements = new HashSet<>();
 
     /**
-     * Every field must be present and not null.
+     * Constructs a {@code Internship}.
+     *
+     * @param companyName The company name of the internship.
+     * @param role The role of the internship.
+     * @param applicationStatus The application status of the internship.
+     * @param deadline The deadline to apply for the internship.
+     * @param startDate The start date of the internship.
+     * @param duration The duration of the internship.
+     * @param requirements The requirements of the internship.
      */
     public Internship(CompanyName companyName, Role role, ApplicationStatus applicationStatus, Deadline deadline,
                       StartDate startDate, Duration duration, Set<Requirement> requirements) {
@@ -94,6 +102,9 @@ public class Internship {
      * Returns true if both internships have the same company name and role (case-insensitive).
      * This defines a weaker notion of equality between two internships and will be primarily used throughout the
      * program.
+     *
+     * @param otherInternship The other internship that will be compared to.
+     * @return A boolean representing whether the two internships are the same.
      */
     public boolean isSameInternship(Internship otherInternship) {
         if (otherInternship == this) {
@@ -119,14 +130,13 @@ public class Internship {
     }
 
     /**
+     * Returns the string representation of the internship entry's role.
      * It is a conscious design choice to implement getters for the various parameters here instead of simply
      * calling the parameters' toString() method. The toString() method may contain additional styling elements in
      * the future based on how we want to modify it for other use cases. These getters are purely called by the
      * filter method and will always return the raw string representation of the parameters without any accessories.
      * This separation ensures that there is no regression in our development when we add more styling to the toString()
      * method in the future.
-     *
-     * Returns string representation of the internship entry's role.
      */
     public String getRoleString() {
         return this.role.getRole();
@@ -154,8 +164,11 @@ public class Internship {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both internships have the same identity and data fields.
+     * This defines a stronger notion of equality between two internships.
+     *
+     * @param other The other internship to be compared with.
+     * @return A boolean representing whether two internships are equal.
      */
     @Override
     public boolean equals(Object other) {
