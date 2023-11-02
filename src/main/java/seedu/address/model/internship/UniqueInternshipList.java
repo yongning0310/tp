@@ -118,7 +118,7 @@ public class UniqueInternshipList implements Iterable<Internship> {
     public ObservableList<Internship> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
-    
+
     /**
      * Sorts the list using the comparator.
      *
