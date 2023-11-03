@@ -140,7 +140,7 @@ public class ParserUtil {
         requireNonNull(requirements);
         final Set<Requirement> requirementSet = new HashSet<>();
         for (String requirementName : requirements) {
-            requirementSet.add(parseRequirement(requirementName));
+            requirementSet.add(parseRequirement(requirementName.strip()));
         }
         return requirementSet;
     }

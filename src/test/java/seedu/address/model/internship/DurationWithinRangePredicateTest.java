@@ -59,4 +59,12 @@ public class DurationWithinRangePredicateTest {
         internship = new InternshipBuilder().withDuration("4").build();
         assertTrue(predicate.test(internship));
     }
+
+    @Test
+    public void test_equalDurationPredicate_returnsTrue() {
+        DurationWithinRangePredicate predicate = new DurationWithinRangePredicate(Arrays.asList(
+                new Duration("2"), new Duration("4")
+        ));
+        assertFalse(predicate.equals(null));
+    }
 }

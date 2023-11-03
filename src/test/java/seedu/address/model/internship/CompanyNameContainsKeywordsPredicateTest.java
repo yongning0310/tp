@@ -51,4 +51,28 @@ public class CompanyNameContainsKeywordsPredicateTest {
         Internship internship = new InternshipBuilder().withCompanyName("Google").build();
         assertFalse(predicate.test(internship));
     }
+
+    @Test
+    public void testEqualsSelf_returnsTrue() {
+        CompanyNameContainsKeywordsPredicate predicate =
+                new CompanyNameContainsKeywordsPredicate(Arrays.asList("Facebook", "Apple"));
+        assertTrue(predicate.equals(predicate));
+    }
+
+    @Test
+    public void testEqualsNull_returnsFalse() {
+        CompanyNameContainsKeywordsPredicate predicate =
+                new CompanyNameContainsKeywordsPredicate(Arrays.asList("Facebook", "Apple"));
+        assertFalse(predicate.equals(null));
+    }
+
+    @Test
+    public void testToString_returnsTrue() {
+        CompanyNameContainsKeywordsPredicate predicate =
+                new CompanyNameContainsKeywordsPredicate(Arrays.asList("Facebook", "Apple"));
+        assertTrue(predicate.toString().equals(
+                "seedu.address.model.internship.CompanyNameContainsKeywordsPredicate{keywords=[Facebook, Apple]}")
+        );
+    }
+
 }

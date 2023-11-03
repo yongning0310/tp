@@ -10,7 +10,7 @@
 
 ![Ui](images/Ui.png)
 
-**Flagship is a desktop application used to help aspiring students track internship applications.** he user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java.
+**Flagship is a desktop application used to help aspiring students track internship applications.** The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java.
 
 * If you are interested in using Flagship, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
 * If you are interested about developing Flagship, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.

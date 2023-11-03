@@ -10,11 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.CreateCommand;
 import seedu.address.logic.commands.DeleteCommand;
-//import seedu.address.logic.commands.ModifyCommand;
-//import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.internship.Internship;
-//import seedu.address.testutil.EditInternshipDescriptorBuilder;
 import seedu.address.testutil.InternshipBuilder;
 import seedu.address.testutil.InternshipUtil;
 
@@ -36,16 +33,6 @@ public class InternshipBookParserTest {
                   DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_INTERNSHIP.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_INTERNSHIP), command);
     }
-
-    //    @Test
-    //    public void parseCommand_modify() throws Exception {
-    //        Internship internship = new InternshipBuilder().build();
-    //        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder(internship).build();
-    //        ModifyCommand command = (ModifyCommand) parser.parseCommand(ModifyCommand.COMMAND_WORD + " "
-    //                + INDEX_FIRST_INTERNSHIP.getOneBased() + " "
-    //                + InternshipUtil.getEditInternshipDescriptorDetails(descriptor));
-    //        assertEquals(new ModifyCommand(INDEX_FIRST_INTERNSHIP, descriptor), command);
-    //    }
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {

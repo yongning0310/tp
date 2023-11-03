@@ -49,18 +49,18 @@ public class CreateCommandParser implements InternshipParser<CreateCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY_NAME, PREFIX_ROLE, PREFIX_APPLICATION_STATUS,
                 PREFIX_DEADLINE, PREFIX_START_DATE, PREFIX_DURATION);
 
-        CompanyName companyName = ParserUtil.parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get());
-        Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
+        CompanyName companyName = ParserUtil.parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get().strip());
+        Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get().strip());
 
         ApplicationStatus applicationStatus = ParserUtil.parseApplicationStatus(
-                argMultimap.getValue(PREFIX_APPLICATION_STATUS).get()
+                argMultimap.getValue(PREFIX_APPLICATION_STATUS).get().strip()
         );
         Deadline deadline = ParserUtil.parseDeadline(
-                argMultimap.getValue(PREFIX_DEADLINE).get(),
-                argMultimap.getValue(PREFIX_START_DATE).get()
+                argMultimap.getValue(PREFIX_DEADLINE).get().strip(),
+                argMultimap.getValue(PREFIX_START_DATE).get().strip()
         );
-        StartDate startDate = ParserUtil.parseStartDate(argMultimap.getValue(PREFIX_START_DATE).get());
-        Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
+        StartDate startDate = ParserUtil.parseStartDate(argMultimap.getValue(PREFIX_START_DATE).get().strip());
+        Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get().strip());
         Set<Requirement> requirementList = ParserUtil.parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
         Internship internship = new Internship(
                 companyName, role, applicationStatus, deadline, startDate, duration, requirementList

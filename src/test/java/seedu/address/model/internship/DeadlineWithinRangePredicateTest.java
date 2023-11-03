@@ -115,5 +115,16 @@ public class DeadlineWithinRangePredicateTest {
         assertFalse(predicate.test(internship2));
     }
 
+    @Test
+    public void test_deadlineToString_returnsTrue() {
+        Deadline deadlineOne = new Deadline("01/01/2023", "02/01/2023");
+        Deadline deadlineTwo = new Deadline("31/12/2023", "31/12/2024");
+        DeadlineWithinRangePredicate predicateOne =
+                new DeadlineWithinRangePredicate(Arrays.asList(deadlineOne, deadlineTwo));
+        assertTrue(predicateOne.toString().equals(
+                "seedu.address.model.internship.DeadlineWithinRangePredicate{deadlineRange=[01/01/2023, 31/12/2023]}")
+        );
+    }
+
     // Additional test cases can be added to check for boundary cases and other behaviors
 }

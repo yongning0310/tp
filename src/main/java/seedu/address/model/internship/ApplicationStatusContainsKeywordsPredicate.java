@@ -20,7 +20,7 @@ public class ApplicationStatusContainsKeywordsPredicate implements Predicate<Int
     public boolean test(Internship internship) {
         return keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(internship
-                        .getApplicationStatus().applicationStatus, keyword));
+                        .getApplicationStatus().getApplicationStatus(), keyword));
     }
 
     @Override

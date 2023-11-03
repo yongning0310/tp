@@ -100,6 +100,9 @@ public class DeleteCommandTest {
 
         // different types -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+
+        // null -> returns false
+        assertFalse(deleteFirstCommand.equals(null));
     }
 
     @Test

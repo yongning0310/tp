@@ -94,6 +94,11 @@ public class InternshipBookTest {
         assertEquals(expected, internshipBook.toString());
     }
 
+    @Test
+    public void equals_nullInternshipBook_returnsFalse() {
+        assertFalse(internshipBook.equals(null));
+    }
+
     /**
      * A stub ReadOnlyInternshipBook whose internships list can violate interface constraints.
      */
