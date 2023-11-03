@@ -8,8 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
-import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseFailure;
-import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseSuccess;
+import static seedu.address.logic.parser.CommandInternshipParserUtilTest.assertInternshipParseFailure;
+import static seedu.address.logic.parser.CommandInternshipParserUtilTest.assertInternshipParseSuccess;
 
 import org.junit.jupiter.api.Test;
 

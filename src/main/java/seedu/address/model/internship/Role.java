@@ -12,10 +12,6 @@ public class Role implements Comparable<Role> {
     public static final String MESSAGE_CONSTRAINTS =
             "Role should only contain alphanumeric characters and spaces, and it should not be blank";
 
-    /*
-     * The first character of the role must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     private final String role;
@@ -32,7 +28,10 @@ public class Role implements Comparable<Role> {
     }
 
     /**
-     * Returns true if a given string is a valid role.
+     * Verifies whether the given string constitutes a valid role.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidRole(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -58,6 +57,13 @@ public class Role implements Comparable<Role> {
         return this.role.equalsIgnoreCase(otherRole.role);
     }
 
+    /**
+     * Returns the raw string value of the Internship's role. This method is used exclusively by the filter command.
+     * We have both a toString() method and a getRole() method to guard against any potential changes to the
+     * toString() string output that will regress the functionalities of filter.
+     *
+     * @return The raw string value of the Internship's role.
+     */
     public String getRole() {
         return this.role;
     }

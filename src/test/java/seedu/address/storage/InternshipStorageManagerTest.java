@@ -15,8 +15,6 @@ import seedu.address.model.InternshipBook;
 import seedu.address.model.InternshipUserPrefs;
 import seedu.address.model.ReadOnlyInternshipBook;
 
-
-
 public class InternshipStorageManagerTest {
 
     @TempDir
@@ -40,7 +38,7 @@ public class InternshipStorageManagerTest {
     @Test
     public void prefsReadSave() throws Exception {
         /*
-         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * Note: This is an integration test that verifies the InternshipStorageManager is properly wired to the
          * {@link JsonInternshipUserPrefsStorage} class.
          * More extensive testing of InternshipUserPref saving/reading is done in
          * {@link JsonInternshipUserPrefsStorageTest} class.
@@ -68,5 +66,12 @@ public class InternshipStorageManagerTest {
     @Test
     public void getInternshipBookFilePath() {
         assertNotNull(internshipStorageManager.getInternshipBookFilePath());
+    }
+
+    @Test
+    public void getUserPrefsFilePath() {
+        Path expectedPath = getTempFilePath("prefs");
+        Path actualPath = internshipStorageManager.getUserPrefsFilePath();
+        assertEquals(expectedPath, actualPath);
     }
 }

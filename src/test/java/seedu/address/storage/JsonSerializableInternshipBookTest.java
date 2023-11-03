@@ -13,8 +13,6 @@ import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.InternshipBook;
 import seedu.address.testutil.TypicalInternships;
 
-
-
 public class JsonSerializableInternshipBookTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
             "JsonSerializableInternshipBookTest");

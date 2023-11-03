@@ -26,7 +26,10 @@ public class Requirement {
     }
 
     /**
-     * Returns true if a given string is a valid requirement name.
+     * Verifies whether the given string constitutes a valid requirement.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidRequirementName(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -52,12 +55,19 @@ public class Requirement {
         return this.requirementName.hashCode();
     }
 
+    /**
+     * Returns the raw string value of the Internship's requirement. This method is used exclusively by the filter
+     * command. We have both a toString() method and a getRequirementName() method to guard against any potential
+     * changes to the toString() string output that will regress the functionalities of filter.
+     *
+     * @return The raw string value of the Internship's requirement.
+     */
     public String getRequirementName() {
         return this.requirementName;
     }
 
     /**
-     * Format state as text for viewing.
+     * Returns an accessorised string output to represent the internship's requirement.
      */
     public String toString() {
         return '[' + this.requirementName + ']';

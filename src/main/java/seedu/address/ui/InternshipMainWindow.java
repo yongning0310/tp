@@ -140,6 +140,7 @@ public class InternshipMainWindow extends UiPart<Stage> {
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+            primaryStage.centerOnScreen();
         }
     }
 

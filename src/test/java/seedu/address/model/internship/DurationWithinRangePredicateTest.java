@@ -61,7 +61,7 @@ public class DurationWithinRangePredicateTest {
     }
 
     @Test
-    public void test_equalDurationPredicate_returnsTrue() {
+    public void test_equalDurationPredicateToNull_returnsFalse() {
         DurationWithinRangePredicate predicate = new DurationWithinRangePredicate(Arrays.asList(
                 new Duration("2"), new Duration("4")
         ));

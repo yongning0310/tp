@@ -21,15 +21,15 @@ class ApplicationStatusTest {
 
     @Test
     public void isValidApplicationStatus() {
-        // null applicationStatus
+        // null applicationStatus -> returns false
         assertFalse(ApplicationStatus.isValidApplicationStatus(null));
 
-        // invalid applicationStatuses
+        // invalid applicationStatuses -> returns false
         assertFalse(ApplicationStatus.isValidApplicationStatus("")); // empty string
         assertFalse(ApplicationStatus.isValidApplicationStatus(" ")); // spaces only
-        assertFalse(ApplicationStatus.isValidApplicationStatus("Still trying")); // invalid status
+        assertFalse(ApplicationStatus.isValidApplicationStatus("Still trying")); // invalid status (not enum value)
 
-        // valid applicationStatuses
+        // valid applicationStatuses -> returns true
         assertTrue(ApplicationStatus.isValidApplicationStatus("Yet to apply"));
         assertTrue(ApplicationStatus.isValidApplicationStatus("Applied"));
         assertTrue(ApplicationStatus.isValidApplicationStatus("In progress"));

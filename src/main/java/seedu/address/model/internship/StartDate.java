@@ -7,8 +7,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-
-
 /**
  * Represents an Internship's start date in Flagship.
  * Guarantees: immutable; is valid as declared in {@link #isValidStartDate(String)}
@@ -33,7 +31,10 @@ public class StartDate implements Comparable<StartDate> {
     }
 
     /**
-     * Returns true if a given string is a valid StartDate.
+     * Verifies whether the given string constitutes a valid start date.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidStartDate(String test) {
         try {

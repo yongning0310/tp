@@ -22,16 +22,16 @@ class CompanyNameTest {
 
     @Test
     public void isValidCompanyName() {
-        // null companyName
+        // null companyName -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> CompanyName.isValidCompanyName(null));
 
-        // invalid companyName
+        // invalid companyName -> returns false
         assertFalse(CompanyName.isValidCompanyName("")); // empty string
         assertFalse(CompanyName.isValidCompanyName(" ")); // spaces only
         assertFalse(CompanyName.isValidCompanyName("^")); // only non-alphanumeric characters
         assertFalse(CompanyName.isValidCompanyName("dbs*")); // contains non-alphanumeric characters
 
-        // valid companyName
+        // valid companyName -> returns true
         assertTrue(CompanyName.isValidCompanyName("takashimaya")); // alphabets only
         assertTrue(CompanyName.isValidCompanyName("111")); // numbers only
         assertTrue(CompanyName.isValidCompanyName("123 shopping centre")); // alphanumeric characters

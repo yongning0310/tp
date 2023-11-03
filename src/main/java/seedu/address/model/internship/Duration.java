@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Duration implements Comparable<Duration> {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Internship durations should only contain positive numbers representing months and should not be blank";
+            "Internship durations should only contain positive integers representing months and should not be blank";
     public static final String VALIDATION_REGEX = "[1-9]\\d*";
     private final String duration;
 
@@ -26,7 +26,10 @@ public class Duration implements Comparable<Duration> {
     }
 
     /**
-     * Returns true if a given string is a valid duration.
+     * Verifies whether the given string constitutes a valid duration.
+     *
+     * @param test The given string to be tested.
+     * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidDuration(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -57,9 +60,17 @@ public class Duration implements Comparable<Duration> {
         return this.duration.hashCode();
     }
 
+    /**
+     * Returns the raw string value of the Internship's duration. This method is used exclusively by the filter command.
+     * We have both a toString() method and a getDuration() method to guard against any potential changes to the
+     * toString() string output that will regress the functionalities of filter.
+     *
+     * @return The raw string value of the Internship's duration.
+     */
     public String getDuration() {
         return this.duration;
     }
+
     @Override
     public int compareTo(Duration other) {
         return Integer.compare(Integer.parseInt(this.duration), Integer.parseInt(other.duration));
