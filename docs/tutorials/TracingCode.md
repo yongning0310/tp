@@ -43,7 +43,7 @@ In our case, we would want to begin the tracing at the very point where the App 
 
 <puml src="../diagrams/ArchitectureSequenceDiagram.puml" width="550" />
 
-According to the sequence diagram you saw earlier (and repeated above for reference), the `UI` component yields control to the `Logic` component through a method named `execute`. Searching through the code base for an `execute()` method that belongs to the `Logic` component yields a promising candidate in `seedu.address.logic.Logic`.
+According to the sequence diagram you saw earlier (and repeated above for reference), the `UI` component yields control to the `Logic` component through a method named `execute`. Searching through the code base for an `execute()` method that belongs to the `Logic` component yields a promising candidate in `seedu.address.logic.InternshipLogic`.
 
 <img src="../images/tracing/searchResultsForExecuteMethod.png" />
 
@@ -52,10 +52,10 @@ According to the sequence diagram you saw earlier (and repeated above for refere
 **Intellij Tip:** The ['**Search Everywhere**' feature](https://www.jetbrains.com/help/idea/searching-everywhere.html) can be used here. In particular, the '**Find Symbol**' ('Symbol' here refers to methods, variables, classes etc.) variant of that feature is quite useful here as we are looking for a _method_ named `execute`, not simply the text `execute`.
 </box>
 
-A quick look at the `seedu.address.logic.Logic` (an extract given below) confirms that this indeed might be what we’re looking for.
+A quick look at the `seedu.address.logic.InternshipLogic` (an extract given below) confirms that this indeed might be what we’re looking for.
 
 ```java
-public interface Logic {
+public interface InternshipLogic {
     /**
      * Executes the command and returns the result.
      * @param commandText The command as entered by the user.
