@@ -162,7 +162,7 @@ This section describes some noteworthy details on how certain features are imple
 #### Implementation
 
 The create command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `create` command with a valid format.
-Upon successful verification, the `create` command is executed. 
+Upon successful verification, the `create` command is executed.
 
 The create command is exposed in the `InternshipModel` interface as `InternshipModel#createInternship`.
 
@@ -223,7 +223,7 @@ The following sequence diagram shows how the create command operation works:
 #### Implementation
 
 The delete command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `delete` command with a valid format.
-Upon successful verification, the `delete` command is executed. 
+Upon successful verification, the `delete` command is executed.
 
 The delete command is exposed in the `InternshipModel` interface as `InternshipModel#deleteInternship`.
 
@@ -243,7 +243,7 @@ the other corresponding command.
 
 </box>
 
-Step 2. The `delete` command is executed. If the index is valid, when it is greater than 0 and an internship exists at the specified index, 
+Step 2. The `delete` command is executed. If the index is valid, when it is greater than 0 and an internship exists at the specified index,
 the specified internship is selected for deletion.
 
 <puml src="diagrams/DeleteCommandExecute.puml" alt="DeleteCommandExecute" />

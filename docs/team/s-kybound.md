@@ -9,7 +9,7 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 ## Summary of contributions
 
-* **Code contributed**: 
+* **Code contributed**:
     * Wrote extensive test cases for the Modify Command
     * Wrote extensive test cases for the Logic and Parsing components of Flagship
     * Updated the project to remove all AB3-specific code
@@ -22,12 +22,12 @@ Flagship is a desktop application used to help aspiring students track internshi
 * **New Feature**: Sort and Filter status bar
     * What it does: The status bar is a UI enhancement to Flagship that allows users to view the current active sorting and filtering actions on Flagship's Internship list
     * Justification: As sort and filter effects are persistent across commands, this will help users easily keep track of how their internships are sorted or filtered, avoiding confusion
-  
+
 * **New Feature**: (generic) to be added soon
 
 * **Documentation**:
     * User Guide
-        * Pull requests: 
+        * Pull requests:
     * Developer Guide:
         * Managed the _**delete**_ command part of the Developer Guide
         * Updated the Dev Ops, Testing, Setting Up components of the Developer Guide
@@ -35,7 +35,7 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 * **Project management**:
     * Managed testing for Flagship release `v1.2`
-    * Managed Developer Guide for Flagship release `v1.3` 
+    * Managed Developer Guide for Flagship release `v1.3`
     * (eg. Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub)
 
 * **Community**:
