@@ -19,11 +19,6 @@ import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.InternshipBook;
 import seedu.address.model.ReadOnlyInternshipBook;
 
-
-
-
-
-
 public class JsonInternshipBookStorageTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test",

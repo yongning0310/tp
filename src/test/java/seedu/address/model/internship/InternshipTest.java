@@ -27,19 +27,13 @@ class InternshipTest {
     }
 
     @Test
-    public void isSameInternship_exact() {
+    public void isSameInternship() {
         // same object -> returns true
         assertTrue(JANESTREET.isSameInternship(JANESTREET));
-    }
 
-    @Test
-    public void isSameInternship_nullCompanyName() {
         // null -> returns false
         assertFalse(JANESTREET.isSameInternship(null));
-    }
 
-    @Test
-    public void isSameInternship_sameCompanyNameAndRole() {
         // same companyName and same role, all other attributes different -> returns true
         Internship editedJaneStreet = new InternshipBuilder(JANESTREET)
                 .withApplicationStatus(VALID_APPLICATIONSTATUS_OPTIVER)
@@ -48,23 +42,11 @@ class InternshipTest {
                 .withDuration(VALID_DURATION_OPTIVER).withRequirements(VALID_REQUIREMENT_OPTIVER)
                 .build();
         assertTrue(JANESTREET.isSameInternship(editedJaneStreet));
-    }
 
-    @Test
-    public void isSameInternship_diffCompanyName() {
         // different companyName, all other attributes same -> returns false
-        Internship editedJaneStreet = new InternshipBuilder(JANESTREET)
-                .withApplicationStatus(VALID_APPLICATIONSTATUS_OPTIVER)
-                .withDeadline(VALID_DEADLINE_OPTIVER, VALID_STARTDATE_OPTIVER)
-                .withStartDate(VALID_STARTDATE_OPTIVER)
-                .withDuration(VALID_DURATION_OPTIVER).withRequirements(VALID_REQUIREMENT_OPTIVER)
-                .build();
         editedJaneStreet = new InternshipBuilder(JANESTREET).withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
         assertFalse(JANESTREET.isSameInternship(editedJaneStreet));
-    }
 
-    @Test
-    public void isSameInternship_caseDiffCompanyName() {
         // companyName differs in case, all other attributes same -> returns true
         Internship editedOptiver = new InternshipBuilder(OPTIVER)
                 .withCompanyName(VALID_COMPANY_NAME_OPTIVER.toLowerCase()).build();

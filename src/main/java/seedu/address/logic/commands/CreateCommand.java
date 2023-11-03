@@ -15,15 +15,14 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.Internship;
 
-
 /**
- * Creates an internship entry in Flagship
+ * Creates an internship entry in Flagship.
  */
 public class CreateCommand extends InternshipCommand {
 
     public static final String COMMAND_WORD = "create";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates an internship in Flagship. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates an internship in Flagship.\n"
             + "Parameters: "
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_ROLE + "ROLE "
@@ -46,15 +45,10 @@ public class CreateCommand extends InternshipCommand {
 
     public static final String MESSAGE_DUPLICATE_INTERNSHIP = "This internship already exists in Flagship";
 
-    public static final String MESSAGE_INVALID_VALUE = "The value entered for this field {TO BE COMPLETED} is invalid";
-
-    public static final String MESSAGE_MISSING_VALUE = "This field {TO BE COMPLETED} is compulsory, "
-            + "please do not leave it empty";
-
     private final Internship toAdd;
 
     /**
-     * Creates an CreateCommand to create the specified {@code Internship}
+     * Creates an CreateCommand to create the specified {@code Internship}.
      */
     public CreateCommand(Internship internship) {
         requireNonNull(internship);

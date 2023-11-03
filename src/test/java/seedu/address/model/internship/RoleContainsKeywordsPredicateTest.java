@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -24,6 +25,9 @@ public class RoleContainsKeywordsPredicateTest {
     public void equals_sameObject_returnsTrue() {
         RoleContainsKeywordsPredicate predicate = new RoleContainsKeywordsPredicate(Collections
                 .singletonList("Software"));
+
+        assertEquals(predicate.toString(),
+                RoleContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=[Software]}");
         assertTrue(predicate.equals(predicate));
     }
 

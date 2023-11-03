@@ -31,6 +31,12 @@ public class ApplicationStatusContainsKeywordsPredicateTest {
         ApplicationStatusContainsKeywordsPredicate secondPredicate =
                 new ApplicationStatusContainsKeywordsPredicate(secondPredicateKeywordList);
 
+        // same string representation -> returns true
+        assertEquals(
+                firstPredicate.toString(),
+                ApplicationStatusContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=[first, second]}"
+        );
+
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
@@ -73,11 +79,4 @@ public class ApplicationStatusContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new InternshipBuilder().withApplicationStatus("Rejected").build()));
     }
 
-    @Test
-    public void test_toString_returnsTrue() {
-        ApplicationStatusContainsKeywordsPredicate predicate = new ApplicationStatusContainsKeywordsPredicate(
-                Arrays.asList("Rejected"));
-        assertEquals(predicate.toString(),
-                "seedu.address.model.internship.ApplicationStatusContainsKeywordsPredicate{keywords=[Rejected]}");
-    }
 }

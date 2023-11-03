@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseFailure;
-import static seedu.address.logic.parser.CommandInternshipParserTestUtil.assertInternshipParseSuccess;
+import static seedu.address.logic.parser.CommandInternshipParserUtilTest.assertInternshipParseFailure;
+import static seedu.address.logic.parser.CommandInternshipParserUtilTest.assertInternshipParseSuccess;
 
 import java.util.Arrays;
 import java.util.List;

@@ -6,8 +6,6 @@ package seedu.address.logic.parser;
 public class CliSyntax {
 
     /* Prefix definitions */
-
-    // New set of prefixes for Flagship
     public static final Prefix PREFIX_COMPANY_NAME = new Prefix("c/");
     public static final Prefix PREFIX_ROLE = new Prefix("ro/");
     public static final Prefix PREFIX_REQUIREMENT = new Prefix("re/");

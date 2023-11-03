@@ -25,6 +25,9 @@ public class StartDateWithinRangePredicateTest {
         StartDateWithinRangePredicate predicateOne =
                 new StartDateWithinRangePredicate(Arrays.asList(new StartDate("01/01/2021"),
                         new StartDate("01/01/2022")));
+
+        assertEquals(predicateOne.toString(),
+                StartDateWithinRangePredicate.class.getCanonicalName() + "{startDateRange=[01/01/2021, 01/01/2022]}");
         assertEquals(predicateOne, predicateOne);
     }
 

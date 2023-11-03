@@ -23,7 +23,7 @@ import seedu.address.model.internship.InternshipComparators;
 public class SortCommand extends InternshipCommand {
     public static final String COMMAND_WORD = "sort";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the list of internships by the specified "
-            + "category in either ascending (ASC) or descending (DESC) order. "
+            + "category in either ascending (ASC) or descending (DESC) order.\n"
             + "You should specify the category by using its prefix and then specify the order (either ASC or DESC).\n"
             + "Available categories are:\n"
             + PREFIX_COMPANY_NAME + " - Company Name\n"

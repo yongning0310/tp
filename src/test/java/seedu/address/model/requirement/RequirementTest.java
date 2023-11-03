@@ -10,52 +10,46 @@ import org.junit.jupiter.api.Test;
 public class RequirementTest {
 
     @Test
-    public void constructor_nullRequirementName_throwsNullPointerException() {
+    public void constructor_nullRequirement_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Requirement(null));
     }
 
     @Test
-    public void constructor_invalidRequirementName_throwsIllegalArgumentException() {
+    public void constructor_invalidRequirement_throwsIllegalArgumentException() {
         String invalidRequirementName = ""; // An empty string
         assertThrows(IllegalArgumentException.class, () ->
                 new Requirement(invalidRequirementName));
     }
 
     @Test
-    public void isValidRequirementName_validRequirementName_returnsTrue() {
+    public void isValidRequirement() {
+        // invalid requirement -> returns false
+        assertFalse(Requirement.isValidRequirementName("   ")); // Only spaces
+        assertFalse(Requirement.isValidRequirementName("")); // Empty string
+
+        // valid requirement -> returns true
         assertTrue(Requirement.isValidRequirementName("Maths Requirement"));
     }
 
     @Test
-    public void isValidRequirementName_invalidRequirementName_returnsFalse() {
-        assertFalse(Requirement.isValidRequirementName("   ")); // Only spaces
-        assertFalse(Requirement.isValidRequirementName("")); // Empty string
-    }
-
-    @Test
-    public void equals_sameObject_returnsTrue() {
+    public void equals() {
         Requirement requirement = new Requirement("English Requirement");
+        Requirement differentRequirement = new Requirement("Arts Requirement");
+
+        // same values -> returns true
+        assertTrue(requirement.equals(new Requirement("English Requirement")));
+
+        // same object -> returns true
         assertTrue(requirement.equals(requirement));
-    }
 
-    @Test
-    public void equals_sameValues_returnsTrue() {
-        Requirement requirement1 = new Requirement("Science Requirement");
-        Requirement requirement2 = new Requirement("Science Requirement");
-        assertTrue(requirement1.equals(requirement2));
-    }
+        // null -> returns false
+        assertFalse(requirement.equals(null));
 
-    @Test
-    public void equals_differentValues_returnsFalse() {
-        Requirement requirement1 = new Requirement("Arts Requirement");
-        Requirement requirement2 = new Requirement("Tech Requirement");
-        assertFalse(requirement1.equals(requirement2));
-    }
+        // different types -> returns false
+        assertFalse(requirement.equals(5.0f));
 
-    @Test
-    public void equals_null_returnsFalse() {
-        Requirement requirement1 = new Requirement("Arts Requirement");
-        assertFalse(requirement1.equals(null));
+        // different values -> returns false
+        assertFalse(requirement.equals(differentRequirement));
     }
 
     @Test

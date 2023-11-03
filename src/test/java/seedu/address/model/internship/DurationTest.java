@@ -20,17 +20,17 @@ class DurationTest {
 
     @Test
     public void isValidDuration() {
-        // null duration
+        // null duration -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> Duration.isValidDuration(null));
 
-        // invalid durations
+        // invalid durations -> returns false
         assertFalse(Duration.isValidDuration("")); // empty string
         assertFalse(Duration.isValidDuration(" ")); // spaces only
         assertFalse(Duration.isValidDuration("a")); // non number
         assertFalse(Duration.isValidDuration("2.2")); // non-integer number
         assertFalse(Duration.isValidDuration("-2")); // non-positive number
 
-        // valid durations
+        // valid durations -> returns true
         assertTrue(Duration.isValidDuration("1"));
         assertTrue(Duration.isValidDuration("100"));
         assertTrue(Duration.isValidDuration("999999999"));

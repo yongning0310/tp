@@ -27,6 +27,7 @@ import seedu.address.model.internship.Internship;
 import seedu.address.testutil.InternshipBuilder;
 
 public class CreateCommandTest {
+
     @Test
     public void constructor_nullInternship_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new CreateCommand(null));
@@ -77,7 +78,7 @@ public class CreateCommandTest {
         // null -> returns false
         assertFalse(addJaneStreetCommand.equals(null));
 
-        // different person -> returns false
+        // different internship -> returns false
         assertFalse(addJaneStreetCommand.equals(addGoogleCommand));
     }
 
@@ -89,7 +90,7 @@ public class CreateCommandTest {
     }
 
     /**
-     * A default model stub that have all of the methods failing.
+     * A default model stub that have all the methods failing.
      */
     private class ModelStub implements InternshipModel {
         @Override

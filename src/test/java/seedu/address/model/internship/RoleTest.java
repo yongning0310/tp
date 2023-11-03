@@ -22,16 +22,16 @@ class RoleTest {
 
     @Test
     public void isValidRole() {
-        // null role
+        // null role -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> Role.isValidRole(null));
 
-        // invalid role
+        // invalid role -> returns false
         assertFalse(Role.isValidRole("")); // empty string
         assertFalse(Role.isValidRole(" ")); // spaces only
         assertFalse(Role.isValidRole("^")); // only non-alphanumeric characters
         assertFalse(Role.isValidRole("engineer*")); // contains non-alphanumeric characters
 
-        // valid role
+        // valid role -> returns true
         assertTrue(Role.isValidRole("data analyst")); // alphabets only
         assertTrue(Role.isValidRole("12345")); // numbers only
         assertTrue(Role.isValidRole("2nd assistant")); // alphanumeric characters
