@@ -30,7 +30,7 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 * **Documentation**:
     * User Guide:
-      * Managed the _**delete**_ command part of the User Guide 
+      * Managed the _**delete**_ command part of the User Guide
       * Pull requests [\#39](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/39)
     * Developer Guide:
         * to be added soon
@@ -41,7 +41,7 @@ Flagship is a desktop application used to help aspiring students track internshi
 
 * **Community**:
     * *(what is important here is to demonstrate contribution outside of the group, by, for example, reviewing PRs, or being active in discussion. All points in this section are merely suggested points.)*
-    * PRs reviewed: [\#22](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/22), [\#21](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/21), [\#13](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/13) 
+    * PRs reviewed: [\#22](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/22), [\#21](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/21), [\#13](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/13)
     * Contributed to forum discussions (examples: to be added soon)
     * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
 
