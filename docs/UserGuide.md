@@ -6,6 +6,32 @@
 
 # Flagship User Guide
 
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Using this guide](#using-this-guide)
+3. [Common Markers](#common-markers)
+4. [Glossary](#glossary)
+5. [Quick Start](#quick-start)
+6. [Command Format Notes](#commands-format-notes)
+7. [Parameter Constraints](#parameter-constraints)
+8. [Commands](#commands)
+    1. [Creating an Internship](#creating-an-internship-create)
+    2. [Editing an Internship](#editing-an-internship-modify)
+    3. [Filter Internships by Name and Keyword](#filter-internships-by-name-and-keyword-filter)
+    4. [Sort Internships by Category and Order](#sort-internships-by-category-and-order-sort)
+    5. [Deleting an Internship](#deleting-an-internship-delete)
+9. [Saving the data](#saving-the-data)
+10. [Editing the data file](#editing-the-data-file)
+11. [FAQ](#faq)
+12. [Known Issues](#known-issues)
+13. [Command Summary](#command-summary)
+
+--------------------------------------------------------------------------------------------------------------------
+<br>
+
+## Introduction
+
 Flagship is a desktop app for managing internship applications, optimized for use via a [Command Line Interface](#glossary)
 (CLI). There is always a swarm of information to keep track of every application season, and many people miss out on important deadlines
 and valuable opportunities because information is not organised neatly. With Flagship, we want you to focus on preparing
@@ -31,6 +57,7 @@ do not need prior knowledge of industry-level command line syntax to use this ap
 
 
 --------------------------------------------------------------------------------------------------------------------
+<br>
 
 ## Using this guide
 
@@ -43,7 +70,11 @@ in your internship management journey. Here is a rundown of how you can use this
 2. If you are an **experienced Flagship user** who wants to have a quick check of the command syntax, jump
 right to the [Command Summary](#command-summary).
 
-## Common markers
+
+--------------------------------------------------------------------------------------------------------------------
+<br>
+
+## Common Markers
 
 Throughout the user guide, you will see these colored blocks of code that contain important information.
 
@@ -64,6 +95,10 @@ Throughout the user guide, you will see these colored blocks of code that contai
 <!-- * Table of Contents -->
 <page-nav-print />
 
+
+--------------------------------------------------------------------------------------------------------------------
+<br>
+
 ## Glossary
 * **[Command Line Interface (CLI)](https://en.wikipedia.org/wiki/Command-line_interface)** : A text-based interface where you can input commands to interact with the computer's programs
 * **Command terminal**: A terminal is a text input and output environment. It is mainly used to launch the application for our purposes. Open your terminal by:
@@ -74,6 +109,8 @@ Throughout the user guide, you will see these colored blocks of code that contai
 
 
 --------------------------------------------------------------------------------------------------------------------
+<br>
+
 
 ## Quick Start
 
@@ -86,9 +123,9 @@ Let's start tracking your internship applications right now!
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar flagship.jar` command to run the application.<br>
 
-    <div markdown="block" class="alert alert-info">
-        ℹ️ Note that Flagship does not have any operating systems requirements and this process is the same regardless whether you use Windows or Mac!
-    </div>
+<div markdown="block" class="alert alert-info">
+    ℹ️ Note that Flagship does not have any operating systems requirements and this process is the same regardless whether you use Windows or Mac!
+</div>
 
 5. A GUI similar to the below should appear in a few seconds. Notice how we have already included some sample internship applications for you!<br>
    ![Ui](images/Ui.png)
@@ -107,7 +144,10 @@ Let's start tracking your internship applications right now!
 For the full list of executable commands, refer to the [Commands](#commands) Section.
 </div>
 
+
 --------------------------------------------------------------------------------------------------------------------
+<br>
+
 
 ## Commands Format Notes
 
@@ -140,20 +180,29 @@ create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++ re
 - Parameters can be entered in any order.
     - For instance, both `c/COMPANY_NAME ro/ROLE` and `ro/ROLE c/COMPANY_NAME` are valid.
 
+<div markdown="block" class="alert alert-success">
+💡 If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple 
+lines as space characters surrounding line-breaks may be omitted when copied over to Flagship.
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+<br>
+
+
 ## Parameter constraints
 
 All of our parameters have certain constraints associated with them. Although they may seem cumbersome at first, these constraints
 allow Flagship to help you detect typos and make retrieving data far easier!
 
-| Parameter              | Prefix | Accepted Format                                                                                                                                   | Compulsory? | Example                               |
-|------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------|---------------------------------------|
-| **Company Name**       | `c/`   | **`COMPANY_NAME`** <br> `COMPANY_NAME` can contain these characters: `A-Z a-z 0-9 and space`. Cannot **exclusively** contain spaces.              | Yes         | `Optiver`, <br> `Jane Street`         |
-| **Role**               | `ro/`  | **`ROLE`** <br> `ROLE` can contain these characters: `A-Z a-z 0-9 and space` Cannot **exclusively** contain spaces.                               | Yes         | `Software Engineer`, <br> `Fullstack` |
-| **Application Status** | `a/`   | **`APPLICATION_STATUS`** <br> `APPLICATION_STATUS` must be one of the following `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`. | Yes         | N.A                                   |
-| **Deadline**           | `de/`  | **`DEADLINE`** <br> `DEADLINE` must be of the following form `DD/MM/YYYY` and must be **earlier** than the `START_DATE`.                          | Yes         | `20/02/2001`, <br> `01/01/2000`       |
-| **Start Date**         | `s/`   | **`START_DATE`** <br> `START_DATE` must be of the following form `DD/MM/YYYY` and must be **later** than the `DEADLINE`.                          | Yes         | `20/02/2001`, <br> `01/01/2000`       |
-| **Duration**           | `du/`  | **`DURATION`** <br> `DURATION` must be a positive integer.                                                                                        | Yes         | `1`, <br> `10`                        |
-| **Requirements**       | `re/`  | **`REQUIREMENTS`** <br> `REQUIREMENTS` has no restrictions but cannot be empty                                                                    | No          | `C++`, <br> `Haskell`                 |
+| Parameter              | Prefix | Accepted Format                                                                                                                                                       | Compulsory? | Example                               |
+|------------------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|---------------------------------------|
+| **Company Name**       | `c/`   | **`COMPANY_NAME`** <br> `COMPANY_NAME` can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters. | Yes         | `Optiver`, <br> `Jane Street`         |
+| **Role**               | `ro/`  | **`ROLE`** <br> `ROLE` can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters.                 | Yes         | `Software Engineer`, <br> `Fullstack` |
+| **Application Status** | `a/`   | **`APPLICATION_STATUS`** <br> `APPLICATION_STATUS` must be one of the following `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`.                     | Yes         | N.A                                   |
+| **Deadline**           | `de/`  | **`DEADLINE`** <br> `DEADLINE` must be of the following form `DD/MM/YYYY` and must be **earlier** than the `START_DATE`.                                              | Yes         | `20/02/2001`, <br> `01/01/2000`       |
+| **Start Date**         | `s/`   | **`START_DATE`** <br> `START_DATE` must be of the following form `DD/MM/YYYY` and must be **later** than the `DEADLINE`.                                              | Yes         | `20/02/2001`, <br> `01/01/2000`       |
+| **Duration**           | `du/`  | **`DURATION`** <br> `DURATION` must be a positive integer.                                                                                                            | Yes         | `1`, <br> `10`                        |
+| **Requirements**       | `re/`  | **`REQUIREMENTS`** <br> `REQUIREMENTS` cannot contain foreign language characters, **exclusively** contain `<space>` and exceed 200 characters.                       | No          | `C++`, <br> `Haskell`                 |
 
 <div markdown="block" class="alert alert-info">
 ℹ️ We understand that our constraints might be rigid in some cases. For example, it is possible for company names to contain
@@ -161,7 +210,16 @@ special characters. However, we believe that these cases are rare and loosening 
 probability of typos and reduce the effectiveness of our filter functionalities.
 </div>
 
+<div markdown="block" class="alert alert-info">
+ℹ️ Flagship directly helps you correct any leap year related errors. For example, if you key in 29/02/2021 even though
+2021 is not a leap year, we will round it down to 28/02/2021 for you. 
+</div>
+
 --------------------------------------------------------------------------------------------------------------------
+<br>
+
+## Commands
+
 
 ### Creating an Internship: `create`
 
@@ -182,7 +240,7 @@ on 24 April 2022. This is a **2-month** internship, and you are expected to be p
 </div>
 
 <div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with the same company name or role. This makes sure
+⚠️ Flagship does not allow you to create duplicate internship entries with **both** the same company name **and** role. This makes sure
 that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
 </div>
 
@@ -201,6 +259,13 @@ our definition of identical internships further, Flagship will not be able to ca
 as effectively.
 </div>
 
+<div markdown="block" class="alert alert-info">
+ℹ️ We allow you to create internship entries with application deadlines and start dates before today's current date. It is designed as such 
+so that you can track your past internship applications for your own reference. 
+</div>
+
+<br>
+
 ### Editing an Internship: `modify`
 
 Update details of an existing internship entry.
@@ -217,6 +282,8 @@ Update details of an existing internship entry.
 **Examples**:
 * `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/29/11/2022 du/3 re/C++ re/Coffee`
 
+<br>
+
 ### Filter Internships by Name and Keyword: `filter`
 
 Display internships matching specific category keywords.
@@ -231,6 +298,8 @@ Display internships matching specific category keywords.
 **Examples**:
 * `filter c/JA ro/SWE` displays internships with company names containing "JA" and roles containing "SWE".
 * `filter` returns the list to its unfiltered state.
+
+<br>
 
 ### Sort Internships by Category and Order: `sort`
 
@@ -254,6 +323,8 @@ Have a growing list of internships and finding it challenging to prioritize? Or 
 **Expected Output**:
 ![Sort](images/Sort.jpg)
 
+<br>
+
 ### Deleting an Internship: `delete`
 
 Remove a specified internship from the internship directory.
@@ -268,70 +339,51 @@ Remove a specified internship from the internship directory.
 * `delete 2` removes the 2nd internship from the directory.
 * Running `sort c/ASC ro/DESC` followed by `delete 1` erases the top internship post-sort.
 
+--------------------------------------------------------------------------------------------------------------------
+<br>
 
-[//]: # (### Clearing all entries : `clear`)
+## Saving the data
 
-[//]: # ()
-[//]: # (Clears all entries from the address book.)
-
-[//]: # ()
-[//]: # (Format: `clear`)
-
-[//]: # ()
-[//]: # (### Exiting the program : `exit`)
-
-[//]: # ()
-[//]: # (Exits the program.)
-
-[//]: # ()
-[//]: # (Format: `exit`)
-
-### Saving the data
-
-InternshipBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-InternshipBook data are saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internship.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<box type="warning" seamless></box>
-
-**Caution:**
-If your changes to the data file makes its format invalid, InternshipBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
-</box>
-
-[//]: # (### Archiving data files `[coming in v2.0]`)
-
-[//]: # ()
-[//]: # (_Details coming soon ..._)
+Flagship data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
+<br>
+
+## Editing the data file
+
+Flagship data are saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internshipBook.json`. Advanced users are welcome to update data directly by editing that data file.
+
+<div markdown="span" class="alert alert-danger">
+⚠️ If your changes to the data file makes its format invalid, Flagship will discard all data and start with an empty data file at the next run.  
+Hence, it is recommended to take a backup of the file before editing it.
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+<br>
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InternshipBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Flagship home folder.
 
 --------------------------------------------------------------------------------------------------------------------
+<br>
 
-## Known issues
+## Known Issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 --------------------------------------------------------------------------------------------------------------------
+<br>
 
-## Command summary
+## Command Summary
 
 | Action     | Format, Examples                                                                                                                                                                                                                                 |
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/Coffee maker a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Coffee`                  |
+| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`                     |
 | **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` |
 | **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                              |
 | **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                           |
 | **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                              |
-
-[//]: # (**List**   | `list`)
-
-[//]: # (**Help**   | `help`)
 
 
