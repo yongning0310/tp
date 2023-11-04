@@ -30,6 +30,9 @@ class RoleTest {
         assertFalse(Role.isValidRole(" ")); // spaces only
         assertFalse(Role.isValidRole("^")); // only non-alphanumeric characters
         assertFalse(Role.isValidRole("engineer*")); // contains non-alphanumeric characters
+        assertFalse(Role.isValidRole("123456789012345678901234567890123456789012345678901234567" +
+                "89012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345" +
+                "678901234567890123456789012345678901234567890a")); // 201 characters
 
         // valid role -> returns true
         assertTrue(Role.isValidRole("data analyst")); // alphabets only
@@ -37,6 +40,9 @@ class RoleTest {
         assertTrue(Role.isValidRole("2nd assistant")); // alphanumeric characters
         assertTrue(Role.isValidRole("Data Scientist")); // with capital letters
         assertTrue(Role.isValidRole("Data Scientist and Machine Learning Engineer")); // long roles
+        assertTrue(Role.isValidRole("123456789012345678901234567890123456789012345678901234567" +
+                "89012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345" +
+                "678901234567890123456789012345678901234567890")); // 200 characters
     }
 
     @Test

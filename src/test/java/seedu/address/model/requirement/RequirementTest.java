@@ -1,5 +1,7 @@
 package seedu.address.model.requirement;
 
+import seedu.address.model.internship.Role;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -25,6 +27,9 @@ public class RequirementTest {
     public void isValidRequirement() {
         // invalid requirement -> returns false
         assertFalse(Requirement.isValidRequirementName("")); // Empty string
+        assertFalse(Requirement.isValidRequirementName("12345678901234567890123456789012345678901234567890123456" +
+                "890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456" +
+                "678901234567890123456789012345678901234567890a")); // 201 characters
 
         // valid requirement -> returns true
         assertTrue(Requirement.isValidRequirementName("Maths Requirement")); // Alphabets
@@ -32,6 +37,9 @@ public class RequirementTest {
         assertTrue(Requirement.isValidRequirementName("c")); // Single character
         assertTrue(Requirement.isValidRequirementName("B++")); // Alphabets and special symbols
         assertTrue(Requirement.isValidRequirementName("!&^*%)_#^)_#^_+Q")); // Various special symbols
+        assertTrue(Role.isValidRole("123456789012345678901234567890123456789012345678901234567" +
+                "89012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345" +
+                "678901234567890123456789012345678901234567890")); // 200 characters
     }
 
     @Test

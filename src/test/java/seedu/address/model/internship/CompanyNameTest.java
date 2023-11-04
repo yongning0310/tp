@@ -30,6 +30,9 @@ class CompanyNameTest {
         assertFalse(CompanyName.isValidCompanyName(" ")); // spaces only
         assertFalse(CompanyName.isValidCompanyName("^")); // only non-alphanumeric characters
         assertFalse(CompanyName.isValidCompanyName("dbs*")); // contains non-alphanumeric characters
+        assertFalse(CompanyName.isValidCompanyName("123456789012345678901234567890123456789012345678901234567" +
+                "89012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345" +
+                "678901234567890123456789012345678901234567890a")); // 201 characters
 
         // valid companyName -> returns true
         assertTrue(CompanyName.isValidCompanyName("takashimaya")); // alphabets only
@@ -37,6 +40,9 @@ class CompanyNameTest {
         assertTrue(CompanyName.isValidCompanyName("123 shopping centre")); // alphanumeric characters
         assertTrue(CompanyName.isValidCompanyName("Capital Trading Centre")); // with capital letters
         assertTrue(CompanyName.isValidCompanyName("DBS Bank 2nd branch")); // long companyNames
+        assertTrue(CompanyName.isValidCompanyName("123456789012345678901234567890123456789012345678901234567" +
+                "89012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345" +
+                "678901234567890123456789012345678901234567890")); // 200 characters
     }
 
     @Test
