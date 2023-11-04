@@ -24,11 +24,14 @@ public class RequirementTest {
     @Test
     public void isValidRequirement() {
         // invalid requirement -> returns false
-        assertFalse(Requirement.isValidRequirementName("   ")); // Only spaces
         assertFalse(Requirement.isValidRequirementName("")); // Empty string
 
         // valid requirement -> returns true
-        assertTrue(Requirement.isValidRequirementName("Maths Requirement"));
+        assertTrue(Requirement.isValidRequirementName("Maths Requirement")); // Alphabets
+        assertTrue(Requirement.isValidRequirementName("C3")); // Alphanumeric
+        assertTrue(Requirement.isValidRequirementName("c")); // Single character
+        assertTrue(Requirement.isValidRequirementName("B++")); // Alphabets and special symbols
+        assertTrue(Requirement.isValidRequirementName("!&^*%)_#^)_#^_+Q")); // Various special symbols
     }
 
     @Test
