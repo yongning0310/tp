@@ -338,7 +338,7 @@ Trying to declutter your list of internship entries? Or perhaps a saved internsh
 * `delete 2` removes the 2nd internship from the directory.
 
 <div markdown="block" class="alert alert-info">
-ℹ️ The index is taken from the position of the specified internship in the currently displayed internship list. This means that even if you have applied sorting or filtering to your list, the index is consistent with the internship's visible position on the screen.
+ℹ️ The index is taken from the position of the specified internship in the currently displayed internship list. This means that even if you have applied sorting or filtering to your list, the index will always be consistent with the internship's visible position on the screen.
 </div>
 
 **Expected Output**:
