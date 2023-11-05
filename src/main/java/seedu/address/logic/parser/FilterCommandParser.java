@@ -42,8 +42,8 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
     public static final String MESSAGE_ONE_PARAMETER = "filter command should accept only one parameter at a time.";
     public static final String MESSAGE_STARTDATE_RANGE_FORMAT = "date range should be in the format "
             + "DD/MM/YYYY-DD/MM/YYYY";
-    public static final String MESSAGE_DURATION_RANGE_FORMAT = "duration range should be in the format X-Y";
-    public static final String MESSAGE_DEADLINE_RANGE_FORMAT = "deadline range should be in the format X-Y";
+    public static final String MESSAGE_DURATION_RANGE_FORMAT = "duration range should be in the format START-END";
+    public static final String MESSAGE_DEADLINE_RANGE_FORMAT = "deadline range should be in the format START-END";
     public static final String MESSAGE_NON_EMPTY = "filter command's parameter cannot be empty.";
 
     /*
