@@ -359,8 +359,9 @@ Trying to declutter your list of internship entries? Or perhaps a saved internsh
 
 **Expected Output**:
 ![Delete](images/delete.png)
---------------------------------------------------------------------------------------------------------------------
+
 <br>
+--------------------------------------------------------------------------------------------------------------------
 
 ## Saving the data
 
