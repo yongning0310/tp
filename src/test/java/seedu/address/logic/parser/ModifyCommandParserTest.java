@@ -4,6 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.APPLICATION_STATUS_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.COMPANY_NAME_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.COMPANY_NAME_DESC_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_APPLICATION_STATUS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMPANY_NAME_DESC;
@@ -19,8 +20,10 @@ import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.START_DATE_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATIONSTATUS_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_JANESTREET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
@@ -29,6 +32,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CommandInternshipParserUtilTest.assertInternshipParseFailure;
 import static seedu.address.logic.parser.CommandInternshipParserUtilTest.assertInternshipParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INTERNSHIP;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_INTERNSHIP;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_INTERNSHIP;
 
 import org.junit.jupiter.api.Test;
@@ -113,14 +117,10 @@ public class ModifyCommandParserTest {
                 parser,
                 "1" + INVALID_REQUIREMENT_DESC,
                 Requirement.MESSAGE_CONSTRAINTS); // invalid requirement
-
-        // invalid company name followed by valid role
-        /*
         assertInternshipParseFailure(
                 parser,
                 "1" + INVALID_COMPANY_NAME_DESC + ROLE_DESC_JANESTREET,
-      Role.MESSAGE_CONSTRAINTS);
-         */
+                CompanyName.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
@@ -136,7 +136,7 @@ public class ModifyCommandParserTest {
         assertInternshipParseFailure(parser, "1" + INVALID_COMPANY_NAME_DESC + INVALID_ROLE_DESC,
                 CompanyName.MESSAGE_CONSTRAINTS);
     }
-    /*
+
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_INTERNSHIP;
@@ -155,8 +155,8 @@ public class ModifyCommandParserTest {
         ModifyCommand expectedCommand = new ModifyCommand(targetIndex, descriptor);
 
         assertInternshipParseSuccess(parser, userInput, expectedCommand);
-      }
-     */
+    }
+
 
 
     @Test
@@ -193,12 +193,12 @@ public class ModifyCommandParserTest {
         expectedCommand = new ModifyCommand(targetIndex, descriptor);
         assertInternshipParseSuccess(parser, userInput, expectedCommand);
 
-        //        // deadline
-        //        userInput = targetIndex.getOneBased() + DEADLINE_DESC_JANESTREET;
-        //        descriptor = new EditInternshipDescriptorBuilder()
-        //                .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET).build();
-        //        expectedCommand = new ModifyCommand(targetIndex, descriptor);
-        //        assertInternshipParseSuccess(parser, userInput, expectedCommand);
+        // deadline
+        userInput = targetIndex.getOneBased() + DEADLINE_DESC_JANESTREET;
+        descriptor = new EditInternshipDescriptorBuilder()
+                .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET).build();
+        expectedCommand = new ModifyCommand(targetIndex, descriptor);
+        assertInternshipParseSuccess(parser, userInput, expectedCommand);
 
         // start date
         userInput = targetIndex.getOneBased() + START_DATE_DESC_JANESTREET;
@@ -228,16 +228,16 @@ public class ModifyCommandParserTest {
         Index targetIndex = INDEX_FIRST_INTERNSHIP;
         String userInput = targetIndex.getOneBased() + COMPANY_NAME_DESC_JANESTREET + INVALID_COMPANY_NAME_DESC;
 
-        //        assertInternshipParseFailure(parser, userInput, Messages
-        //              .getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
+        assertInternshipParseFailure(parser, userInput, Messages
+              .getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
 
         // invalid followed by valid
         userInput = targetIndex.getOneBased() + INVALID_COMPANY_NAME_DESC + COMPANY_NAME_DESC_JANESTREET;
 
-        //        assertInternshipParseFailure(
-        //              parser,
-        //              userInput,
-        //              Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
+        assertInternshipParseFailure(
+              parser,
+              userInput,
+              Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY_NAME));
 
         // multiple valid fields repeated
         userInput = targetIndex.getOneBased() + COMPANY_NAME_DESC_JANESTREET + COMPANY_NAME_DESC_OPTIVER
@@ -250,18 +250,18 @@ public class ModifyCommandParserTest {
         userInput = targetIndex.getOneBased() + INVALID_ROLE_DESC + INVALID_COMPANY_NAME_DESC
                 + INVALID_ROLE_DESC + INVALID_COMPANY_NAME_DESC;
 
-        //        assertInternshipParseFailure(parser, userInput,
-        //                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE, PREFIX_COMPANY_NAME));
+        assertInternshipParseFailure(parser, userInput,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE, PREFIX_COMPANY_NAME));
     }
 
-    //    @Test
-    //    public void parse_resetRequirements_success() {
-    //        Index targetIndex = INDEX_THIRD_INTERNSHIP;
-    //        String userInput = targetIndex.getOneBased() + REQUIREMENT_EMPTY;
-    //
-    //        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder()
-    //                .withRequirements().build();
-    //        ModifyCommand expectedCommand = new ModifyCommand(targetIndex, descriptor);
-    //        assertInternshipParseSuccess(parser, userInput, expectedCommand);
-    //    }
+    @Test
+    public void parse_resetRequirements_failure() {
+        Index targetIndex = INDEX_THIRD_INTERNSHIP;
+        String userInput = targetIndex.getOneBased() + REQUIREMENT_EMPTY;
+
+        EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder()
+                .withRequirements().build();
+        ModifyCommand expectedCommand = new ModifyCommand(targetIndex, descriptor);
+        assertInternshipParseFailure(parser, userInput, Requirement.MESSAGE_CONSTRAINTS);
+    }
 }

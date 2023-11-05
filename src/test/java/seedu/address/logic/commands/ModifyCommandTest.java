@@ -101,29 +101,6 @@ public class ModifyCommandTest {
         assertInternshipCommandSuccess(modifyCommand, model, expectedMessage, expectedModel);
     }
 
-    //    @Test
-    //    public void execute_filteredList_success() {
-    //        showInternshipAtIndex(model, INDEX_FIRST_INTERNSHIP);
-    //
-    //        Internship internshipInFilteredList = model.getFilteredInternshipList()
-    //                .get(INDEX_FIRST_INTERNSHIP.getZeroBased());
-    //        Internship editedInternship = new InternshipBuilder(internshipInFilteredList)
-    //                .withCompanyName(VALID_COMPANY_NAME_OPTIVER).build();
-    //        ModifyCommand modifyCommand = new ModifyCommand(INDEX_FIRST_INTERNSHIP,
-    //                new EditInternshipDescriptorBuilder().withCompanyName(VALID_COMPANY_NAME_OPTIVER).build());
-    //
-    //        String expectedMessage = String.format(
-    //                ModifyCommand.MESSAGE_EDIT_INTERNSHIP_SUCCESS,
-    //                Messages.format(editedInternship));
-    //
-    //        InternshipModel expectedModel = new InternshipModelManager(
-    //                new InternshipBook(model.getInternshipBook()),
-    //                new InternshipUserPrefs());
-    //        expectedModel.setInternship(model.getFilteredInternshipList().get(0), editedInternship);
-    //
-    //        assertInternshipCommandSuccess(modifyCommand, model, expectedMessage, expectedModel);
-    //    }
-
     @Test
     public void execute_duplicateInternshipUnfilteredList_failure() {
         Internship firstInternship = model.getFilteredInternshipList().get(INDEX_FIRST_INTERNSHIP.getZeroBased());
