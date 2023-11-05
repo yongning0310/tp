@@ -292,7 +292,7 @@ Need to update an existing internship entry? The `modify` command lets you adjus
 </div>
 
 **Expected Output**:
-![Sort](images/Modify.png)
+![Modify](images/Modify.png)
 
 <br>
 
