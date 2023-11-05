@@ -37,7 +37,12 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
-import seedu.address.model.internship.*;
+import seedu.address.model.internship.ApplicationStatus;
+import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Deadline;
+import seedu.address.model.internship.Duration;
+import seedu.address.model.internship.Role;
+import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
 import seedu.address.testutil.EditInternshipDescriptorBuilder;
 
@@ -92,12 +97,10 @@ public class ModifyCommandParserTest {
                 parser,
                 "1" + INVALID_APPLICATION_STATUS_DESC,
                 ApplicationStatus.MESSAGE_CONSTRAINTS); // invalid application status
-
         assertInternshipParseFailure(
                 parser,
                 "1" + INVALID_DEADLINE_DESC,
                 Deadline.MESSAGE_CONSTRAINTS); // invalid deadline
-
         assertInternshipParseFailure(
                 parser,
                 "1" + INVALID_START_DATE_DESC,
