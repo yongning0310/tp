@@ -215,6 +215,27 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 2021 is not a leap year, we will round it down to 28/02/2021 for you. 
 </div>
 
+
+<div markdown="span" class="alert alert-danger">
+⚠️ Flagship does not allow you to create duplicate internship entries with **both** the same company name **and** role. This makes sure
+that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
+</div>
+
+| Description                                                                                     | Example                                                                   |
+|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Company name/role differs in initial letter capitalisation**                                  | `Jane Street`, `jane Street` and `jane street` are considered the same    |
+| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
+| **Combination of initial letter capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane Street` are considered the same                |
+
+**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
+
+<div markdown="block" class="alert alert-info">
+ℹ️ We do not allow you to create internship entries of different application status, duration, etc. but with the same
+company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
+our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
+as effectively.
+</div>
+
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
@@ -239,26 +260,6 @@ on 24 April 2022. This is a **2-month** internship, and you are expected to be p
 💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
 </div>
 
-<div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
-that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
-</div>
-
-| Description                                                                                     | Example                                                                   |
-|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **Company name/role differs in initial letter capitalisation**                                  | `Jane Street`, `jane Street` and `jane street` are considered the same    |
-| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
-| **Combination of initial letter capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane Street` are considered the same                |
-
-**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
-
-<div markdown="block" class="alert alert-info">
-ℹ️ We do not allow you to create internship entries of different application status, duration, etc. but with the same
-company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
-our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
-as effectively.
-</div>
-
 <div markdown="block" class="alert alert-info">
 ℹ️ We allow you to create internship entries with application deadlines and start dates before today's current date. It is designed as such 
 so that you can track your past internship applications for your own reference. 
@@ -266,21 +267,32 @@ so that you can track your past internship applications for your own reference.
 
 <br>
 
+
 ### Editing an Internship: `modify`
 
-Update details of an existing internship entry.
+Need to update an existing internship entry? The `modify` command lets you adjust the details of your applications in Flagship. Whether the application deadline has changed or you've picked up a new skill that meets the job requirements, ensure your internship details are current.
 
-**Format**: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
+**Format**: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENTS]...`
 
-* Modify the internship at the specified `INDEX`. This index correlates with the position in the displayed internship list. It **must be a positive integer**, e.g., 1, 2, 3, …​.
-* New inputs will overwrite existing values.
-* Not all categories need to be specified.
-* Categories that are not included will keep the previous values.
-* Editing requirements will replace current requirements; adding requirements doesn't accumulate.
-* Use the command without `re/` to remove all of an internship's requirements.
+**Example**: `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Coffee`
 
-**Examples**:
-* `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/29/11/2022 du/3 re/C++ re/Coffee`
+**Interpretation**: Update the first internship entry on your Flagship list. The role is at **Jane Street** for a **Coffee maker** position. You have **yet to apply**. The **application deadline** is set for 29 November 2022, and the start date is 20 January 2023. The internship is for a **3-month** period, with requirements for proficiency in **C++** and experience in **Coffee making**.
+
+<div markdown="block" class="alert alert-info">
+💡 You can selectively update details for an internship entry. Attributes not included in the command will maintain their existing values.
+</div>
+
+<div markdown="span" class="alert alert-warning">
+
+⚠️ **Internship Entry Modification Policies:**
+
+- **INDEX is Mandatory**: The INDEX, a positive integer, is required to identify the entry's position in the list. Modifying an entry will replace the existing list, not add to it.
+- **No Duplicate Company Name and Role**: Editing to create a duplicate entry with the same company name and role as an existing internship entry is not permitted, ensuring consistency with the creation section's prohibition of duplicates.
+- **Parameter Requirement**: There must be at least one parameter following the INDEX when modifying an entry. Omission of parameters will trigger a warning.
+</div>
+
+**Expected Output**:
+![Sort](images/Modify.png)
 
 <br>
 
@@ -385,12 +397,12 @@ Hence, it is recommended to take a backup of the file before editing it.
 
 ## Command Summary
 
-| Action     | Format, Examples                                                                                                                                                                                                                                 |
-|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`                     |
-| **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` |
-| **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                              |
-| **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                           |
-| **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                              |
+| Action     | Format, Examples                                                                                                                                                                                                                         |
+|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`             |
+| **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Coffee`   |
+| **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                      |
+| **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                   |
+| **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                      |
 
 
