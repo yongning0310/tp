@@ -219,10 +219,10 @@ Update details of an existing internship entry.
 
 ### Filter Internships by Category and Keyword/Range: `filter`
 
-Want to focus only on relevant internship entries based on certain constraints? Filter internship entries by inputting any category. There are 2 category types: type 1 accepting text inputs and type 2 accepting a range of values. The category types are as follows:
+Want to focus only on relevant internship entries based on certain constraints? Filter internship entries by inputting any category. There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY_TYPE2` accepting a range of values. The category types are as follows:
 
-* Category type 1: company name, role, requirements
-* Category type 2: duration, deadline
+* `CATEGORY_TYPE1`: `COMPANY_NAME`, `ROLE`, `APPLICATION_STATUS`, `REQUIREMENTS`
+* `CATEGORY_TYPE2`: `DEADLINE`, `START_DATE`, `DURATION`
 
 Format 1: `filter [CATEGORY_TYPE1]/[KEYWORD]`
 
@@ -240,7 +240,8 @@ Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 </div>
 
 Examples:
-* `filter du/3-6` displays internship entries that have duration within the range 3 to 6 inclusive.
+* `filter du/3-6` displays internship entries that have duration within the range 3 to 6 months inclusive.
+* `filter du/4-4` displays internship entries that have duration of 4 months.
 
 
 Format 3: `filter default`
@@ -253,7 +254,7 @@ Examples:
 </div>
 
 **Expected Output**:
-![Filter](images/filterAnnotated.jpg)
+![Filter](images/FilterAnnotated.png)
 
 ### Sort Internships by Category and Order: `sort`
 
