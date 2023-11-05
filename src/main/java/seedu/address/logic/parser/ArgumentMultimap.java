@@ -106,4 +106,14 @@ public class ArgumentMultimap {
                 .count();
         return count == 1;
     }
+
+    /**
+     * Returns true if no prefix is present.
+     */
+    public boolean noPrefixPresent() {
+        long count = argMultimap.keySet().stream()
+                .filter(prefix -> !prefix.getPrefix().isEmpty())
+                .count();
+        return count == 0;
+    }
 }

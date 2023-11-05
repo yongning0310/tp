@@ -44,6 +44,10 @@ public class ModifyCommandParser implements InternshipParser<ModifyCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE), pe);
         }
 
+        if (argMultimap.noPrefixPresent()) {
+            throw new ParseException(ModifyCommand.MESSAGE_NOT_EDITED);
+        }
+
         EditInternshipDescriptor editInternshipDescriptor = new EditInternshipDescriptor();
 
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {

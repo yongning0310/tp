@@ -39,7 +39,7 @@ public class Messages {
         builder.append(internship.getCompanyName())
                 .append("; Role: ")
                 .append(internship.getRole())
-                .append("; ApplicationStatus: ")
+                .append("; Application Status: ")
                 .append(internship.getApplicationStatus())
                 .append("; Deadline: ")
                 .append(internship.getDeadline())

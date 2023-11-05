@@ -62,7 +62,7 @@ public class ModifyCommand extends InternshipCommand {
     public static final String MESSAGE_EDIT_INTERNSHIP_SUCCESS = "Edited Internship: %s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_INTERNSHIP =
-            "This internship application already exists in the tracker.";
+            "This internship entry with the corresponding company name and role already exists in the application.";
 
     private final Index index;
     private final EditInternshipDescriptor editInternshipDescriptor;
