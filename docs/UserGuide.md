@@ -266,21 +266,37 @@ so that you can track your past internship applications for your own reference.
 
 <br>
 
+
 ### Editing an Internship: `modify`
 
-Update details of an existing internship entry.
+Need to update an existing internship entry? The `modify` command lets you adjust the details of your applications in Flagship. Whether the application deadline has changed or you've picked up a new skill that meets the job requirements, ensure your internship details are current.
 
-**Format**: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...`
+**Format**: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENTS]...`
 
-* Modify the internship at the specified `INDEX`. This index correlates with the position in the displayed internship list. It **must be a positive integer**, e.g., 1, 2, 3, …​.
-* New inputs will overwrite existing values.
-* Not all categories need to be specified.
-* Categories that are not included will keep the previous values.
-* Editing requirements will replace current requirements; adding requirements doesn't accumulate.
-* Use the command without `re/` to remove all of an internship's requirements.
+**Example**: `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Coffee`
 
-**Examples**:
-* `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/29/11/2022 du/3 re/C++ re/Coffee`
+**Interpretation**: Update the first internship entry on your Flagship list. The role is at **Jane Street** for a **Coffee maker** position. You have **yet to apply**. The **application deadline** is set for 29 November 2022, and the start date is 20 January 2023. The internship is for a **3-month** period, with requirements for proficiency in **C++** and experience in **Coffee making**.
+
+<div markdown="block" class="alert alert-info">
+💡 You can selectively update details for an internship entry. Attributes not included in the command will maintain their existing values. To remove all requirements from an entry, simply include `re/` prefix without any trailing characters.
+</div>
+
+<div markdown="span" class="alert alert-warning">
+⚠️ The INDEX is a mandatory positive integer that denotes the entry's position in your list. When modifying requirements, be aware that this action will replace the existing list; requirements are not cumulative.
+</div>
+
+<div markdown="span" class="alert alert-warning">
+⚠️ Flagship does not permit editing the company name and role in a way that creates a duplicate of an existing internship entry with the same company and role. This policy ensures consistency with the "create" section, where the creation of duplicate internship entries is also prohibited.
+</div>
+
+<div markdown="span" class="alert alert-warning">
+⚠️ There must be at least one parameter following the INDEX. If no parameters are provided after the INDEX, a warning will be issued.
+</div>
+
+<div markdown="block" class="alert alert-info">
+ℹ️ Utilize the `modify` command to keep your internship applications up-to-date. It's an essential part of managing your internship timeline effectively in Flagship.
+</div>
+
 
 <br>
 
