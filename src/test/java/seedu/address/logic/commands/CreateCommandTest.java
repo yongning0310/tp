@@ -204,6 +204,11 @@ public class CreateCommandTest {
         }
 
         @Override
+        public void updatePredicate(Predicate<Internship> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void sortInternships(Comparator<Internship> comparator) {
             throw new AssertionError("This method should not be called.");
         }
