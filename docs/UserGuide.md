@@ -337,7 +337,7 @@ Remove a specified internship from the internship directory.
 
 **Examples**:
 * `delete 2` removes the 2nd internship from the directory.
-* Running `sort c/ASC ro/DESC` followed by `delete 1` erases the top internship post-sort.
+* Running `sort ro/DESC` followed by `delete 1` erases the top internship post-sort.
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
