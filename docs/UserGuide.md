@@ -217,20 +217,33 @@ Update details of an existing internship entry.
 **Examples**:
 * `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply s/20/01/2023 de/29/11/2022 du/3 re/C++ re/Coffee`
 
-### Filter Internships by Name and Keyword: `filter`
+### Filter Internships by Category and Keyword/Range: `filter`
 
-Display internships matching specific category keywords.
+Want to focus only on relevant internship entries based on certain constraints? Filter internship entries by inputting any category. There are 2 category types: type 1 accepting text inputs and type 2 accepting a range of values. The category types are as follows:
 
-**Format**: `filter [category]/[keyword] ...`
+* Category type 1: company name, role, requirements
+* Category type 2: duration, deadline
+
+Format 1: `filter [CATEGORY_TYPE1]/[KEYWORD]`
 
 * The search isn't case-sensitive. For instance, `hans` matches `Hans`.
-* The sequence of category and keyword doesn't matter.
-* Results will include internships matching all keywords (i.e., `AND` search). For instance, `c/JA ro/SWE` matches `c/JANE STREET and ro/SWE` but not `c/JANE STREET ro/Admin` or `c/Google ro/SWE`.
-* If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
 
-**Examples**:
+Examples:
 * `filter c/JA ro/SWE` displays internships with company names containing "JA" and roles containing "SWE".
-* `filter` returns the list to its unfiltered state.
+
+Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
+* Flagship only allows filter by range for this category type. To filter for one value, you can input the range as START-START.
+
+Examples:
+* `filter du/3-6` displays internship entries that have duration within the range 3 to 6 inclusive.
+
+
+Format 3: `filter default`
+
+Examples: 
+* `filter default` lists all internship entries.
+
+💡 If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
 
 ### Sort Internships by Category and Order: `sort`
 
