@@ -23,7 +23,7 @@ public class Internship {
      *
      * To keep validation simple and Flagship easier to use, we will assume that two internships with identical roles
      * and company names are the same as verified in {@link #isSameInternship(Internship)} even if they may have
-     * different data fields such as different requirements.a
+     * different data fields such as different requirements.
      */
     private final CompanyName companyName;
     private final Role role;
