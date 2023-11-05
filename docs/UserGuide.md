@@ -260,27 +260,10 @@ on 24 April 2022. This is a **2-month** internship, and you are expected to be p
 💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
 </div>
 
-
-<div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
-that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
-</div>
-
-| Description                                                                                     | Example                                                                   |
-|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **Company name/role differs in initial letter capitalisation**                                  | `Jane Street`, `jane Street` and `jane street` are considered the same    |
-| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
-| **Combination of initial letter capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane Street` are considered the same                |
-
-**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
-
 <div markdown="block" class="alert alert-info">
-ℹ️ We do not allow you to create internship entries of different application status, duration, etc. but with the same
-company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
-our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
-as effectively.
+ℹ️ We allow you to create internship entries with application deadlines and start dates before today's current date. It is designed as such 
+so that you can track your past internship applications for your own reference. 
 </div>
-
 
 <br>
 
