@@ -10,6 +10,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.ParserUtil.parseStartDate;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +39,6 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
     /**
      * Filters the internship list based on the argument of the filter command
      * and returns a FilterCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
      */
     public static final String MESSAGE_ONE_PARAMETER = "filter command should accept only one parameter at a time.";
     public static final String MESSAGE_STARTDATE_RANGE_FORMAT = "date range should be in the format "
@@ -101,38 +102,48 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
     }
 
     private Predicate<Internship> parseCompanyName(ArgumentMultimap argMultimap) throws ParseException {
-        String companyName = argMultimap.getValue(PREFIX_COMPANY_NAME).get();
-        if (companyName.trim().length() == 0) {
+        String companyName = argMultimap.getValue(PREFIX_COMPANY_NAME).orElse("").trim();
+
+        if (companyName.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+
+        // Split the companyName by spaces and create a list of keywords
+        List<String> keywords = Arrays.asList(companyName.split("\\s+"));
         filterParameter = PREFIX_COMPANY_NAME.getPrefix();
         filterValue = companyName;
-        return new CompanyNameContainsKeywordsPredicate(Arrays.asList(companyName));
+
+        return new CompanyNameContainsKeywordsPredicate(keywords);
     }
 
     private Predicate<Internship> parseRole(ArgumentMultimap argMultimap) throws ParseException {
-        String role = argMultimap.getValue(PREFIX_ROLE).get();
-        if (role.trim().length() == 0) {
+        String role = argMultimap.getValue(PREFIX_ROLE).orElse("").trim();
+
+        if (role.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+        // Split the companyName by spaces and create a list of keywords
+        List<String> keywords = Arrays.asList(role.split("\\s+"));
         filterParameter = PREFIX_ROLE.getPrefix();
         filterValue = role;
-        return new RoleContainsKeywordsPredicate(Arrays.asList(role));
+        return new RoleContainsKeywordsPredicate(keywords);
     }
 
     private Predicate<Internship> parseApplicationStatus(ArgumentMultimap argMultimap) throws ParseException {
-        String applicationStatus = argMultimap.getValue(PREFIX_APPLICATION_STATUS).get();
-        if (applicationStatus.trim().length() == 0) {
+        String applicationStatus = argMultimap.getValue(PREFIX_APPLICATION_STATUS).orElse("").trim();
+        if (applicationStatus.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+        // Split the companyName by spaces and create a list of keywords
+        List<String> keywords = Arrays.asList(applicationStatus.split("\\s+"));
         filterParameter = PREFIX_APPLICATION_STATUS.getPrefix();
         filterValue = applicationStatus;
-        return new ApplicationStatusContainsKeywordsPredicate(Arrays.asList(applicationStatus));
+        return new ApplicationStatusContainsKeywordsPredicate(keywords);
     }
 
     private Predicate<Internship> parseStartDateRange(ArgumentMultimap argMultimap) throws ParseException {
-        String dates = argMultimap.getValue(PREFIX_START_DATE).get();
-        if (dates.trim().length() == 0) {
+        String dates = argMultimap.getValue(PREFIX_START_DATE).orElse("").trim();
+        if (dates.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
 
@@ -155,12 +166,12 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
 
         filterParameter = PREFIX_START_DATE.getPrefix();
         filterValue = String.format("%s to %s", startDateLower, startDateUpper);
-        return new StartDateWithinRangePredicate(Arrays.asList(new StartDate[] {startDateLower, startDateUpper}));
+        return new StartDateWithinRangePredicate(List.of(startDateLower, startDateUpper));
     }
 
     private Predicate<Internship> parseDeadlineRange(ArgumentMultimap argMultimap) throws ParseException {
-        String deadlines = argMultimap.getValue(PREFIX_DEADLINE).get();
-        if (deadlines.trim().length() == 0) {
+        String deadlines = argMultimap.getValue(PREFIX_DEADLINE).orElse("").trim();
+        if (deadlines.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
 
@@ -174,8 +185,12 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         Deadline deadlineUpper;
 
         try {
-            deadlineLower = ParserUtil.parseDeadline(deadlineRange[0].trim(), deadlineRange[0].trim());
-            deadlineUpper = ParserUtil.parseDeadline(deadlineRange[1].trim(), deadlineRange[0].trim());
+            //placeholder for start date such that it is always later than deadline
+            LocalDate startDatePlaceholder = LocalDate.MAX;
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String startDatePlaceholderString = startDatePlaceholder.format(dateFormatter);
+            deadlineLower = ParserUtil.parseDeadline(deadlineRange[0].trim(), startDatePlaceholderString);
+            deadlineUpper = ParserUtil.parseDeadline(deadlineRange[1].trim(), startDatePlaceholderString);
         } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_DEADLINE_RANGE_FORMAT));
@@ -183,12 +198,12 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
 
         filterParameter = PREFIX_DEADLINE.getPrefix();
         filterValue = String.format("%s to %s", deadlineLower, deadlineUpper);
-        return new DeadlineWithinRangePredicate(Arrays.asList(new Deadline[] { deadlineLower, deadlineUpper }));
+        return new DeadlineWithinRangePredicate(List.of(deadlineLower, deadlineUpper));
     }
 
     private Predicate<Internship> parseDuration(ArgumentMultimap argMultimap) throws ParseException {
-        String durations = argMultimap.getValue(PREFIX_DURATION).get();
-        if (durations.trim().length() == 0) {
+        String durations = argMultimap.getValue(PREFIX_DURATION).orElse("").trim();
+        if (durations.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
 
@@ -214,12 +229,22 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
 
     private Predicate<Internship> parseRequirement(ArgumentMultimap argMultimap) throws ParseException {
         List<String> requirements = argMultimap.getAllValues(PREFIX_REQUIREMENT);
-        if (requirements.stream().allMatch(String::isEmpty) || requirements.stream().allMatch(
-                str -> str.trim().isEmpty())) {
+
+        // Create a list to store individual keywords
+        List<String> keywords = new ArrayList<>();
+
+        for (String requirement : requirements) {
+            // Split each requirement by spaces and add the resulting words to the keywords list
+            keywords.addAll(Arrays.asList(requirement.split("\\s+")));
+        }
+
+        // Check if all keywords are empty
+        if (keywords.stream().allMatch(String::isEmpty) || keywords.stream().allMatch(String::isBlank)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
+
         filterParameter = PREFIX_REQUIREMENT.getPrefix();
         filterValue = requirements.toString();
-        return new RequirementContainsKeywordsPredicate(requirements);
+        return new RequirementContainsKeywordsPredicate(keywords);
     }
 }

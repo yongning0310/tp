@@ -18,8 +18,9 @@ public class CompanyNameContainsKeywordsPredicate implements Predicate<Internshi
 
     @Override
     public boolean test(Internship internship) {
+        String companyName = internship.getCompanyNameString().toLowerCase();
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(internship.getCompanyNameString(), keyword));
+                .allMatch(keyword -> StringUtil.containsWordIgnoreCase(companyName, keyword));
     }
 
     @Override
