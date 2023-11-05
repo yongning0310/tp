@@ -61,17 +61,9 @@ public class ModifyCommandParser implements InternshipParser<ModifyCommand> {
             editInternshipDescriptor.setApplicationStatus(ParserUtil
                     .parseApplicationStatus(argMultimap.getValue(PREFIX_APPLICATION_STATUS).get()));
         }
-        if (argMultimap.getValue(PREFIX_DEADLINE).isPresent() && argMultimap.getValue(PREFIX_START_DATE).isPresent()) {
-            editInternshipDescriptor.setDeadline(
-                    ParserUtil.parseDeadline(
-                            argMultimap.getValue(PREFIX_DEADLINE).get(),
-                            argMultimap.getValue(PREFIX_START_DATE).get()
-                    )
-            );
-        } else {
-            editInternshipDescriptor.setDeadline(
-                    ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get())
-            );
+        if (argMultimap.getValue(PREFIX_DEADLINE).isPresent()) {
+            editInternshipDescriptor.setDeadline(ParserUtil
+                    .parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get()));
         }
         if (argMultimap.getValue(PREFIX_START_DATE).isPresent()) {
             editInternshipDescriptor.setStartDate(ParserUtil
