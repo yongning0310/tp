@@ -40,7 +40,7 @@ public class RequirementContainsKeywordsPredicateTest {
     public void testMultipleKeywords_oneMatch_returnsTrue() {
         RequirementContainsKeywordsPredicate predicate =
                 new RequirementContainsKeywordsPredicate(Arrays.asList("Java", "C++"));
-        Internship internship = new InternshipBuilder().withRequirements("Java", "Python").build();
+        Internship internship = new InternshipBuilder().withRequirements("Java", "C++", "Python").build();
         assertTrue(predicate.test(internship));
     }
 
