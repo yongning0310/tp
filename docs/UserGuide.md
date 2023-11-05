@@ -296,20 +296,43 @@ Need to update an existing internship entry? The `modify` command lets you adjus
 
 <br>
 
-### Filter Internships by Name and Keyword: `filter`
+### Filter Internships by Category and Keyword/Range: `filter`
 
-Display internships matching specific category keywords.
+Want to focus only on relevant internship entries based on certain constraints? Filter internship entries by inputting any category. There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY_TYPE2` accepting a range of values. The category types are as follows:
 
-**Format**: `filter [category]/[keyword] ...`
+* `CATEGORY_TYPE1`: `COMPANY_NAME`, `ROLE`, `APPLICATION_STATUS`, `REQUIREMENTS`
+* `CATEGORY_TYPE2`: `DEADLINE`, `START_DATE`, `DURATION`
 
-* The search isn't case-sensitive. For instance, `hans` matches `Hans`.
-* The sequence of category and keyword doesn't matter.
-* Results will include internships matching all keywords (i.e., `AND` search). For instance, `c/JA ro/SWE` matches `c/JANE STREET and ro/SWE` but not `c/JANE STREET ro/Admin` or `c/Google ro/SWE`.
-* If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
+Format 1: `filter [CATEGORY_TYPE1]/[KEYWORD]`
 
-**Examples**:
+<div markdown="block" class="alert alert-success">
+ℹ️ The search isn't case-sensitive. For instance, `hans` matches `Hans`.
+</div>
+
+Examples:
 * `filter c/JA ro/SWE` displays internships with company names containing "JA" and roles containing "SWE".
-* `filter` returns the list to its unfiltered state.
+
+Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
+
+<div markdown="block" class="alert alert-info">
+ℹ️ Flagship only allows filter by range for this category type. To filter for one value, you can input the range as VALUE-VALUE.
+</div>
+
+Examples:
+* `filter du/3-6` displays internship entries that have duration within the range 3 to 6 months inclusive.
+* `filter du/4-4` displays internship entries that have duration of 4 months.
+
+Format 3: `filter default`
+
+Examples: 
+* `filter default` lists all internship entries.
+
+<div markdown="block" class="alert alert-success">
+💡 If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
+</div>
+
+**Expected Output**:
+![Filter](images/FilterAnnotated.png)
 
 <br>
 
