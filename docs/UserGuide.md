@@ -335,7 +335,6 @@ Have a growing list of internships and finding it challenging to prioritize? Or 
 <div markdown="block" class="alert alert-info">
 ℹ️ We do not allow you to sort by requirements because it involves comparing different sets of items between internships, which doesn't have a straightforward or meaningful order.
 </div>
-
 **Expected Output**:
 ![Sort](images/sort.jpg)
 
