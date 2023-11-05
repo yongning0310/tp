@@ -243,7 +243,6 @@ Examples:
 * `filter du/3-6` displays internship entries that have duration within the range 3 to 6 months inclusive.
 * `filter du/4-4` displays internship entries that have duration of 4 months.
 
-
 Format 3: `filter default`
 
 Examples: 
