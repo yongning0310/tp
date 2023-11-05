@@ -5,6 +5,7 @@
 ---
 
 # Flagship User Guide
+<br>
 
 ## Table of Contents
 
@@ -18,7 +19,7 @@
 8. [Commands](#commands)
     1. [Creating an Internship](#creating-an-internship-create)
     2. [Editing an Internship](#editing-an-internship-modify)
-    3. [Filter Internships by Name and Keyword](#filter-internships-by-name-and-keyword-filter)
+    3. [Filter Internships by Name and Keyword](#filter-internships-by-category-and-keywordrange-filter)
     4. [Sort Internships by Category and Order](#sort-internships-by-category-and-order-sort)
     5. [Deleting an Internship](#deleting-an-internship-delete)
 9. [Saving the data](#saving-the-data)
@@ -45,10 +46,10 @@ Flagship has a host of awesome features that we are extremely proud of:
 _... and many more!_
 
 Our main target users are university students pursuing a computing-related degree. As such, this user guide (and Flagship in general)
-is designed with the following assumptions in mind
-1. You have a basic understanding of command line syntax
-2. You are comfortable using the [command terminal](#glossary) to launch the application
-3. You type fast and are love using the keyboard as the main tool of navigation
+is designed with the following assumptions in mind:
+1. You have a basic understanding of command line syntax.
+2. You are comfortable using the [command terminal](#glossary) to launch the application.
+3. You type fast and enjoy using the keyboard as the main tool of navigation.
 
 If these characteristics sound like you, Flagship can get your internship management tasks done faster than traditional GUI apps.
 
@@ -61,9 +62,9 @@ do not need prior knowledge of industry-level command line syntax to use this ap
 
 ## Using this guide
 
-We understand that navigating an application for the first time can be incredibly intimidating. As such, we devised this
+We understand that navigating an application for the first time can be incredibly intimidating. As such, we have devised this
 user guide to alert you to the main difficulties faced by new users, and inform you of the key features that you can utilise
-in your internship management journey. Here is a rundown of how you can use this guide effectively
+in your internship management journey. Here is a rundown of how you can use this guide effectively.
 
 1. If you are running Flagship for the **first time**, start with our [Quick Start](#quick-start) section
 2. If you want a **detailed breakdown** of how each command works, have a read of our [Commands Section](#commands).
@@ -87,7 +88,7 @@ Throughout the user guide, you will see these colored blocks of code that contai
 </div>
 
 <div markdown="span" class="alert alert-danger">
-    ⚠️ Red blocks contain warnings that you must to heed so that Flagship works as intended.
+    ⚠️ Red blocks contain warnings that you must heed so that Flagship works as intended.
 </div>
 
 <div style="page-break-after: always;"></div>
@@ -100,12 +101,12 @@ Throughout the user guide, you will see these colored blocks of code that contai
 <br>
 
 ## Glossary
-* **[Command Line Interface (CLI)](https://en.wikipedia.org/wiki/Command-line_interface)** : A text-based interface where you can input commands to interact with the computer's programs
+* **[Command Line Interface (CLI)](https://en.wikipedia.org/wiki/Command-line_interface)** : A text-based interface where you can input commands to interact with the computer's programs.
 * **Command terminal**: A terminal is a text input and output environment. It is mainly used to launch the application for our purposes. Open your terminal by:
-    * Searching and clicking `Command Prompt` on Windows
-    * Searching and clicking `Terminal` on Mac and Linux (Ubuntu)
-* **Parameters**: Parameters are additional information the command needs in order for it to perform its function successfully
-* **JSON**: JSON is a lightweight format for storing and transporting data so that both humans and computers can easily read and understand it
+    * Searching and clicking `Command Prompt` on Windows.
+    * Searching and clicking `Terminal` on Mac and Linux (Ubuntu).
+* **Parameters**: Parameters are additional information the command needs in order for it to perform its function successfully.
+* **JSON**: JSON is a lightweight format for storing and transporting data so that both humans and computers can easily read and understand it.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -115,9 +116,9 @@ Throughout the user guide, you will see these colored blocks of code that contai
 ## Quick Start
 
 Let's start tracking your internship applications right now!
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have Java `11` or above installed in your computer.
 
-2. Download the latest `flagship.jar` from [here](https://github.com/AY2324S1-CS2103T-W17-1/tp/releases/tag/v1.3).
+2. Download the latest `flagship.jar` from [here](https://github.com/AY2324S1-CS2103T-W17-1/tp/releases/tag/v1.4).
 
 3. Copy the file to the folder you want to use as the _home folder_ for Flagship.
 
@@ -127,7 +128,7 @@ Let's start tracking your internship applications right now!
     ℹ️ Note that Flagship does not have any operating systems requirements and this process is the same regardless whether you use Windows or Mac!
 </div>
 
-5. A GUI similar to the below should appear in a few seconds. Notice how we have already included some sample internship applications for you!<br>
+5. A GUI similar to the image below should appear in a few seconds. Notice how we have already included some sample internship applications for you!<br>
    ![Ui](images/Ui.png)
 
 6. Experiment with some commands within the input field and press <kbd>Enter</kbd> to execute it <br>
@@ -153,7 +154,7 @@ For the full list of executable commands, refer to the [Commands](#commands) Sec
 
 Flagship is powered by commands from your keyboard! All of our features can be accessed by executing various commands.
 
-Here is the command format that will guide you keying in what is necessary for each command. We will be using the <kbd>create</kbd> command
+Here is the command format that will guide you in keying in what is necessary for each command. We will be using the <kbd>create</kbd> command
 of the following format `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENT]...` as
 an example.
 
@@ -215,9 +216,8 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 2021 is not a leap year, we will round it down to 28/02/2021 for you. 
 </div>
 
-
 <div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with **both** the same company name **and** role. This makes sure
+⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
 that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
 </div>
 
@@ -265,21 +265,25 @@ on 24 April 2022. This is a **2-month** internship, and you are expected to be p
 so that you can track your past internship applications for your own reference. 
 </div>
 
+**Expected Output**:
+![Create](images/create.png)
+
 <br>
 
 
 ### Editing an Internship: `modify`
 
-Need to update an existing internship entry? The `modify` command lets you adjust the details of your applications in Flagship. Whether the application deadline has changed or you've picked up a new skill that meets the job requirements, ensure your internship details are current.
+Need to update an existing internship entry? The `modify` command lets you adjust the details of your applications in Flagship. 
+Whether the application deadline has changed or you've picked up a new skill that meets the job requirements, modify your entry to ensure that your internship application details are current.
 
 **Format**: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENTS]...`
 
 **Example**: `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Coffee`
 
-**Interpretation**: Update the first internship entry on your Flagship list. The role is at **Jane Street** for a **Coffee maker** position. You have **yet to apply**. The **application deadline** is set for 29 November 2022, and the start date is 20 January 2023. The internship is for a **3-month** period, with requirements for proficiency in **C++** and experience in **Coffee making**.
+**Interpretation**: Update the first internship entry on your Flagship list. The role is at **Jane Street** for a **Coffee maker** position that you have **yet to apply**. The **application deadline** is set for 29 November 2022, and the start date is 20 January 2023. The internship is for a **3-month** period, with requirements for proficiency in **C++** and experience in **Coffee making**.
 
 <div markdown="block" class="alert alert-info">
-💡 You can selectively update details for an internship entry. Attributes not included in the command will maintain their existing values.
+💡 You can selectively update the details of an internship entry. Attributes not included in the command will maintain their existing values.
 </div>
 
 <div markdown="span" class="alert alert-warning">
@@ -287,21 +291,25 @@ Need to update an existing internship entry? The `modify` command lets you adjus
 ⚠️ **Internship Entry Modification Policies:**
 
 - **INDEX is Mandatory**: The INDEX, a positive integer, is required to identify the entry's position in the list. Modifying an entry will replace the existing list, not add to it.
-- **No Duplicate Company Name and Role**: Editing to create a duplicate entry with the same company name and role as an existing internship entry is not permitted, ensuring consistency with the creation section's prohibition of duplicates.
-- **Parameter Requirement**: There must be at least one parameter following the INDEX when modifying an entry. Omission of parameters will trigger a warning.
+- **No Duplicate Company Name and Role**: Editing to create a duplicate entry with the same company name and role as an existing internship entry is not permitted, ensuring consistency with the create command section's prohibition of duplicates.
+- **Parameter Requirement**: There must be at least one parameter following the INDEX when modifying an entry. Omission of parameters will trigger an error message.
 </div>
 
 **Expected Output**:
-![Sort](images/Modify.png)
+![Modify](images/modify.png)
 
 <br>
 
 ### Filter Internships by Category and Keyword/Range: `filter`
 
-Want to focus only on relevant internship entries based on certain constraints? Filter internship entries by inputting any category. There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY_TYPE2` accepting a range of values. The category types are as follows:
+Want to focus only on relevant internship entries based on certain constraints? 
+Filter internship entries by inputting any category. 
+There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY_TYPE2` accepting a range of values. The category types are as follows:
 
-* `CATEGORY_TYPE1`: `COMPANY_NAME`, `ROLE`, `APPLICATION_STATUS`, `REQUIREMENTS`
-* `CATEGORY_TYPE2`: `DEADLINE`, `START_DATE`, `DURATION`
+* `CATEGORY_TYPE1`: `c/`, `ro/`, `a/`, `re/`
+  * Representing **Company Name**, **Role**, **Application Status** and **Requirements**
+* `CATEGORY_TYPE2`: `de/`, `s/`, `du/`
+  * Representing **Deadline**, **Start Date** and **Duration**
 
 Format 1: `filter [CATEGORY_TYPE1]/[KEYWORD]`
 
@@ -319,8 +327,8 @@ Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 </div>
 
 Examples:
-* `filter du/3-6` displays internship entries that have duration within the range 3 to 6 months inclusive.
-* `filter du/4-4` displays internship entries that have duration of 4 months.
+* `filter du/3-6` displays internship entries that have durations within the range 3 to 6 months inclusive.
+* `filter du/4-4` displays internship entries that have a duration of 4 months.
 
 Format 3: `filter default`
 
@@ -332,13 +340,15 @@ Examples:
 </div>
 
 **Expected Output**:
-![Filter](images/FilterAnnotated.png)
+![Filter](images/filterAnnotated.png)
 
 <br>
 
 ### Sort Internships by Category and Order: `sort`
 
-Have a growing list of internships and finding it challenging to prioritize? Or perhaps you're looking to identify opportunities with the nearest deadlines or those that align with a specific field of interest? Use the sort feature in Flagship to organize and arrange your internship list based on specific categories and order.
+Have a growing list of internships and finding it challenging to prioritize? Or perhaps you're looking to identify 
+opportunities with the nearest deadlines or those that align with a specific field of interest? Use the sort feature in 
+Flagship to organize and arrange your internship list based on specific categories and order.
 
 **Format**: `sort [CATEGORY]/[ASC/DESC]`
 
@@ -351,6 +361,7 @@ Have a growing list of internships and finding it challenging to prioritize? Or 
 <div markdown="block" class="alert alert-success">
 💡 Internship entries are by default sorted by company name in ascending order.
 </div>
+
 <div markdown="block" class="alert alert-info">
 ℹ️ We do not allow you to stack sorts. A subsequent `sort` command will replace the prior one. Otherwise, the initial sort remains effective.
 </div>
@@ -366,7 +377,8 @@ Have a growing list of internships and finding it challenging to prioritize? Or 
 
 ### Deleting an Internship: `delete`
 
-Trying to declutter your list of internship entries? Or perhaps a saved internship application has become irrelevant - maybe you've realised you no longer want to apply? Remove the internship entry from Flagship using our delete command!
+Trying to declutter your list of internship entries? Or has a saved internship application become irrelevant because you no longer want to apply for the position? 
+Remove the internship entry from Flagship using our delete command!
 
 **Format**: `delete INDEX`
 
@@ -377,30 +389,39 @@ Trying to declutter your list of internship entries? Or perhaps a saved internsh
 * `delete 2` removes the 2nd internship from the directory.
 
 <div markdown="block" class="alert alert-info">
-ℹ️ The index is taken from the position of the specified internship in the currently displayed internship list. This means that even if you have applied sorting or filtering to your list, the index will always be consistent with the internship's visible position on the screen.
+ℹ️ The index is the position of the specified internship in the list currently displayed. 
+This means that even if you have applied sorting or filtering to your list, the index will always be consistent with the 
+internship's visible position on the screen.
 </div>
 
 **Expected Output**:
 ![Delete](images/delete.png)
 
-<br>
 --------------------------------------------------------------------------------------------------------------------
+<br>
 
 ## Saving the data
 
-Flagship data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Flagship data is saved in the hard disk automatically. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
 ## Editing the data file
 
-Flagship data are saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internshipBook.json`. Advanced users are welcome to update data directly by editing that data file.
+Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internshipBook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-danger">
-⚠️ If your changes to the data file makes its format invalid, Flagship will discard all data and start with an empty data file at the next run.  
+⚠️ If your changes to the data file make its format invalid, Flagship will discard all data and start with an empty data file at the next run.  
 Hence, it is recommended to take a backup of the file before editing it.
 </div>
+
+<div markdown="span" class="alert alert-danger">
+⚠️ Flagship is not optimised to handle excessively large number of internship entries — we believe that it is extremely rare for you 
+to track more than a thousand entries at any point in time. If you were to edit the data file, do not insert too many entries
+or Flagship might crash. 
+</div>
+
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
@@ -408,7 +429,7 @@ Hence, it is recommended to take a backup of the file before editing it.
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Flagship home folder.
+**A**: Install Flagship in the other computer. Overwrite the empty data file it creates with the data file of your previous Flagship home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
@@ -422,12 +443,12 @@ Hence, it is recommended to take a backup of the file before editing it.
 
 ## Command Summary
 
-| Action     | Format, Examples                                                                                                                                                                                                                         |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`             |
-| **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Coffee`   |
-| **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                      |
-| **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                   |
-| **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                      |
+| Action     | Format, Examples                                                                                                                                                                                                                       |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`           |
+| **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Coffee` |
+| **Filter** | `filter [CATEGORY_TYPE1]/[KEYWORD]` OR `filter [CATEGORY_TYPE2]/[START-END]` <br> e.g.,   `filter c/JA ro/SWE` OR `filter du/3-6`                                                                                                      |
+| **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                 |
+| **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                    |
 
 

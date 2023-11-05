@@ -51,7 +51,7 @@ Flagship is a desktop application used to help aspiring students track internshi
   * User Guide:
     * Overall in charge of the user guide - Managed all the content that is not command specific 
     * Managed the _**Create command**_ part of the User Guide
-    * Pull requests [\#36](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/36), [\#116](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/116)
+    * Pull requests [\#36](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/36), [\#116](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/116), [\#192](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/192)
   * Developer Guide:
     * Managed the _**Create command**_ and **Storage** part of the Developer Guide
     * Pull requests [\#130](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/130)
@@ -65,7 +65,10 @@ Flagship is a desktop application used to help aspiring students track internshi
     [\#23](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/23),
     [\#57](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/57),
     [\#69](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/69),
-    [\#88](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/88)
+    [\#88](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/88),
+    [\#195](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/195),
+    [\#199](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/199),
+    [\#200](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/200)
   * Reported bugs and suggestions for other teams in the class:
     * [\#9](https://github.com/jinyang628/ped/issues/9)
     * [\#7](https://github.com/jinyang628/ped/issues/7)
