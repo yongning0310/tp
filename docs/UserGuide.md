@@ -280,7 +280,7 @@ Need to update an existing internship entry? The `modify` command lets you adjus
 **Interpretation**: Update the first internship entry on your Flagship list. The role is at **Jane Street** for a **Coffee maker** position. You have **yet to apply**. The **application deadline** is set for 29 November 2022, and the start date is 20 January 2023. The internship is for a **3-month** period, with requirements for proficiency in **C++** and experience in **Coffee making**.
 
 <div markdown="block" class="alert alert-info">
-💡 You can selectively update details for an internship entry. Attributes not included in the command will maintain their existing values. To remove all requirements from an entry, simply include `re/` prefix without any trailing characters.
+💡 You can selectively update details for an internship entry. Attributes not included in the command will maintain their existing values.
 </div>
 
 <div markdown="span" class="alert alert-warning">
@@ -391,12 +391,12 @@ Hence, it is recommended to take a backup of the file before editing it.
 
 ## Command Summary
 
-| Action     | Format, Examples                                                                                                                                                                                                                                 |
-|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`                     |
-| **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` |
-| **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                              |
-| **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                           |
-| **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                              |
+| Action     | Format, Examples                                                                                                                                                                                                                         |
+|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`             |
+| **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify 1 c/Jane Street ro/Coffee maker a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Coffee`   |
+| **Filter** | `filter [category]/[keyword] ...` <br> e.g.,   `filter c/JA ro/SWE`                                                                                                                                                                      |
+| **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                   |
+| **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                      |
 
 
