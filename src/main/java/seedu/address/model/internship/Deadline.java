@@ -52,6 +52,11 @@ public class Deadline implements Comparable<Deadline> {
         }
     }
 
+    /**
+     * Returns true if the given strings for test are valid date.
+     *
+     * @param test The date string to be tested.
+     */
     public static boolean isValidDate(String test) {
         try {
             LocalDate.parse(test, DATE_FORMATTER);
