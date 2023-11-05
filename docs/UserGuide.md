@@ -215,6 +215,27 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 2021 is not a leap year, we will round it down to 28/02/2021 for you. 
 </div>
 
+
+<div markdown="span" class="alert alert-danger">
+⚠️ Flagship does not allow you to create duplicate internship entries with **both** the same company name **and** role. This makes sure
+that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
+</div>
+
+| Description                                                                                     | Example                                                                   |
+|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Company name/role differs in initial letter capitalisation**                                  | `Jane Street`, `jane Street` and `jane street` are considered the same    |
+| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
+| **Combination of initial letter capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane Street` are considered the same                |
+
+**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
+
+<div markdown="block" class="alert alert-info">
+ℹ️ We do not allow you to create internship entries of different application status, duration, etc. but with the same
+company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
+our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
+as effectively.
+</div>
+
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
@@ -239,25 +260,6 @@ on 24 April 2022. This is a **2-month** internship, and you are expected to be p
 💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
 </div>
 
-<div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with **both** the same company name **and** role. This makes sure
-that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
-</div>
-
-| Description                                                                                     | Example                                                                   |
-|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **Company name/role differs in initial letter capitalisation**                                  | `Jane Street`, `jane Street` and `jane street` are considered the same    |
-| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
-| **Combination of initial letter capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane Street` are considered the same                |
-
-**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
-
-<div markdown="block" class="alert alert-info">
-ℹ️ We do not allow you to create internship entries of different application status, duration, etc. but with the same
-company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
-our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
-as effectively.
-</div>
 
 <div markdown="block" class="alert alert-info">
 ℹ️ We allow you to create internship entries with application deadlines and start dates before today's current date. It is designed as such 
@@ -282,21 +284,16 @@ Need to update an existing internship entry? The `modify` command lets you adjus
 </div>
 
 <div markdown="span" class="alert alert-warning">
-⚠️ The INDEX is a mandatory positive integer that denotes the entry's position in your list. When modifying requirements, be aware that this action will replace the existing list; requirements are not cumulative.
+
+⚠️ **Internship Entry Modification Policies:**
+
+- **INDEX is Mandatory**: The INDEX, a positive integer, is required to identify the entry's position in the list. Modifying an entry will replace the existing list, not add to it.
+- **No Duplicate Company Name and Role**: Editing to create a duplicate entry with the same company name and role as an existing internship entry is not permitted, ensuring consistency with the creation section's prohibition of duplicates.
+- **Parameter Requirement**: There must be at least one parameter following the INDEX when modifying an entry. Omission of parameters will trigger a warning.
 </div>
 
-<div markdown="span" class="alert alert-warning">
-⚠️ Flagship does not permit editing the company name and role in a way that creates a duplicate of an existing internship entry with the same company and role. This policy ensures consistency with the "create" section, where the creation of duplicate internship entries is also prohibited.
-</div>
-
-<div markdown="span" class="alert alert-warning">
-⚠️ There must be at least one parameter following the INDEX. If no parameters are provided after the INDEX, a warning will be issued.
-</div>
-
-<div markdown="block" class="alert alert-info">
-ℹ️ Utilize the `modify` command to keep your internship applications up-to-date. It's an essential part of managing your internship timeline effectively in Flagship.
-</div>
-
+**Expected Output**:
+![Sort](images/Modify.png)
 
 <br>
 
