@@ -28,6 +28,7 @@ public class InternshipModelManager implements InternshipModel {
     private Comparator<Internship> currentComparator = InternshipComparators.BY_COMPANY_NAME; // default comparator
     private String currentComparatorPrefix = "c/"; // default comparator prefix
     private SortCommand.Order currentComparatorOrder = SortCommand.Order.ASC; // default comparator order
+    private Predicate<Internship> currentPredicate = PREDICATE_SHOW_ALL_INTERNSHIPS; //default predicate
     private String currentFilterParameter = "default"; // default filter parameter
     private String currentFilterValue = "default"; // default filter value
     private final InternshipBook internshipBook;
@@ -115,7 +116,7 @@ public class InternshipModelManager implements InternshipModel {
     @Override
     public void createInternship(Internship internship) {
         internshipBook.createInternship(internship);
-        updateFilteredInternshipList(PREDICATE_SHOW_ALL_INTERNSHIPS);
+        updateFilteredInternshipList(currentPredicate);
         sortInternships(currentComparator);
     }
 
@@ -192,6 +193,7 @@ public class InternshipModelManager implements InternshipModel {
     @Override
     public void updateFilteredInternshipList(Predicate<Internship> predicate) {
         requireNonNull(predicate);
+        updatePredicate(predicate);
         this.filteredInternships.setPredicate(predicate);
     }
 
@@ -212,4 +214,8 @@ public class InternshipModelManager implements InternshipModel {
                 && filteredInternships.equals(otherModelManager.filteredInternships);
     }
 
+    @Override
+    public void updatePredicate(Predicate<Internship> predicate) {
+        this.currentPredicate = predicate;
+    }
 }

@@ -124,6 +124,8 @@ public interface InternshipModel {
      */
     void updateFilteredInternshipList(Predicate<Internship> predicate);
 
+    void updatePredicate(Predicate<Internship> predicate);
+
     void setFilterParameter(String filterParameter);
 
     void setFilterValue(String filterValue);
