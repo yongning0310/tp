@@ -66,7 +66,9 @@ Flagship is a desktop application used to help aspiring students track internshi
     [\#57](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/57),
     [\#69](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/69),
     [\#88](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/88)
-  * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
+  * Reported bugs and suggestions for other teams in the class:
+    * [\#9](https://github.com/jinyang628/ped/issues/9)
+    * [\#7](https://github.com/jinyang628/ped/issues/7)
 
 * **Tools**:
   * Utilised 'org.junit.jupiter:junit-jupiter-params:5.7.0' to reduce code duplications in test cases
