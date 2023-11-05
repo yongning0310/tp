@@ -7,8 +7,10 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_OPTIVER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_NAME_OPTIVER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENT_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_JANESTREET;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTDATE_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.assertInternshipCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertInternshipCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showInternshipAtIndex;
@@ -61,11 +63,13 @@ public class ModifyCommandTest {
         InternshipBuilder internshipInList = new InternshipBuilder(lastInternship);
         Internship editedInternship = internshipInList.withCompanyName(VALID_COMPANY_NAME_JANESTREET)
                 .withRole(VALID_ROLE_JANESTREET)
+                .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET)
                 .withRequirements(VALID_REQUIREMENT_JANESTREET).build();
 
         EditInternshipDescriptor descriptor = new EditInternshipDescriptorBuilder()
                 .withCompanyName(VALID_COMPANY_NAME_JANESTREET)
                 .withRole(VALID_ROLE_JANESTREET)
+                .withDeadline(VALID_DEADLINE_JANESTREET, VALID_STARTDATE_JANESTREET)
                 .withRequirements(VALID_REQUIREMENT_JANESTREET).build();
         ModifyCommand modifyCommand = new ModifyCommand(indexLastInternship, descriptor);
 

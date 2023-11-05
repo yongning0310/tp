@@ -7,6 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.COMPANY_NAME_DESC_OPT
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_JANESTREET;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_APPLICATION_STATUS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMPANY_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DEADLINE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_REQUIREMENT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
@@ -36,11 +37,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
-import seedu.address.model.internship.ApplicationStatus;
-import seedu.address.model.internship.CompanyName;
-import seedu.address.model.internship.Duration;
-import seedu.address.model.internship.Role;
-import seedu.address.model.internship.StartDate;
+import seedu.address.model.internship.*;
 import seedu.address.model.requirement.Requirement;
 import seedu.address.testutil.EditInternshipDescriptorBuilder;
 
@@ -96,12 +93,10 @@ public class ModifyCommandParserTest {
                 "1" + INVALID_APPLICATION_STATUS_DESC,
                 ApplicationStatus.MESSAGE_CONSTRAINTS); // invalid application status
 
-        /*
         assertInternshipParseFailure(
                 parser,
                 "1" + INVALID_DEADLINE_DESC,
                 Deadline.MESSAGE_CONSTRAINTS); // invalid deadline
-         */
 
         assertInternshipParseFailure(
                 parser,

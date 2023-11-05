@@ -114,9 +114,15 @@ public class ParserUtil {
     public static Deadline parseDeadline(String deadline) throws ParseException {
         requireNonNull(deadline);
         String trimmedDeadline = deadline.trim();
-
-        return new Deadline(trimmedDeadline, "31/12/"
-                + trimmedDeadline.substring(trimmedDeadline.length() - 4));
+        if (!Deadline.isValidDate(trimmedDeadline)) {
+            throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
+        }
+        String year = trimmedDeadline.substring(trimmedDeadline.length() - 4);
+        String placeHolderStartDate = "31/12/" + year;
+        if (!Deadline.isValidDeadline(trimmedDeadline, placeHolderStartDate)) {
+            throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
+        }
+        return new Deadline(trimmedDeadline, placeHolderStartDate);
     }
 
     /**
