@@ -226,13 +226,18 @@ Want to focus only on relevant internship entries based on certain constraints? 
 
 Format 1: `filter [CATEGORY_TYPE1]/[KEYWORD]`
 
-* The search isn't case-sensitive. For instance, `hans` matches `Hans`.
+<div markdown="block" class="alert alert-success">
+ℹ️ The search isn't case-sensitive. For instance, `hans` matches `Hans`.
+</div>
 
 Examples:
 * `filter c/JA ro/SWE` displays internships with company names containing "JA" and roles containing "SWE".
 
 Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
-* Flagship only allows filter by range for this category type. To filter for one value, you can input the range as START-START.
+
+<div markdown="block" class="alert alert-info">
+ℹ️ Flagship only allows filter by range for this category type. To filter for one value, you can input the range as VALUE-VALUE.
+</div>
 
 Examples:
 * `filter du/3-6` displays internship entries that have duration within the range 3 to 6 inclusive.
@@ -243,7 +248,12 @@ Format 3: `filter default`
 Examples: 
 * `filter default` lists all internship entries.
 
+<div markdown="block" class="alert alert-success">
 💡 If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
+</div>
+
+**Expected Output**:
+![Filter](images/filterAnnotated.jpg)
 
 ### Sort Internships by Category and Order: `sort`
 
