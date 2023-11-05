@@ -321,7 +321,7 @@ Have a growing list of internships and finding it challenging to prioritize? Or 
 </div>
 
 **Expected Output**:
-![Sort](images/Sort.jpg)
+![Sort](images/sort.jpg)
 
 <br>
 
