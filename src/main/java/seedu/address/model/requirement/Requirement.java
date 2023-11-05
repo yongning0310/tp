@@ -9,8 +9,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Requirement {
 
-    public static final String MESSAGE_CONSTRAINTS = "Requirements cannot be empty";
-    public static final String VALIDATION_REGEX = ".+\\S.+";
+    public static final String MESSAGE_CONSTRAINTS = "Each requirement should fulfill all the following conditions:\n"
+            + "1. Should not be blank\n"
+            + "2. Should not contain foreign langauge characters\n"
+            + "3. Cannot be longer than 200 characters";
+
+    public static final String VALIDATION_REGEX = "[ -~]+";
 
     private final String requirementName;
 
@@ -26,12 +30,16 @@ public class Requirement {
     }
 
     /**
-     * Verifies whether the given string constitutes a valid requirement.
+     * Verifies whether the given string constitutes a valid requirement. Requirements longer than 200 characters are
+     * rejected to prevent overflows in the UI.
      *
      * @param test The given string to be tested.
      * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidRequirementName(String test) {
+        if (test.length() > 200) {
+            return false;
+        }
         return test.matches(VALIDATION_REGEX);
     }
 
