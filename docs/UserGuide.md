@@ -240,7 +240,7 @@ on 24 April 2022. This is a **2-month** internship, and you are expected to be p
 </div>
 
 <div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with **both** the same company name **and** role. This makes sure
+⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
 that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
 </div>
 
@@ -327,18 +327,22 @@ Have a growing list of internships and finding it challenging to prioritize? Or 
 
 ### Deleting an Internship: `delete`
 
-Remove a specified internship from the internship directory.
+Trying to declutter your list of internship entries? Or perhaps a saved internship application has become irrelevant - maybe you've realised you no longer want to apply? Remove the internship entry from Flagship using our delete command!
 
 **Format**: `delete INDEX`
 
 * Erase the internship at the designated `INDEX`.
-* The index corresponds to the position in the displayed internship list.
 * The index **must be a positive integer** like 1, 2, 3, …​
 
 **Examples**:
 * `delete 2` removes the 2nd internship from the directory.
-* Running `sort ro/DESC` followed by `delete 1` erases the top internship post-sort.
 
+<div markdown="block" class="alert alert-info">
+ℹ️ The index is taken from the position of the specified internship in the currently displayed internship list. This means that even if you have applied sorting or filtering to your list, the index is consistent with the internship's visible position on the screen.
+</div>
+
+**Expected Output**:
+![Delete](images/delete.png)
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
