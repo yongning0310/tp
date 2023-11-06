@@ -12,9 +12,10 @@ import java.time.format.DateTimeParseException;
  * Guarantees: immutable; is valid as declared in {@link #isValidDeadline(String, String)}
  */
 public class Deadline implements Comparable<Deadline> {
-    public static final String MESSAGE_CONSTRAINTS =
-            "Deadline should only contain numbers and slashes. It must follow the form DD/MM/YYYY. It must be earlier"
-                    + " than the Internship's start date.";
+    public static final String MESSAGE_CONSTRAINTS = "The deadline should fulfill all the following conditions:\n"
+            + "1. Contains only numbers and slashes\n"
+            + "2. Follows the form DD/MM/YYYY\n"
+            + "3. Earlier than the internship entry's start date\n";
 
     public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final LocalDate deadline;
