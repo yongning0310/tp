@@ -13,8 +13,10 @@ import java.time.format.DateTimeParseException;
  */
 public class StartDate implements Comparable<StartDate> {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Start Date should only contain numbers and slashes. It must follow the form DD/MM/YYYY";
+    public static final String MESSAGE_CONSTRAINTS = "The start date should fulfill all the following conditions:\n"
+            + "1. Contains only numbers and slashes\n"
+            + "2. Follows the form DD/MM/YYYY\n"
+            + "3. Later than the internship entry's deadline\n";
 
     public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final LocalDate startDate;

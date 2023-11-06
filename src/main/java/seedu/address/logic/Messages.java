@@ -36,10 +36,11 @@ public class Messages {
      */
     public static String format(Internship internship) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(internship.getCompanyName())
+        builder.append("\nCompany Name: ")
+                .append(internship.getCompanyName())
                 .append("; Role: ")
                 .append(internship.getRole())
-                .append("; ApplicationStatus: ")
+                .append("; Application Status: ")
                 .append(internship.getApplicationStatus())
                 .append("; Deadline: ")
                 .append(internship.getDeadline())

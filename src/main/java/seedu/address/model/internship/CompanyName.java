@@ -9,8 +9,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class CompanyName implements Comparable<CompanyName> {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Company names should only contain alphanumeric characters and spaces, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "The company name should fulfill all the following conditions:\n"
+            + "1. Contains only english alphanumeric characters and spaces\n"
+            + "2. Should not be blank\n"
+            + "3. Cannot be longer than 200 characters";
 
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
@@ -28,12 +30,16 @@ public class CompanyName implements Comparable<CompanyName> {
     }
 
     /**
-     * Verifies whether the given string constitutes a valid company name.
+     * Verifies whether the given string constitutes a valid company name. Company names longer than 200 characters
+     * are rejected to prevent overflows in the UI.
      *
      * @param test The given string to be tested.
      * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidCompanyName(String test) {
+        if (test.length() > 200) {
+            return false;
+        }
         return test.matches(VALIDATION_REGEX);
     }
 

@@ -11,9 +11,10 @@ import java.util.List;
  * Guarantees: immutable; is valid as declared in {@link #isValidApplicationStatus(String)}
  */
 public class ApplicationStatus implements Comparable<ApplicationStatus> {
+
     public static final String MESSAGE_CONSTRAINTS =
-            "Application Status cannot be blank and should only contain one of the following: "
-                    + "Yet to apply, Applied, In progress, Accepted, Rejected";
+            "The application status should fulfill all the following conditions:\n"
+            + "1. Contains one of the following values: Yet to apply, Applied, In progress, Accepted, Rejected\n";
 
     private static final List<String> VALID_STATUSES = Arrays.asList(
             "Yet to apply", "Applied", "In progress", "Accepted", "Rejected"

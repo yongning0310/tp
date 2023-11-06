@@ -32,7 +32,7 @@ public class JsonAdaptedInternshipTest {
     private static final String INVALID_DURATION = " ";
     private static final String INVALID_ROLE = "C0ff33 M@k&r";
     private static final String INVALID_START_DATE = "50/50/-1111";
-    private static final String INVALID_REQUIREMENT = " ";
+    private static final String INVALID_REQUIREMENT = "哈哈";
 
     private static final String VALID_COMPANY_NAME = JANESTREET.getCompanyName().toString();
     private static final String VALID_APPLICATION_STATUS = JANESTREET.getApplicationStatus().toString();
