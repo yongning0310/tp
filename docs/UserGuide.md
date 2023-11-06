@@ -311,29 +311,45 @@ There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY
 * `CATEGORY_TYPE2`: `de/`, `s/`, `du/`
   * Representing **Deadline**, **Start Date** and **Duration**
 
-Format 1: `filter [CATEGORY_TYPE1]/[KEYWORD]`
+Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 
 <div markdown="block" class="alert alert-success">
-ℹ️ The search isn't case-sensitive. For instance, `hans` matches `Hans`.
+💡 You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internships that match at least one of the `KEYWORDS`.
+</div>
+
+<div markdown="block" class="alert alert-success">
+ℹ️ The search isn't case-sensitive. 
+</div>
+
+<div markdown="block" class="alert alert-info">
+ℹ️ The search only displays internships with full-word matches. 
 </div>
 
 Examples:
-* `filter c/JA ro/SWE` displays internships with company names containing "JA" and roles containing "SWE".
+* `filter c/JANE` displays internships with `COMPANY_NAME` containing "JANE", "Jane", "jane", or any other variations in cases.
+* `filter re/python c++` displays internships with `REQUIREMENTS` containing "python" and/or "c++".
+* `filter c/tech` displays internships with company names containing "tech co." but not with "technology co." as per the full-word match requirement.
 
 Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 
 <div markdown="block" class="alert alert-info">
 ℹ️ Flagship only allows filter by range for this category type. To filter for one value, you can input the range as VALUE-VALUE.
 </div>
+<div markdown="block" class="alert alert-info">
+ℹ️ Each parameter should follow the parameter constraints.
+
+For the full list of parameter constraints, refer to the [Commands](#commands) Section.
+</div>
 
 Examples:
 * `filter du/3-6` displays internship entries that have durations within the range 3 to 6 months inclusive.
 * `filter du/4-4` displays internship entries that have a duration of 4 months.
+* `filter de/20/12/2023-20/01/2024` displays internship entries that have deadline within the range of 20/12/2023 to 20/01/2024 inclusive.
 
 Format 3: `filter default`
 
 Examples: 
-* `filter default` lists all internship entries.
+* `filter default` clears the existing filter and lists all internship entries.
 
 <div markdown="block" class="alert alert-success">
 💡 If you execute a new filter command, it supersedes the previous filter. Otherwise, the initial filter remains active.
