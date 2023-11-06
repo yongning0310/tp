@@ -286,7 +286,7 @@ Whether the application deadline has changed or you've picked up a new skill tha
 💡 You can selectively update the details of an internship entry. Attributes not included in the command will maintain their existing values.
 </div>
 
-<div markdown="span" class="alert alert-warning">
+<div markdown="span" class="alert alert-danger">
 
 ⚠️ **Internship Entry Modification Policies:**
 
@@ -313,33 +313,19 @@ There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY
 
 Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 
-<div markdown="block" class="alert alert-success">
-💡 You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internships that match at least one of the `KEYWORDS`.
-</div>
-
-<div markdown="block" class="alert alert-success">
-ℹ️ The search isn't case-sensitive. 
-</div>
-
-<div markdown="block" class="alert alert-info">
-ℹ️ The search only displays internships with full-word matches. 
-</div>
+* The search isn't case-sensitive.
+* You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internships that match at least one of the `KEYWORDS`.
+* The search only displays internships with full-word matches. 
 
 Examples:
-* `filter c/JANE` displays internships with `COMPANY_NAME` containing "JANE", "Jane", "jane", or any other variations in cases.
-* `filter re/python c++` displays internships with `REQUIREMENTS` containing "python" and/or "c++".
-* `filter c/tech` displays internships with company names containing "tech co." but not with "technology co." as per the full-word match requirement.
+* `filter c/JANE` displays internships with `COMPANY_NAME` containing **JANE**, **Jane**, **jane**, or any other variations in cases.
+* `filter re/python c++` displays internships with `REQUIREMENTS` containing **python** and/or **c++**.
+* `filter c/tech` displays internships with company names containing "tech company" but not "technology company" as per the full-word match requirement.
 
 Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 
-<div markdown="block" class="alert alert-info">
-ℹ️ Flagship only allows filter by range for this category type. To filter for one value, you can input the range as VALUE-VALUE.
-</div>
-<div markdown="block" class="alert alert-info">
-ℹ️ Each parameter should follow the parameter constraints.
-
-For the full list of parameter constraints, refer to the [Commands](#commands) Section.
-</div>
+* Flagship only allows filter by range for this category type. To filter for one value, you can input the range as `VALUE-VALUE`.
+* Each parameter should follow the parameter constraints specified under the [Commands](#commands) Section.
 
 Examples:
 * `filter du/3-6` displays internship entries that have durations within the range 3 to 6 months inclusive.
