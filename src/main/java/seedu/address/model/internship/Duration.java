@@ -9,8 +9,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Duration implements Comparable<Duration> {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Internship durations should only contain positive integers representing months and should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "The duration should fulfill all the following conditions:\n"
+            + "1. Contains only positive integers representing months\n"
+            + "2. Should not be blank\n";
+
     public static final String VALIDATION_REGEX = "[1-9]\\d*";
     private final String duration;
 

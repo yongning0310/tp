@@ -45,8 +45,8 @@ Flagship has a host of awesome features that we are extremely proud of:
 
 _... and many more!_
 
-Our main target users are university students pursuing a computing-related degree. As such, this user guide (and Flagship in general)
-is designed with the following assumptions in mind:
+Our main target users are english-speaking university students pursuing a computing-related degree. 
+As such, this user guide (and Flagship in general) is designed with the following assumptions in mind:
 1. You have a basic understanding of command line syntax.
 2. You are comfortable using the [command terminal](#glossary) to launch the application.
 3. You type fast and enjoy using the keyboard as the main tool of navigation.

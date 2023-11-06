@@ -616,6 +616,24 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Creating an internship entry
+
+1. Creating duplicate entries
+
+   1. Test case: Key in this same command twice `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
+      Expected: The internship entry is not created the second time. Duplicate entry error message is shown. 
+   
+   2. Test case: Key in this command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` and `create c/govtech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`
+      Expected: The internship entry is not created the second time. Duplicate entry error message is shown.
+
+2. Creating entries with invalid parameters
+
+   1. Test case: `create c/GovTech*** ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` 
+      Expected: The internship entry is not created. Error message signalling an invalid value in the company name is shown.
+
+   2. Test case: `create c/GovTech ro/SWE a/Thinking about it de/25/12/2022 s/20/01/2023 du/3 re/C++` 
+      Expected: The Internship entry is not created. Error message signalling an invalid value in the application status is shown.
+
 ### Deleting an internship
 
 1. Deleting an internship while all internships are being shown
