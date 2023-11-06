@@ -33,13 +33,13 @@ public class CreateCommand extends InternshipCommand {
             + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY_NAME + "Jane Street "
-            + PREFIX_ROLE + "Coffee maker "
+            + PREFIX_ROLE + "ML Engineer "
             + PREFIX_APPLICATION_STATUS + "Yet to apply "
             + PREFIX_DEADLINE + "25/12/2022 "
             + PREFIX_START_DATE + "20/01/2023 "
             + PREFIX_DURATION + "3 "
             + PREFIX_REQUIREMENT + "C++ "
-            + PREFIX_REQUIREMENT + "Coffee ";
+            + PREFIX_REQUIREMENT + "Java ";
 
     public static final String MESSAGE_SUCCESS = "Here is the information of the entry: %s";
 
