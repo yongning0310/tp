@@ -4,6 +4,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPLICATION_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
@@ -20,6 +21,8 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.ApplicationStatus;
 import seedu.address.model.internship.CompanyName;
@@ -54,14 +57,17 @@ public class ModifyCommand extends InternshipCommand {
             + PREFIX_APPLICATION_STATUS + "Yet to apply "
             + PREFIX_START_DATE + "20/01/2023 "
             + PREFIX_DURATION + "3 "
+            + PREFIX_DEADLINE + "25/12/2022 "
             + PREFIX_REQUIREMENT + "C++ "
             + PREFIX_REQUIREMENT + "Python";
 
     public static final String MESSAGE_EDIT_INTERNSHIP_SUCCESS = "Edited Internship: %s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_INTERNSHIP =
-            "This internship application already exists in the tracker.";
-
+            "This internship entry with the corresponding company name and role already exists in the application.";
+    public static final String MESSAGE_DEADLINE_CONSTRAINTS =
+            "Deadline should only contain numbers and slashes. It must follow the form DD/MM/YYYY. It must be earlier"
+                    + " than the internship entry's start date.";
     private final Index index;
     private final EditInternshipDescriptor editInternshipDescriptor;
 
@@ -80,6 +86,7 @@ public class ModifyCommand extends InternshipCommand {
         this.editInternshipDescriptor = new EditInternshipDescriptor(editInternshipDescriptor);
     }
 
+
     @Override
     public CommandResult execute(InternshipModel model) throws CommandException {
         requireNonNull(model);
@@ -90,6 +97,26 @@ public class ModifyCommand extends InternshipCommand {
         }
 
         Internship internshipToEdit = lastShownList.get(index.getZeroBased());
+
+        boolean editedDeadline = editInternshipDescriptor.getDeadline().isPresent();
+        boolean editedStartDate = editInternshipDescriptor.getStartDate().isPresent();
+        if (editedDeadline || editedStartDate) {
+            String startDate = internshipToEdit.getStartDate().toString();
+            String deadline = internshipToEdit.getDeadline().toString();
+            if (editedDeadline) {
+                deadline = editInternshipDescriptor.getDeadline().get().toString();
+            }
+            if (editedStartDate) {
+                startDate = editInternshipDescriptor.getStartDate().get().toString();
+            }
+            try {
+                editInternshipDescriptor.setDeadline(ParserUtil
+                        .parseDeadline(deadline, startDate));
+            } catch (ParseException e) {
+                throw new CommandException(MESSAGE_DEADLINE_CONSTRAINTS);
+            }
+        }
+
         Internship editedInternship = createEditedInternship(internshipToEdit, editInternshipDescriptor);
 
         if (!internshipToEdit.isSameInternship(editedInternship) && model.hasInternship(editedInternship)) {
@@ -173,7 +200,8 @@ public class ModifyCommand extends InternshipCommand {
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(companyName, role, applicationStatus, startDate, duration, requirements);
+            return CollectionUtil.isAnyNonNull(companyName, role, applicationStatus, startDate,
+                    duration, requirements, deadline);
         }
 
         public Optional<CompanyName> getCompanyName() {
