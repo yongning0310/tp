@@ -41,11 +41,14 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
      * and returns a FilterCommand object for execution.
      */
     public static final String MESSAGE_ONE_PARAMETER = "filter command should accept only one parameter at a time.";
-    public static final String MESSAGE_STARTDATE_RANGE_FORMAT = "date range should be in the format "
-            + "DD/MM/YYYY-DD/MM/YYYY";
-    public static final String MESSAGE_DURATION_RANGE_FORMAT = "duration range should be in the format X-Y";
-    public static final String MESSAGE_DEADLINE_RANGE_FORMAT = "deadline range should be in the format X-Y";
+    public static final String MESSAGE_STARTDATE_RANGE_FORMAT = "start date range should be in the format "
+        + "DD/MM/YYYY-DD/MM/YYYY where start is earlier than end";
+    public static final String MESSAGE_DURATION_RANGE_FORMAT = "duration range should be in the format START-END "
+            + "where start is smaller than end";
+    public static final String MESSAGE_DEADLINE_RANGE_FORMAT = "deadline range should be in the format "
+        + "DD/MM/YYYY-DD/MM/YYYY where start is earlier than end";
     public static final String MESSAGE_NON_EMPTY = "filter command's parameter cannot be empty.";
+
 
     /*
     TODO - refactor all logic for comparators and filters into 2 classes.
@@ -159,6 +162,12 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         try {
             startDateLower = parseStartDate(dateRange[0].trim());
             startDateUpper = parseStartDate(dateRange[1].trim());
+
+            if (startDateLower.compareTo(startDateUpper) > 0) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        MESSAGE_STARTDATE_RANGE_FORMAT));
+            }
+
         } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_STARTDATE_RANGE_FORMAT));
@@ -191,6 +200,11 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
             String startDatePlaceholderString = startDatePlaceholder.format(dateFormatter);
             deadlineLower = ParserUtil.parseDeadline(deadlineRange[0].trim(), startDatePlaceholderString);
             deadlineUpper = ParserUtil.parseDeadline(deadlineRange[1].trim(), startDatePlaceholderString);
+
+            if (deadlineLower.compareTo(deadlineUpper) > 0) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        MESSAGE_DEADLINE_RANGE_FORMAT));
+            }
         } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_DEADLINE_RANGE_FORMAT));
@@ -207,24 +221,26 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_NON_EMPTY));
         }
 
+
         String[] durationArr = durations.split("-");
         if (durationArr.length != 2) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MESSAGE_DURATION_RANGE_FORMAT));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DURATION_RANGE_FORMAT));
         }
 
-        List<Duration> durationList = new ArrayList<>();
         try {
-            for (String durationStr : durationArr) {
-                durationList.add(new Duration(durationStr));
+            Duration lowerDuration = new Duration(durationArr[0]);
+            Duration upperDuration = new Duration(durationArr[1]);
+
+            if (lowerDuration.compareTo(upperDuration) > 0) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DURATION_RANGE_FORMAT));
             }
+
+            filterParameter = PREFIX_DURATION.getPrefix();
+            filterValue = String.format("%s to %s months", durationArr[0], durationArr[1]);
+            return new DurationWithinRangePredicate(List.of(lowerDuration, upperDuration));
         } catch (IllegalArgumentException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MESSAGE_DURATION_RANGE_FORMAT));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_DURATION_RANGE_FORMAT));
         }
-        filterParameter = PREFIX_DURATION.getPrefix();
-        filterValue = String.format("%s to %s months", durationArr[0], durationArr[1]);
-        return new DurationWithinRangePredicate(durationList);
     }
 
     private Predicate<Internship> parseRequirement(ArgumentMultimap argMultimap) throws ParseException {
