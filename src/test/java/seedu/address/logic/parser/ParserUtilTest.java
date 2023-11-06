@@ -21,7 +21,6 @@ import seedu.address.model.internship.StartDate;
 import seedu.address.model.requirement.Requirement;
 
 class ParserUtilTest {
-
     @Test
     void testParseIndex_valid() throws ParseException {
         assertEquals(1, ParserUtil.parseIndex("1").getOneBased());

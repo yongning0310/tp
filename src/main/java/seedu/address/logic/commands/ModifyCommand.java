@@ -67,7 +67,7 @@ public class ModifyCommand extends InternshipCommand {
             "This internship entry with the corresponding company name and role already exists in the application.";
     public static final String MESSAGE_DEADLINE_CONSTRAINTS =
             "Deadline should only contain numbers and slashes. It must follow the form DD/MM/YYYY. It must be earlier"
-                    + " than the Internship's start date.";
+                    + " than the internship entry's start date.";
     private final Index index;
     private final EditInternshipDescriptor editInternshipDescriptor;
 

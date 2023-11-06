@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -117,8 +119,9 @@ public class ParserUtil {
         if (!Deadline.isValidDate(trimmedDeadline)) {
             throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
         }
-        String year = trimmedDeadline.substring(trimmedDeadline.length() - 4);
-        String placeHolderStartDate = "31/12/" + year;
+        LocalDate maxDate = LocalDate.MAX;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String placeHolderStartDate = maxDate.format(formatter);
         if (!Deadline.isValidDeadline(trimmedDeadline, placeHolderStartDate)) {
             throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
         }

@@ -110,7 +110,7 @@ public class ArgumentMultimap {
     /**
      * Returns true if no prefix is present.
      */
-    public boolean noPrefixPresent() {
+    public boolean isNoPrefixPresent() {
         long count = argMultimap.keySet().stream()
                 .filter(prefix -> !prefix.getPrefix().isEmpty())
                 .count();
