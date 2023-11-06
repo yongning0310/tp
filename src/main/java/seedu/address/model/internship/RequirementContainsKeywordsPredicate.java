@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -19,8 +20,10 @@ public class RequirementContainsKeywordsPredicate implements Predicate<Internshi
     @Override
     public boolean test(Internship internship) {
         return keywords.stream()
-                .anyMatch(keyword -> internship.getRequirements().stream().anyMatch(
-                        requirement -> StringUtil.containsWordIgnoreCase(requirement.getRequirementName(), keyword)));
+                .allMatch(keyword -> internship.getRequirements().stream()
+                        .anyMatch(requirement ->
+                                Arrays.stream(requirement.getRequirementName().split("\\s+"))
+                                        .anyMatch(word -> StringUtil.containsWordIgnoreCase(word, keyword))));
     }
 
     @Override

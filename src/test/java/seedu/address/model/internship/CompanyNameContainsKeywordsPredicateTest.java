@@ -39,8 +39,8 @@ public class CompanyNameContainsKeywordsPredicateTest {
     @Test
     public void testMultipleKeywords_oneMatch_returnsTrue() {
         CompanyNameContainsKeywordsPredicate predicate =
-                new CompanyNameContainsKeywordsPredicate(Arrays.asList("Google", "Apple"));
-        Internship internship = new InternshipBuilder().withCompanyName("Google").build();
+                new CompanyNameContainsKeywordsPredicate(Arrays.asList("Big", "Apple"));
+        Internship internship = new InternshipBuilder().withCompanyName("Big Apple").build();
         assertTrue(predicate.test(internship));
     }
 

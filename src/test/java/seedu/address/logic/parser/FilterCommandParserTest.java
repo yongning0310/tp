@@ -13,6 +13,8 @@ import seedu.address.logic.commands.FilterCommand;
 import seedu.address.model.InternshipModel;
 import seedu.address.model.internship.ApplicationStatusContainsKeywordsPredicate;
 import seedu.address.model.internship.CompanyNameContainsKeywordsPredicate;
+import seedu.address.model.internship.Deadline;
+import seedu.address.model.internship.DeadlineWithinRangePredicate;
 import seedu.address.model.internship.Duration;
 import seedu.address.model.internship.DurationWithinRangePredicate;
 import seedu.address.model.internship.RequirementContainsKeywordsPredicate;
@@ -72,6 +74,18 @@ public class FilterCommandParserTest {
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DEADLINE_RANGE_FORMAT));
     }
 
+    @Test
+    public void parse_invalidRange_throwsParseException() {
+        assertInternshipParseFailure(parser, " de/20/23/2023-20/23/2024",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DEADLINE_RANGE_FORMAT));
+
+        assertInternshipParseFailure(parser, " du/4-1",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DURATION_RANGE_FORMAT));
+
+        assertInternshipParseFailure(parser, " s/20/23/2023-20/23/2022",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_STARTDATE_RANGE_FORMAT));
+    }
+
 
     @Test
     public void parse_invalidStartDateArg_throwsParseException() {
@@ -96,7 +110,7 @@ public class FilterCommandParserTest {
 
     @Test
     public void parse_validCompanyNameArgs_returnsFilterCommand() {
-        List<String> keywords = Arrays.asList("Optiver");
+        List<String> keywords = List.of("Optiver");
 
         FilterCommand expectedFilterCommand =
                 new FilterCommand(new CompanyNameContainsKeywordsPredicate(keywords));
@@ -105,7 +119,7 @@ public class FilterCommandParserTest {
 
     @Test
     public void parse_validApplicationStatusArgs_returnsFilterCommand() {
-        List<String> keywords = Arrays.asList("Applied");
+        List<String> keywords = List.of("Applied");
         FilterCommand expectedFilterCommand = new FilterCommand(
                 new ApplicationStatusContainsKeywordsPredicate(keywords));
         assertInternshipParseSuccess(parser, " a/Applied", expectedFilterCommand);
@@ -114,7 +128,7 @@ public class FilterCommandParserTest {
 
     @Test
     public void parse_validRoleArgs_returnsFilterCommand() {
-        List<String> keywords = Arrays.asList("Developer");
+        List<String> keywords = List.of("Developer");
         FilterCommand expectedFilterCommand = new FilterCommand(new RoleContainsKeywordsPredicate(keywords));
         assertInternshipParseSuccess(parser, " ro/Developer", expectedFilterCommand);
     }
@@ -139,13 +153,13 @@ public class FilterCommandParserTest {
 
     @Test
     public void parse_validRequirementsArgs_returnsFilterCommand() {
-        List<String> keywords = Arrays.asList("C++");
+        List<String> keywords = List.of("C++");
 
         FilterCommand expectedFilterCommand =
                 new FilterCommand(new RequirementContainsKeywordsPredicate(keywords));
         assertInternshipParseSuccess(parser, " re/C++", expectedFilterCommand);
 
-        List<String> multipleKeywords = Arrays.asList(new String[]{"Java", "Python"});
+        List<String> multipleKeywords = List.of("Java", "Python");
         FilterCommand expectedFilterCommandMultipleKeywords =
                 new FilterCommand(new RequirementContainsKeywordsPredicate(multipleKeywords));
         assertInternshipParseSuccess(parser, " re/Java re/Python",
@@ -173,5 +187,15 @@ public class FilterCommandParserTest {
         // Testing with multiple dashes
         assertInternshipParseFailure(parser, " de/20/03/2023-20/06/2023-20/09/2023",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommandParser.MESSAGE_DEADLINE_RANGE_FORMAT));
+    }
+
+    @Test
+    public void parse_validDeadlineArgs_returnsFilterCommand() {
+        List<Deadline> deadlines = Arrays.asList(new Deadline("01/12/2023", "02/12/2023"),
+                new Deadline("15/12/2023", "16/12/2023"));
+
+        FilterCommand expectedFilterCommand = new FilterCommand(
+                new DeadlineWithinRangePredicate(deadlines));
+        assertInternshipParseSuccess(parser, " de/01/12/2023-15/12/2023", expectedFilterCommand);
     }
 }
