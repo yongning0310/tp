@@ -313,9 +313,13 @@ There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY
 
 Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 
-* The search isn't case-sensitive.
-* You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internships that match at least one of the `KEYWORDS`.
-* The search only displays internships with full-word matches. 
+<div markdown="span" class="alert alert-danger">
+
+⚠️  **Internship Entry Filter (Format 1) Policies:**
+- **Case Insensitive**: The search ignores cases.
+- **Multiple Keywords Accepted**: You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internships that match at least one of the `KEYWORDS`. 
+- **Full-word Matches**: The search only displays internships with full-word matches. `KEYWORDS` should be complete words.
+</div>
 
 Examples:
 * `filter c/JANE` displays internships with `COMPANY_NAME` containing **JANE**, **Jane**, **jane**, or any other variations in cases.
@@ -324,8 +328,12 @@ Examples:
 
 Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 
-* Flagship only allows filter by range for this category type. To filter for one value, you can input the range as `VALUE-VALUE`.
-* Each parameter should follow the parameter constraints specified under the [Commands](#commands) Section.
+<div markdown="span" class="alert alert-danger">
+
+⚠️  **Internship Entry Filter (Format 2) Policies:**
+- **Range is Mandatory**: Flagship only allows filter by range for this category type. To filter for one value, you can input the range as `VALUE-VALUE`.
+- **Parameter Requirement**: Each parameter should follow the parameter constraints specified under the [Commands](#commands) Section.
+</div>
 
 Examples:
 * `filter du/3-6` displays internship entries that have durations within the range 3 to 6 months inclusive.
