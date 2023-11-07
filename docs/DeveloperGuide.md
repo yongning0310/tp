@@ -127,15 +127,6 @@ The `InternshipModel` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `InternshipModel` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<box type="info" seamless>
-
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` list in the `InternshipBook`, which `Internship` references. This allows `InternshipBook` to only require one `Requirement` object per unique requirement, instead of each `Internship` needing their own `Requirement` objects.<br>
-
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
-
-</box>
-
-
 ### InternshipStorage component
 
 **API** : [`InternshipStorage.java`](https://github.com/AY2324S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/storage/InternshipStorage.java)
@@ -358,7 +349,9 @@ Step 1. The user launches the application and already has a bunch of internships
 
 </box>
 
-Step 2.The user inputs `filter c/[COMPANY_NAME]` (in the format of [CATEGORY]/[KEYWORDS] for categories such as company name, role, application status, requirements) or `filter du/[DURATION_A]-[DURATION_B]` (in the format of [CATEGORY]/[KEYWORD]-[] for categories such as start date, duration, and deadline) and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `sort` command.
+Step 2.The user inputs `filter [CATEGORY_TYPE1]/[KEYWORDS]` for categories accepting text inputs such as `COMPANY_NAME`, `ROLE`, `APPLICATION_STATUS`, `REQUIREMENT`, and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `filter` command.
+
+Step 2.The user inputs `filter [CATEGORY_TYPE2]]/[START_END]` for categories accepting ranges such as start date, duration, and deadline, and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `filter` command.
 
 <puml src="diagrams/FilterCommandParse.puml" alt="FilterCommandParse" />
 
