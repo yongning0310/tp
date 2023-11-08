@@ -241,11 +241,11 @@ on **24 April 2022**. This is a **2-month** internship, and you are expected to 
 that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
 </div>
 
-| Description                                                                                     | Example                                                                   |
-|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **Company name/role differs in capitalisation**                                                 | `Jane Street`, `jane Street` and `jANe strEEt` are considered the same    |
-| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
-| **Combination of differences in capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane StReet` are considered the same                |
+| Description                                                                                           | Example                                                                   |
+|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Company names/roles only differ in upper/lower cases**                                              | `Jane Street`, `jane Street` and `jANe strEEt` are considered the same    |
+| **Company names/roles only differ in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
+| **Combination of differences only in upper/lower cases and leading/trailing white spaces**            | `Jane street...`, `...jane StReet` are considered the same                |
 
 **All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
 
