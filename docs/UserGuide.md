@@ -199,7 +199,7 @@ allow Flagship to help you detect typos and make retrieving data far easier!
 |------------------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|---------------------------------------|
 | **Company Name**       | `c/`   | **`COMPANY_NAME`** <br> `COMPANY_NAME` can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters. | Yes         | `Optiver`, <br> `Jane Street`         |
 | **Role**               | `ro/`  | **`ROLE`** <br> `ROLE` can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters.                 | Yes         | `Software Engineer`, <br> `Fullstack` |
-| **Application Status** | `a/`   | **`APPLICATION_STATUS`** <br> `APPLICATION_STATUS` must be one of the following `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`.                     | Yes         | N.A                                   |
+| **Application Status** | `a/`   | **`APPLICATION_STATUS`** <br> `APPLICATION_STATUS` must be one of the following: `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`.                    | Yes         | N.A                                   |
 | **Deadline**           | `de/`  | **`DEADLINE`** <br> `DEADLINE` must be of the following form `DD/MM/YYYY` and must be **earlier** than the `START_DATE`.                                              | Yes         | `20/02/2001`, <br> `01/01/2000`       |
 | **Start Date**         | `s/`   | **`START_DATE`** <br> `START_DATE` must be of the following form `DD/MM/YYYY` and must be **later** than the `DEADLINE`.                                              | Yes         | `20/02/2001`, <br> `01/01/2000`       |
 | **Duration**           | `du/`  | **`DURATION`** <br> `DURATION` must be a positive integer.                                                                                                            | Yes         | `1`, <br> `10`                        |
@@ -214,26 +214,6 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 <div markdown="block" class="alert alert-info">
 ℹ️ Flagship directly helps you correct any leap year related errors. For example, if you key in 29/02/2021 even though
 2021 is not a leap year, we will round it down to 28/02/2021 for you. 
-</div>
-
-<div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
-that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
-</div>
-
-| Description                                                                                     | Example                                                                   |
-|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **Company name/role differs in initial letter capitalisation**                                  | `Jane Street`, `jane Street` and `jane street` are considered the same    |
-| **Company name/role differs in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
-| **Combination of initial letter capitalisation and leading/trailing white spaces**              | `Jane street...`, `...jane Street` are considered the same                |
-
-**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
-
-<div markdown="block" class="alert alert-info">
-ℹ️ We do not allow you to create internship entries of different application status, duration, etc. but with the same
-company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
-our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
-as effectively.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -253,16 +233,36 @@ you will never lose track of it!
 **Example**: `create c/Citadel ro/Backend Developer a/Yet to apply de/01/02/2022 s/24/04/2022 du/2 re/C++`
 
 **Interpretation**: Create an internship entry for **Citadel**. This is a **Backend Developer** role that you have
-**yet to apply** for. The **deadline** for the application is 1 February 2022, and the internship is expected to **start**
-on 24 April 2022. This is a **2-month** internship, and you are expected to be proficient in **C++**.
+**yet to apply** for. The deadline for the application is **1 February 2022**, and the internship is expected to start
+on **24 April 2022**. This is a **2-month** internship, and you are expected to be proficient in **C++**.
 
-<div markdown="block" class="alert alert-success">
-💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
+<div markdown="span" class="alert alert-danger">
+⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
+that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
+</div>
+
+| Description                                                                                           | Example                                                                   |
+|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Company names/roles only differ in upper/lower cases**                                              | `Jane Street`, `jane Street` and `jANe strEEt` are considered the same    |
+| **Company names/roles only differ in leading/trailing white spaces** (Using dots to represent spaces) | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
+| **Combination of differences only in upper/lower cases and leading/trailing white spaces**            | `Jane street...`, `...jane StReet` are considered the same                |
+
+**All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
+
+<div markdown="block" class="alert alert-info">
+ℹ️ We do not allow you to create internship entries of a different application status, duration, etc. but with the same
+company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
+our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
+as effectively.
 </div>
 
 <div markdown="block" class="alert alert-info">
 ℹ️ We allow you to create internship entries with application deadlines and start dates before today's current date. It is designed as such 
 so that you can track your past internship applications for your own reference. 
+</div>
+
+<div markdown="block" class="alert alert-success">
+💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
 </div>
 
 **Expected Output**:
