@@ -95,4 +95,12 @@ class RoleTest {
 
         assertEquals(true, roleA.compareTo(roleB) < 0);
     }
+
+    @Test
+    public void compareTo_rolesWithUppercase_correctOrder() {
+        Role roleA = new Role("Assistant Manager");
+        Role roleB = new Role("developer");
+
+        assertEquals(true, roleA.compareTo(roleB) < 0);
+    }
 }

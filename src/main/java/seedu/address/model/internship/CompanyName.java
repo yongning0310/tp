@@ -81,6 +81,6 @@ public class CompanyName implements Comparable<CompanyName> {
 
     @Override
     public int compareTo(CompanyName other) {
-        return this.companyName.compareTo(other.companyName);
+        return this.companyName.compareToIgnoreCase(other.companyName);
     }
 }
