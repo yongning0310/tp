@@ -136,10 +136,10 @@ Let's start tracking your internship applications right now!
 <div markdown="block" class="alert alert-success">
 💡 Some example commands you can try: <br><br>
 
-    # Creates an internship named `GovTech` to Flagship.
+    # Creates an internship entry for the company `GovTech` in Flagship.
     create c/GovTech ro/SWE a/Yet to apply de/01/06/2022 s/20/01/2023 du/3 re/C++
 
-    # Deletes the 3rd internship shown in the current list.
+    # Deletes the 3rd internship entry shown in the current list.
     delete 3
 
 For the full list of executable commands, refer to the [Commands](#commands) Section.
@@ -252,7 +252,7 @@ that you do not accidentally track an internship application twice. The followin
 <div markdown="block" class="alert alert-info">
 ℹ️ We do not allow you to create internship entries of a different application status, duration, etc. but with the same
 company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
-our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
+our definition of identical internship entries further, Flagship will not be able to catch your accidental duplicate entries
 as effectively.
 </div>
 
@@ -317,14 +317,14 @@ Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 
 ⚠️  **Internship Entry Filter (Format 1) Policies:**
 - **Case Insensitive**: The search ignores cases.
-- **Multiple Keywords Accepted**: You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internships that match at least one of the `KEYWORDS`. 
-- **Full-word Matches**: The search only displays internships with full-word matches. `KEYWORDS` should be complete words.
+- **Multiple Keywords Accepted**: You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internship entries that match at least one of the `KEYWORDS`. 
+- **Full-word Matches**: The search only displays internship entries with full-word matches. `KEYWORDS` should be complete words.
 </div>
 
 Examples:
-* `filter c/JANE` displays internships with `COMPANY_NAME` containing **JANE**, **Jane**, **jane**, or any other variations in cases.
-* `filter re/python c++` displays internships with `REQUIREMENTS` containing **python** and/or **c++**.
-* `filter c/tech` displays internships with company names containing "tech company" but not "technology company" as per the full-word match requirement.
+* `filter c/JANE` displays internship entries with `COMPANY_NAME` containing **JANE**, **Jane**, **jane**, or any other variations in cases.
+* `filter re/python c++` displays internship entries with `REQUIREMENTS` containing **python** and/or **c++**.
+* `filter c/tech` displays internship entries with company names containing "tech company" but not "technology company" as per the full-word match requirement.
 
 Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 
@@ -356,7 +356,7 @@ Examples:
 
 ### Sort Internships by Category and Order: `sort`
 
-Have a growing list of internships and finding it challenging to prioritize? Or perhaps you're looking to identify 
+Have a growing list of internship entries and finding it challenging to prioritize? Or perhaps you're looking to identify 
 opportunities with the nearest deadlines or those that align with a specific field of interest? Use the sort feature in 
 Flagship to organize and arrange your internship list based on specific categories and order.
 
@@ -392,16 +392,16 @@ Remove the internship entry from Flagship using our delete command!
 
 **Format**: `delete INDEX`
 
-* Erase the internship at the designated `INDEX`.
+* Erase the internship entry at the designated `INDEX`.
 * The index **must be a positive integer** like 1, 2, 3, …​
 
 **Examples**:
-* `delete 2` removes the 2nd internship from the directory.
+* `delete 2` removes the 2nd internship entry from the directory.
 
 <div markdown="block" class="alert alert-info">
-ℹ️ The index is the position of the specified internship in the list currently displayed. 
+ℹ️ The index is the position of the specified internship entry in the list currently displayed. 
 This means that even if you have applied sorting or filtering to your list, the index will always be consistent with the 
-internship's visible position on the screen.
+internship entry's visible position on the screen.
 </div>
 
 **Expected Output**:
