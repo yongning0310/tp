@@ -422,7 +422,7 @@ Flagship data is saved in the hard disk automatically. There is no need to save 
 Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internshipBook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-danger">
-⚠️ If your changes to the data file make its format invalid, Flagship will discard all data and start with an empty data file at the next run.  
+⚠️ If your changes to the data file make it invalid, such as adding invalid formatting or duplicate internship entries, Flagship will discard all data and start with an empty data file at the next run.
 Hence, it is recommended to take a backup of the file before editing it.
 </div>
 
