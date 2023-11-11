@@ -5,47 +5,68 @@ title: "Yong Ning's Project Portfolio Page"
 
 ## Project: Flagship
 
-Flagship is a desktop application used to help aspiring students track internship applications. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about () kLoC.
+Flagship is a desktop application designed to assist aspiring students in tracking their internship applications. Interaction with the application is primarily through a CLI, complemented by a GUI built using JavaFX. It is developed in Java, with approximately () kLoC.
 
 ## Summary of contributions
 
 * **Code contributed**:
-    * Edited UG template to ensure consistency within our team
+  * Modified the initial template, which was intended for AddressBook, to suit Flagship, by creating the following classes:
+    * InternshipMainApp.java
+    * InternshipLogic.java
+    * InternshipLogicManager.java
+    * InternshipCommand.java
+    * InternshipBookParser.java
+    * InternshipParser.java
+    * InternshipBook.java
+    * InternshipModel.java
+    * InternshipModelManager.java
+    * InternshipUserPrefs.java
+    * ReadOnlyInternshipBook.java
+    * ReadOnlyInternshipUserPrefs.java
+    * InternshipSampleDataUtil.java
+    * InternshipBookStorage.java
+    * InternshipStorage.java
+    * InternshipStorageManager.java
+    * InternshipUserPrefsStorage.java
+    * JsonSerializableInternshipBook.java
+    * InternshipCard.java
+    * InternshipListPanel.java
+    * InternshipMainWindow.java
+    * InternshipUIManager.java
+    * InternshipListCard.fxml
+    * InternshipListPanel.fxml
 
-    * Programmed the Edit Command so that users can edit existing internship details
+  * Led the development of the Modify Command to allow users to edit existing internship entries:
+    * ModifyCommandParser.java
+    * ModifyCommand.java
 
-      * E.g. Adding new parameters, renaming interfaces, etc.
+  * [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=Yong%20Ning&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22&tabOpen=true&tabType=authorship&tabAuthor=yongning0310&tabRepo=AY2324S1-CS2103T-W17-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
-    * [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=Yong%20Ning&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22&tabOpen=true&tabType=authorship&tabAuthor=yongning0310&tabRepo=AY2324S1-CS2103T-W17-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
-
-* **Enhancements to existing features**:
-    * NIL
-
-* **New Feature**: (detailed) to be added soon
-    * What it does: to be added soon
-    * Justification: to be added soon
-    * Highlights: to be added soon
-    * Credits: to be added soon *(mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature)*
-
-* **New Feature**: (generic) to be added soon
+* **New Feature**: Modify command
+  * What it does: Allows users to _**modify**_ an existing internship entry within Flagship.
+  * Justification: This feature is crucial for maintaining up-to-date internship information.
+  * Highlights:
+    * Streamlines the modification process, requiring minimal input (e.g., `modify 1 ro/SWE`).
+    * Validates date inputs to prevent logical inconsistencies, such as a deadline after the start date.
+  * Contributions: (Pull requests [\#59](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/59), [\#203](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/203))
 
 * **Documentation**:
-    * User Guide:
-        * to be added soon: [\#1]()
-    * Developer Guide:
-        * to be added soon
+  * User Guide:
+    * Oversaw the _**Modify command**_ section of the User Guide.
+    * Contributions: (Pull requests [\#80](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/80), [\#82](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/82), [\#200](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/200))
+  * Developer Guide:
+    * Managed the _**modify command**_ and **logic** sections of the Developer Guide.
+    * Contributions: (Pull requests [\#203](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/203), [\#221](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/221))
 
 * **Project management**:
-    * to be added
-    * (eg. Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub)
+  * Constructed the skeleton for Flagship, enabling concurrent contributions from the team.
+  * Ensured that the initial draft of the User Guide was consistent with Flagship's design philosophy.
 
 * **Community**:
-    * *(what is important here is to demonstrate contribution outside of the group, by, for example, reviewing PRs, or being active in discussion. All points in this section are merely suggested points.)*
-    * PRs reviewed (with non-trivial review comments): to be added soon
-    * Contributed to forum discussions (examples: to be added soon)
-    * Reported bugs and suggestions for other teams in the class (examples: to be added soon)
+  * Reviewed several non-trivial pull requests with comprehensive feedback:
+    [\#79](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/79),
+    [\#84](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/84),
+    [\#97](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/97),
+    [\#201](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/201)
+  * Actively participated in forum discussions, providing insights and solutions.
 
-* **Tools**:
-    * to be added soon
-
-* _{feel free to can add/remove categories in the list above}_

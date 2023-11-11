@@ -96,4 +96,11 @@ class CompanyNameTest {
 
         assertEquals(true, companyName1.compareTo(companyName2) > 0);
     }
+    @Test
+    public void compareTo_companyNamesDifferByUppercase_correctOrder() {
+        CompanyName companyName1 = new CompanyName("Apples");
+        CompanyName companyName2 = new CompanyName("banana");
+
+        assertEquals(true, companyName1.compareTo(companyName2) < 0);
+    }
 }
