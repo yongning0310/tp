@@ -325,7 +325,6 @@ Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 - **Full-word Matches**: The search only displays internship entries with full-word matches. `KEYWORDS` should be complete words.
 </div>
 
-Examples:
 * `filter c/JANE` displays internship entries with `COMPANY_NAME` containing **JANE**, **Jane**, **jane**, or any other variations in cases.
 * `filter re/python c++` displays internship entries with `REQUIREMENTS` containing **python** and/or **c++**.
 * `filter c/tech` displays internship entries with company names containing "tech company" but not "technology company" as per the full-word match requirement.
@@ -461,7 +460,7 @@ or Flagship might crash.
 |------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Create** | `create c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION re/REQUIREMENTS...​` <br> e.g., `create c/Jane Street ro/ML Engineer a/Yet to apply de/15/12/2022 s/20/01/2023 du/3 re/C++ re/Java`                |
 | **Modify** | `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS s/START_DATE de/DEADLINE du/DURATION re/REQUIREMENTS...` <br> e.g., `modify 1 c/Jane Street ro/Backend Developer a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Python` |
-| **Filter** | `filter [CATEGORY_TYPE1]/[KEYWORD]` OR `filter [CATEGORY_TYPE2]/[START-END]` <br> e.g.,   `filter c/JA ro/SWE` OR `filter du/3-6`                                                                                                           |
+| **Filter** | `filter [CATEGORY_TYPE1]/[KEYWORD]` OR `filter [CATEGORY_TYPE2]/[START-END]` <br> e.g.,   `filter c/Jane` OR `filter du/3-6`                                                                                                                |
 | **Sort**   | `sort [CATEGORY]/[ASC/DESC]` <br> e.g.,  `sort de/ASC`                                                                                                                                                                                      |
 | **Delete** | `delete INDEX`<br> e.g., `delete 2`                                                                                                                                                                                                         |
 
