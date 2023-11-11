@@ -4,6 +4,7 @@
     pageNav: 3
 ---
 
+<br>
 # Flagship User Guide
 <br>
 
@@ -30,6 +31,7 @@
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
+<div style="page-break-after: always;"></div>
 
 ## Introduction
 
@@ -74,6 +76,7 @@ right to the [Command Summary](#command-summary).
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
+<div style="page-break-after: always;"></div>
 
 ## Common Markers
 
@@ -111,7 +114,7 @@ Throughout the user guide, you will see these colored blocks of code that contai
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
-
+<div style="page-break-after: always;"></div>
 
 ## Quick Start
 
@@ -136,10 +139,10 @@ Let's start tracking your internship applications right now!
 <div markdown="block" class="alert alert-success">
 💡 Some example commands you can try: <br><br>
 
-    # Creates an internship named `GovTech` to Flagship.
+    # Creates an internship entry for the company `GovTech` in Flagship.
     create c/GovTech ro/SWE a/Yet to apply de/01/06/2022 s/20/01/2023 du/3 re/C++
 
-    # Deletes the 3rd internship shown in the current list.
+    # Deletes the 3rd internship entry shown in the current list.
     delete 3
 
 For the full list of executable commands, refer to the [Commands](#commands) Section.
@@ -148,7 +151,7 @@ For the full list of executable commands, refer to the [Commands](#commands) Sec
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
-
+<div style="page-break-after: always;"></div>
 
 ## Commands Format Notes
 
@@ -188,7 +191,7 @@ lines as space characters surrounding line-breaks may be omitted when copied ove
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
-
+<div style="page-break-after: always;"></div>
 
 ## Parameter constraints
 
@@ -219,6 +222,7 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
+<div style="page-break-after: always;"></div>
 ## Commands
 
 
@@ -252,7 +256,7 @@ that you do not accidentally track an internship application twice. The followin
 <div markdown="block" class="alert alert-info">
 ℹ️ We do not allow you to create internship entries of a different application status, duration, etc. but with the same
 company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
-our definition of identical internships further, Flagship will not be able to catch your accidental duplicate entries
+our definition of identical internship entries further, Flagship will not be able to catch your accidental duplicate entries
 as effectively.
 </div>
 
@@ -317,14 +321,13 @@ Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 
 ⚠️  **Internship Entry Filter (Format 1) Policies:**
 - **Case Insensitive**: The search ignores cases.
-- **Multiple Keywords Accepted**: You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internships that match at least one of the `KEYWORDS`. 
-- **Full-word Matches**: The search only displays internships with full-word matches. `KEYWORDS` should be complete words.
+- **Multiple Keywords Accepted**: You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internship entries that match at least one of the `KEYWORDS`. 
+- **Full-word Matches**: The search only displays internship entries with full-word matches. `KEYWORDS` should be complete words.
 </div>
 
-Examples:
-* `filter c/JANE` displays internships with `COMPANY_NAME` containing **JANE**, **Jane**, **jane**, or any other variations in cases.
-* `filter re/python c++ figma` displays internships with `REQUIREMENTS` containing **python** AND/OR **c++** AND/OR **figma**.
-* `filter c/tech` displays internships with company names containing "tech company" but not "technology company" as per the full-word match requirement.
+* `filter c/JANE` displays internship entries with `COMPANY_NAME` containing **JANE**, **Jane**, **jane**, or any other variations in cases.
+* `filter re/python c++` displays internship entries with `REQUIREMENTS` containing **python** and/or **c++**.
+* `filter c/tech` displays internship entries with company names containing "tech company" but not "technology company" as per the full-word match requirement.
 
 Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 
@@ -356,7 +359,7 @@ Examples:
 
 ### Sort Internships by Category and Order: `sort`
 
-Have a growing list of internships and finding it challenging to prioritize? Or perhaps you're looking to identify 
+Have a growing list of internship entries and finding it challenging to prioritize? Or perhaps you're looking to identify 
 opportunities with the nearest deadlines or those that align with a specific field of interest? Use the sort feature in 
 Flagship to organize and arrange your internship list based on specific categories and order.
 
@@ -392,16 +395,16 @@ Remove the internship entry from Flagship using our delete command!
 
 **Format**: `delete INDEX`
 
-* Erase the internship at the designated `INDEX`.
+* Erase the internship entry at the designated `INDEX`.
 * The index **must be a positive integer** like 1, 2, 3, …​
 
 **Examples**:
-* `delete 2` removes the 2nd internship from the directory.
+* `delete 2` removes the 2nd internship entry from the directory.
 
 <div markdown="block" class="alert alert-info">
-ℹ️ The index is the position of the specified internship in the list currently displayed. 
+ℹ️ The index is the position of the specified internship entry in the list currently displayed. 
 This means that even if you have applied sorting or filtering to your list, the index will always be consistent with the 
-internship's visible position on the screen.
+internship entry's visible position on the screen.
 </div>
 
 **Expected Output**:
@@ -422,7 +425,7 @@ Flagship data is saved in the hard disk automatically. There is no need to save 
 Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internshipBook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-danger">
-⚠️ If your changes to the data file make its format invalid, Flagship will discard all data and start with an empty data file at the next run.  
+⚠️ If your changes to the data file make it invalid, such as adding invalid formatting or duplicate internship entries, Flagship will discard all data and start with an empty data file at the next run.
 Hence, it is recommended to take a backup of the file before editing it.
 </div>
 
