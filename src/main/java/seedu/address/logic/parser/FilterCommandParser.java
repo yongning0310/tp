@@ -33,7 +33,9 @@ import seedu.address.model.internship.StartDate;
 import seedu.address.model.internship.StartDateWithinRangePredicate;
 
 /**
- * Parses input arguments and creates a new FilterCommand object
+ * Parses the provided arguments to create a {@link FilterCommand} object.
+ * This parser handles the parsing of filter parameters for different attributes of an Internship,
+ * such as company name, role, application status, duration, start date, requirement, and deadline.
  */
 public class FilterCommandParser implements InternshipParser<FilterCommand> {
     /**
@@ -42,11 +44,11 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
      */
     public static final String MESSAGE_ONE_PARAMETER = "filter command should accept only one parameter at a time.";
     public static final String MESSAGE_STARTDATE_RANGE_FORMAT = "start date range should be in the format "
-        + "DD/MM/YYYY-DD/MM/YYYY where start is earlier than end";
+        + "DD/MM/YYYY-DD/MM/YYYY where start is earlier/equal to end.";
     public static final String MESSAGE_DURATION_RANGE_FORMAT = "duration range should be in the format START-END "
-            + "where start is smaller than end";
+            + "where start is smaller/equal to end.";
     public static final String MESSAGE_DEADLINE_RANGE_FORMAT = "deadline range should be in the format "
-        + "DD/MM/YYYY-DD/MM/YYYY where start is earlier than end";
+        + "DD/MM/YYYY-DD/MM/YYYY where start is earlier/equal to end.";
     public static final String MESSAGE_NON_EMPTY = "filter command's parameter cannot be empty.";
 
 
