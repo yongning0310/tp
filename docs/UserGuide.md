@@ -4,6 +4,7 @@
     pageNav: 3
 ---
 
+<br>
 # Flagship User Guide
 <br>
 
@@ -30,6 +31,7 @@
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
+<div style="page-break-after: always;"></div>
 
 ## Introduction
 
@@ -74,6 +76,7 @@ right to the [Command Summary](#command-summary).
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
+<div style="page-break-after: always;"></div>
 
 ## Common Markers
 
@@ -111,7 +114,7 @@ Throughout the user guide, you will see these colored blocks of code that contai
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
-
+<div style="page-break-after: always;"></div>
 
 ## Quick Start
 
@@ -148,7 +151,7 @@ For the full list of executable commands, refer to the [Commands](#commands) Sec
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
-
+<div style="page-break-after: always;"></div>
 
 ## Commands Format Notes
 
@@ -188,7 +191,7 @@ lines as space characters surrounding line-breaks may be omitted when copied ove
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
-
+<div style="page-break-after: always;"></div>
 
 ## Parameter constraints
 
@@ -219,6 +222,7 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
+<div style="page-break-after: always;"></div>
 ## Commands
 
 
