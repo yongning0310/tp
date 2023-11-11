@@ -170,10 +170,10 @@ public class InternshipLogicManagerTest {
     private void assertCommandFailureForExceptionFromStorage(IOException e, String expectedMessage) {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
-        // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
+        // Inject LogicManager with an InternshipBookStorage that throws the IOException e when saving
         JsonInternshipBookStorage internshipBookStorage = new JsonInternshipBookStorage(prefPath) {
             @Override
-            public void saveInternshipBook(ReadOnlyInternshipBook addressBook, Path filePath)
+            public void saveInternshipBook(ReadOnlyInternshipBook internshipBook, Path filePath)
                     throws IOException {
                 throw e;
             }
@@ -185,7 +185,7 @@ public class InternshipLogicManagerTest {
 
         logic = new InternshipLogicManager(model, storage);
 
-        // Triggers the saveAddressBook method by executing a create command
+        // Triggers the saveInternshipBook method by executing a create command
         String createCommand = CreateCommand.COMMAND_WORD + COMPANY_NAME_DESC_JANESTREET + ROLE_DESC_JANESTREET
                 + APPLICATION_STATUS_DESC_JANESTREET + DEADLINE_DESC_JANESTREET
                 + START_DATE_DESC_JANESTREET + DURATION_DESC_JANESTREET;
