@@ -41,7 +41,8 @@ Flagship is a desktop application used to help aspiring students track internshi
       * Pull requests [\#39](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/39), [\#131](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/131)
     * Developer Guide:
         * Managed _**sort**_ command part of the Developer Guide
-        * Pull requests [\#98](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/98)
+        * Managed _**use cases**_ part of the Developer Guide
+        * Pull requests [\#98](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/98), [\#243](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/243)
 
 * **Project management**:
     * Created issues and milestones for everyone, and assigned it to them.
