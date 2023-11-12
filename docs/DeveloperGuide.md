@@ -13,6 +13,8 @@ pageNav: 3
 
 ## **Acknowledgements**
 
+Flagship is based on [AddressBook Level 3](), an open source template project to teach software engineering produced by [SE-EDU]().
+
 Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
 
 --------------------------------------------------------------------------------------------------------------------
