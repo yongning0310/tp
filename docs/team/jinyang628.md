@@ -53,12 +53,12 @@ Flagship is a desktop application used to help aspiring students track internshi
     * Managed the _**Create command**_ part of the User Guide
     * Pull requests [\#36](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/36), [\#116](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/116), [\#192](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/192)
   * Developer Guide:
-    * Managed the _**Create command**_ and **Storage** part of the Developer Guide
-    * Pull requests [\#130](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/130)
+    * Managed the _**Create command**_, _**Storage**_, and _**User stories**_ part of the Developer Guide
+    * Pull requests [\#130](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/130), [\#236](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/236)
 
 * **Project management**:
   * Set deadlines during meetings and push everyone to finish their work on time
-  * Managed milestone `v1.3`, `v1.4` and assigned the issues on GitHub
+  * Helped to manage milestone `v1.3`, `v1.4` and assign issues on GitHub
 
 * **Community**:
   * Non-trivial PRs reviewed with detailed comments:
@@ -68,10 +68,11 @@ Flagship is a desktop application used to help aspiring students track internshi
     [\#88](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/88),
     [\#195](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/195),
     [\#199](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/199),
-    [\#200](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/200)
+    [\#200](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/200),
+  * [\#213](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/213)
   * Reported bugs and suggestions for other teams in the class:
-    * [\#9](https://github.com/jinyang628/ped/issues/9)
-    * [\#7](https://github.com/jinyang628/ped/issues/7)
+    [\#9](https://github.com/jinyang628/ped/issues/9),
+    [\#7](https://github.com/jinyang628/ped/issues/7)
 
 * **Tools**:
   * Utilised 'org.junit.jupiter:junit-jupiter-params:5.7.0' to reduce code duplications in test cases
