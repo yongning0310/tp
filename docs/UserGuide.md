@@ -543,8 +543,8 @@ Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file loca
 (Location where your JAR File `flagship.jar` is)
 ├── data
 │   └── internshipBook.json <== Your saved JSON file
-├── preferences.json
-└── flagship.jar
+├── flagship.jar
+└── preferences.json
 ```
 
 --------------------------------------------------------------------------------------------------------------------
