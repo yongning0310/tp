@@ -16,8 +16,8 @@ InternshipStorage -[hidden]right-> InternshipEntry
 
 hide InternshipEntry
 
-class StorageAction as "Storage Action: Entry Removed Successfully"
+class ReadOnlyInternshipBook as "ReadOnlyInternshipBook"
 
-StorageAction -up-> InternshipStorage : deletes
+ReadOnlyInternshipBook -up- InternshipStorage : > Updates
 
 @enduml
