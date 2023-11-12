@@ -559,20 +559,28 @@ Use case ends.
 
 #### Performance
 
-* Should be able to hold up to 1000 internships without a noticeable sluggishness in performance for typical usage.
+* Should be able to hold up to 1000 internship entries without a noticeable sluggishness in performance for typical usage.
 * Should respond to user commands within 2 seconds under normal conditions.
 
 #### Usability
 
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 * A new user should be able to grasp the basic features within 10 minutes.
+* Should be easily navigable.
+* Documentation should be clear and effective in helping users learn to use Flagship effectively.
+* In case of errors, should guide users with clear messages to guide them to correct any problems.
 
 #### Security and Data Integrity
 
+* Should allow persistent data storage for ease of use across multiple sessions.
 * Should encrypt user data both during transfer and when stored.
 * Should authenticate user based on username.
 
-*{More to be added}*
+#### Extensibility
+
+* Should be extensible. Implementing new features and functionalities should be a simple process.
+* Code should follow good style, organisation and have good documentation to aid in maintenance.
+* Documentation should be clear and effective in helping developers understand the system.
 
 ### Glossary
 
