@@ -468,16 +468,22 @@ The following sequence diagram shows how the modify operation works:
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                | I want to …​                                                       | So that I can…​                                         |
-|----------|----------------------------------------|--------------------------------------------------------------------|---------------------------------------------------------|
-| `* * *`  | new user                               | create new internship entries                                      | store internship entries in Flagship                    |
-| `* * *`  | user keeping track of my internships   | modify the details of my internship entries                        | be aware of the status                                  |
-| `* * *`  | user                                   | delete my internship entries                                       | declutter my workspace                                  |
-| `* * *`  | user                                   | view all internship entries                                        | keep track of the details of current internship entries |
-| `* *`    | user keeping track of many internships | be notified when I enter a duplicate internship entry              | keep my list free of duplicate information              |
-| `*`      | returning user                         | continue with my last accessed data file or choose a different one | manage multiple datasets concurrently                   |
+| Priority | As a …​                                                       | I want to …​                                                       | So that I can…​                                                    |
+|----------|---------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|
+| `* * *`  | user                                                          | create new internship entries                                      | store internship entries in Flagship                               |
+| `* * *`  | user                                                          | modify the details of my internship entries                        | update them when there are changes                                 |
+| `* * *`  | user                                                          | delete outdated internship entries                                 | declutter my workspace                                             |
+| `* * *`  | user                                                          | view all my internship entries                                     | keep track of the details of my applications                       |
+| `* * *`  | user keeping track of many internship applications            | filter through my internship entries using keywords                | quickly zero in on the internship entry I am looking for           |
+| `* * *`  | user keeping track of many internship applications            | sort through my internship entries in certain orders               | view my entries in a more organised fashion                        |
+| `* *`    | user keeping track of many internship applications            | be notified when I enter a duplicate internship entry              | keep my list free of duplicate information                         |
+| `* *`    | expert user seeking to import large data files into Flagship  | modify the JSON data file directly                                 | transfer the data in bulk quickly                                  |
+| `* *`    | user keeping track of many internship applications            | be notified when certain applications are closing soon             | prioritise my applications based on their time sensitivity         |
+| `*`      | returning user                                                | continue with my last accessed data file or choose a different one | manage multiple data files concurrently                            |
+| `*`      | user                                                          | toggle between different UI layouts                                | use Flagship in the most convenient format in different situations |
+| `*`      | user who values data security                                 | backup my data files                                               | have a secure copy in the event of file corruption                 |
+| `*`      | new user                                                      | be given an onboarding tour of Flagship's features                 | quickly familiarise myself with Flagship's functionalities         |
 
-*{More to be added}*
 
 ### Use cases
 
