@@ -4,15 +4,25 @@
     pageNav: 3
 ---
 
-<br>
-# Flagship User Guide
-<br>
+<br> 
+
+<p align="center">
+  <img src="images/flagshipLogo.png" alt="Flagship Logo" width="350" height="350"/>
+</p>
+
+<h1 align="center">Flagship User Guide</h1>
+
+<p align="center">
+  <em>Your guide to navigating and managing your internship applications with Flagship.</em>
+</p>
+
+---
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Using this guide](#using-this-guide)
-3. [Common Markers](#common-markers)
+2. [Common Markers](#common-markers)
+3. [Using this guide](#using-this-guide)
 4. [Glossary](#glossary)
 5. [Quick Start](#quick-start)
 6. [Command Format Notes](#commands-format-notes)
@@ -30,8 +40,14 @@
 13. [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
-<br>
 <div style="page-break-after: always;"></div>
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ## Introduction
 
@@ -47,36 +63,17 @@ Flagship has a host of awesome features that we are extremely proud of:
 
 _... and many more!_
 
-Our main target users are english-speaking university students pursuing a computing-related degree. 
+Our main target users are english-speaking university students pursuing a computing-related degree.
 As such, this user guide (and Flagship in general) is designed with the following assumptions in mind:
 1. You have a basic understanding of command line syntax.
 2. You are comfortable using the [command terminal](#glossary) to launch the application.
 3. You type fast and enjoy using the keyboard as the main tool of navigation.
 
-If these characteristics sound like you, Flagship can get your internship management tasks done faster than traditional GUI apps.
-
-That said, do not get too intimidated as we have kept the launching process and commands as simple as possible. You
+If these characteristics sound like you, Flagship can get your internship management tasks done faster than traditional GUI apps. That said, do not get too intimidated as we have kept the launching process and commands as simple as possible. You
 do not need prior knowledge of industry-level command line syntax to use this application effectively.
 
-
 --------------------------------------------------------------------------------------------------------------------
 <br>
-
-## Using this guide
-
-We understand that navigating an application for the first time can be incredibly intimidating. As such, we have devised this
-user guide to alert you to the main difficulties faced by new users, and inform you of the key features that you can utilise
-in your internship management journey. Here is a rundown of how you can use this guide effectively.
-
-1. If you are running Flagship for the **first time**, start with our [Quick Start](#quick-start) section
-2. If you want a **detailed breakdown** of how each command works, have a read of our [Commands Section](#commands).
-2. If you are an **experienced Flagship user** who wants to have a quick check of the command syntax, jump
-right to the [Command Summary](#command-summary).
-
-
---------------------------------------------------------------------------------------------------------------------
-<br>
-<div style="page-break-after: always;"></div>
 
 ## Common Markers
 
@@ -94,10 +91,27 @@ Throughout the user guide, you will see these colored blocks of code that contai
     ⚠️ Red blocks contain warnings that you must heed so that Flagship works as intended.
 </div>
 
-<div style="page-break-after: always;"></div>
+--------------------------------------------------------------------------------------------------------------------
+<br>
 
-<!-- * Table of Contents -->
-<page-nav-print />
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+
+## Using this guide
+
+We understand that navigating an application for the first time can be incredibly intimidating. As such, we have devised this
+user guide to alert you to the main difficulties faced by new users, and inform you of the key features that you can utilise
+in your internship management journey. Here is a rundown of how you can use this guide effectively.
+
+1. If you are running Flagship for the **first time**, start with our [Quick Start](#quick-start) section.
+2. If you want a **detailed breakdown** of how each command works, have a read of our [Commands Section](#commands).
+3. If you are an **experienced Flagship user** who wants to have a quick check of the command syntax, jump
+   right to the [Command Summary](#command-summary).
+
+**Pro-tip**: Clicking on the small logo <a href="#table-of-contents"><img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/></a> on the top right corner of every page will bring you back to the [Table of Contents](#table-of-contents).
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -114,7 +128,7 @@ Throughout the user guide, you will see these colored blocks of code that contai
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
-<div style="page-break-after: always;"></div>
+
 
 ## Quick Start
 
@@ -125,11 +139,24 @@ Let's start tracking your internship applications right now!
 
 3. Copy the file to the folder you want to use as the _home folder_ for Flagship.
 
+<div style="page-break-after: always;"></div>
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+
+<br>
+<br>
+
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar flagship.jar` command to run the application.<br>
 
 <div markdown="block" class="alert alert-info">
     ℹ️ Note that Flagship does not have any operating systems requirements and this process is the same regardless whether you use Windows or Mac!
 </div>
+
 
 5. A GUI similar to the image below should appear in a few seconds. Notice how we have already included some sample internship applications for you!<br>
    ![Ui](images/Ui.png)
@@ -150,8 +177,14 @@ For the full list of executable commands, refer to the [Commands](#commands) Sec
 
 
 --------------------------------------------------------------------------------------------------------------------
-<br>
 <div style="page-break-after: always;"></div>
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ## Commands Format Notes
 
@@ -190,23 +223,44 @@ lines as space characters surrounding line-breaks may be omitted when copied ove
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
-<br>
+
 <div style="page-break-after: always;"></div>
+
+<br> 
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ## Parameter constraints
 
 All of our parameters have certain constraints associated with them. Although they may seem cumbersome at first, these constraints
 allow Flagship to help you detect typos and make retrieving data far easier!
 
-| Parameter              | Prefix | Accepted Format                                                                                                                                                       | Compulsory? | Example                               |
-|------------------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|---------------------------------------|
-| **Company Name**       | `c/`   | **`COMPANY_NAME`** <br> `COMPANY_NAME` can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters. | Yes         | `Optiver`, <br> `Jane Street`         |
-| **Role**               | `ro/`  | **`ROLE`** <br> `ROLE` can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters.                 | Yes         | `Software Engineer`, <br> `Fullstack` |
-| **Application Status** | `a/`   | **`APPLICATION_STATUS`** <br> `APPLICATION_STATUS` must be one of the following: `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`.                    | Yes         | N.A                                   |
-| **Deadline**           | `de/`  | **`DEADLINE`** <br> `DEADLINE` must be of the following form `DD/MM/YYYY` and must be **earlier** than the `START_DATE`.                                              | Yes         | `20/02/2001`, <br> `01/01/2000`       |
-| **Start Date**         | `s/`   | **`START_DATE`** <br> `START_DATE` must be of the following form `DD/MM/YYYY` and must be **later** than the `DEADLINE`.                                              | Yes         | `20/02/2001`, <br> `01/01/2000`       |
-| **Duration**           | `du/`  | **`DURATION`** <br> `DURATION` must be a positive integer.                                                                                                            | Yes         | `1`, <br> `10`                        |
-| **Requirements**       | `re/`  | **`REQUIREMENTS`** <br> `REQUIREMENTS` cannot contain foreign language characters, **exclusively** contain `<space>` and exceed 200 characters.                       | No          | `C++`, <br> `Haskell`                 |
+| Parameter              | Prefix | Accepted Format                                                                                                                                   | Compulsory | Example                               |
+|------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------|------------|---------------------------------------|
+| **Company Name**       | `c/`   | **`COMPANY_NAME`** can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters. | Yes        | `Optiver`, <br> `Jane Street`         |
+| **Role**               | `ro/`  | **`ROLE`** can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters.         | Yes        | `Software Engineer`, <br> `Fullstack` |
+| **Application Status** | `a/`   | **`APPLICATION_STATUS`** must be one of the following: `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`.                          | Yes        | N.A                                   |
+| **Deadline**           | `de/`  | **`DEADLINE`** must be of the following form `DD/MM/YYYY` and must be **earlier** than the `START_DATE`.                                          | Yes        | `20/02/2001`, <br> `01/01/2000`       |
+| **Start Date**         | `s/`   | **`START_DATE`** must be of the following form `DD/MM/YYYY` and must be **later** than the `DEADLINE`.                                            | Yes        | `20/02/2001`, <br> `01/01/2000`       |
+| **Duration**           | `du/`  | **`DURATION`** must be a positive integer.                                                                                                        | Yes        | `1`, <br> `10`                        |
+| **Requirements**       | `re/`  | **`REQUIREMENTS`** cannot contain foreign language characters, **exclusively** contain `<space>` and exceed 200 characters.                       | No         | `C++`, <br> `Haskell`                 |
+
+<br>
+<br>
+<div style="page-break-after: always;"></div>
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+<br>
+<br>
+
+
 
 <div markdown="block" class="alert alert-info">
 ℹ️ We understand that our constraints might be rigid in some cases. For example, it is possible for company names to contain
@@ -222,9 +276,7 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
-<div style="page-break-after: always;"></div>
 ## Commands
-
 
 ### Creating an Internship: `create`
 
@@ -240,10 +292,22 @@ you will never lose track of it!
 **yet to apply** for. The deadline for the application is **1 February 2022**, and the internship is expected to start
 on **24 April 2022**. This is a **2-month** internship, and you are expected to be proficient in **C++**.
 
+<div markdown="block" class="alert alert-success">
+💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
+</div>
+
 <div markdown="span" class="alert alert-danger">
 ⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
 that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
 </div>
+
+<div style="page-break-after: always;"></div>
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+<br>
 
 | Description                                                                                           | Example                                                                   |
 |-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
@@ -254,8 +318,8 @@ that you do not accidentally track an internship application twice. The followin
 **All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
 
 <div markdown="block" class="alert alert-info">
-ℹ️ We do not allow you to create internship entries of a different application status, duration, etc. but with the same
-company name and role, because we believe that these cases are less likely to exist (but still possible!). If we loosen
+ℹ️ We do not allow you to create internship entries of a different deadline, duration, etc. but with the same
+company name and role, as we believe that these cases are less likely to exist (but still possible!). If we loosen
 our definition of identical internship entries further, Flagship will not be able to catch your accidental duplicate entries
 as effectively.
 </div>
@@ -265,55 +329,87 @@ as effectively.
 so that you can track your past internship applications for your own reference. 
 </div>
 
-<div markdown="block" class="alert alert-success">
-💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
-</div>
 
 **Expected Output**:
 ![Create](images/create.png)
 
+
 <br>
 
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ### Editing an Internship: `modify`
 
-Need to update an existing internship entry? The `modify` command lets you adjust the details of your applications in Flagship. 
-Whether the application deadline has changed or you've picked up a new skill that meets the job requirements, modify your entry to ensure that your internship application details are current.
+Need to update an existing internship entry? The `modify` command lets you adjust the details of your applications in Flagship.
+Whether the application deadline has changed or there's a change in job requirements, modify your entry to ensure it's up-to-date.
 
 **Format**: `modify INDEX c/COMPANY_NAME ro/ROLE a/APPLICATION_STATUS de/DEADLINE s/START_DATE du/DURATION [re/REQUIREMENTS]...`
 
 **Example**: `modify 1 c/Jane Street ro/Backend Developer a/Yet to apply de/29/11/2022 s/20/01/2023 du/3 re/C++ re/Python`
 
-**Interpretation**: Update the first internship entry on your Flagship list. The role is at **Jane Street** for a **Backend Developer** position that you have **yet to apply**. The **application deadline** is set for 29 November 2022, and the start date is 20 January 2023. The internship is for a **3-month** period, with requirements for proficiency in **C++** and **Python**.
+
+**Interpretation**: Update the first internship entry on your Flagship list. The role is at **Jane Street** for a **Backend Developer** position that you have **yet to apply**. The **application deadline** is set for 29 November 2022, and the **start date** is 20 January 2023. The internship is for a **3-month** period, with requirements for proficiency in **C++** and **Python**.
 
 <div markdown="block" class="alert alert-info">
 💡 You can selectively update the details of an internship entry. Attributes not included in the command will maintain their existing values.
 </div>
+
+<div markdown="block" class="alert alert-info">
+ℹ️ The term 'INDEX' refers to the position of an internship entry in the currently displayed list. Please note that operations like create, delete, sort, and filter can change the order of the displayed list. Always refer to the current displayed list to determine the correct INDEX.
+</div>
+
+<div style="page-break-after: always;"></div>
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+<br>
+<br>
 
 <div markdown="span" class="alert alert-danger">
 
 ⚠️ **Internship Entry Modification Policies:**
 
 - **INDEX is Mandatory**: The INDEX, a positive integer, is required to identify the entry's position in the list. Modifying an entry will replace the existing list, not add to it.
-- **No Duplicate Company Name and Role**: Editing to create a duplicate entry with the same company name and role as an existing internship entry is not permitted, ensuring consistency with the create command section's prohibition of duplicates.
+- **Unique Company Name and Role Requirement**: When modifying an existing internship entry's company name and role, we will verify that the new combination of company name and role does not result in a duplicate of an existing entry, excluding the current entry being edited. This maintains consistency with the create command section's rule against duplicates.
 - **Parameter Requirement**: There must be at least one parameter following the INDEX when modifying an entry. Omission of parameters will trigger an error message.
+- **Deadline and Start Date restriction**: When modifying only the deadline or the start date, we will check against the existing internship entry that is being modified to ensure that the deadline is before the start date. Commands that violate this will trigger an error message.
 </div>
+
+
 
 **Expected Output**:
 ![Modify](images/modify.png)
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+
 ### Filter Internships by Category and Keyword/Range: `filter`
 
-Want to focus only on relevant internship entries based on certain constraints? 
-Filter internship entries by inputting any category. 
+Want to focus only on relevant internship entries based on certain constraints?
+Filter internship entries by inputting any category.
 There are 2 category types: `CATEGORY_TYPE1` accepting text inputs and `CATEGORY_TYPE2` accepting a range of values. The category types are as follows:
 
 * `CATEGORY_TYPE1`: `c/`, `ro/`, `a/`, `re/`
-  * Representing **Company Name**, **Role**, **Application Status** and **Requirements**
+    * Representing **Company Name**, **Role**, **Application Status** and **Requirements**
 * `CATEGORY_TYPE2`: `de/`, `s/`, `du/`
-  * Representing **Deadline**, **Start Date** and **Duration**
+    * Representing **Deadline**, **Start Date** and **Duration**
 
 Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 
@@ -321,7 +417,7 @@ Format 1: `filter [CATEGORY_TYPE1]/[KEYWORDS]`
 
 ⚠️  **Internship Entry Filter (Format 1) Policies:**
 - **Case Insensitive**: The search ignores cases.
-- **Multiple Keywords Accepted**: You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internship entries that match at least one of the `KEYWORDS`. 
+- **Multiple Keywords Accepted**: You can input multiple `KEYWORDS` parameters separated by spaces. The search displays internship entries that match at least one of the `KEYWORDS`.
 - **Full-word Matches**: The search only displays internship entries with full-word matches. `KEYWORDS` should be complete words.
 </div>
 
@@ -338,6 +434,15 @@ Format 2: `filter [CATEGORY_TYPE2]/[START-END]`
 - **Parameter Requirement**: Each parameter should follow the parameter constraints specified under the [Commands](#commands) Section.
 </div>
 
+<div style="page-break-after: always;"></div>
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+
 Examples:
 * `filter du/3-6` displays internship entries that have durations within the range 3 to 6 months inclusive.
 * `filter du/4-4` displays internship entries that have a duration of 4 months.
@@ -345,7 +450,7 @@ Examples:
 
 Format 3: `filter default`
 
-Examples: 
+Examples:
 * `filter default` clears the existing filter and lists all internship entries.
 
 <div markdown="block" class="alert alert-success">
@@ -355,12 +460,20 @@ Examples:
 **Expected Output**:
 ![Filter](images/filterAnnotated.png)
 
+<div style="page-break-after: always;"></div>
 <br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ### Sort Internships by Category and Order: `sort`
 
-Have a growing list of internship entries and finding it challenging to prioritize? Or perhaps you're looking to identify 
-opportunities with the nearest deadlines or those that align with a specific field of interest? Use the sort feature in 
+
+Have a growing list of internship entries and finding it challenging to prioritize? Or perhaps you're looking to identify
+opportunities with the nearest deadlines or those that align with a specific field of interest? Use the sort feature in
 Flagship to organize and arrange your internship list based on specific categories and order.
 
 **Format**: `sort [CATEGORY]/[ASC/DESC]`
@@ -380,17 +493,24 @@ Flagship to organize and arrange your internship list based on specific categori
 </div>
 
 <div markdown="block" class="alert alert-info">
-ℹ️ We do not allow you to sort by requirements because it involves comparing different sets of items between internships, which doesn't have a straightforward or meaningful order.
+ℹ️ We do not allow you to sort by requirements as it involves comparing different sets of items between internships, which doesn't have a straightforward or meaningful order.
 </div>
 
 **Expected Output**:
 ![Sort](images/sort.png)
 
+
 <br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ### Deleting an Internship: `delete`
 
-Trying to declutter your list of internship entries? Or has a saved internship application become irrelevant because you no longer want to apply for the position? 
+Trying to declutter your list of internship entries? Or has a saved internship application become irrelevant because you no longer want to apply for the position?
 Remove the internship entry from Flagship using our delete command!
 
 **Format**: `delete INDEX`
@@ -418,7 +538,15 @@ internship entry's visible position on the screen.
 Flagship data is saved in the hard disk automatically. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 <br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ## Editing the data file
 
@@ -453,6 +581,15 @@ or Flagship might crash.
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
+
+<div style="page-break-after: always;"></div>
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
 
 ## Command Summary
 
