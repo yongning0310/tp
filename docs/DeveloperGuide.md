@@ -201,7 +201,7 @@ The following sequence diagram shows how the create command operation works:
 
 **Aspect: What constitutes a duplicate internship entry:**
 
-* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` (insensitive to initial letter capitalisation of each distinct word) is individually sufficient
+* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` (insensitive to upper/lower cases of characters) is sufficient
     * Pros: Easy to manage and debug
     * Cons: Does not label duplicates in the strict equality sense
 
@@ -685,15 +685,15 @@ testers are expected to do more *exploratory* testing.
    1. Test case: Key in this same command twice `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
       Expected: The internship entry is not created the second time. Duplicate entry error message is shown. 
    
-   2. Test case: Key in this command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` and `create c/govtech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`
+   2. Test case: Key in this command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` and `create c/govtech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
       Expected: The internship entry is not created the second time. Duplicate entry error message is shown.
 
 2. Creating entries with invalid parameters
 
-   1. Test case: `create c/GovTech*** ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` 
+   1. Test case: `create c/GovTech*** ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
       Expected: The internship entry is not created. Error message signalling an invalid value in the company name is shown.
 
-   2. Test case: `create c/GovTech ro/SWE a/Thinking about it de/25/12/2022 s/20/01/2023 du/3 re/C++` 
+   2. Test case: `create c/GovTech ro/SWE a/Thinking about it de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
       Expected: The Internship entry is not created. Error message signalling an invalid value in the application status is shown.
 
 ### Deleting an internship
