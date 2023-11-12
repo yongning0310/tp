@@ -458,7 +458,7 @@ The following sequence diagram shows how the modify operation works:
 * is a college student or recent graduate actively looking for internship opportunities.
 * values the importance of being organized and keeping track of their internship applications' progress.
 * wants a centralized platform to manage their internship applications and related information.
-* can type fast
+* can type fast and accurately
 * is reasonably comfortable using CLI apps
 
 **Value proposition**: organize and manage internship applications efficiently through a command-line interface, ensuring that no opportunities are missed and applications are tracked systematically.
