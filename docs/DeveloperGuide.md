@@ -235,7 +235,7 @@ the other corresponding command.
 </box>
 
 Step 2. The `delete` command is executed. If the index is valid, when it is greater than 0 and an internship exists at the specified index,
-the specified internship is selected for deletion.
+the specified internship is successfully deleted by InternshipModel.
 
 <puml src="diagrams/DeleteCommandExecute.puml" alt="DeleteCommandExecute" />
 
@@ -245,7 +245,7 @@ the specified internship is selected for deletion.
 
 </box>
 
-Step 3. The selected internship entry is deleted.
+Step 3. InternshipStorage now updates the stored internship entry list using the updated values in ReadOnlyInternshipBook.
 
 <puml src="diagrams/DeleteCommandRemove.puml" alt="DeleteCommandRemove" />
 
