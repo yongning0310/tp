@@ -53,7 +53,9 @@ Flagship is a desktop application designed to assist aspiring students in tracki
 * **Documentation**:
   * User Guide:
     * Oversaw the _**Modify command**_ section of the User Guide.
-    * Contributions: (Pull requests [\#80](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/80), [\#82](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/82), [\#200](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/200))
+    * Implemented a user-friendly navigation feature by adding a "Table of Contents" button on the top right corner of each page, enhancing the usability of the UG and allowing for quick access to the main page without extensive scrolling. 
+    * Improved the PDF layout of the UG, ensuring a clean presentation by meticulously organizing content to prevent random page breaks, facilitating a smoother reading experience.
+    * Contributions: (Pull requests [\#80](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/80), [\#82](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/82), [\#200](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/200), [\#240](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/240))
   * Developer Guide:
     * Managed the _**modify command**_ and **logic** sections of the Developer Guide.
     * Contributions: (Pull requests [\#203](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/203), [\#221](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/221))
