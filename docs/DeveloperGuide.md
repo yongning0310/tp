@@ -451,6 +451,13 @@ The following sequence diagram shows how the modify operation works:
 
 ## **Appendix: Requirements**
 
+### Glossary
+
+* **Internship entry**: An entry in Flagship with information regarding the internship, including company name, role, application status, start date, duration, and role requirements
+* **Application status**: The current status of the internship entry (Yet to apply, Applied, In Progress, Accepted, Rejected)
+* **Main Success Scenario (MSS)**: The main or optimal flow of a use case, representing the successful completion of the user's goal.
+* **Use Case**: A description of a specific user goal or task and the steps required to achieve it.
+
 ### Product scope
 
 **Target user profile**:
@@ -489,51 +496,58 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to create an internship entry with the necessary details.
-2.  InternshipBook adds the internship entry to the list.
+2.  Flagship adds the internship entry to the database.
 Use case ends.
 
 **Extensions**
 * 1a. Command is of invalid format
     * 1a1. Flagship shows an error message.
-    * Use case resumes from step 1.
-<br><br>
+      Use case resumes from step 1.
+
 * 1b. Internship entry has a duplicate already stored in `Flagship`.
     * 1b1. Flagship shows an error message.
-    * Use case resumes from step 1.
+      Use case resumes from step 1.
+
+* 1c. Necessary fields in the command are missing.
+  * 1c1. Flagship shows an error message.
+    Use case resumes from step 1.
 
 
 **UC2: Delete an internship**
 
 **MSS**
 
-1.  User requests to see list of internships
-2.  InternshipBook shows a list of internships
-3.  User requests to delete a specific internship in the list
-4.  InternshipBook deletes the internship
+1.  User requests to see list of internships.
+2.  Flagship shows a list of internships.
+3.  User requests to delete a specific internship in the list.
+4.  Flagship deletes the internship.
 
     Use case ends.
 
 **Extensions**
-* 1a. Command is of invalid format
-    * 1a1. InternshipBook shows an error message.
+* 1a. Command is of invalid format.
+    * 1a1. Flagship shows an error message.
 
+      Use case ends.
+
+* 2a. The list is empty.
+    
   Use case ends.
 
-* 3a. Command is of invalid format
-    * 3a1. InternshipBook shows an error message.
+* 3a. The given index is invalid.
+    * 3a1. Flagship shows an error message.
 
-  Use case ends.
+      Use case ends.
 
-**UC3: Edit an internship**
+**UC3: Modify an internship**
 
 **MSS**
 
-1.  User requests to read internship entry
-2.  InternshipBook shows the internship entry
-3.  User requests to edit a certain field of the internship entry
-4.  InternshipBook shows the internship entry with the changes made
-5.  User requests to exit editing mode
-6.  InternshipBook saves the updated internship entry to the hard disk
+1.  User requests to read internship entry.
+2.  Flagship shows the internship entry.
+3.  User requests to modify a certain field of the internship entry.
+4.  Flagship shows the internship entry with the changes made.
+5.  Flagship saves the updated internship entry to the database.
 
     Use case ends.
 
@@ -545,9 +559,63 @@ Use case ends.
 
 * 3a. The given index is invalid.
 
-    * 3a1. InternshipBook shows an error message.
+    * 3a1. Flagship shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes at step 3.
+  
+* 3b. Command is of invalid format.
+
+    * 3b1. Flagship shows an error message.
+    
+      Use case resumes at step 3.
+
+**UC4: Filter internships by keyword**
+
+**MSS**
+
+1. User requests to filter internships using any one of the company name, role, application status, deadline, start date or duration as the keyword.
+2. Flagship displays all internships that have fields which contain the corresponding keyword.
+   
+   Use case ends.
+
+**Extensions**
+
+* 1a. Command is of invalid format.
+
+    * 1a1. Flagship shows an error message.
+
+      Use case resumes at step 1.
+
+* 1b. The given index is invalid.
+
+    * 1b1. Flagship shows an error message.
+
+      Use case resumes at step 1.
+
+* 2a. No matching application is found and list is empty.
+
+  Use case ends.
+
+**UC5: Sort an internship**
+
+**MSS**
+
+1. User requests to sort internships using any one of the company name, role, application status, deadline, start date or duration as the category and in either ascending or descending order.
+2. Flagship displays the same list of internships in the specified sorted order.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Command is of invalid format.
+
+    * 1a1. Flagship shows an error message.
+
+      Use case resumes at step 1.
+
+* 1b. List is empty.
+
+  Use case ends.
 
 *{More to be added}*
 
@@ -573,11 +641,6 @@ Use case ends.
 * Should authenticate user based on username.
 
 *{More to be added}*
-
-### Glossary
-
-* **Internship entry**: An entry in Flagship with information regarding the internship, including company name, role, application status, start date, duration, and role requirements
-* **Application status**: The current status of the internship entry (Yet to apply, Applied, In Progress, Accepted, Rejected)
 
 --------------------------------------------------------------------------------------------------------------------
 
