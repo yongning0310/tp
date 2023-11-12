@@ -600,22 +600,22 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
-### Launch and shutdown
+### Launch
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
+    1. Download `flagship.jar` and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Using your terminal, navigate to the folder `flagship.jar` is stored in.
+
+    1. Type the following command into your terminal: `java -jar flagship.jar` Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
     1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app with the command: `java -jar flagship.jar`.<br>
        Expected: The most recent window size and location is retained.
-
-1. _{ more test cases …​ }_
 
 ### Creating an internship entry
 
@@ -654,6 +654,18 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. **Prerequistes**: Before each test, the most recent Flagship data file should be valid and contain at least 1 internship entry. <br>
+                        Access the data file in `[JAR file location]/data/internshipBook.json` using a text editor of your choice.
 
-1. _{ more test cases …​ }_
+   1. Test case: Invalid formatting. Delete all text in the JSON file and replace with the text `test`. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a `JsonParseException`.
+
+   1. Test case: Invalid values. Find a valid internship entry and edit the `duration` field to a value of `3test`. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports an illegal value found for the `duration` field. 
+
+   1. Test case: Missing parameters. Find a valid internship entry and remove the `deadline` field completely. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a missing `deadline` field.
+
+   1. Test case: Duplicate internship entries. Find a valid internship entry, select the entire entry and copy and paste it. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports duplicate internship entries.
+
