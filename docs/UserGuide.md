@@ -122,6 +122,7 @@ in your internship management journey. Here is a rundown of how you can use this
 * **Command terminal**: A terminal is a text input and output environment. It is mainly used to launch the application for our purposes. Open your terminal by:
     * Searching and clicking `Command Prompt` on Windows.
     * Searching and clicking `Terminal` on Mac and Linux (Ubuntu).
+* `cd`: Command to change directory
 * **Parameters**: Parameters are additional information the command needs in order for it to perform its function successfully.
 * **JSON**: JSON is a lightweight format for storing and transporting data so that both humans and computers can easily read and understand it.
 
@@ -135,7 +136,7 @@ in your internship management journey. Here is a rundown of how you can use this
 Let's start tracking your internship applications right now!
 1. Ensure you have Java `11` or above installed in your computer.
 
-2. Download the latest `flagship.jar` from [here](https://github.com/AY2324S1-CS2103T-W17-1/tp/releases/tag/v1.4).
+2. Download the latest `flagship.jar` from [here](https://github.com/AY2324S1-CS2103T-W17-1/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for Flagship.
 
@@ -151,7 +152,7 @@ Let's start tracking your internship applications right now!
 <br>
 <br>
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar flagship.jar` command to run the application.<br>
+4. Open a [command terminal](#glossary), [`cd`](#glossary) into the folder you put the jar file in, and use the `java -jar flagship.jar` command to run the application.<br>
 
 <div markdown="block" class="alert alert-info">
     ℹ️ Note that Flagship does not have any operating systems requirements and this process is the same regardless whether you use Windows or Mac!
@@ -537,6 +538,15 @@ internship entry's visible position on the screen.
 
 Flagship data is saved in the hard disk automatically. There is no need to save manually.
 
+Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internshipBook.json`.
+```
+(Location where your JAR File `flagship.jar` is)
+├── data
+│   └── internshipBook.json <== Your saved JSON file
+├── preferences.json
+└── flagship.jar
+```
+
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
@@ -550,7 +560,7 @@ Flagship data is saved in the hard disk automatically. There is no need to save 
 
 ## Editing the data file
 
-Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file location]/data/internshipBook.json`. Advanced users are welcome to update data directly by editing that data file.
+Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-danger">
 ⚠️ If your changes to the data file make it invalid, such as adding invalid formatting or duplicate internship entries, Flagship will discard all data and start with an empty data file at the next run.
