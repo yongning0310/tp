@@ -124,9 +124,9 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the address book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
+* stores the internship book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
 * stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores a `InternshipUserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyInternshipUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 ### Storage component
@@ -377,6 +377,10 @@ Step 3. The `filter` command is executed. The predicate generated based on user 
 **Note:** The filtered list in the `InternshipModel` is updated to only include internships that satisfy the conditions specified by the predicate.
 
 </box>
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/FilterSequenceDiagram.puml" alt="FilterSequenceDiagram" />
 
 #### Design considerations:
 **Aspect: How the filter conditions are specified:**

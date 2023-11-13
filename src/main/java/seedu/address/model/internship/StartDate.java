@@ -33,14 +33,17 @@ public class StartDate implements Comparable<StartDate> {
     }
 
     /**
-     * Verifies whether the given string constitutes a valid start date.
+     * Verifies whether the given string constitutes a valid start date. The given string is also stripped to
+     * defensively guard against instances where leading or trailing spaces are inserted when user directly modifies the
+     * internship.json file. This is important so that the given string does not fail the regex check.
      *
      * @param test The given string to be tested.
      * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidStartDate(String test) {
+        String strippedTest = test.strip();
         try {
-            LocalDate.parse(test, DATE_FORMATTER);
+            LocalDate.parse(strippedTest, DATE_FORMATTER);
             return true;
         } catch (DateTimeParseException e) {
             return false;
