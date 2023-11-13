@@ -333,6 +333,7 @@ that you do not accidentally track an internship application twice. The followin
 <br>
 <br>
 
+
 <div markdown="block" class="alert alert-info">
 ℹ️ We do not allow you to create internship entries of a different deadline, duration, etc. but with the same
 company name and role, as we believe that these cases are less likely to exist (but still possible!). If we loosen

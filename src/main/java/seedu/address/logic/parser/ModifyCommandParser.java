@@ -15,8 +15,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.internship.CompanyName;
-import seedu.address.model.internship.Role;
 
 /**
  * Parses input arguments and creates a new ModifyCommand object
