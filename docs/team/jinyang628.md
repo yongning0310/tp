@@ -13,7 +13,7 @@ Flagship is a desktop application used to help aspiring students track internshi
     * Refactored the AB3 models and interfaces so that they can be repurposed for Flagship
         * E.g. Adding new parameters, renaming interfaces, etc.
     * Oversaw the development of the Create Command, which allows users to key in internship details into Flagship.
-    * Overall in charge of the following files
+    * Overall in charge of the following files (test files not listed)
       * ApplicationStatus.java
       * CompanyName.java
       * Deadline.java
@@ -26,15 +26,6 @@ Flagship is a desktop application used to help aspiring students track internshi
       * ParserUtil.java
       * CreateCommand.java
       * UniqueInternshipList.java
-      * DeadlineTest.java
-      * InternshipTest.java
-      * RequirementTest.java
-      * CreateCommandTest.java
-      * InternshipStorageManagerTest.java
-      * JsonAdaptedInternshipTest.java
-      * JsonInternshipBookStorageTest.java
-      * JsonSerializableInternshipBookTest.java
-      * JsonInternshipUserPrefsStorageTest.java
     * Wrote test cases to comprehensively test the Create Command
     * [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22&tabOpen=true&tabType=authorship&tabAuthor=jinyang628&tabRepo=AY2324S1-CS2103T-W17-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
