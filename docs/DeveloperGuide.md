@@ -155,7 +155,7 @@ How the `Logic` component works:
 
 1. When `InternshipLogic` is called upon to execute a command, it is passed to an `InternshipBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in an `InternshipCommand` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `InternshipLogicManager`.
-1. The command can communicate with the `InternshipModel` when it is executed (e.g. to delete an internship).
+1. The command can communicate with the `InternshipModel` when it is executed (e.g., to delete an internship).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
@@ -164,7 +164,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 
 How the parsing works:
 * When called upon to parse a user command, the `InternshipBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `CreateCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `CreateCommand`) which the `InternshipBookParser` returns back as a `InternshipCommand` object.
-* All `XYZCommandParser` classes (e.g., `CreateCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* All `XYZCommandParser` classes (e.g., `CreateCommandParser`, `DeleteCommandParser`, ...) inherit from the `InternshipParser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
 **API** : [`InternshipModel.java`](https://github.com/AY2324S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/model/InternshipModel.java)
@@ -175,8 +175,8 @@ How the parsing works:
 The `Model` component,
 
 * stores the internship book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
-* stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `InternshipUserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyInternshipUserPref` object.
+* stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g., the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores a `InternshipUserPrefs` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyInternshipUserPrefs` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 ### Storage component
@@ -288,7 +288,7 @@ the other corresponding command.
 </box>
 
 Step 2. The `delete` command is executed. If the index is valid, when it is greater than 0 and an internship exists at the specified index,
-the specified internship is successfully deleted by InternshipModel.
+the specified internship is successfully deleted.
 
 <puml src="diagrams/DeleteCommandExecute.puml" alt="DeleteCommandExecute" />
 
@@ -683,8 +683,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1b. List is empty.
 
   Use case ends.
-
-*{More to be added}*
 
 ### Non-Functional Requirements
 
