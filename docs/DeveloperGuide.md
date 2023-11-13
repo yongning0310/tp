@@ -823,9 +823,6 @@ Perform these checks before each test to maintain consistency.
     3. Test case: Key in the command `delete x` (where x is larger than the displayed list size)<br>
       Expected: No internship is deleted. Error message indicating an invalid format for the delete command is shown.
 
-
-1. _{ more test cases …​ }_
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
