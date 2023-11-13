@@ -15,6 +15,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.ModifyCommand.EditInternshipDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.internship.CompanyName;
+import seedu.address.model.internship.Role;
 
 /**
  * Parses input arguments and creates a new ModifyCommand object
@@ -52,10 +54,12 @@ public class ModifyCommandParser implements InternshipParser<ModifyCommand> {
 
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
             editInternshipDescriptor.setCompanyName(ParserUtil
-                    .parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get()));
+                    .parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME)
+                            .get().strip().replaceAll("\\s+", " ")));
         }
         if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
-            editInternshipDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
+            editInternshipDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE)
+                    .get().strip().replaceAll("\\s+", " ")));
         }
         if (argMultimap.getValue(PREFIX_APPLICATION_STATUS).isPresent()) {
             editInternshipDescriptor.setApplicationStatus(ParserUtil
