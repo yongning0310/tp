@@ -165,7 +165,7 @@ public class ParserUtil {
         requireNonNull(requirements);
         final Set<Requirement> requirementSet = new HashSet<>();
         for (String requirementName : requirements) {
-            requirementSet.add(parseRequirement(requirementName.strip()));
+            requirementSet.add(parseRequirement(requirementName.strip().replaceAll("\\s+", " ")));
         }
         return requirementSet;
     }
