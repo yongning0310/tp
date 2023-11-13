@@ -367,6 +367,9 @@ the other corresponding command.
 Step 3. The `filter` command is executed. The predicate generated based on user criteria is used to filter internships in the `InternshipModel`.
 
 <puml src="diagrams/FilterCommandExecute.puml" alt="FilterCommandExecute" />
+
+<puml src="diagrams/FilterCommandState1.puml" alt="FilterCommandState1" />
+
 <box type="info" seamless>
 
 **Note:** The filtered list in the `InternshipModel` is updated to only include internships that satisfy the conditions specified by the predicate.
