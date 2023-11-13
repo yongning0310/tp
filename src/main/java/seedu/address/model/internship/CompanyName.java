@@ -48,6 +48,13 @@ public class CompanyName implements Comparable<CompanyName> {
         return this.companyName;
     }
 
+    /**
+     * Verifies whether this company name is equals to the given object. This block of code defensively guard against
+     * duplicate company names that only differ in terms of the number of leading, trailing or internal spaces. It is
+     * especially important in cases where users edit the internship.json file directly.
+     * @param other The given object to check for equality against.
+     * @return A boolean representing whether this company name is equals to the object.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -60,10 +67,16 @@ public class CompanyName implements Comparable<CompanyName> {
         }
 
         CompanyName otherCompanyName = (CompanyName) other;
-        return this.companyName
+
+
+        String thisCompanyNameStringStripped = this.companyName
                 .strip()
-                .replaceAll("\\s+", " ")
-                .equalsIgnoreCase(otherCompanyName.companyName);
+                .replaceAll("\\s+", " ");
+        String otherCompanyNameStringStripped = otherCompanyName.companyName
+                .strip()
+                .replaceAll("\\s+", " ");
+
+        return thisCompanyNameStringStripped.equalsIgnoreCase(otherCompanyNameStringStripped);
     }
 
     /**

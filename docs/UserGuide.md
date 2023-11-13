@@ -564,8 +564,11 @@ Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file loca
 Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-danger">
-⚠️ If your changes to the data file make it invalid, such as incorrect formatting (e.g. extra spaces) or duplicate internship entries, Flagship will discard all data and start with an empty data file at the next run.
-Hence, it is recommended to take a backup of the file before editing it.
+⚠️ Be extremely careful if you make any changes to the data file. If you make incorrect formatting changes or insert duplicate internship entries,
+Flagship will discard all data and start with an empty data file on the next run. If you add extra spaces in the parameters (e.g. company name 
+or role), we will not be able to remove the spaces effectively. This will adversely affect what is displayed on the GUI. 
+
+Hence, you are highly recommended to take a backup of the file before editing it.
 </div>
 
 <div markdown="span" class="alert alert-danger">
