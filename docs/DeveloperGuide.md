@@ -203,7 +203,7 @@ The following sequence diagram shows how the `create` command operation works:
 
 **Aspect: What constitutes a duplicate internship entry:**
 
-* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` (insensitive to upper/lower cases of characters) is sufficient
+* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` is sufficient (insensitive to upper/lower cases of characters and leading/trailing/excess internal spaces)
     * Pros: Easy to manage and debug
     * Cons: Does not label duplicates in the strict equality sense
 
