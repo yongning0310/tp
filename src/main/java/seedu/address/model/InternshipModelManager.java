@@ -21,10 +21,6 @@ import seedu.address.model.internship.InternshipComparators;
  */
 public class InternshipModelManager implements InternshipModel {
     private static final Logger logger = LogsCenter.getLogger(InternshipModelManager.class);
-
-    /*
-    TODO - refactor all comparator and filter logic into 2 classes.
-     */
     private Comparator<Internship> currentComparator = InternshipComparators.BY_COMPANY_NAME; // default comparator
     private String currentComparatorPrefix = "c/"; // default comparator prefix
     private SortCommand.Order currentComparatorOrder = SortCommand.Order.ASC; // default comparator order
@@ -33,7 +29,6 @@ public class InternshipModelManager implements InternshipModel {
     private String currentFilterValue = "default"; // default filter value
     private final InternshipBook internshipBook;
     private final InternshipUserPrefs userPrefs;
-
     private final FilteredList<Internship> filteredInternships;
 
     /**
