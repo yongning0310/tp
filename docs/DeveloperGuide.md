@@ -124,9 +124,9 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the address book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
+* stores the internship book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
 * stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores a `InternshipUserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyInternshipUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 ### Storage component
@@ -271,7 +271,7 @@ The sort mechanism is facilitated by InternshipBook. InternshipBook provides us 
 
 <box type="info" seamless>
 
-**Note:** The currentComparator takes on a default value of BY_COMPANY_NAME. The command `sort default` is equivalent to `sort co/ASC`.
+**Note:** The currentComparator takes on a default value of BY_COMPANY_NAME. The command `sort default` is equivalent to `sort c/ASC`.
 
 </box>
 
@@ -377,6 +377,10 @@ Step 3. The `filter` command is executed. The predicate generated based on user 
 **Note:** The filtered list in the `InternshipModel` is updated to only include internships that satisfy the conditions specified by the predicate.
 
 </box>
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/FilterSequenceDiagram.puml" alt="FilterSequenceDiagram" />
 
 #### Design considerations:
 **Aspect: How the filter conditions are specified:**
@@ -508,7 +512,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User requests to create an internship entry with the necessary details.
 2.  Flagship adds the internship entry to the database.
-Use case ends.
+    Use case ends.
 
 **Extensions**
 * 1a. Command is of invalid format
@@ -520,8 +524,8 @@ Use case ends.
       Use case resumes from step 1.
 
 * 1c. Necessary fields in the command are missing.
-  * 1c1. Flagship shows an error message.
-    Use case resumes from step 1.
+    * 1c1. Flagship shows an error message.
+      Use case resumes from step 1.
 
 
 **UC2: Delete an internship**
@@ -542,7 +546,7 @@ Use case ends.
       Use case ends.
 
 * 2a. The list is empty.
-    
+
   Use case ends.
 
 * 3a. The given index is invalid.
@@ -573,11 +577,11 @@ Use case ends.
     * 3a1. Flagship shows an error message.
 
       Use case resumes at step 3.
-  
+
 * 3b. Command is of invalid format.
 
     * 3b1. Flagship shows an error message.
-    
+
       Use case resumes at step 3.
 
 **UC4: Filter internships by keyword**
@@ -586,7 +590,7 @@ Use case ends.
 
 1. User requests to filter internships using any one of the company name, role, application status, deadline, start date or duration as the keyword.
 2. Flagship displays all internships that have fields which contain the corresponding keyword.
-   
+
    Use case ends.
 
 **Extensions**
@@ -674,6 +678,16 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
+<box type="info" seamless>
+
+**Note:** Before you start the tests, make sure the list doesn't already have a "GovTech" company entry listed for a
+"SWE" role. Also, check that the list of internships isn’t sorted or filtered in any way by typing `filter default`
+and `sort default`. 
+Ensure that the internship list contains at least two internship entries.
+Perform these checks before each test to maintain consistency.
+
+</box>
+
 ### Launch
 
 1. Initial launch
@@ -691,55 +705,146 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app with the command: `java -jar flagship.jar`.<br>
        Expected: The most recent window size and location is retained.
 
-### Creating an internship entry
+### Creating internship entries
 
-1. Creating duplicate entries
+1. Creating entries successfully
 
-   1. Test case: Key in this same command twice `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
-      Expected: The internship entry is not created the second time. Duplicate entry error message is shown. 
+    1. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
+       Expected: The internship entry is successfully created and added to the displayed list. <br> <br>
+
+2. Creating duplicate entries
+
+    1. Test case: Key in the same command twice `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
+       Expected: The internship entry is not created the second time. Duplicate entry error message is shown.
+
+    2. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` 
+       and `create c/govtech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
+       Expected: The internship entry is not created the second time. Duplicate entry error message is shown.
+
+3. Creating entries with invalid parameters
+
+    1. Test case: Key in the command `create c/GovTech*** ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
+       Expected: The internship entry is not created. Error message signalling an invalid value in the company name is shown.
+
+    2. Test case: Key in the command `create c/GovTech ro/SWE a/Thinking about it de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
+       Expected: The Internship entry is not created. Error message signalling an invalid value in the application status is shown.
+
+
+### Modifying internship entries
+
+1. Modifying entries successfully
+
+    1. Test case: Key in the command `modify 1 c/GovTech ro/SWE ` <br>
+       Expected: The first internship entry in the displayed list is successfully modified. <br> <br>
+
+2. Modifying entries to create duplicates
+
+    1. Test case: Key in the command `modify 1 c/GovTech ro/SWE` and `modify 2 c/GovTech ro/SWE`<br>
+       Expected: The first internship entry in the displayed list is modified successfully but the second 
+       internship entry is not modified. Duplicate entry error message is shown after the second command.
+
+    2. Test case: Key in the command `modify 1 c/GOVTECH ro/SWE` and `modify 2 c/GovTech ro/swe` <br>
+       Expected: The first internship entry in the list is modified successfully but the second
+       internship entry is not modified. Duplicate entry error message is shown after the second command.
+
+3. Modifying entries with invalid parameters
+
+    1. Test case: Key in the command `modify 1 c/GOV-TECH ro/SWE`<br>
+       Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
+
+    2. Test case: Key in the command `modify 1 c/`<br>
+       Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
    
-   2. Test case: Key in this command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` and `create c/govtech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
-      Expected: The internship entry is not created the second time. Duplicate entry error message is shown.
+    3. Test case: Key in the command `modify`<br>
+       Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
 
-2. Creating entries with invalid parameters
+    4. Test case: Key in the command `modify x` (where x is larger than the displayed list size)<br>
+       Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
+   
+### Filtering internship entries
 
-   1. Test case: `create c/GovTech*** ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
-      Expected: The internship entry is not created. Error message signalling an invalid value in the company name is shown.
 
-   2. Test case: `create c/GovTech ro/SWE a/Thinking about it de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
-      Expected: The Internship entry is not created. Error message signalling an invalid value in the application status is shown.
+1. Filtering by exact match
+
+    1. Test case: Key in the command `filter c/govtech`<br>
+       Expected: The internship entry list displayed contains all internship entries with the company name "govtech".
+
+     2. Test case: Key in the command `filter c/GOVTECH`<br>
+       Expected: The internship entry list displayed contains all internship entries with the company name "govtech". 
+   
+    3. Test case: Key in the command `filter du/3-6`<br>
+       Expected: The internship entry list displayed contains all internship entries with a duration of 3-6 months.
+
+2. Filtering with invalid parameters
+
+    1. Test case: Key in this command `filter`<br>
+       Expected: Error message indicating an invalid format for the filter command is shown.
+
+    2. Test case: Key in this command `filter c/`<br>
+       Expected: Error message indicating an invalid format for the filter command is shown.
+
+### Sorting internship entries
+
+1. Sorting by specified criteria
+
+    1. Test case: Key in the command `sort c/ASC`<br>
+       Expected: The internship entry list displayed is sorted by company name, in ascending order.
+
+    2. Test case: Key in the command `sort ro/DESC`<br>
+      Expected: The internship entry list displayed is sorted by roles, in descending order.
+
+2. Sorting with invalid command format
+
+    1. Test case: Key in the command `sort c/ASC ro/DESC`<br>
+       Expected: Error message indicating an invalid format for the sort command is shown.
+   
+    2. Test case: Key in the command `sort`<br>
+      Expected: Error message indicating an invalid format for the sort command is shown.
 
 ### Deleting an internship
 
-1. Deleting an internship while all internships are being shown
+1. Deleting while all internship entries are displayed 
 
-    1. Test case: `delete 1`<br>
-       Expected: First internship is deleted from the list. Details of the deleted internship shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: Key in the command `delete 1`<br>
+       Expected: First internship entry in the displayed list is deleted.<br><br>
 
-    1. Test case: `delete 0`<br>
-       Expected: No internship is deleted. Error details shown in the status message. Status bar remains the same.
+2. Deleting after sorting or filtering 
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+    1. Test case: Key in the command `sort ro/DESC` and `delete 1`<br>
+       Expected: First internship entry in the displayed sorted list is deleted.
+   
+    2. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`,  `sort ro/DESC` and `delete 1`<br>
+       Expected: First internship entry in the displayed sorted list is deleted.
+   
+    3. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`,  `filter c/govtech` and `delete 1`<br>
+       Expected: First internship entry in the displayed filtered list is deleted.
+   
+3. Deleting with invalid parameters 
 
-1. _{ more test cases …​ }_
+    1. Test case: Key in the command `delete 0`<br>
+       Expected: No internship is deleted. Error message indicating an invalid format for the delete command is shown.
+
+    2. Test case: Key in the command `delete`<br>
+       Expected: No internship is deleted. Error message indicating an invalid format for the delete command is shown.
+    
+    3. Test case: Key in the command `delete x` (where x is larger than the displayed list size)<br>
+      Expected: No internship is deleted. Error message indicating an invalid format for the delete command is shown.
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. **Prerequistes**: Before each test, the most recent Flagship data file should be valid and contain at least 1 internship entry. <br>
-                        Access the data file in `[JAR file location]/data/internshipBook.json` using a text editor of your choice.
+    1. **Prerequistes**: Before each test, the most recent Flagship data file should be valid and contain at least 1 internship entry. <br>
+       Access the data file in `[JAR file location]/data/internshipBook.json` using a text editor of your choice.
 
-   1. Test case: Invalid formatting. Delete all text in the JSON file and replace with the text `test`. <br>
-      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a `JsonParseException`.
+    1. Test case: Invalid formatting. Delete all text in the JSON file and replace with the text `test`. <br>
+       Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a `JsonParseException`.
 
-   1. Test case: Invalid values. Find a valid internship entry and edit the `duration` field to a value of `3test`. <br>
-      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports an illegal value found for the `duration` field. 
+    1. Test case: Invalid values. Find a valid internship entry and edit the `duration` field to a value of `3test`. <br>
+       Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports an illegal value found for the `duration` field.
 
-   1. Test case: Missing parameters. Find a valid internship entry and remove the `deadline` field completely. <br>
-      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a missing `deadline` field.
+    1. Test case: Missing parameters. Find a valid internship entry and remove the `deadline` field completely. <br>
+       Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a missing `deadline` field.
 
-   1. Test case: Duplicate internship entries. Find a valid internship entry, select the entire entry and copy and paste it. <br>
-      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports duplicate internship entries.
-
+    1. Test case: Duplicate internship entries. Find a valid internship entry, select the entire entry and copy and paste it. <br>
+       Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports duplicate internship entries.

@@ -124,6 +124,11 @@ public class InternshipMainWindow extends UiPart<Stage> {
         predicateComparatorDisplay = new PredicateComparatorDisplay();
         predicateComparatorDisplayPlaceholder.getChildren().add(predicateComparatorDisplay.getRoot());
 
+        // When initialised, the predicate comparator display also
+        // needs to display the starting values of the comparator and filter.
+        predicateComparatorDisplay.setComparator(logic.getComparatorPrefix(), logic.getComparatorOrder());
+        predicateComparatorDisplay.setFilter(logic.getFilterParameter(), logic.getFilterValue());
+
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getInternshipBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 

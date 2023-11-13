@@ -51,10 +51,6 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         + "DD/MM/YYYY-DD/MM/YYYY where start is earlier/equal to end.";
     public static final String MESSAGE_NON_EMPTY = "filter command's parameter cannot be empty.";
 
-
-    /*
-    TODO - refactor all logic for comparators and filters into 2 classes.
-     */
     private String filterParameter;
     private String filterValue;
 
@@ -196,7 +192,7 @@ public class FilterCommandParser implements InternshipParser<FilterCommand> {
         Deadline deadlineUpper;
 
         try {
-            //placeholder for start date such that it is always later than deadline
+            // Placeholder for start date such that it is always later than deadline
             LocalDate startDatePlaceholder = LocalDate.MAX;
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String startDatePlaceholderString = startDatePlaceholder.format(dateFormatter);
