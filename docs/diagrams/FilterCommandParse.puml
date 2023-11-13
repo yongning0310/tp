@@ -19,8 +19,8 @@ InternshipBookParser -[hidden]right-> FilterCommand
 
 hide FilterCommand
 
-class UserInput as "User Input: filter c/citadel"
+class UserInput as "filter c/citadel"
 
-UserInput -down- InternshipBookParser : parses
+UserInput -up- InternshipBookParser : parses
 
 @enduml

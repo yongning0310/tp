@@ -1,4 +1,5 @@
 @startuml
+!pragma layout smetana
 !include style.puml
 skinparam ClassFontColor #000000
 skinparam ClassBorderColor #000000
@@ -18,8 +19,8 @@ InternshipBookParser -[hidden]right- SortCommand
 
 hide SortCommand
 
-class UserInput as "User Input: sort ro/ASC"
+class UserInput as "sort ro/ASC"
 
-UserInput -down- InternshipBookParser : parses
+UserInput -up- InternshipBookParser : parses
 
 @enduml
