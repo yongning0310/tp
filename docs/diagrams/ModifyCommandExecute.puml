@@ -16,7 +16,7 @@ package "Command" {
     class ModifyCommand as "ModifyCommand"
 }
 
-InternshipLogicManager -down-> ModifyCommand : executes
-ModifyCommand -right-> InternshipStorage : checks for duplicates\nand edits original copy if unique
+InternshipLogicManager -down- ModifyCommand : executes
+ModifyCommand -right- InternshipStorage : checks for duplicates\nand edits original copy if unique
 
 @enduml

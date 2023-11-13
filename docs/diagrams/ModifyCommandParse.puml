@@ -21,6 +21,6 @@ hide ModifyCommand
 
 class UserInput as "User Input: modify 1 c/Jane Street ro/Backend Developer"
 
-UserInput -down-> InternshipBookParser : parses
+UserInput -down- InternshipBookParser : parses
 
 @enduml

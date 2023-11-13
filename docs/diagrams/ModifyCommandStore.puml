@@ -13,12 +13,12 @@ package "Internship Book" {
 
 class InternshipEntry as "InternshipEntry:\nJane Street, Backend Developer"
 
-InternshipStorage -[hidden]right-> InternshipEntry
+InternshipStorage -[hidden]right- InternshipEntry
 
 hide InternshipEntry
 
 class StorageAction as "Storage Action: Original Entry With Edited Fields"
 
-StorageAction -up-> InternshipStorage : overrides and replaces original entry
+StorageAction -up- InternshipStorage : overrides and replaces original entry
 
 @enduml
