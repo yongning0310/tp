@@ -2,7 +2,7 @@
   "baseUrl": "",
   "titlePrefix": "Flagship",
   "titleSuffix": "Flagship",
-  "faviconPath": "images/SeEduLogo.png",
+  "faviconPath": "images/flagshipLogo.png",
   "style": {
     "codeTheme": "light"
   },

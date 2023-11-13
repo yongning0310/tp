@@ -52,10 +52,12 @@ public class ModifyCommandParser implements InternshipParser<ModifyCommand> {
 
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
             editInternshipDescriptor.setCompanyName(ParserUtil
-                    .parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get()));
+                    .parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME)
+                            .get().strip().replaceAll("\\s+", " ")));
         }
         if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
-            editInternshipDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
+            editInternshipDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE)
+                    .get().strip().replaceAll("\\s+", " ")));
         }
         if (argMultimap.getValue(PREFIX_APPLICATION_STATUS).isPresent()) {
             editInternshipDescriptor.setApplicationStatus(ParserUtil

@@ -40,7 +40,6 @@
 13. [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
 <br>
 
 <div style="float: right;">
@@ -277,6 +276,7 @@ probability of typos and reduce the effectiveness of our filter functionalities.
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
+
 ## Commands
 
 ### Creating an Internship: `create`
@@ -297,18 +297,22 @@ on **24 April 2022**. This is a **2-month** internship, and you are expected to 
 💡 Internship entries can have multiple requirements, or even none at all. However, all other attributes are compulsory!
 </div>
 
-<div markdown="span" class="alert alert-danger">
-⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
-that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
-</div>
-
 <div style="page-break-after: always;"></div>
+<br>
 <div style="float: right;">
   <a href="#table-of-contents">
     <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
   </a>
 </div>
 <br>
+<br>
+
+<div markdown="span" class="alert alert-danger">
+⚠️ Flagship does not allow you to create duplicate internship entries with both the same company name and role. This makes sure
+that you do not accidentally track an internship application twice. The following list below describes what constitutes identical entries.
+</div>
+
+
 
 | Description                                                                                                    | Example                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -318,6 +322,17 @@ that you do not accidentally track an internship application twice. The followin
 | **Combination of the differences mentioned above**                                                             | `Jane street...`, `...jane StReet` are considered the same                                                    |
 
 **All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
+
+<div style="page-break-after: always;"></div>
+<br>
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+<br>
+<br>
+
 
 <div markdown="block" class="alert alert-info">
 ℹ️ We do not allow you to create internship entries of a different deadline, duration, etc. but with the same
@@ -331,18 +346,18 @@ as effectively.
 so that you can track your past internship applications for your own reference. 
 </div>
 
-
 **Expected Output**:
-![Create](images/create.png)
+<img src="images/create.png" alt="Create" width="870" height="450"/>
 
 
 <br>
-
+<div style="page-break-after: always;"></div>
 <div style="float: right;">
   <a href="#table-of-contents">
     <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
   </a>
 </div>
+<br>
 
 ### Modifying an Internship: `modify`
 
@@ -592,6 +607,12 @@ or Flagship might crash.
 
 --------------------------------------------------------------------------------------------------------------------
 <br>
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+<br>
 
 ## Known Issues
 
@@ -599,11 +620,7 @@ or Flagship might crash.
 
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="float: right;">
-  <a href="#table-of-contents">
-    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
-  </a>
-</div>
+<br>
 
 ## Command Summary
 
