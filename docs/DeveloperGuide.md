@@ -466,7 +466,7 @@ Step 1: A user provides the command `modify 1 c/Jane Street ro/Coffee maker a/Ye
 
 </box>
 
-Step 2: Post validation, the `modify` command is executed. If no duplicate entry exists in `InternshipStorage`, the editing of the internship entry goes through successfully.
+Step 2: Post validation, the `modify` command is executed. If no duplicate entry exists in `InternshipModel`, the editing of the internship entry goes through successfully.
 
 <puml src="diagrams/ModifyCommandExecute.puml" alt="ModifyCommandExecute" />
 
