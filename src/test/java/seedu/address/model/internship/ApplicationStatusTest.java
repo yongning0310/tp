@@ -21,8 +21,8 @@ class ApplicationStatusTest {
 
     @Test
     public void isValidApplicationStatus() {
-        // null applicationStatus -> returns false
-        assertFalse(ApplicationStatus.isValidApplicationStatus(null));
+        // null applicationStatus -> throws NullPointerException
+        assertThrows(NullPointerException.class, () -> ApplicationStatus.isValidApplicationStatus(null));
 
         // invalid applicationStatuses -> returns false
         assertFalse(ApplicationStatus.isValidApplicationStatus("")); // empty string

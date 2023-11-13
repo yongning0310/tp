@@ -31,16 +31,19 @@ public class CompanyName implements Comparable<CompanyName> {
 
     /**
      * Verifies whether the given string constitutes a valid company name. Company names longer than 200 characters
-     * are rejected to prevent overflows in the UI.
+     * are rejected to prevent overflows in the UI. The given string is also stripped to defensively guard against
+     * instances where leading or trailing spaces are inserted when user directly modifies the internship.json file.
+     * This is important so that the given string does not fail the regex check.
      *
      * @param test The given string to be tested.
      * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidCompanyName(String test) {
-        if (test.length() > 200) {
+        String strippedTest = test.strip();
+        if (strippedTest.length() > 200) {
             return false;
         }
-        return test.matches(VALIDATION_REGEX);
+        return strippedTest.matches(VALIDATION_REGEX);
     }
 
     @Override
@@ -48,6 +51,13 @@ public class CompanyName implements Comparable<CompanyName> {
         return this.companyName;
     }
 
+    /**
+     * Verifies whether this company name is equals to the given object. This block of code defensively guard against
+     * duplicate company names that only differ in terms of the number of leading, trailing or internal spaces. It is
+     * especially important in cases where users edit the internship.json file directly.
+     * @param other The given object to check for equality against.
+     * @return A boolean representing whether this company name is equals to the object.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -60,7 +70,16 @@ public class CompanyName implements Comparable<CompanyName> {
         }
 
         CompanyName otherCompanyName = (CompanyName) other;
-        return this.companyName.equalsIgnoreCase(otherCompanyName.companyName);
+
+
+        String thisStrippedCompanyNameString = this.companyName
+                .strip()
+                .replaceAll("\\s+", " ");
+        String otherStrippedCompanyNameString = otherCompanyName.companyName
+                .strip()
+                .replaceAll("\\s+", " ");
+
+        return thisStrippedCompanyNameString.equalsIgnoreCase(otherStrippedCompanyNameString);
     }
 
     /**

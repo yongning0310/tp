@@ -38,15 +38,19 @@ public class Deadline implements Comparable<Deadline> {
 
     /**
      * Returns true if the given strings for deadline and start date are valid and the deadline is earlier than the
-     * start date.
+     * start date. The given strings are also stripped to defensively guard against instances where leading or trailing
+     * spaces are inserted when user directly modifies the internship.json file. This is important so that the given
+     * strings do not fail the regex check.
      *
      * @param deadlineTest The deadline string to be tested.
      * @param startDateTest The start date string to be tested.
      */
     public static boolean isValidDeadline(String deadlineTest, String startDateTest) {
+        String strippedDeadlineTest = deadlineTest.strip();
+        String strippedStartDateTest = startDateTest.strip();
         try {
-            LocalDate deadline = LocalDate.parse(deadlineTest, DATE_FORMATTER);
-            LocalDate startDate = LocalDate.parse(startDateTest, DATE_FORMATTER);
+            LocalDate deadline = LocalDate.parse(strippedDeadlineTest, DATE_FORMATTER);
+            LocalDate startDate = LocalDate.parse(strippedStartDateTest, DATE_FORMATTER);
             return deadline.isBefore(startDate);
         } catch (DateTimeParseException e) {
             return false;

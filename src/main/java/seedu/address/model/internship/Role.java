@@ -31,16 +31,19 @@ public class Role implements Comparable<Role> {
 
     /**
      * Verifies whether the given string constitutes a valid role. Roles longer than 200 characters are rejected to
-     * prevent overflows in the UI.
+     * prevent overflows in the UI. The given string is also stripped to defensively guard against
+     * instances where leading or trailing spaces are inserted when user directly modifies the internship.json file.
+     * This is important so that the given string does not fail the regex check.
      *
      * @param test The given string to be tested.
      * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidRole(String test) {
-        if (test.length() > 200) {
+        String strippedTest = test.strip();
+        if (strippedTest.length() > 200) {
             return false;
         }
-        return test.matches(VALIDATION_REGEX);
+        return strippedTest.matches(VALIDATION_REGEX);
     }
 
     @Override
@@ -48,6 +51,13 @@ public class Role implements Comparable<Role> {
         return this.role;
     }
 
+    /**
+     * Verifies whether this role is equals to the given object. This block of code defensively guard against
+     * duplicate roles that only differ in terms of the number of leading, trailing or internal spaces. It is
+     * especially important in cases where users edit the internship.json file directly.
+     * @param other The given object to check for equality against.
+     * @return A boolean representing whether this role is equals to the object.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -60,7 +70,16 @@ public class Role implements Comparable<Role> {
         }
 
         Role otherRole = (Role) other;
-        return this.role.equalsIgnoreCase(otherRole.role);
+
+        String thisRoleStringStripped = this.role
+                .strip()
+                .replaceAll("\\s+", " ");
+        String otherRoleStringStripped = otherRole.role
+                .strip()
+                .replaceAll("\\s+", " ");
+
+
+        return thisRoleStringStripped.equalsIgnoreCase(otherRoleStringStripped);
     }
 
     /**
