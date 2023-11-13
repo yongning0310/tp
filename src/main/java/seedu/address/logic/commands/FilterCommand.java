@@ -42,7 +42,7 @@ public class FilterCommand extends InternshipCommand {
     private final String filterValue;
 
     /**
-     * To refactor. Constructs a Filter Command without the additional parameter and value information.
+     * Constructs a Filter Command without the additional parameter and value information.
      * @param predicate
      */
     public FilterCommand(Predicate<Internship> predicate) {
