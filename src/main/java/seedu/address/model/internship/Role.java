@@ -60,7 +60,10 @@ public class Role implements Comparable<Role> {
         }
 
         Role otherRole = (Role) other;
-        return this.role.equalsIgnoreCase(otherRole.role);
+        return this.role
+                .strip()
+                .replaceAll("\\s+", " ")
+                .equalsIgnoreCase(otherRole.role);
     }
 
     /**

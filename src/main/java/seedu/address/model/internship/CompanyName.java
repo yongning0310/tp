@@ -60,7 +60,10 @@ public class CompanyName implements Comparable<CompanyName> {
         }
 
         CompanyName otherCompanyName = (CompanyName) other;
-        return this.companyName.equalsIgnoreCase(otherCompanyName.companyName);
+        return this.companyName
+                .strip()
+                .replaceAll("\\s+", " ")
+                .equalsIgnoreCase(otherCompanyName.companyName);
     }
 
     /**
