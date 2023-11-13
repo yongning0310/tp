@@ -124,10 +124,10 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the address book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
+* stores the internship book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
 * stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+* stores a `InternshipUserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyInternshipUserPref` objects.
+* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 ### Storage component
 
@@ -138,7 +138,7 @@ The `Model` component,
 The `Storage` component,
 * can save both Flagship data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `InternshipBookStorage` and `InternshipUserPrefsStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`).
 
 ### Common classes
 
@@ -203,12 +203,12 @@ The following sequence diagram shows how the `create` command operation works:
 
 **Aspect: What constitutes a duplicate internship entry:**
 
-* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` is sufficient (insensitive to upper/lower cases of characters and leading/trailing/excess internal spaces)
-    * Pros: Easy to manage and debug
-    * Cons: Does not label duplicates in the strict equality sense
+* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` (insensitive to upper/lower cases of characters) is sufficient
+    * Pros: Easy to manage and debug.
+    * Cons: Does not label duplicates in the strict equality sense.
 
 * **Alternative 2:** Case-sensitive, identical attributes across all fields are necessary for an entry to be classified a duplicate
-    * Pros: Label duplicates in the strictest possible sense
+    * Pros: Label duplicates in the strictest possible sense.
     * Cons: Most accidental duplicate entries mistakenly entered by the user need not resemble one another completely across all attributes.
 
 ### Delete command
@@ -369,11 +369,18 @@ the other corresponding command.
 Step 3. The `filter` command is executed. The predicate generated based on user criteria is used to filter internships in the `InternshipModel`.
 
 <puml src="diagrams/FilterCommandExecute.puml" alt="FilterCommandExecute" />
+
+<puml src="diagrams/FilterCommandState1.puml" alt="FilterCommandState1" />
+
 <box type="info" seamless>
 
 **Note:** The filtered list in the `InternshipModel` is updated to only include internships that satisfy the conditions specified by the predicate.
 
 </box>
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/FilterSequenceDiagram.puml" alt="FilterSequenceDiagram" />
 
 #### Design considerations:
 **Aspect: How the filter conditions are specified:**
