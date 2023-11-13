@@ -56,8 +56,12 @@ public class CreateCommandParser implements InternshipParser<CreateCommand> {
         // There should be at least 6 parameters tokenized (because requirements are optional)
         assert(argMultimap.getLength() >= 6);
 
-        CompanyName companyName = ParserUtil.parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME).get().strip());
-        Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get().strip());
+        CompanyName companyName = ParserUtil.parseCompanyName(
+                argMultimap.getValue(PREFIX_COMPANY_NAME).get().strip().replaceAll("\\s+", " ")
+        );
+        Role role = ParserUtil.parseRole(
+                argMultimap.getValue(PREFIX_ROLE).get().strip().replaceAll("\\s+", " ")
+        );
 
         ApplicationStatus applicationStatus = ParserUtil.parseApplicationStatus(
                 argMultimap.getValue(PREFIX_APPLICATION_STATUS).get().strip()
