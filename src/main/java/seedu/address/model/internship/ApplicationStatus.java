@@ -34,13 +34,16 @@ public class ApplicationStatus implements Comparable<ApplicationStatus> {
     }
 
     /**
-     * Verifies whether the given string constitutes a valid application status enum.
+     * Verifies whether the given string constitutes a valid application status enum. The given string is also stripped
+     * to defensively guard against instances where leading or trailing spaces are inserted when user directly modifies
+     * the internship.json file. This is important so that the given string does not fail the regex check.
      *
      * @param test The given string to be tested.
      * @return A boolean representing whether the string input is valid.
      */
     public static boolean isValidApplicationStatus(String test) {
-        return VALID_STATUSES.contains(test);
+        String strippedTest = test.strip();
+        return VALID_STATUSES.contains(strippedTest);
     }
 
     @Override
