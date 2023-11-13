@@ -351,9 +351,9 @@ Step 1. The user launches the application and already has a bunch of internships
 
 </box>
 
-Step 2.The user inputs `filter [CATEGORY_TYPE1]/[KEYWORDS]` for categories accepting text inputs such as `COMPANY_NAME`, `ROLE`, `APPLICATION_STATUS`, `REQUIREMENT`, and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `filter` command.
+Step 2. The user inputs `filter [CATEGORY_TYPE1]/[KEYWORDS]` for categories accepting text inputs such as `COMPANY_NAME`, `ROLE`, `APPLICATION_STATUS`, `REQUIREMENT`, and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `filter` command.
 
-Step 2.The user inputs `filter [CATEGORY_TYPE2]]/[START_END]` for categories accepting ranges such as start date, duration, and deadline, and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `filter` command.
+Step 2. The user inputs `filter [CATEGORY_TYPE2]]/[START_END]` for categories accepting ranges such as start date, duration, and deadline, and it is parsed by `InternshipBookParser` to verify that it has the valid format of a `filter` command.
 
 <puml src="diagrams/FilterCommandParse.puml" alt="FilterCommandParse" />
 
