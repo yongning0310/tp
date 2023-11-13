@@ -568,7 +568,7 @@ Advanced users are welcome to update the data file directly by editing **interns
 ⚠️  **Be extremely careful if you make any changes to the data file!**
 - If you make incorrect formatting changes, insert duplicate internship entries, or give [invalid values](#parameter-constraints) to certain parameters, 
   Flagship will discard all data and start with an empty data file on the next run.
-- If you add extra spaces in the parameters (e.g. company name or role), we will not be able to remove the spaces effectively. This will adversely affect what is displayed on the GUI.
+- If you add extra spaces in the parameters (e.g. company name or role), we will not be able to remove the spaces effectively. This will adversely affect what is displayed on the GUI and your ability to filter internship entries.
 
 Hence, you are highly recommended to take a backup of the file before editing it.
 </div>
