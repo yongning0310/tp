@@ -18,8 +18,8 @@ InternshipBookParser -[hidden]right- SortCommand
 
 hide SortCommand
 
-class UserInput as "User Input: sort ro/ASC"
+class UserInput as "sort ro/ASC"
 
-UserInput -down- InternshipBookParser : parses
+UserInput -up- InternshipBookParser : < parses
 
 @enduml
