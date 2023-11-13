@@ -43,6 +43,21 @@
    5. [Modify Command](#modify-command)
        - [Implementation(modify)](#implementationmodify)
        - [Design Considerations(modify)](#design-considerationsmodify)
+5. [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
+6. [Appendix: Requirements](#appendix-requirements)
+   1. [Glossary](#glossary) 
+   2. [Product Scope](#product-scope)
+   3. [User Stories](#user-stories)
+   4. [Use Cases](#use-cases)
+   5. [Non Functional Requirements](#non-functional-requirements)
+7. [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
+   1. [Launch](#launch)
+   2. [Creating Internship Entries](#creating-internship-entries)
+   3. [Modifying Internship Entries](#modifying-internship-entries)
+   4. [Filtering Internship Entries](#filtering-internship-entries)
+   5. [Sorting Internship Entries](#sorting-internship-entries)
+   6. [Deleting Internship Entries](#deleting-internship-entries)
+   7. [Saving Data](#saving-data)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -837,7 +852,7 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `sort`<br>
       Expected: Error message indicating an invalid format for the sort command is shown.
 
-### Deleting an internship
+### Deleting internship entries
 
 1. Deleting while all internship entries are displayed 
 
