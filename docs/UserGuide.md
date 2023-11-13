@@ -243,14 +243,12 @@ allow Flagship to help you detect typos and make retrieving data far easier!
 |------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------|------------|---------------------------------------|
 | **Company Name**       | `c/`   | **`COMPANY_NAME`** can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters. | Yes        | `Optiver`, <br> `Jane Street`         |
 | **Role**               | `ro/`  | **`ROLE`** can contain these characters: `A-Z a-z 0-9` and `<space>`. Cannot **exclusively** contain `<space>` and exceed 200 characters.         | Yes        | `Software Engineer`, <br> `Fullstack` |
-| **Application Status** | `a/`   | **`APPLICATION_STATUS`** must be one of the following: `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`.                          | Yes        | N.A                                   |
+| **Application Status** | `a/`   | **`APPLICATION_STATUS`** must be one of the following: <br> `Yet to apply`, `Applied`, `In progress`, `Accepted`, `Rejected`.                     | Yes        | N.A                                   |
 | **Deadline**           | `de/`  | **`DEADLINE`** must be of the following form `DD/MM/YYYY` and must be **earlier** than the `START_DATE`.                                          | Yes        | `20/02/2001`, <br> `01/01/2000`       |
 | **Start Date**         | `s/`   | **`START_DATE`** must be of the following form `DD/MM/YYYY` and must be **later** than the `DEADLINE`.                                            | Yes        | `20/02/2001`, <br> `01/01/2000`       |
 | **Duration**           | `du/`  | **`DURATION`** must be a positive integer.                                                                                                        | Yes        | `1`, <br> `10`                        |
 | **Requirements**       | `re/`  | **`REQUIREMENTS`** cannot contain foreign language characters, **exclusively** contain `<space>` and exceed 200 characters.                       | No         | `C++`, <br> `Haskell`                 |
 
-<br>
-<br>
 <div style="page-break-after: always;"></div>
 <div style="float: right;">
   <a href="#table-of-contents">
