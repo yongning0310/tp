@@ -45,7 +45,7 @@ Flagship is a desktop application used to help aspiring students track internshi
       * Internship requirements are extremely flexible (users can input any number of requirements)
       * Internship details can be keyed in any order
       * Purposeful equality definition that strikes a balance between error detection and user flexibility 
-    * (Pull requests [\#19](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/19), [\#75](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/75))
+    * Pull requests [\#19](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/19), [\#75](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/75)
 
 * **Documentation**:
   * User Guide:
@@ -69,10 +69,10 @@ Flagship is a desktop application used to help aspiring students track internshi
     [\#195](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/195),
     [\#199](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/199),
     [\#200](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/200),
-  * [\#213](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/213)
+    [\#213](https://github.com/AY2324S1-CS2103T-W17-1/tp/pull/213)
   * Reported bugs and suggestions for other teams in the class:
     [\#9](https://github.com/jinyang628/ped/issues/9),
     [\#7](https://github.com/jinyang628/ped/issues/7)
 
 * **Tools**:
-  * Utilised 'org.junit.jupiter:junit-jupiter-params:5.7.0' to reduce code duplications in test cases
+  * Utilised `org.junit.jupiter:junit-jupiter-params:5.7.0` to reduce code duplications in test cases
