@@ -310,12 +310,12 @@ that you do not accidentally track an internship application twice. The followin
 </div>
 <br>
 
-| Description                                                                                                    | Example                                                                   |
-|----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **Company names/roles only differ in upper/lower cases**                                                       | `Jane Street`, `jane Street` and `jANe strEEt` are considered the same    |
-| **Company names/roles only differ in leading/trailing white spaces** (Using dots to represent spaces)          | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same |
-| **Company names/roles only differ in number of internal white spaces** (Flagship trims excess internal spaces) | `Jane    Street`, `Jane Street` are considered the same                   |
-| **Combination of the differences mentioned above**                                                             | `Jane street...`, `...jane StReet` are considered the same                |
+| Description                                                                                                    | Example                                                                                                       |
+|----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| **Company names/roles only differ in upper/lower cases**                                                       | `Jane Street`, `jane Street` and `jANe strEEt` are considered the same                                        |
+| **Company names/roles only differ in leading/trailing white spaces** (Using dots to represent spaces)          | `...Jane Street`, `Jane Street...`, `Jane Street` are considered the same                                     |
+| **Company names/roles only differ in number of internal white spaces** (Flagship trims excess internal spaces) | `Jane...Street`, `Jane Street` are considered the same (Note that `JaneStreet` is still considered different) |
+| **Combination of the differences mentioned above**                                                             | `Jane street...`, `...jane StReet` are considered the same                                                    |
 
 **All other differences** between two internship entries' company name and role will cause them to be considered as distinct entries.
 
@@ -568,7 +568,7 @@ Advanced users are welcome to update the data file directly by editing **interns
 ⚠️  **Be extremely careful if you make any changes to the data file!**
 - If you make incorrect formatting changes, insert duplicate internship entries, or give [invalid values](#parameter-constraints) to certain parameters, 
   Flagship will discard all data and start with an empty data file on the next run.
-- If you add extra spaces in the parameters (e.g. company name or role), we will not be able to remove the spaces effectively. This will adversely affect what is displayed on the GUI.
+- If you add extra spaces in the parameters (e.g. company name or role), we will not be able to remove the spaces effectively. This will adversely affect what is displayed on the GUI and your ability to filter internship entries.
 
 Hence, you are highly recommended to take a backup of the file before editing it.
 </div>
