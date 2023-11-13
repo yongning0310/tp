@@ -8,7 +8,7 @@
   <img src="images/flagshipLogo.png" alt="Flagship Logo" width="350" height="350"/>
 </p>
 
-<h1 align="center">Flagship User Guide</h1>
+<h1 align="center">Flagship Developer Guide</h1>
 
 <p align="center">
   <em>Your guide to navigating and managing your internship applications with Flagship.</em>

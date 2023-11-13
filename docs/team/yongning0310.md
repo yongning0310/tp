@@ -5,7 +5,7 @@ title: "Yong Ning's Project Portfolio Page"
 
 ## Project: Flagship
 
-Flagship is a desktop application designed to assist aspiring students in tracking their internship applications. Interaction with the application is primarily through a CLI, complemented by a GUI built using JavaFX. It is developed in Java, with approximately () kLoC.
+Flagship is a desktop application designed to assist aspiring students in tracking their internship applications. Interaction with the application is primarily through a CLI, complemented by a GUI built using JavaFX. It is developed in Java, with approximately 9 kLoC.
 
 ## Summary of contributions
 
