@@ -1,13 +1,48 @@
 ---
-layout: default.md
-title: "Developer Guide"
-pageNav: 3
+    layout: default.md
+    title: "Developer Guide"
+    pageNav: 3
 ---
 
-# Flagship Developer Guide
+<br> 
 
-<!-- * Table of Contents -->
-<page-nav-print />
+<p align="center">
+  <img src="images/flagshipLogo.png" alt="Flagship Logo" width="350" height="350"/>
+</p>
+
+<h1 align="center">Flagship Developer Guide</h1>
+
+<p align="center">
+  <em>Your guide to navigating and managing your internship applications with Flagship.</em>
+</p>
+
+---
+## Table of Contents
+
+1. [Acknowledgements](#acknowledgements)
+2. [Setting up, getting started](#setting-up-getting-started)
+3. [Design](#design)
+   1. [Architecture](#architecture)
+   2. [UI-component](#ui-component)
+   3. [Logic-component](#logic-component)
+   4. [Model component](#model-component)
+   5. [Storage component](#storage-component)
+   6. [Common classes](#common-classes)
+4. [Implementation](#implementation)
+   1. [Create Command](#create-command)
+      - [Implementation(create)](#implementationcreate)
+      - [Design Considerations(create)](#design-considerationscreate)
+   2. [Delete Command](#delete-command)
+       - [Implementation(delete)](#implementationdelete)
+   3. [Sort Command](#sort-command)
+       - [Implementation(sort)](#implementationsort)
+       - [Design Considerations(sort)](#design-considerationssort)
+   4. [Filter Command](#filter-command)
+       - [Implementation(filter)](#implementationfilter)
+       - [Design Considerations(filter)](#design-considerationsfilter)
+   5. [Modify Command](#modify-command)
+       - [Implementation(modify)](#implementationmodify)
+       - [Design Considerations(modify)](#design-considerationsmodify)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -150,9 +185,9 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Create command
+### Create Command
 
-#### Implementation
+#### Implementation(create)
 
 The create command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `create` command with a valid format.
 Upon successful verification, the `create` command is executed.
@@ -199,7 +234,7 @@ The following sequence diagram shows how the `create` command operation works:
 **Note:** The lifeline for `CreateCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </box>
 
-#### Design considerations:
+#### Design Considerations(create):
 
 **Aspect: What constitutes a duplicate internship entry:**
 
@@ -213,7 +248,7 @@ The following sequence diagram shows how the `create` command operation works:
 
 ### Delete command
 
-#### Implementation
+#### Implementation(delete)
 
 The delete command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `delete` command with a valid format.
 Upon successful verification, the `delete` command is executed.
@@ -260,9 +295,9 @@ The following sequence diagram shows how the delete operation works:
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </box>
 
-### Sort feature
+### Sort command
 
-### Sort Implementation
+#### Implementation(sort)
 
 The sort mechanism is facilitated by InternshipBook. InternshipBook provides us with the field of currentComparator, which stores the current sorting order of the lists. Additionally, it provides the main sort operation:
 
@@ -317,7 +352,7 @@ The following sequence diagram shows how the sort operation works:
 
 <puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
 
-#### Design considerations:
+#### Design Considerations(sort):
 
 **Aspect: How we retain the sort order:**
 
@@ -329,9 +364,9 @@ The following sequence diagram shows how the sort operation works:
     * Pros: Will reduce the complexity of operations as operations do not need to sort after making changes to the internship list.
     * Cons: Will cause the updated list to be no longer sorted.
 
-### Filter feature
+### Filter command
 
-### Filter Implementation
+#### Implementation(filter)
 
 The `filter` command is facilitated by  `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a filter command with a valid format. Once the format is validated, the predicate required to filter the internships based on user criteria is generated.
 
@@ -382,7 +417,7 @@ The following sequence diagram shows how the sort operation works:
 
 <puml src="diagrams/FilterSequenceDiagram.puml" alt="FilterSequenceDiagram" />
 
-#### Design considerations:
+#### Design Considerations(filter):
 **Aspect: How the filter conditions are specified:**
 
 * **Alternative 1 (current choice):** Use a predicate-based approach to allow flexible filtering criteria.
@@ -393,9 +428,9 @@ The following sequence diagram shows how the sort operation works:
     * Pros: Simpler to implement.
     * Cons: Less flexible and might not cover all use cases or user needs.
 
-### Modify feature
+### Modify Command
 
-### Modify Implementation
+#### Implementation(modify)
 
 The `modify` command is facilitated through the `InternshipLogicManager`. Upon user input, it first goes through parsing by the `InternshipBookParser#parseCommand()`. This is to ensure that the input is indeed a `modify` command and that it adheres to a valid format.
 
@@ -433,7 +468,7 @@ The following sequence diagram shows how the modify operation works:
 
 <puml src="diagrams/ModifySequenceDiagram.puml" alt="ModifySequenceDiagram" />
 
-#### Design considerations:
+#### Design Considerations(modify):
 
 **Aspect: How should we handle fields that aren't provided in the command?**
 
