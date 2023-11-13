@@ -5,8 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
@@ -163,12 +164,15 @@ public class ParserUtil {
      */
     public static Set<Requirement> parseRequirements(Collection<String> requirements) throws ParseException {
         requireNonNull(requirements);
-        final Set<Requirement> requirementSet = new HashSet<>();
+        final Set<Requirement> requirementSet = new TreeSet<>(
+                Comparator.comparing(Requirement::getRequirementName, String.CASE_INSENSITIVE_ORDER)
+        );
         for (String requirementName : requirements) {
             requirementSet.add(parseRequirement(requirementName.strip().replaceAll("\\s+", " ")));
         }
         return requirementSet;
     }
+
 
     /**
      * Parses a {@code String requirement} into a {@code Requirement}.
