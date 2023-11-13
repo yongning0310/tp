@@ -126,7 +126,7 @@ The `Model` component,
 
 * stores the internship book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
 * stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `InternshipUserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyInternshipUserPref` objects.
+* stores a `InternshipUserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyInternshipUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 ### Storage component
@@ -203,7 +203,7 @@ The following sequence diagram shows how the `create` command operation works:
 
 **Aspect: What constitutes a duplicate internship entry:**
 
-* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` (insensitive to upper/lower cases of characters) is sufficient
+* **Alternative 1 (current choice):** Identical `COMPANY_NAME` and `ROLE` is sufficient (insensitive to upper/lower cases of characters and leading/trailing/excess internal spaces)
     * Pros: Easy to manage and debug.
     * Cons: Does not label duplicates in the strict equality sense.
 
