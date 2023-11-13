@@ -29,8 +29,8 @@
 7. [Parameter Constraints](#parameter-constraints)
 8. [Commands](#commands)
     1. [Creating an Internship](#creating-an-internship-create)
-    2. [Editing an Internship](#editing-an-internship-modify)
-    3. [Filter Internships by Name and Keyword](#filter-internships-by-category-and-keywordrange-filter)
+    2. [Modifying an Internship](#modifying-an-internship-modify)
+    3. [Filter Internships by Category and Keyword/Range](#filter-internships-by-category-and-keywordrange-filter)
     4. [Sort Internships by Category and Order](#sort-internships-by-category-and-order-sort)
     5. [Deleting an Internship](#deleting-an-internship-delete)
 9. [Saving the data](#saving-the-data)
@@ -343,7 +343,7 @@ so that you can track your past internship applications for your own reference.
   </a>
 </div>
 
-### Editing an Internship: `modify`
+### Modifying an Internship: `modify`
 
 Need to update an existing internship entry? The `modify` command lets you adjust the details of your applications in Flagship.
 Whether the application deadline has changed or there's a change in job requirements, modify your entry to ensure it's up-to-date.
@@ -379,7 +379,7 @@ Whether the application deadline has changed or there's a change in job requirem
 ⚠️ **Internship Entry Modification Policies:**
 
 - **INDEX is Mandatory**: The INDEX, a positive integer, is required to identify the entry's position in the list. Modifying an entry will replace the existing list, not add to it.
-- **Unique Company Name and Role Requirement**: When modifying an existing internship entry's company name and role, we will verify that the new combination of company name and role does not result in a duplicate of an existing entry, excluding the current entry being edited. This maintains consistency with the create command section's rule against duplicates.
+- **Unique Company Name and Role Requirement**: When modifying an existing internship entry's company name and role, we will verify that the new combination of company name and role does not result in a duplicate of an existing entry, excluding the current entry being modified. This maintains consistency with the create command section's rule against duplicates.
 - **Parameter Requirement**: There must be at least one parameter following the INDEX when modifying an entry. Omission of parameters will trigger an error message.
 - **Deadline and Start Date restriction**: When modifying only the deadline or the start date, we will check against the existing internship entry that is being modified to ensure that the deadline is before the start date. Commands that violate this will trigger an error message.
 </div>
@@ -534,6 +534,15 @@ internship entry's visible position on the screen.
 --------------------------------------------------------------------------------------------------------------------
 <br>
 
+<div style="page-break-after: always;"></div>
+<br>
+
+<div style="float: right;">
+  <a href="#table-of-contents">
+    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
+  </a>
+</div>
+
 ## Saving the data
 
 Flagship data is saved in the hard disk automatically. There is no need to save manually.
@@ -548,15 +557,6 @@ Flagship data is saved automatically as a [JSON](#glossary) file `[JAR file loca
 ```
 
 --------------------------------------------------------------------------------------------------------------------
-
-<div style="page-break-after: always;"></div>
-<br>
-
-<div style="float: right;">
-  <a href="#table-of-contents">
-    <img src="images/flagshipLogo.png" alt="Flagship Logo" width="30" height="30"/>
-  </a>
-</div>
 
 ## Editing the data file
 
@@ -590,10 +590,6 @@ or Flagship might crash.
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 --------------------------------------------------------------------------------------------------------------------
-<br>
-
-<div style="page-break-after: always;"></div>
-<br>
 
 <div style="float: right;">
   <a href="#table-of-contents">

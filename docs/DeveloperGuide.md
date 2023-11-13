@@ -13,6 +13,8 @@ pageNav: 3
 
 ## **Acknowledgements**
 
+Flagship is based on [AddressBook Level 3](), an open source template project to teach software engineering produced by [SE-EDU]().
+
 Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -115,28 +117,28 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `CreateCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`InternshipModel.java`](https://github.com/AY2324S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/model/InternshipModel.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
 
-The `InternshipModel` component,
+The `Model` component,
 
 * stores the address book data i.e., all `Internship` objects (which are contained in a `UniqueInternshipList` object).
 * stores the currently 'selected' `Internship` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Internship>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `InternshipModel` represents data entities of the domain, they should make sense on their own without depending on other components)
+* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-### InternshipStorage component
+### Storage component
 
 **API** : [`InternshipStorage.java`](https://github.com/AY2324S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/storage/InternshipStorage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
-The `InternshipStorage` component,
+The `Storage` component,
 * can save both Flagship data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `InternshipBookStorage` and `InternshipUserPrefsStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `InternshipModel` component (because the `InternshipStorage` component's job is to save/retrieve objects that belong to the `InternshipModel`)
+* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
 
@@ -173,7 +175,7 @@ the other corresponding command.
 
 </box>
 
-Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipStorage`, the internship
+Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipModel`, the internship
 entry is created successfully.
 
 <puml src="diagrams/CreateCommandExecute.puml" alt="CreateCommandExecute" />
@@ -184,11 +186,11 @@ entry is created successfully.
 
 </box>
 
-Step 3. The internship entry is stored in `InternshipStorage`.
+Step 3. `InternshipStorage` now updates the stored internship entry list using the updated values in `ReadOnlyInternshipBook`.
 
 <puml src="diagrams/CreateCommandStore.puml" alt="CreateCommandStore" />
 
-The following sequence diagram shows how the create command operation works:
+The following sequence diagram shows how the `create` command operation works:
 
 <puml src="diagrams/CreateSequenceDiagram.puml" alt="CreateSequenceDiagram" />
 
@@ -235,7 +237,7 @@ the other corresponding command.
 </box>
 
 Step 2. The `delete` command is executed. If the index is valid, when it is greater than 0 and an internship exists at the specified index,
-the specified internship is selected for deletion.
+the specified internship is successfully deleted by InternshipModel.
 
 <puml src="diagrams/DeleteCommandExecute.puml" alt="DeleteCommandExecute" />
 
@@ -245,7 +247,7 @@ the specified internship is selected for deletion.
 
 </box>
 
-Step 3. The selected internship entry is deleted.
+Step 3. InternshipStorage now updates the stored internship entry list using the updated values in ReadOnlyInternshipBook.
 
 <puml src="diagrams/DeleteCommandRemove.puml" alt="DeleteCommandRemove" />
 
@@ -468,7 +470,7 @@ The following sequence diagram shows how the modify operation works:
 * is a college student or recent graduate actively looking for internship opportunities.
 * values the importance of being organized and keeping track of their internship applications' progress.
 * wants a centralized platform to manage their internship applications and related information.
-* can type fast
+* can type fast and accurately
 * is reasonably comfortable using CLI apps
 
 **Value proposition**: organize and manage internship applications efficiently through a command-line interface, ensuring that no opportunities are missed and applications are tracked systematically.
@@ -636,20 +638,28 @@ Use case ends.
 
 #### Performance
 
-* Should be able to hold up to 1000 internships without a noticeable sluggishness in performance for typical usage.
+* Should be able to hold up to 1000 internship entries without a noticeable sluggishness in performance for typical usage.
 * Should respond to user commands within 2 seconds under normal conditions.
 
 #### Usability
 
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 * A new user should be able to grasp the basic features within 10 minutes.
+* Should be easily navigable.
+* Documentation should be clear and effective in helping users learn to use Flagship effectively.
+* In case of errors, should guide users with clear messages to guide them to correct any problems.
 
 #### Security and Data Integrity
 
+* Should allow persistent data storage for ease of use across multiple sessions.
 * Should encrypt user data both during transfer and when stored.
 * Should authenticate user based on username.
 
-*{More to be added}*
+#### Extensibility
+
+* Should be extensible. Implementing new features and functionalities should be a simple process.
+* Code should follow good style, organisation and have good documentation to aid in maintenance.
+* Documentation should be clear and effective in helping developers understand the system.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -664,22 +674,22 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
-### Launch and shutdown
+### Launch
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
+    1. Download `flagship.jar` and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Using your terminal, navigate to the folder `flagship.jar` is stored in.
+
+    1. Type the following command into your terminal: `java -jar flagship.jar` Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
     1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app with the command: `java -jar flagship.jar`.<br>
        Expected: The most recent window size and location is retained.
-
-1. _{ more test cases …​ }_
 
 ### Creating an internship entry
 
@@ -718,6 +728,18 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. **Prerequistes**: Before each test, the most recent Flagship data file should be valid and contain at least 1 internship entry. <br>
+                        Access the data file in `[JAR file location]/data/internshipBook.json` using a text editor of your choice.
 
-1. _{ more test cases …​ }_
+   1. Test case: Invalid formatting. Delete all text in the JSON file and replace with the text `test`. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a `JsonParseException`.
+
+   1. Test case: Invalid values. Find a valid internship entry and edit the `duration` field to a value of `3test`. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports an illegal value found for the `duration` field. 
+
+   1. Test case: Missing parameters. Find a valid internship entry and remove the `deadline` field completely. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports a missing `deadline` field.
+
+   1. Test case: Duplicate internship entries. Find a valid internship entry, select the entire entry and copy and paste it. <br>
+      Expected: Flagship initialises with an empty internship entry list. An error message from the logger reports duplicate internship entries.
+
