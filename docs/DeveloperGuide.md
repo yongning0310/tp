@@ -175,7 +175,7 @@ the other corresponding command.
 
 </box>
 
-Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipStorage`, the internship
+Step 2. The `create` command is executed. If there does not exist a duplicate entry in `InternshipModel`, the internship
 entry is created successfully.
 
 <puml src="diagrams/CreateCommandExecute.puml" alt="CreateCommandExecute" />
@@ -186,11 +186,11 @@ entry is created successfully.
 
 </box>
 
-Step 3. The internship entry is stored in `InternshipStorage`.
+Step 3. `InternshipStorage` now updates the stored internship entry list using the updated values in `ReadOnlyInternshipBook`.
 
 <puml src="diagrams/CreateCommandStore.puml" alt="CreateCommandStore" />
 
-The following sequence diagram shows how the create command operation works:
+The following sequence diagram shows how the `create` command operation works:
 
 <puml src="diagrams/CreateSequenceDiagram.puml" alt="CreateSequenceDiagram" />
 
