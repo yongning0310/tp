@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-Flagship is based on [AddressBook Level 3](), an open source template project to teach software engineering produced by [SE-EDU]().
+Flagship is based on [AddressBook Level 3](https://se-education.org/addressbook-level3/), an open source template project to teach software engineering produced by [SE-EDU](https://se-education.org/).
 
 Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
 
@@ -512,7 +512,7 @@ Use case ends.
     * 1a1. Flagship shows an error message.
       Use case resumes from step 1.
 
-* 1b. Internship entry has a duplicate already stored in `Flagship`.
+* 1b. Internship entry has a duplicate already stored in Flagship.
     * 1b1. Flagship shows an error message.
       Use case resumes from step 1.
 
