@@ -17,6 +17,6 @@ package "Command" {
     class FilterCommand as "FilterCommand"
 
 InternshipLogicManager -down- FilterCommand : > executes
-FilterCommand -up- InternshipModel : < filters internship entries
+FilterCommand -up- InternshipModel : > filters internship entries
 InternshipModel -[hidden]up-> FilterCommand
 @enduml
