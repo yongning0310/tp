@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-Flagship is based on [AddressBook Level 3](), an open source template project to teach software engineering produced by [SE-EDU]().
+Flagship is based on [AddressBook Level 3](https://se-education.org/addressbook-level3/), an open source template project to teach software engineering produced by [SE-EDU](https://se-education.org/).
 
 Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
 
@@ -58,10 +58,10 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 Each of the four main components (also shown in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `Internship{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* defines its *API* in an `interface` with the name `Internship{Component Name}`.
+* implements its functionality using a concrete `{Interface Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.)
 
-For example, the `InternshipLogic` component defines its API in the `InternshipLogic.java` interface and implements its functionality using the `InternshipLogicManager.java` class which follows the `InternshipLogic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
+For example, the `Logic` component defines its API in the `InternshipLogic.java` interface and implements its functionality using the `InternshipLogicManager.java` class which follows the `InternshipLogic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
@@ -82,7 +82,7 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Internship` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Internship` objects residing in the `Model`.
 
 ### Logic component
 
@@ -150,7 +150,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Create command
+### Create feature
 
 #### Implementation
 
@@ -211,7 +211,7 @@ The following sequence diagram shows how the `create` command operation works:
     * Pros: Label duplicates in the strictest possible sense.
     * Cons: Most accidental duplicate entries mistakenly entered by the user need not resemble one another completely across all attributes.
 
-### Delete command
+### Delete feature
 
 #### Implementation
 
@@ -333,7 +333,7 @@ The following sequence diagram shows how the sort operation works:
 
 ### Filter Implementation
 
-The `filter` command is facilitated by  `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a filter command with a valid format. Once the format is validated, the predicate required to filter the internships based on user criteria is generated.
+The filter command is facilitated by  `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a filter command with a valid format. Once the format is validated, the predicate required to filter the internships based on user criteria is generated.
 
 This predicate is then used to update the filtered internship list in the `InternshipModel`. The filtered list will only contain internships that satisfy the conditions specified by the user.
 
@@ -397,7 +397,7 @@ The following sequence diagram shows how the sort operation works:
 
 ### Modify Implementation
 
-The `modify` command is facilitated through the `InternshipLogicManager`. Upon user input, it first goes through parsing by the `InternshipBookParser#parseCommand()`. This is to ensure that the input is indeed a `modify` command and that it adheres to a valid format.
+The modify command is facilitated through the `InternshipLogicManager`. Upon user input, it first goes through parsing by the `InternshipBookParser#parseCommand()`. This is to ensure that the input is indeed a `modify` command and that it adheres to a valid format.
 
 Once it is verified as a legitimate command, the `modify` function is initiated. An essential part of this process is checking the new internship entry's `COMPANY_NAME` and `ROLE` against potential duplicates in the current `InternshipStorage` database. Notably, while doing this check, the original internship entry's `COMPANY_NAME` and `ROLE` are ignored. If no duplicate is identified, the internship entry is edited and then stored within `InternshipStorage`.
 
@@ -432,6 +432,11 @@ Step 3: After successful editing, the internship entry is saved into `Internship
 The following sequence diagram shows how the modify operation works:
 
 <puml src="diagrams/ModifySequenceDiagram.puml" alt="ModifySequenceDiagram" />
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `ModifyCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</box>
 
 #### Design considerations:
 
@@ -519,7 +524,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Flagship shows an error message.
       Use case resumes from step 1.
 
-* 1b. Internship entry has a duplicate already stored in `Flagship`.
+* 1b. Internship entry has a duplicate already stored in Flagship.
     * 1b1. Flagship shows an error message.
       Use case resumes from step 1.
 
@@ -647,7 +652,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Usability
 
-* A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+* A user with above [average typing speed](https://www.ratatype.com/learn/average-typing-speed/) for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 * A new user should be able to grasp the basic features within 10 minutes.
 * Should be easily navigable.
 * Documentation should be clear and effective in helping users learn to use Flagship effectively.
@@ -656,8 +661,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 #### Security and Data Integrity
 
 * Should allow persistent data storage for ease of use across multiple sessions.
-* Should encrypt user data both during transfer and when stored.
-* Should authenticate user based on username.
 
 #### Extensibility
 
@@ -696,7 +699,8 @@ Perform these checks before each test to maintain consistency.
 
     1. Using your terminal, navigate to the folder `flagship.jar` is stored in.
 
-    1. Type the following command into your terminal: `java -jar flagship.jar` Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Type the following command into your terminal: `java -jar flagship.jar` <br>
+       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -717,7 +721,7 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the same command twice `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
        Expected: The internship entry is not created the second time. Duplicate entry error message is shown.
 
-    2. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` 
+    1. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` 
        and `create c/govtech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
        Expected: The internship entry is not created the second time. Duplicate entry error message is shown.
 
@@ -726,7 +730,7 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `create c/GovTech*** ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
        Expected: The internship entry is not created. Error message signalling an invalid value in the company name is shown.
 
-    2. Test case: Key in the command `create c/GovTech ro/SWE a/Thinking about it de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
+    1. Test case: Key in the command `create c/GovTech ro/SWE a/Thinking about it de/25/12/2022 s/20/01/2023 du/3 re/C++` <br>
        Expected: The Internship entry is not created. Error message signalling an invalid value in the application status is shown.
 
 
@@ -743,7 +747,7 @@ Perform these checks before each test to maintain consistency.
        Expected: The first internship entry in the displayed list is modified successfully but the second 
        internship entry is not modified. Duplicate entry error message is shown after the second command.
 
-    2. Test case: Key in the command `modify 1 c/GOVTECH ro/SWE` and `modify 2 c/GovTech ro/swe` <br>
+    1. Test case: Key in the command `modify 1 c/GOVTECH ro/SWE` and `modify 2 c/GovTech ro/swe` <br>
        Expected: The first internship entry in the list is modified successfully but the second
        internship entry is not modified. Duplicate entry error message is shown after the second command.
 
@@ -752,13 +756,13 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `modify 1 c/GOV-TECH ro/SWE`<br>
        Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
 
-    2. Test case: Key in the command `modify 1 c/`<br>
+    1. Test case: Key in the command `modify 1 c/`<br>
        Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
    
-    3. Test case: Key in the command `modify`<br>
+    1. Test case: Key in the command `modify`<br>
        Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
 
-    4. Test case: Key in the command `modify x` (where x is larger than the displayed list size)<br>
+    1. Test case: Key in the command `modify x` (where x is larger than the displayed list size)<br>
        Expected: The internship entry is not updated. Error message indicating an invalid format for the modify command is shown.
    
 ### Filtering internship entries
@@ -769,10 +773,10 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `filter c/govtech`<br>
        Expected: The internship entry list displayed contains all internship entries with the company name "govtech".
 
-     2. Test case: Key in the command `filter c/GOVTECH`<br>
+    1. Test case: Key in the command `filter c/GOVTECH`<br>
        Expected: The internship entry list displayed contains all internship entries with the company name "govtech". 
    
-    3. Test case: Key in the command `filter du/3-6`<br>
+    1. Test case: Key in the command `filter du/3-6`<br>
        Expected: The internship entry list displayed contains all internship entries with a duration of 3-6 months.
 
 2. Filtering with invalid parameters
@@ -780,7 +784,7 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in this command `filter`<br>
        Expected: Error message indicating an invalid format for the filter command is shown.
 
-    2. Test case: Key in this command `filter c/`<br>
+    1. Test case: Key in this command `filter c/`<br>
        Expected: Error message indicating an invalid format for the filter command is shown.
 
 ### Sorting internship entries
@@ -790,7 +794,7 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `sort c/ASC`<br>
        Expected: The internship entry list displayed is sorted by company name, in ascending order.
 
-    2. Test case: Key in the command `sort ro/DESC`<br>
+    1. Test case: Key in the command `sort ro/DESC`<br>
       Expected: The internship entry list displayed is sorted by roles, in descending order.
 
 2. Sorting with invalid command format
@@ -798,7 +802,7 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `sort c/ASC ro/DESC`<br>
        Expected: Error message indicating an invalid format for the sort command is shown.
    
-    2. Test case: Key in the command `sort`<br>
+    1. Test case: Key in the command `sort`<br>
       Expected: Error message indicating an invalid format for the sort command is shown.
 
 ### Deleting an internship
@@ -813,10 +817,10 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `sort ro/DESC` and `delete 1`<br>
        Expected: First internship entry in the displayed sorted list is deleted.
    
-    2. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`,  `sort ro/DESC` and `delete 1`<br>
+    1. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`,  `sort ro/DESC` and `delete 1`<br>
        Expected: First internship entry in the displayed sorted list is deleted.
    
-    3. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`,  `filter c/govtech` and `delete 1`<br>
+    1. Test case: Key in the command `create c/GovTech ro/SWE a/Yet to apply de/25/12/2022 s/20/01/2023 du/3 re/C++`,  `filter c/govtech` and `delete 1`<br>
        Expected: First internship entry in the displayed filtered list is deleted.
    
 3. Deleting with invalid parameters 
@@ -824,10 +828,10 @@ Perform these checks before each test to maintain consistency.
     1. Test case: Key in the command `delete 0`<br>
        Expected: No internship is deleted. Error message indicating an invalid format for the delete command is shown.
 
-    2. Test case: Key in the command `delete`<br>
+    1. Test case: Key in the command `delete`<br>
        Expected: No internship is deleted. Error message indicating an invalid format for the delete command is shown.
     
-    3. Test case: Key in the command `delete x` (where x is larger than the displayed list size)<br>
+    1. Test case: Key in the command `delete x` (where x is larger than the displayed list size)<br>
       Expected: No internship is deleted. Error message indicating an invalid format for the delete command is shown.
 
 ### Saving data
