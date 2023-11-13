@@ -30,19 +30,19 @@
    6. [Common classes](#common-classes)
 4. [Implementation](#implementation)
    1. [Create Command](#create-command)
-      - [Implementation(create)](#implementationcreate)
-      - [Design Considerations(create)](#design-considerationscreate)
+      - [Implementation (create)](#implementation-create)
+      - [Design Considerations (create)](#design-considerations-create)
    2. [Delete Command](#delete-command)
-       - [Implementation(delete)](#implementationdelete)
+       - [Implementation (delete)](#implementation-delete)
    3. [Sort Command](#sort-command)
-       - [Implementation(sort)](#implementationsort)
-       - [Design Considerations(sort)](#design-considerationssort)
+       - [Implementation (sort)](#implementation-sort)
+       - [Design Considerations (sort)](#design-considerations-sort)
    4. [Filter Command](#filter-command)
-       - [Implementation(filter)](#implementationfilter)
-       - [Design Considerations(filter)](#design-considerationsfilter)
+       - [Implementation (filter)](#implementation-filter)
+       - [Design Considerations (filter)](#design-considerations-filter)
    5. [Modify Command](#modify-command)
-       - [Implementation(modify)](#implementationmodify)
-       - [Design Considerations(modify)](#design-considerationsmodify)
+       - [Implementation (modify)](#implementation-modify)
+       - [Design Considerations (modify)](#design-considerations-modify)
 5. [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
 6. [Appendix: Requirements](#appendix-requirements)
    1. [Glossary](#glossary) 
@@ -203,7 +203,7 @@ This section describes some noteworthy details on how certain features are imple
 ### Create Command
 
 
-#### Implementation(create)
+#### Implementation (create)
 
 The create command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `create` command with a valid format.
 Upon successful verification, the `create` command is executed.
@@ -250,7 +250,7 @@ The following sequence diagram shows how the `create` command operation works:
 **Note:** The lifeline for `CreateCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </box>
 
-#### Design Considerations(create):
+#### Design Considerations (create):
 
 **Aspect: What constitutes a duplicate internship entry:**
 
@@ -264,7 +264,7 @@ The following sequence diagram shows how the `create` command operation works:
 
 ### Delete feature
 
-#### Implementation(delete)
+#### Implementation (delete)
 
 The delete command is facilitated by `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a `delete` command with a valid format.
 Upon successful verification, the `delete` command is executed.
@@ -313,7 +313,7 @@ The following sequence diagram shows how the delete operation works:
 
 ### Sort command
 
-#### Implementation(sort)
+#### Implementation (sort)
 
 The sort mechanism is facilitated by InternshipBook. InternshipBook provides us with the field of currentComparator, which stores the current sorting order of the lists. Additionally, it provides the main sort operation:
 
@@ -368,7 +368,7 @@ The following sequence diagram shows how the sort operation works:
 
 <puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
 
-#### Design Considerations(sort):
+#### Design Considerations (sort):
 
 **Aspect: How we retain the sort order:**
 
@@ -382,7 +382,7 @@ The following sequence diagram shows how the sort operation works:
 
 ### Filter command
 
-#### Implementation(filter)
+#### Implementation (filter)
 
 The filter command is facilitated by  `InternshipLogicManager`. User input is first parsed by `InternshipBookParser#parseCommand()` and checked if it is a filter command with a valid format. Once the format is validated, the predicate required to filter the internships based on user criteria is generated.
 
@@ -433,7 +433,7 @@ The following sequence diagram shows how the sort operation works:
 
 <puml src="diagrams/FilterSequenceDiagram.puml" alt="FilterSequenceDiagram" />
 
-#### Design Considerations(filter):
+#### Design Considerations (filter):
 **Aspect: How the filter conditions are specified:**
 
 * **Alternative 1 (current choice):** Use a predicate-based approach to allow flexible filtering criteria.
@@ -446,7 +446,7 @@ The following sequence diagram shows how the sort operation works:
 
 ### Modify Command
 
-#### Implementation(modify)
+#### Implementation (modify)
 
 The modify command is facilitated through the `InternshipLogicManager`. Upon user input, it first goes through parsing by the `InternshipBookParser#parseCommand()`. This is to ensure that the input is indeed a `modify` command and that it adheres to a valid format.
 
@@ -484,7 +484,7 @@ The following sequence diagram shows how the modify operation works:
 
 <puml src="diagrams/ModifySequenceDiagram.puml" alt="ModifySequenceDiagram" />
 
-#### Design Considerations(modify):
+#### Design Considerations (modify):
 
 
 **Aspect: How should we handle fields that aren't provided in the command?**
